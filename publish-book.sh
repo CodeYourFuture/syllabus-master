@@ -15,11 +15,9 @@ git clone git@github.com:Code-Your-Future/$REPO_NAME.git
 cp -a _book/* ./$REPO_NAME
 cd $REPO_NAME
 git rm *
-echo ">>>>"
-ls
 git config --global user.email "kabaros+cyf@gmail.com"
 git config --global user.name "Syllabus bot"
+git config --global push.default simple
 git add . --all
-git status
 git commit --allow-empty -m "Rebuild on $DATE"
 git push
