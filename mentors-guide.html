@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Contributing · GitBook</title>
+        <title>Mentor's Guide · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="mentors-guide.html" />
+    <link rel="next" href="lesson-template.html" />
     
     
-    <link rel="prev" href="PRACTICES.html" />
+    <link rel="prev" href="CONTRIBUTING.html" />
     
 
     </head>
@@ -470,7 +470,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9" data-path="CONTRIBUTING.html">
+        <li class="chapter " data-level="1.9" data-path="CONTRIBUTING.html">
             
                 <a href="CONTRIBUTING.html">
             
@@ -483,7 +483,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="mentors-guide.html">
+        <li class="chapter active" data-level="1.10" data-path="mentors-guide.html">
             
                 <a href="mentors-guide.html">
             
@@ -539,7 +539,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Contributing</a>
+        <a href="." >Mentor's Guide</a>
     </h1>
 </div>
 
@@ -554,44 +554,73 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="contributing">Contributing</h1>
-<p>Before starting, please read the following general guidelines and <a href="https://github.com/Code-Your-Future/syllabus/issues/9" target="_blank">Checklist for a lesson</a>. Participate in the discussion if you&apos;d like.</p>
-<p>There are <a href="https://github.com/Code-Your-Future/syllabus/issues" target="_blank">discussions</a> about each module and every class in a module, make sure to go through them (or add a new issue/discussion point).</p>
-<p>To contribute to the Code Your Future syllabus, fork and open a pull request to
-<a href="https://github.com/code-your-future/syllabus" target="_blank">this repository</a>, or contribute directly to <strong>London</strong> or <strong>Scotland</strong> branches of the syllabus. (Contributions to <strong>master</strong> are strictly through approved Pull Requests, even for administrators of the repo)</p>
-<p>While <strong>master</strong> is the blueprint of our syllabus, we have two branches for specific classes (<strong>London</strong> and <strong>Scotland</strong> currently) to allow the teams to adapt to their classes&apos; needs, and also update their syllabus versions to reflect how the class goes.</p>
-<p>We should also update the classes&apos; branches with <strong>master</strong> regularly (and vice versa) to keep our master blueprint relevant and up to date for future classes.</p>
-<h2 id="publish-the-gitbook">Publish the Gitbook</h2>
-<p>A Gitbook for each branch is published automatically on each push:</p>
+                                <h2 id="summary">Summary</h2>
 <ul>
-<li>master - <a href="https://CodeYourFuture.github.io/syllabus-master/" target="_blank">https://CodeYourFuture.github.io/syllabus-master/</a></li>
-<li>London - <a href="https://CodeYourFuture.github.io/syllabus-london/" target="_blank">https://CodeYourFuture.github.io/syllabus-london/</a></li>
-<li>Scotland - <a href="https://CodeYourFuture.github.io/syllabus-scotland/" target="_blank">https://CodeYourFuture.github.io/syllabus-scotland/</a></li>
+<li>Organise class in short sections, make it interactive and with plenty of exercises that students need to code.</li>
+<li>Make sure ALL students participate and answer questions.</li>
+<li>Be very visual, gesture and make use of boards to explain.</li>
+<li>Ensure that supporting mentors are guiding students during exercises.</li>
 </ul>
-<p>Mentors should point the students to the individual classes on Github (not the gitbook links) to allow them to get familiar with Git and Github, and to focus on the individual class. Also Point them to the version on your branch.</p>
-<p>For your convenience, you can run Gitbook locally</p>
-<p>Install the <a href="https://github.com/GitbookIO/gitbook" target="_blank">GitBook</a> CLI:</p>
-<pre class="language-"><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> -g gitbook-cli
-</code></pre>
-<p>Install gitbook plugins for this project, if not already installed:</p>
-<pre class="language-"><code class="lang-bash">gitbook <span class="token function">install</span>
-</code></pre>
-<p>Run the gitbook server which will autoupdate as you change the contents</p>
-<pre class="language-"><code>gitbook serve
-open http://localhost:4000
-</code></pre><h2 id="add-new-modules-or-lessons">Add new modules or lessons</h2>
-<p>The repo is stuctured as <code>module-name\lesson-number</code> - add your content in the correct file.</p>
-<p>If you&apos;ve added a new file, then Add it as new entry in <a href="https://github.com/Code-Your-Future/syllabus/blob/master/SUMMARY.md" target="_blank">SUMMARY.md</a>.
-If the module contains many individual markdown files, add them as nested bullets under the main README.</p>
-<h2 id="a-lesson-template">A Lesson template</h2>
-<p>Please check the <a href="lesson-template.html">lesson template</a> and use it as a starting point for your new lessons.</p>
-<p>Each lesson should follow that format - starting with <strong>what we will learn today</strong> then <strong>class contents</strong>, <strong>homework</strong> and <strong>preparation for next class</strong>.</p>
-<p>The class contents and homework should follow these general guidelines - <a href="https://github.com/Code-Your-Future/syllabus/issues/9" target="_blank">Checklist for a lesson</a></p>
-<p>Some of the most important guidelines are:</p>
+<h2 id="class-guidelines-for-mentors">Class Guidelines for Mentors</h2>
 <ul>
-<li>Focus on exercises in the class rather than presentations or long explanations</li>
-<li>Prefer pointers to good documentation over explaining everything in the lesson itself</li>
-<li>The homework should be relevant, get harder gradually with an (optional) stretch goal for more advanced students.</li>
+<li>Students should arrive before 12pm and start preparing the room.</li>
+<li>Around 12.15pm a stand-up is organised with the students to go through the work of the week.</li>
+<li>The class should start no later than 12.30pm.</li>
+<li>Upload the class in the repository the day before the class. </li>
+<li>Spend brief time on discussing homework problems of the previous week and make sure different students are presenting; encourage the ones that speak less to share.
+Have a clear idea of new concepts introduced and present them first as images, flow diagrams, etc. before going into code examples.</li>
+<li>Organise students to code the examples.</li>
+<li>Always ask questions to different students to make sure they are following.</li>
+<li>Prepare small sequence of tasks to work in solos and pairs. Check that supporting mentors are making sure everybody gets to write and understand code.</li>
+<li>Organise a group discussion at the end of the class of areas not understood. Encourage short explanations of different students to make sure they followed the class and know what they are doing.</li>
+<li>Make sure people connecting remotely have screen sharing (e.g. using Airtame).</li>
+<li>Request the mentor of the previous class to include any reading material as preparation for the class.</li>
+</ul>
+<h2 id="teaching-methodology">Teaching methodology:</h2>
+<ul>
+<li>Speak slowly and support explanation with visuals, board, screen.</li>
+<li>Ask questions to different students in the class (Note: do not rely on group questions that nobody answers/ same people answer).</li>
+<li>Divide the class in different segments.</li>
+<li>Check that supporting mentors are helping all students.</li>
+<li>Find simple language to explain, speak slowly, gesture.</li>
+<li>Look for analogies in simple drawings, make use of whiteboard.</li>
+</ul>
+<h2 id="timetable--example">Timetable  Example</h2>
+<ul>
+<li>Code review (let different people present their work, group feedback, good intro to new concepts) @12.30pm ~30mins</li>
+<li>Introduce New concepts (visual, including non-coding images for each concept) + short practical exercises @1pm ~20mins x 3 </li>
+<li>Coding (working alone and in pairs with longer exercises) ~1.5h &#x2013; </li>
+<li>(break for lunch around 2.30pm for 30min)</li>
+<li>Group discussion (what remains unclear) ~15min</li>
+<li>New assignment explanation ~15mins</li>
+</ul>
+<h2 id="assignments-homework-guidelines">Assignments (Homework) Guidelines</h2>
+<ul>
+<li>It should include 4 different areas:<ul>
+<li>Readings and videos reinforcing the concepts and preparing for the next class (blogs, youtube, chapters of books, etc)</li>
+<li>Complete some online coding tutorials (FCC, sololearn, codewars, etc)</li>
+<li>Creative Coding task (with answers that can&#x2019;t be found easily online)</li>
+<li>Review each other&#x2019;s code</li>
+</ul>
+</li>
+</ul>
+<p>Note: Assignment should be uploaded in the repository before the end of the class and explained in group.</p>
+<h2 id="tips-from-codebar-httpwwwcodebarioeffective-teacher-guide">Tips from codebar <a href="http://www.codebar.io/effective-teacher-guide" target="_blank">http://www.codebar.io/effective-teacher-guide</a></h2>
+<ul>
+<li>You don&apos;t need a laptop for our workshops. You are there to watch and guide the students. If you don&apos;t feel comfortable with the tutorial you should spend time on it before coming if you want to help out.
+Do not take over the keyboard! This can be off-putting and scary.</li>
+<li>Encourage the students to type and not copy paste.</li>
+<li>Explain that there are no dumb questions.</li>
+<li>Explain to students that it&apos;s OK to make mistakes.
+Always introduce yourself. Say why you want to help out and are spending your own time on this, why you like programming.</li>
+<li>Give your students the opportunity to get to know each other. Ask their names, why they are here, what they do in their day jobs. Encourage a brief discussion before starting.</li>
+<li>Assume that anyone you&apos;re teaching has no knowledge but infinite intelligence.</li>
+<li>Work collaboratively with your student. If you have two students, you should work with both. Don&apos;t focus all your attention on one of them.</li>
+<li>Let students have a go at answering the questions first. Help with open and leading questions. Encourage a discussion.</li>
+<li>Take it slow, you are the teacher, they are the student. Allow for time between questions.</li>
+<li>Don&apos;t say no when the students are not doing something right. Be gentle, approach it in a mild way.</li>
+<li>Use pen and paper or go to a whiteboard! Often students are coming from a non-technical background. Drawing and explaining with visual material is really helpful.</li>
+<li>Let them stumble. We learn by making mistakes, getting frustrated, and working through problem in our own way. Be supportive, but let them explore.</li>
 </ul>
 
                                 
@@ -620,12 +649,12 @@ If the module contains many individual markdown files, add them as nested bullet
 
             
                 
-                <a href="PRACTICES.html" class="navigation navigation-prev " aria-label="Previous page: Coding Standards and Best Practices">
+                <a href="CONTRIBUTING.html" class="navigation navigation-prev " aria-label="Previous page: Contributing">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="mentors-guide.html" class="navigation navigation-next " aria-label="Next page: Mentor's Guide">
+                <a href="lesson-template.html" class="navigation navigation-next " aria-label="Next page: Lesson Template">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -636,7 +665,7 @@ If the module contains many individual markdown files, add them as nested bullet
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Contributing","level":"1.9","depth":1,"next":{"title":"Mentor's Guide","level":"1.10","depth":1,"path":"mentors-guide.md","ref":"mentors-guide.md","articles":[]},"previous":{"title":"Coding Standards and Best Practices","level":"1.8","depth":1,"path":"PRACTICES.md","ref":"PRACTICES.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"CONTRIBUTING.md","mtime":"2017-06-18T15:58:38.714Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-18T16:00:32.083Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mentor's Guide","level":"1.10","depth":1,"next":{"title":"Lesson Template","level":"1.11","depth":1,"path":"lesson-template.md","ref":"lesson-template.md","articles":[]},"previous":{"title":"Contributing","level":"1.9","depth":1,"path":"CONTRIBUTING.md","ref":"CONTRIBUTING.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mentors-guide.md","mtime":"2017-06-18T15:58:38.778Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-18T16:00:32.083Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
