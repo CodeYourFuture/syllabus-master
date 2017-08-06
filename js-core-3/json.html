@@ -7,7 +7,7 @@
         <title>JSON · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -1053,23 +1053,23 @@
 </ul>
 <p>JSON is a way of transferring data.
 It works directly with JavaScript, they are plain JavaScript objects.</p>
-<pre class="language-"><code class="lang-JavaScript">{
-    &quot;key&quot;: &quot;value&quot;
-}
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+    <span class="token string">&quot;key&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;value&quot;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>You can take a JavaScript object, and turn in into JSON, via the JSON api:</p>
-<pre class="language-"><code class="lang-JavaScript">var myObject = {&quot;key&quot;: &quot;value&quot;};
-var jsonString = JSON.stringify(myObject);
-console.log(jsonString);
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&quot;key&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;value&quot;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> jsonString <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>myObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&apos;{&quot;key&quot;:&quot;value&quot;}&apos;
+<span class="token string">&apos;{&quot;key&quot;:&quot;value&quot;}&apos;</span>
 </code></pre>
 <p>You can also turn a string into JSON:</p>
-<pre class="language-"><code class="lang-JavaScript">var jsonString = &apos;{&quot;key&quot;: &quot;value&quot;}&apos;;
-var myObject = JSON.parse(jsonString);
-console.log(myObject.key);
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> jsonString <span class="token operator">=</span> <span class="token string">&apos;{&quot;key&quot;: &quot;value&quot;}&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myObject <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&quot;value&quot;
+<span class="token string">&quot;value&quot;</span>
 </code></pre>
 <h2 id="exercise">Exercise</h2>
 <p>Take the following JSON string, turn it into an object, then show the results.
@@ -1118,7 +1118,7 @@ If you have time format the results to show individual keys and their values.</p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JSON","level":"1.6.1","depth":2,"next":{"title":"APIs","level":"1.6.2","depth":2,"path":"js-core-3/apis.md","ref":"js-core-3/apis.md","articles":[]},"previous":{"title":"JavaScript Core III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"JSON","level":"1.6.1","depth":2,"path":"js-core-3/json.md","ref":"js-core-3/json.md","articles":[]},{"title":"APIs","level":"1.6.2","depth":2,"path":"js-core-3/apis.md","ref":"js-core-3/apis.md","articles":[]},{"title":"Promises","level":"1.6.3","depth":2,"path":"js-core-3/promises.md","ref":"js-core-3/promises.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/json.md","mtime":"2017-07-03T09:34:54.145Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-03T09:36:58.955Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JSON","level":"1.6.1","depth":2,"next":{"title":"APIs","level":"1.6.2","depth":2,"path":"js-core-3/apis.md","ref":"js-core-3/apis.md","articles":[]},"previous":{"title":"JavaScript Core III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"JSON","level":"1.6.1","depth":2,"path":"js-core-3/json.md","ref":"js-core-3/json.md","articles":[]},{"title":"APIs","level":"1.6.2","depth":2,"path":"js-core-3/apis.md","ref":"js-core-3/apis.md","articles":[]},{"title":"Promises","level":"1.6.3","depth":2,"path":"js-core-3/promises.md","ref":"js-core-3/promises.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/json.md","mtime":"2017-08-06T11:43:11.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-08-06T11:44:13.081Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

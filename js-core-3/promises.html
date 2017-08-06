@@ -7,7 +7,7 @@
         <title>Promises · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -1053,34 +1053,34 @@
 They are used to allow you code to run in the background (asynchronously).</p>
 <p>We have already seen an example of this when working with APIs.
 The <code>request.onreadystatechange</code> is a callback function.</p>
-<pre class="language-"><code class="lang-JavaScript">function finished() {
-    alert(&apos;The task has finished&apos;);
-}
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&apos;The task has finished&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-function thingThatTakesALongTime(callback) {
-    //... Task that takes a long time to complete
+<span class="token keyword">function</span> <span class="token function">thingThatTakesALongTime</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//... Task that takes a long time to complete</span>
 
-    callback(); // This is where the &apos;alert&apos; happens
-}
+    <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// This is where the &apos;alert&apos; happens</span>
+<span class="token punctuation">}</span>
 
-// Pass the function to &apos;thingThatTakesALongTime&apos; just like a normal variable
-thingThatTakesALongTime(finished);
+<span class="token comment" spellcheck="true">// Pass the function to &apos;thingThatTakesALongTime&apos; just like a normal variable</span>
+<span class="token function">thingThatTakesALongTime</span><span class="token punctuation">(</span>finished<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Sometimes callbacks are used, so you can handle errors separately.</p>
-<pre class="language-"><code class="lang-JavaScript">function handleError(problem) {
-    alert(&apos;There was an error: &apos; + problem);
-}
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">handleError</span><span class="token punctuation">(</span>problem<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&apos;There was an error: &apos;</span> <span class="token operator">+</span> problem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-function task(x, errorCallback) {
-    if (x !== 0) {
-        errorCallback(&apos;X is not 0!&apos;)
-        return;
-    }
-    return x + 100;
-}
+<span class="token keyword">function</span> <span class="token function">task</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> errorCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">errorCallback</span><span class="token punctuation">(</span><span class="token string">&apos;X is not 0!&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> <span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-task(0, handleError); // Causes an alert to appear
-task(1, handleError); // Returns 101
+<span class="token function">task</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> handleError<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Causes an alert to appear</span>
+<span class="token function">task</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> handleError<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Returns 101</span>
 </code></pre>
 <h2 id="asynchronous-functions">Asynchronous functions</h2>
 <ul>
@@ -1099,13 +1099,13 @@ Asynchronous code is not executed in order, and can run at any time, in any orde
 <p>A simple example is <code>setTimeout</code>.
 This allows you to run a function after a given time period.
 The first argument is the function you want to run, the second argument is the <code>delay</code> (in milliseconds)</p>
-<pre class="language-"><code class="lang-JavaScript">
-function myFunction() {
-    console.log(&apos;Hello world!&apos;);
-}
+<pre class="language-"><code class="lang-js">
+<span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-setTimeout(myFunction, 1000);
-setTimeout(function() { console.log(&apos;Goodbye world!&apos;); }, 500)
+<span class="token function">setTimeout</span><span class="token punctuation">(</span>myFunction<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Goodbye world!&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Exercise:</p>
 <ol>
@@ -1120,31 +1120,31 @@ setTimeout(function() { console.log(&apos;Goodbye world!&apos;); }, 500)
 <p>Using callbacks, you can easily apply a function to every element in an array using the map function;
 The following snippet, will take an array, and return a new array, where every element in the array is double.</p>
 <p>Before:</p>
-<pre class="language-"><code class="lang-JavaScript">var myArray = [1, 5, 10]; // The starting array
-var newArray = []; // The final array
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> myArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// The starting array</span>
+<span class="token keyword">var</span> newArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// The final array</span>
 
-for (var i = 0; i &lt; myArray.length; i++) {
-    var doubleValue = myArray[i] * 2; // Get the value and double it
-    newArray.push(doubleValue) // Add the new value, to the final array
-}
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> myArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> doubleValue <span class="token operator">=</span> myArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Get the value and double it</span>
+    newArray<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>doubleValue<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Add the new value, to the final array</span>
+<span class="token punctuation">}</span>
 
-console.log(newArray);
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-[2, 10, 20]
+<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span>
 </code></pre>
-<pre class="language-"><code class="lang-JavaScript">var myArray = [1, 5, 10];
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> myArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-function double(x) {
-    // Return double of x
-    return x * 2;
-}
+<span class="token keyword">function</span> <span class="token function">double</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Return double of x</span>
+    <span class="token keyword">return</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// Applies the `double` function to every element in the array
-var newArray = myArray.map(double);
+<span class="token comment" spellcheck="true">// Applies the `double` function to every element in the array</span>
+<span class="token keyword">var</span> newArray <span class="token operator">=</span> myArray<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>double<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console.log(newArray);
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-[2, 10, 20]
+<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span>
 </code></pre>
 <h2 id="promises">Promises</h2>
 <ul>
@@ -1157,20 +1157,20 @@ They allow for writing easier to understand code when dealing with asynchronous 
 <img src="http://exploringjs.com/es6/images/promises----promise_states_simple.jpg" alt="">
 The API is very simple, when you have a promise, you can attach either a <code>then</code> callback or a <code>catch</code> callback.
 If the promise is successful, the the function in the <code>then</code> callback is called. If it fails, then the <code>catch</code> callback is called.</p>
-<pre class="language-"><code class="lang-JavaScript">var myPromise = new Promise(function(resolve, reject) {
-    // Do some work in this function
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> myPromise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Do some work in this function</span>
 
-    resolve(100) // If the function was successful
-    //reject(50) // If the function failed
-});
+    <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// If the function was successful</span>
+    <span class="token comment" spellcheck="true">//reject(50) // If the function failed</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-myPromise.then(function(value) {
-    console.log(&apos;success: &apos; + value);
-})
+myPromise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;success: &apos;</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-myPromise.catch(function(value) {
-    console.log(&apos;fail:&apos; + value);
-})
+myPromise<span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;fail:&apos;</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 id="fetch">Fetch</h2>
 <ul>
@@ -1178,13 +1178,13 @@ myPromise.catch(function(value) {
 <li><a href="https://davidwalsh.name/fetch" target="_blank">David Walsh blog</a></li>
 </ul>
 <p><code>fetch</code> is a nicer (more modern) way of creating HTTP requests. It makes heavy use of Promises.</p>
-<pre class="language-"><code class="lang-JavaScript">// Chaining for more &quot;advanced&quot; handling
-fetch(&apos;http://www.mocky.io/v2/584c3d2d1200001b1e372b01&apos;).then(function(response) {
-    return response.json(); // returning another Promise
-}).then(function(json) {
-    // Do something with the json object
-    console.log(json.data); //Prints &apos;Hello world!&apos;
-})
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Chaining for more &quot;advanced&quot; handling</span>
+<span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">&apos;http://www.mocky.io/v2/584c3d2d1200001b1e372b01&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returning another Promise</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Do something with the json object</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//Prints &apos;Hello world!&apos;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Exercise: Rewrite your homework from last week, using <code>fetch</code> and <code>Promises</code></p>
 
@@ -1226,7 +1226,7 @@ fetch(&apos;http://www.mocky.io/v2/584c3d2d1200001b1e372b01&apos;).then(function
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Promises","level":"1.6.3","depth":2,"next":{"title":"NodeJS","level":"1.7","depth":1,"ref":"","articles":[{"title":"TO BE ADDED","level":"1.7.1","depth":2,"ref":"","articles":[]}]},"previous":{"title":"APIs","level":"1.6.2","depth":2,"path":"js-core-3/apis.md","ref":"js-core-3/apis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/promises.md","mtime":"2017-07-03T09:34:54.145Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-03T09:36:58.955Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Promises","level":"1.6.3","depth":2,"next":{"title":"NodeJS","level":"1.7","depth":1,"ref":"","articles":[{"title":"TO BE ADDED","level":"1.7.1","depth":2,"ref":"","articles":[]}]},"previous":{"title":"APIs","level":"1.6.2","depth":2,"path":"js-core-3/apis.md","ref":"js-core-3/apis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/promises.md","mtime":"2017-08-06T11:43:11.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-08-06T11:44:13.081Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

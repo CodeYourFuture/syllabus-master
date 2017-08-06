@@ -7,7 +7,7 @@
         <title>For loops · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -1054,18 +1054,18 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p><strong>Statement 1</strong> defines a variable for the loop and assigns it a starting value. It is usually a number, which will increase each time the loop completes an iteration. We can use this number inside the loop to keep track of where we&apos;re at. You can set the number to be whatever you want initially.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>Statement 2</strong> defines how long the loop will go on for (what needs to happen for the loop to stop running?). It most often uses the less than (<code>&lt;</code>) or less than or equal to (<code>&lt;=</code>) operators to set the length.</p>
 <pre class="language-"><code class="lang-js">i <span class="token operator">&lt;</span> <span class="token number">10</span>
 </code></pre>
 <p><strong>Statement 3</strong> defines by how much to increment the <code>i</code> variable each time the loop completes an iteration. If you just want it to increase by one, then put <code>i++</code>, or else you can increase by other numbers like so:</p>
-<pre class="language-"><code class="lang-js">i<span class="token operator">+</span><span class="token operator">=</span><span class="token number">2</span>
+<pre class="language-"><code class="lang-js">i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span>
 </code></pre>
 <p>Inside the square brackets goes the code you wish to be executed each time the loop runs. You can refer to the variable <code>i</code> from inside the loop.</p>
 <h3 id="try-it-out">Try it out</h3>
 <p>Here&apos;s an example of an actual for loop that prints out the numbers 1 to 10:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -1122,7 +1122,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"For loops","level":"1.4.6","depth":2,"next":{"title":"Functions","level":"1.4.7","depth":2,"path":"js-core/functions.md","ref":"js-core/functions.md","articles":[]},"previous":{"title":"Branch statements (if/else)","level":"1.4.5","depth":2,"path":"js-core/branch-statements.md","ref":"js-core/branch-statements.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/for-loops.md","mtime":"2017-07-03T09:34:54.149Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-03T09:36:58.955Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"For loops","level":"1.4.6","depth":2,"next":{"title":"Functions","level":"1.4.7","depth":2,"path":"js-core/functions.md","ref":"js-core/functions.md","articles":[]},"previous":{"title":"Branch statements (if/else)","level":"1.4.5","depth":2,"path":"js-core/branch-statements.md","ref":"js-core/branch-statements.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/for-loops.md","mtime":"2017-08-06T11:43:11.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-08-06T11:44:13.081Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

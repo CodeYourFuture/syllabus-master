@@ -7,7 +7,7 @@
         <title>Coding 101 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -1129,18 +1129,20 @@ declaration statement
 </ul>
 <h3 id="strings">Strings</h3>
 <p>Strings represent any sort of text. They are delimited by single quotes (<code>&apos;</code>) or double quotes (<code>&#x201D;</code>) and can be of any length.</p>
-<pre class="language-"><code>&apos;&apos; // empty string
-&quot;&quot; // empty string
-&apos;Hello&apos;
-&apos;I am learning JavaScript&apos;
-&apos;It\&apos;s been a great journey so far!&apos;
-&quot;Double quotes work as well&quot;
-</code></pre><blockquote>
+<pre class="language-"><code class="lang-js"><span class="token string">&apos;&apos;</span> <span class="token comment" spellcheck="true">// empty string</span>
+<span class="token string">&quot;&quot;</span> <span class="token comment" spellcheck="true">// empty string</span>
+<span class="token string">&apos;Hello&apos;</span>
+<span class="token string">&apos;I am learning JavaScript&apos;</span>
+<span class="token string">&apos;It\&apos;s been a great journey so far!&apos;</span>
+<span class="token string">&quot;Double quotes work as well&quot;</span>
+</code></pre>
+<blockquote>
 <p>If you need single or double quotes <em>inside the string</em>, you need to &#x201C;escape&#x201D; them by putting a backslash in front of them. If you don&#x2019;t do this, the JavaScript engine will think the string ends here, because it encounters a quote.</p>
 </blockquote>
 <p>The most common operation on strings is to append one string to another. This is called <em>string concatenation</em>. It&#x2019;s achieved by the plus (<code>+</code>) operator:</p>
-<pre class="language-"><code>&quot;Hello&quot; + &quot;World&quot; // &quot;HelloWorld&quot;
-</code></pre><ul>
+<pre class="language-"><code class="lang-js"><span class="token string">&quot;Hello&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;World&quot;</span> <span class="token comment" spellcheck="true">// &quot;HelloWorld&quot;</span>
+</code></pre>
+<ul>
 <li><strong>TODO:</strong> Introduce string concatenation</li>
 <li><strong>TODO:</strong> What about basic string functions, like substr, replace etc?</li>
 </ul>
@@ -1158,10 +1160,10 @@ declaration statement
 <span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
 </code></pre>
 </li>
-<li><code>||</code> (OR), which is true if at least one of the operands is true:<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
+<li><code>||</code> (OR), which is true if at least one of the operands is true:<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">||</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token boolean">true</span> <span class="token operator">||</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token boolean">false</span> <span class="token operator">||</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token boolean">true</span> <span class="token operator">||</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
 </code></pre>
 </li>
 </ul>
@@ -1229,7 +1231,7 @@ Solution: <code>console.log(Math.round(7 / 17 * 100) + &quot;%&quot;);</code></p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Coding 101","level":"1.2.4","depth":2,"next":{"title":"HTML/CSS","level":"1.3","depth":1,"path":"html-css/index.md","ref":"html-css/index.md","articles":[{"title":"Semantic HTML tags","level":"1.3.1","depth":2,"path":"html-css/semantic-tags.md","ref":"html-css/semantic-tags.md","articles":[]},{"title":"CSS selectors","level":"1.3.2","depth":2,"path":"html-css/css-selectors.md","ref":"html-css/css-selectors.md","articles":[]},{"title":"CSS cascade","level":"1.3.3","depth":2,"path":"html-css/cascade.md","ref":"html-css/cascade.md","articles":[]},{"title":"Pseudo Classes","level":"1.3.4","depth":2,"path":"html-css/pseudo-classes.md","ref":"html-css/pseudo-classes.md","articles":[]},{"title":"Box model","level":"1.3.5","depth":2,"path":"html-css/box-model.md","ref":"html-css/box-model.md","articles":[]},{"title":"Responsive web design","level":"1.3.6","depth":2,"path":"html-css/responsive-web-design.md","ref":"html-css/responsive-web-design.md","articles":[]},{"title":"Media queries","level":"1.3.7","depth":2,"path":"html-css/media-queries.md","ref":"html-css/media-queries.md","articles":[]},{"title":"Content layouts","level":"1.3.8","depth":2,"path":"html-css/content-layouts.md","ref":"html-css/content-layouts.md","articles":[]},{"title":"Design framework","level":"1.3.9","depth":2,"path":"html-css/design-frameworks.md","ref":"html-css/design-frameworks.md","articles":[]},{"title":"Naming patterns","level":"1.3.10","depth":2,"path":"html-css/naming-patterns.md","ref":"html-css/naming-patterns.md","articles":[]},{"title":"Forms","level":"1.3.11","depth":2,"path":"html-css/forms.md","ref":"html-css/forms.md","articles":[]},{"title":"CSS processors","level":"1.3.12","depth":2,"path":"html-css/css-processors.md","ref":"html-css/css-processors.md","articles":[]}]},"previous":{"title":"Terminal","level":"1.2.3","depth":2,"path":"week0/terminal.md","ref":"week0/terminal.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"week0/coding-101.md","mtime":"2017-07-03T09:34:54.149Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-03T09:36:58.955Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Coding 101","level":"1.2.4","depth":2,"next":{"title":"HTML/CSS","level":"1.3","depth":1,"path":"html-css/index.md","ref":"html-css/index.md","articles":[{"title":"Semantic HTML tags","level":"1.3.1","depth":2,"path":"html-css/semantic-tags.md","ref":"html-css/semantic-tags.md","articles":[]},{"title":"CSS selectors","level":"1.3.2","depth":2,"path":"html-css/css-selectors.md","ref":"html-css/css-selectors.md","articles":[]},{"title":"CSS cascade","level":"1.3.3","depth":2,"path":"html-css/cascade.md","ref":"html-css/cascade.md","articles":[]},{"title":"Pseudo Classes","level":"1.3.4","depth":2,"path":"html-css/pseudo-classes.md","ref":"html-css/pseudo-classes.md","articles":[]},{"title":"Box model","level":"1.3.5","depth":2,"path":"html-css/box-model.md","ref":"html-css/box-model.md","articles":[]},{"title":"Responsive web design","level":"1.3.6","depth":2,"path":"html-css/responsive-web-design.md","ref":"html-css/responsive-web-design.md","articles":[]},{"title":"Media queries","level":"1.3.7","depth":2,"path":"html-css/media-queries.md","ref":"html-css/media-queries.md","articles":[]},{"title":"Content layouts","level":"1.3.8","depth":2,"path":"html-css/content-layouts.md","ref":"html-css/content-layouts.md","articles":[]},{"title":"Design framework","level":"1.3.9","depth":2,"path":"html-css/design-frameworks.md","ref":"html-css/design-frameworks.md","articles":[]},{"title":"Naming patterns","level":"1.3.10","depth":2,"path":"html-css/naming-patterns.md","ref":"html-css/naming-patterns.md","articles":[]},{"title":"Forms","level":"1.3.11","depth":2,"path":"html-css/forms.md","ref":"html-css/forms.md","articles":[]},{"title":"CSS processors","level":"1.3.12","depth":2,"path":"html-css/css-processors.md","ref":"html-css/css-processors.md","articles":[]}]},"previous":{"title":"Terminal","level":"1.2.3","depth":2,"path":"week0/terminal.md","ref":"week0/terminal.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"week0/coding-101.md","mtime":"2017-08-06T11:43:11.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-08-06T11:44:13.081Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
