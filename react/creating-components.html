@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>State · GitBook</title>
+        <title>Creating components · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="lifecycle.html" />
+    <link rel="next" href="class-components.html" />
     
     
-    <link rel="prev" href="props.html" />
+    <link rel="prev" href="es6.html" />
     
 
     </head>
@@ -1055,7 +1055,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.5" data-path="creating-components.html">
+        <li class="chapter active" data-level="1.9.5" data-path="creating-components.html">
             
                 <a href="creating-components.html">
             
@@ -1094,7 +1094,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.8" data-path="state.html">
+        <li class="chapter " data-level="1.9.8" data-path="state.html">
             
                 <a href="state.html">
             
@@ -1570,7 +1570,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >State</a>
+        <a href=".." >Creating components</a>
     </h1>
 </div>
 
@@ -1585,48 +1585,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="state">State</h2>
-<p>Sometimes a component needs to react to data that doesn&apos;t come from a parent component. This is where the component&apos;s State comes in.</p>
-<p>Props are a Compenent&apos;s configuration, they are received from above and they don&apos;t usually change by the component itself.
-State starts with a default value (set in the constructor typically) then it gets changed (mutated) by events of the application (user interactions, form input, API calls etc..)</p>
-<p>Example:</p>
-<pre class="language-"><code class="lang-jsx"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Organisation <span class="token keyword">from</span> <span class="token string">&apos;./Organisation&apos;</span><span class="token punctuation">;</span>
+                                <h1 id="our-first-component">Our first component</h1>
+<p>Components in React can be defined by just declaring a function that returns some HTML.</p>
+<ul>
+<li><p>Create a new file in <code>./src/components/button.js</code></p>
+</li>
+<li><p>Create your first component</p>
+</li>
+</ul>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-      website<span class="token punctuation">:</span> <span class="token keyword">null</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">handleChange</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> website<span class="token punctuation">:</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>App<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Organisation</span>
-          <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Refugee</span> <span class="token attr-name">Support</span> <span class="token attr-name">Network&quot;</span>
-          <span class="token attr-name">website</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>website<span class="token punctuation">}</span></span>
-        <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-          <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
-          <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>website<span class="token punctuation">}</span></span>
-          <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleChange<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
-        <span class="token punctuation">/&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Button</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span> Awesome button<span class="token operator">!</span> <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> GameButton<span class="token punctuation">;</span>
+</code></pre>
+<p>or using ES6 arrow functions</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Button <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span> Awesome button<span class="token operator">!</span> <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> GameButton<span class="token punctuation">;</span>
 </code></pre>
 <ul>
-<li><a href="https://codepen.io/kabaros/pen/NdRNmm?editors=0010#0" target="_blank">State Exercise</a></li>
+<li>Switch back to <code>App.js</code> and use your new custom component!</li>
 </ul>
-<p>Note: different states sometimes missed in designs</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> GameButton <span class="token keyword">from</span> <span class="token string">&apos;./components/gameButton&apos;</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// .........</span>
+<span class="token operator">&lt;</span>p className<span class="token operator">=</span><span class="token string">&quot;App-intro&quot;</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>GameButton <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// .........</span>
+</code></pre>
+<ul>
+<li>Check your browser, it should have refreshed with the latest changes</li>
+</ul>
 
                                 
                                 </section>
@@ -1654,12 +1648,12 @@ State starts with a default value (set in the constructor typically) then it get
 
             
                 
-                <a href="props.html" class="navigation navigation-prev " aria-label="Previous page: Props">
+                <a href="es6.html" class="navigation navigation-prev " aria-label="Previous page: ES6">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="lifecycle.html" class="navigation navigation-next " aria-label="Next page: Component Life cycle">
+                <a href="class-components.html" class="navigation navigation-next " aria-label="Next page: Class components">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1670,7 +1664,7 @@ State starts with a default value (set in the constructor typically) then it get
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"State","level":"1.9.8","depth":2,"next":{"title":"Component Life cycle","level":"1.9.9","depth":2,"path":"react/lifecycle.md","ref":"react/lifecycle.md","articles":[]},"previous":{"title":"Props","level":"1.9.7","depth":2,"path":"react/props.md","ref":"react/props.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/state.md","mtime":"2017-10-01T09:51:12.538Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-01T09:52:25.667Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Creating components","level":"1.9.5","depth":2,"next":{"title":"Class components","level":"1.9.6","depth":2,"path":"react/class-components.md","ref":"react/class-components.md","articles":[]},"previous":{"title":"ES6","level":"1.9.4","depth":2,"path":"react/es6.md","ref":"react/es6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/creating-components.md","mtime":"2017-10-01T09:51:12.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-01T09:52:25.667Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

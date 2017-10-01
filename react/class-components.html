@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>State · GitBook</title>
+        <title>Class components · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="lifecycle.html" />
+    <link rel="next" href="props.html" />
     
     
-    <link rel="prev" href="props.html" />
+    <link rel="prev" href="creating-components.html" />
     
 
     </head>
@@ -1068,7 +1068,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.6" data-path="class-components.html">
+        <li class="chapter active" data-level="1.9.6" data-path="class-components.html">
             
                 <a href="class-components.html">
             
@@ -1094,7 +1094,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.8" data-path="state.html">
+        <li class="chapter " data-level="1.9.8" data-path="state.html">
             
                 <a href="state.html">
             
@@ -1570,7 +1570,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >State</a>
+        <a href=".." >Class components</a>
     </h1>
 </div>
 
@@ -1585,48 +1585,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="state">State</h2>
-<p>Sometimes a component needs to react to data that doesn&apos;t come from a parent component. This is where the component&apos;s State comes in.</p>
-<p>Props are a Compenent&apos;s configuration, they are received from above and they don&apos;t usually change by the component itself.
-State starts with a default value (set in the constructor typically) then it gets changed (mutated) by events of the application (user interactions, form input, API calls etc..)</p>
-<p>Example:</p>
-<pre class="language-"><code class="lang-jsx"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Organisation <span class="token keyword">from</span> <span class="token string">&apos;./Organisation&apos;</span><span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-      website<span class="token punctuation">:</span> <span class="token keyword">null</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">handleChange</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> website<span class="token punctuation">:</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+                                <h1 id="class-components">Class components</h1>
+<p>React components are best understood in terms of parents and children.</p>
+<p>Parent or <code>container</code> components may have access to the data that they need in order to pass it on to multiple child components. These larger components often contain the actions (e.g. API calls) or data processing functions that their child components require and thus are referred to as <code>smart</code> components.</p>
+<p>These components are usually defined using ES6 classes. So instead of returning the JSX directly, it&apos;s returned as part of a <code>render()</code> function. Here&apos;s how we would define the button component we created above using ES6 classes:</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">GameButton</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Components</span> <span class="token punctuation">{</span>
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>App<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Organisation</span>
-          <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Refugee</span> <span class="token attr-name">Support</span> <span class="token attr-name">Network&quot;</span>
-          <span class="token attr-name">website</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>website<span class="token punctuation">}</span></span>
-        <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-          <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
-          <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>website<span class="token punctuation">}</span></span>
-          <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleChange<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
-        <span class="token punctuation">/&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span> Awesome button<span class="token operator">!</span> <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span>
 </code></pre>
-<ul>
-<li><a href="https://codepen.io/kabaros/pen/NdRNmm?editors=0010#0" target="_blank">State Exercise</a></li>
-</ul>
-<p>Note: different states sometimes missed in designs</p>
+<p>The above is an equivalent component to what we defined using the function.</p>
+<p>Child or &quot;presentational&quot; components are concerned with how things look. They contain very little logic. They are like a function: take some inputs, and return an element (and that&apos;s how they&apos;re usually written as well, as a function). They don&apos;t hold or remember any data: the element that they return is based only on the inputs they received, nothing else.</p>
+<p>While functional components are a lot simpler to read and write, using ES6 classes allows us to create more powerful, smarter components.</p>
 
                                 
                                 </section>
@@ -1654,12 +1625,12 @@ State starts with a default value (set in the constructor typically) then it get
 
             
                 
-                <a href="props.html" class="navigation navigation-prev " aria-label="Previous page: Props">
+                <a href="creating-components.html" class="navigation navigation-prev " aria-label="Previous page: Creating components">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="lifecycle.html" class="navigation navigation-next " aria-label="Next page: Component Life cycle">
+                <a href="props.html" class="navigation navigation-next " aria-label="Next page: Props">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1670,7 +1641,7 @@ State starts with a default value (set in the constructor typically) then it get
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"State","level":"1.9.8","depth":2,"next":{"title":"Component Life cycle","level":"1.9.9","depth":2,"path":"react/lifecycle.md","ref":"react/lifecycle.md","articles":[]},"previous":{"title":"Props","level":"1.9.7","depth":2,"path":"react/props.md","ref":"react/props.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/state.md","mtime":"2017-10-01T09:51:12.538Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-01T09:52:25.667Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Class components","level":"1.9.6","depth":2,"next":{"title":"Props","level":"1.9.7","depth":2,"path":"react/props.md","ref":"react/props.md","articles":[]},"previous":{"title":"Creating components","level":"1.9.5","depth":2,"path":"react/creating-components.md","ref":"react/creating-components.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/class-components.md","mtime":"2017-10-01T09:51:12.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-01T09:52:25.667Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
