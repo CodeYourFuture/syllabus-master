@@ -1586,39 +1586,55 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="component-life-cycle">Component Life Cycle</h2>
-<p><img src="../images/firstrender.png" alt="First Render" title="Life Cycle Methods on the first render of a component"></p>
-<p>Components have <code>life cycle</code> events which are methods that run code at particular times in the process. According to the time that the methods are called, some of them are often prefixed with <code>will</code> and <code>did</code>.</p>
-<p>The diagram below shows the full picture of what happens during the rendering of a component. Even though you have all these methods available to use at your disposal, the only <code>required</code> method is <code>render()</code>.</p>
-<p><img src="../images/componentlifecycle.jpg" alt="Component Lifecycle" title="All lifecycle Methods of a React component"></p>
+<p>React components in a browser can be in one of three status: <strong>mounted</strong>, <strong>updated</strong>, and <strong>unmounted</strong>.</p>
+<p>Components have <code>lifecycle</code> events which are methods that run code at particular times in the process.
+Depending on which status of a component they are associated with, lifecycle methods are grouped into
+three categories: <strong>mounting</strong>, <strong>updating</strong>, and <strong>unmounting</strong>. According to the time that the methods
+are called, some of them are often prefixed with <code>will</code> and <code>did</code>.</p>
+<p>Even though you have all these methods available to use at your disposal, the only <code>required</code> method is <code>render()</code>.</p>
 <h2 id="mounting">Mounting</h2>
-<p>These are called when a component is being mounted on the DOM such as:</p>
+<p>These are called when a component is being mounted on the DOM.</p>
 <ul>
-<li>Constructor()</li>
-<li>componentWillMount()</li>
-<li>render()</li>
-<li>etc</li>
+<li><code>constructor()</code></li>
+<li><code>componentWillMount()</code></li>
+<li><code>componentDidMount()</code></li>
+<li><code>render()</code></li>
 </ul>
 <h2 id="updating">Updating</h2>
-<p>When there are changes to the props or state:</p>
+<p>These are called when a component is updated and being re-rendered, due to changes in props or state.</p>
 <ul>
-<li>componentWillReceiveProps()</li>
-<li>componentDidUpdate()</li>
-<li>render()</li>
+<li><code>componentWillReceiveProps()</code></li>
+<li><code>componentDidUpdate()</code></li>
+<li><code>render()</code></li>
 <li>etc</li>
 </ul>
 <h2 id="unmonting">Unmonting</h2>
-<p>When a component is being removed from the DOM:</p>
+<p>This method is called when a component is being removed from the DOM.</p>
 <ul>
-<li>componentWillUnmount()</li>
+<li><code>componentWillUnmount()</code></li>
+</ul>
+<h2 id="error-handling">Error Handling</h2>
+<p>The React <code>v.16.0.0</code> introduces better support for error handling.</p>
+<p>This method is called when an error occurs during rendering, in a lifecycle method, or in the constructor
+of any child component.</p>
+<ul>
+<li><code>componentDidCatch()</code></li>
 </ul>
 <h2 id="other-apis">Other APIs</h2>
-<p>These include <code>setState()</code> and <code>forceUpdate()</code>. You cannot access the state in some lifecycle methods, refer to the diagram above to find out which.</p>
-<p>The complete list of these methods with their descriptions can be found in the documentation <a href="https://facebook.github.io/react/docs/react-component.html" target="_blank">here</a>.</p>
+<ul>
+<li><code>setState()</code></li>
+<li><code>forceUpdate()</code></li>
+</ul>
+<p>The complete list of these methods with their descriptions can be found in the documentation
+<a href="https://reactjs.org/docs/react-component.html" target="_blank">here</a>.</p>
+<p><a href="https://codepen.io/misaogura/pen/wrxJWy?editors=1111" target="_blank">This counter</a> demonstrates how some of the
+lifecycle methods are called. Play around and even add some more lifecycle methods by yourself!</p>
 <h2 id="api-calls">API calls</h2>
-<p>In order to make an API called you can call the functions same</p>
+<p>Here is a function to make an API call.</p>
 <pre class="language-"><code class="lang-jsx">callAPI <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> APIAddress <span class="token operator">=</span>
-    <span class="token string">&apos;https://code-your-future.github.io/api-demo/area/All/index.json&apos;</span><span class="token punctuation">;</span>
+    <span class="token string">&apos;https://codeyourfuture.github.io/api-demo/area/All/index.json&apos;</span><span class="token punctuation">;</span>
+
   <span class="token function">fetch</span><span class="token punctuation">(</span>APIAddress<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1677,7 +1693,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Component Life cycle","level":"1.9.9","depth":2,"next":{"title":"Routing","level":"1.9.10","depth":2,"path":"react/routing.md","ref":"react/routing.md","articles":[]},"previous":{"title":"State","level":"1.9.8","depth":2,"path":"react/state.md","ref":"react/state.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/lifecycle.md","mtime":"2017-10-01T15:38:02.987Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-01T15:39:16.320Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Component Life cycle","level":"1.9.9","depth":2,"next":{"title":"Routing","level":"1.9.10","depth":2,"path":"react/routing.md","ref":"react/routing.md","articles":[]},"previous":{"title":"State","level":"1.9.8","depth":2,"path":"react/state.md","ref":"react/state.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/lifecycle.md","mtime":"2017-10-12T12:44:57.662Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-12T12:46:22.168Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
