@@ -1,0 +1,883 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>x Week 11 - ES6 and Promises  · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../week-12/lesson.html" />
+    
+    
+    <link rel="prev" href="../week-10/lesson.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../others/lesson0.html">
+            
+                <a href="../../others/lesson0.html">
+            
+                    
+                    Week 0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    HTML/CSS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../html-css/week-01/lesson.html">
+            
+                <a href="../../html-css/week-01/lesson.html">
+            
+                    
+                    Week 1 - Semantic HTML and CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../html-css/week-02/lesson.html">
+            
+                <a href="../../html-css/week-02/lesson.html">
+            
+                    
+                    Week 2 - Responsive Web and layout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../html-css/week-03/lesson.html">
+            
+                <a href="../../html-css/week-03/lesson.html">
+            
+                    
+                    x Week 3 - ?
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    JavaScript I
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../js-core/week-04/lesson.html">
+            
+                <a href="../../js-core/week-04/lesson.html">
+            
+                    
+                    Week 4 - Hello JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../js-core/week-05/lesson.html">
+            
+                <a href="../../js-core/week-05/lesson.html">
+            
+                    
+                    Week 5 - Arrays and Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../js-core/week-06/lesson.html">
+            
+                <a href="../../js-core/week-06/lesson.html">
+            
+                    
+                    Week 6 - Debugging and more Data Structures
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    JavaScript II
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../js-core-2/week-07/lesson.html">
+            
+                <a href="../../js-core-2/week-07/lesson.html">
+            
+                    
+                    Week 7 - In-depth Functions and Intro to DOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../js-core-2/week-08/lesson.html">
+            
+                <a href="../../js-core-2/week-08/lesson.html">
+            
+                    
+                    Week 8 - JavaScript in the Browser
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../js-core-2/week-09/lesson.html">
+            
+                <a href="../../js-core-2/week-09/lesson.html">
+            
+                    
+                    Week 9 - Good Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    JavaScript III
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../week-10/lesson.html">
+            
+                <a href="../week-10/lesson.html">
+            
+                    
+                    Week 10 - TDD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.2" data-path="lesson.html">
+            
+                <a href="lesson.html">
+            
+                    
+                    x Week 11 - ES6 and Promises 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../week-12/lesson.html">
+            
+                <a href="../week-12/lesson.html">
+            
+                    
+                    x Week 12 - Exam? 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Node/DB I
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../node-db/lesson1.html">
+            
+                <a href="../../node-db/lesson1.html">
+            
+                    
+                    Week 13 - Node and Express 101
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../node-db/lesson2.html">
+            
+                <a href="../../node-db/lesson2.html">
+            
+                    
+                    Week 14 - Templating and APIs 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    ? Week 15 - Node and Mongo?
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Node/DB II (TBD)
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../node-db/lesson4.md">
+            
+                <span>
+            
+                    
+                    Week 16 - MongoDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../node-db/lesson5.html">
+            
+                <a href="../../node-db/lesson5.html">
+            
+                    
+                    Week 17 - Mongoose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    Week 18 - Node/DB Recap
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    React
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    Week 19 - React 101
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    Week 20 - State
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" >
+            
+                <span>
+            
+                    
+                    Week 21 - React-router & Recap
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Other
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    AWS Workshop 1
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../others/aws-workshop-2">
+            
+                <span>
+            
+                    
+                    AWS Workshop 2 - DynamoDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../react/lesson4.html">
+            
+                <a href="../../react/lesson4.html">
+            
+                    
+                    Week 21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../html-css/coding-101.md">
+            
+                <span>
+            
+                    
+                    Coding 101
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../house-rules.html">
+            
+                <a href="../../house-rules.html">
+            
+                    
+                    House Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../PRACTICES.html">
+            
+                <a href="../../PRACTICES.html">
+            
+                    
+                    Coding Standards and Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../CONTRIBUTING.html">
+            
+                <a href="../../CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../../lesson-template.html">
+            
+                <a href="../../lesson-template.html">
+            
+                    
+                    Lesson Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >x Week 11 - ES6 and Promises </a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="javascript-core-6">JavaScript Core 6</h1>
+<p><strong> What we will learn today?</strong></p>
+<h2 id="-intro-to-es6">- Intro to ES6</h2>
+<h1 id="intro-to-es6">Intro to ES6</h1>
+<p>ECMAScript 2015 (or ES6) is a significant update to JavaScript that introduces new syntax for writing complex applications including classes and modules and other features.</p>
+<h2 id="const-and-let">const and let</h2>
+<p>on JS Bin, let&apos;s write this simple code snippet
+``js
+function sayGreeting(name, gender) {
+    var greeting = &apos;Hello&apos;;
+    var nameWithTitle;
+    if (gender === &apos;female&apos;) {
+        nameWithTitle = &apos;Ms. &apos; + name;
+    } else {
+        nameWithTitle = &apos;Mr. &apos; + name;
+    }
+    return greeting + name;
+}
+// sayGreeting(&apos;Rares&apos;, &apos;male&apos;) should return &apos;Hello Mr. Rares&apos;
+// sayGreeting(&apos;Irina&apos;, &apos;female&apos;) should return &apos; Hello Ms. Irina&apos;</p>
+<pre class="language-"><code>&gt; Exercise: Let&apos;s update this code to use `let` and `const` instead of `var`
+
+## Template literals
+
+&gt; Exercise: We do a lot of string concatenation in JavaScript - ES6 introduces a more elegant way of accomplishing the same. Let&apos;s try it.
+
+## Arrow functions
+&gt; Exercise: ES6 also has a new way of declaring functions. Let&apos;s see how it works.
+
+&gt; Exercise: Refactor the previous code to have a separate function that checks if gender is &apos;female&apos; or not, and use it in sayGreeting. Let&apos;s try and make the code as compact as possible together using ES6 features.
+
+## More ES6
+There are so many features in ES6. They&apos;re mostly what we call `syntax sugar`. They don&apos;t provide new functionality, but new (more elegant) ways of accomplishing the same tasks.
+
+Since not all ES6 features are supported in all browsers, many developers and projects use what is called `Transpilation` - a process that transpiles/translates ES6 code to ES5 syntax that is supported by all browsers.
+
+On Node, most ES6 features are now natively supported in Node 8.
+
+&gt; From now on, we expect you to use ES6 syntax in your assignments and the code you write.
+
+# TDD again
+
+&gt; Exercise: Clone the repo https://github.com/CodeYourFuture/js-core-2-exercises
+
+&gt; Let&apos;s talk about TDD again?
+&gt; 1. Why do we do TDD
+&gt; 2. How do we run the tests? Read some of the tests
+&gt; 3. Notice we&apos;re separating our tests from our code now. We are making use of **modules**
+&gt; 4. Also notice the **coverage**
+
+## How do modules work?
+
+So far, all our programs have been in their own single files. But Node programs can become really large, and having all our code in only one file will not be maintainable.
+
+We can therefore split our code into so-called *modules*. A module is basically a JavaScript file that makes its functionality available to other modules and programs.
+
+## Creating modules, exporting code
+
+It is really simple to take existing JavaScript code and turn it into a module by exporting its functionality:
+
+```js
+function printName(name) {
+  console.log(&quot;My name is &quot; + name);
+}
+
+module.exports = printName;
+</code></pre><p>The key here is the line containing <code>module.exports</code>. As you see, this is an assignment, and whatever is assigned to <code>module.exports</code> will be made available to other modules and program when this file is imported.</p>
+<h2 id="using-modules-importing-code">Using modules, importing code</h2>
+<p>But how do we make use of another module in our program? We need to <em>import</em> it, and this is done using a function called <code>require()</code>.</p>
+<blockquote>
+<p>There are different module formats for JavaScript. The one we are using here, which is natively supported by Node, is called <strong>CommonJS</strong>.</p>
+</blockquote>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> printName <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./printName.js&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>The string passed to the <code>require()</code> function is a <em>path</em> to the file you are importing. <code>./</code> signifies the current directory, so the above command will import a file called &quot;printName.js&quot; that is in the same directory as our program.</p>
+</blockquote>
+<p>Assuming our program is in the same folder as <code>printName.js</code>, we can use the above code to import the functionality provided by that module and store it in the <code>printName</code> variable.</p>
+<p>We can then continue to use the <code>printName</code> function as if it we defined it in our own program!</p>
+<pre class="language-"><code>var printName = require(&apos;./printName.js&apos;);
+
+printName();
+</code></pre><blockquote>
+<p>Modules can not only export functions, but all variable types you already learned about. Most commonly, they export a function or an object containing multiple functions.</p>
+<p><em>Together:</em> Edit the file <code>modules/main.js</code> and follow the instructions.</p>
+</blockquote>
+<h2 id="separating-code-and-tests">Separating code and tests</h2>
+<p>Exporting and importing modules is really useful for testing, too.</p>
+<p>As a rule of thumb, we never want to mix our actual code with our tests. It is therefore common to put them in separate files. We are going to call the file containing the tests after the file containing the code to be tested, just appending <code>.test</code> at the end of the filename. Like so:</p>
+<pre class="language-"><code>main.js               # Our main program
+main.test.js          # Tests for our main program
+someOtherCode.js      # A module called &quot;someOtherCode&quot;
+someOtherCode.test.js # Tests for the &quot;someOtherCode&quot; module
+</code></pre><blockquote>
+<p>The naming is really up to convention - you can even put your tests in a different folder! However, for Jest it is important to call test files &quot;*.test.js&quot;.</p>
+</blockquote>
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="http://es6-features.org/" target="_blank">ES6 features</a></li>
+<li><a href="http://wesbos.com/let-vs-const/" target="_blank">Let and const</a></li>
+</ul>
+<h1 id="homework">Homework</h1>
+<ol>
+<li><p>Watch Wes Bos videos about ES6 - <a href="https://es6.io/" target="_blank">https://es6.io/</a> (if you don&apos;t have access, let us know)</p>
+</li>
+<li><p>Fork, Clone and Do the exercises in this repo - <a href="https://github.com/CodeYourFuture/js-core-2-exercises" target="_blank">https://github.com/CodeYourFuture/js-core-2-exercises</a></p>
+</li>
+</ol>
+<h2 id="prepare-for-the-next-class">Prepare for the next class</h2>
+<ol>
+<li>Finish this tutorial about Chrome Dev Tools(<a href="https://developers.google.com/web/tools/chrome-devtools/javascript/" target="_blank">https://developers.google.com/web/tools/chrome-devtools/javascript/</a>)</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../week-10/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 10 - TDD">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../week-12/lesson.html" class="navigation navigation-next " aria-label="Next page: x Week 12 - Exam? ">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"x Week 11 - ES6 and Promises ","level":"1.6.2","depth":2,"next":{"title":"x Week 12 - Exam? ","level":"1.6.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]},"previous":{"title":"Week 10 - TDD","level":"1.6.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-11/lesson.md","mtime":"2017-11-17T17:36:30.189Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-17T17:37:43.111Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
