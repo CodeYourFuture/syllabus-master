@@ -674,148 +674,106 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""> </p>
-<h1 id="functions-and-dom">Functions and DOM</h1>
-<p><strong> What we will learn today?</strong></p>
-<ul>
-<li><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""> 
-More Functions</li>
-<li><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""> 
-Functional Utilities</li>
-<li><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""> 
-Callbacks</li>
-<li>Browser: DOM</li>
-</ul>
-<hr>
-<p>To Be Agreed</p>
-<h1 id="js-in-the-browser">JS in the Browser</h1>
-<p>Up until now we&apos;ve been using <code>console.log</code> to see the results of our code running, because it allows us to focus on writing code and seeing the results instantly. But JavaScript was not meant to be run in <code>console.log</code>: it was meant to make web pages pages dynamic.</p>
-<p>Lots of websites are powered by JavaScript today, and some (like Facebook) cannot function at all without it: it&apos;s become that important to the look and feel of the website.</p>
-<h2 id="the-dom">The DOM</h2>
-<p>Your webpages are made up of a bunch of HTML elements, nested within each other (parents and children). But JavaScript doesn&apos;t know about any of that.</p>
-<p>Thankfully, in JavaScript we have access to this &quot;DOM&quot; object (Document Object Model) which is actually a representation of our webpage that JavaScript can work with.</p>
-<p>Here are two examples, HTML and then JavaScript, of how the DOM might look like:</p>
-<pre class="language-"><code class="lang-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span> Welcome! <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span> Hello world! <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+                                <h1 id="array-methods-and-callbacks">Array methods and callbacks</h1>
+<p>The most useful built in methods in JavaScript are the <code>Array.prototype</code> methods. Every array has access to these methods (because Arrays are created by the <code>Array</code> constructor function they inherit the the properties of <code>Array.prototype</code>).</p>
+<p>Of particular use are the <code>Array</code> methods that enable you to <em>iterate</em> over an array. We&apos;ve covered iteration already when we learnt how to use <code>for</code> loops. Well, I have some amazing news for you - you will probably never need to write a <code>for</code> loop again!</p>
+<p>Let&apos;s take a look at <code>Array.prototype.forEach</code> first. This is pretty much a straight replacement for <code>for</code> loops.</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> myArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+myArr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 1</span>
+<span class="token comment" spellcheck="true">// 2</span>
+<span class="token comment" spellcheck="true">// 3</span>
 </code></pre>
-<p>``js
-var document = {
-    body: {
-        h1: &quot;Welcome&quot;,
-        p: &quot;Hello world!&quot;
-    }
-};</p>
-<pre class="language-"><code>
-The DOM offers a lot of useful functions we can use to find elements on the page. Here are some we&apos;ll be using today:
+<p>OOOOF! Wasn&apos;t that glorious?! Much nicer than writing a <code>for</code> loop! So how exactly does this work? <code>forEach</code> <em>iterates</em> over each item the array. For each item is calls a function - the one that was provided as an parameter to <code>forEach</code>.</p>
+<h2 id="callback-functions">Callback functions</h2>
+<p>Functions that are provided as parameters to another function are called <em>callback functions</em>. Often we will write these functions inside the function call like did in the <code>forEach</code> example, but we can also pass in reference to an already defined function:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">callback</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-``js
-    document.querySelector(&apos;#mainHeader&apos;);
-    document.querySelectorAll(&apos;p&apos;);
-</code></pre><p>Both <code>.querySelector</code> and <code>querySelectorAll</code> accept a CSS selector as an input.
-<code>.querySelector</code> selects only the first element it finds, <code>querySelectorAll</code> selects all elements (it returns an array).</p>
-<p>Once you retrieve an element using <code>.querySelector</code>, you can attach an <strong>event</strong> to it. An event is any action that can be performed on that element. For now, we will just use the <strong>click</strong> event:</p>
-<p>``js
-    var myButton = document.querySelector(&apos;#myButton&apos;);
-    myButton.addEventListener(&quot;click&quot;, alertSomething);</p>
-<pre class="language-"><code>function alertSomething() {
-    alert(&quot;Something&quot;);
-}
-</code></pre><pre class="language-"><code>
-You will notice in the example example that we passed a second argument to `addEventListener`. That second argument is the **function** that we want to invoke when that event has happened.
-
-&gt; **Exercise**:
-&gt; - Fork the repo [here](https://github.com/CodeYourFuture/dom-ajax) and clone it locally.
-&gt; - Open `index.html` in your browser.
-&gt; - In `./js/main.js` write code so that when a user presses the **Donate a bike today** button, an **alert** pops up, thanking them for their donation.
-
-The elements returned by `document.querySelector` have the same properties as a normal HTML element: for example, you can get access to their css **styles**.
-
-``js
-    var myElement = document.querySelector(&apos;#myElement&apos;);
-    myElement.style.backgroundColor = &apos;red&apos;;
-</code></pre><blockquote>
-<p><strong>Exercise</strong>:
-Change your code, so that instead of <strong>alerting</strong> something when you press the button, it changes the background color of the Jumbotron to <code>red</code>.</p>
-</blockquote>
-<p>Using the <code>document</code>, you can also create new elements. These elements will not appear until you append them as a child of another element though:</p>
-<p>``js
-    var paragraph = document.createElement(&apos;p&apos;); // here we&apos;re just creating it, element is not visible yet
-    myElement.appendChild(paragraph); // now the element is added to our view, but it&apos;s empty</p>
-<pre class="language-"><code>
-`document.createElement` accepts as an input any element type. So for example `document.createElement(&apos;article&apos;)` will create a new article element.
-
-You can then change the text displayed inside elements using the `innerText` property:
-
-``js
-    paragraph.innerText = &quot;How are you?&quot;; // now we can see the text displaying on the screen
-</code></pre><blockquote>
-<p><strong>Exercise</strong>:
-When <strong>Add to learn more</strong> button is clicked it should:</p>
-<ul>
-<li>create a new paragraph element</li>
-<li>set its inner text property to some message you want</li>
-<li>add the paragraph to the <code>#mainArticles</code> element just below <strong>Learn more</strong></li>
-</ul>
-</blockquote>
-<p>We&apos;ve been using <code>document.querySelector</code> to retrieve a single element.
-To retrieve an array of multiple elements (that match a specific class name for example, or a specific tag) we use <code>document.querySelectorAll</code>.</p>
-<p>``js
-    //change the background of all the paragraph items on our page
-    var paragraphs = document.querySelectorAll(&apos;p&apos;);
-    for(var i=0; i&lt;paragraphs.length; i++) {
-        paragraphs[i].style.backgroundColor = &quot;blue&quot;;
-    }</p>
-<pre class="language-"><code>
-We&apos;ve learned that `style` and `innerText` are properties of DOM elements. Image tags can also have `width` and `height`.
-
-&gt; **Exercise**:
-&gt; Every time the **All images** button is clicked it should reduce and width and height of all images on the webpage by `10`.
-
-While it&apos;s really easy to change styles directly on elements using the `style` property, it is not usually a good idea to mix JavaScript and CSS (see separation of concerns in the first lesson). To solve this, we can use the `className` property to set the class for an element instead of changing its styles directly:
-
-``js
-//before: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>myContainer<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-var container = document.querySelector(&apos;#myContainer&apos;);
-container.className = &quot;largeBlock&quot;;
-//after: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>myContainer<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>largeBlock<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code></pre><blockquote>
-<p><strong>Exercise</strong>:
-Remember the button that changes the color of the jumbotron to <code>red</code>? Go back and try to do that without modifying the styles. You can use the <code>.red</code> class.</p>
-<p><strong>Advanced Exercise</strong>:</p>
-<ul>
-<li>When you type something into the box below the <strong>Jumbotron</strong> and click the <strong>Add</strong> button it should add a new <strong>Article</strong> below <strong>Learn More</strong> with what you typed as the inner text. It should then clear the input.</li>
-<li>Make sure you create a proper <strong>article</strong> that looks like the others above it (it should be an article element, that contains a paragraph element, that contains your text, it should also have the class <strong>article</strong>).</li>
-</ul>
-</blockquote>
-<h2 id="topic-1">Topic 1</h2>
-<p>High level explanation of Topic 1 - rely on the exercises</p>
+myArr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Whether you define your function beforehand or write it straight into the function call will depend on whether you intend on re-using that callback again.</p>
 <blockquote>
-<p><strong>Exercise</strong>: Always have exercises</p>
+<p>Exercise</p>
+<p>Let&apos;s create a function called <code>average</code> that receives an array of numbers. Implement the
+function using a <code>forEach</code> method calculate the average of all <code>numbers</code> passed in and return it.</p>
 </blockquote>
-<h2 id="topic-2">Topic 2</h2>
-<h2 id="topic-3">Topic 3</h2>
-<h1 id="resources">Resources</h1>
-<ol>
-<li><a href="https://google.com" target="_blank">Resource 1 to learn more about Topic 1</a></li>
-<li><a href="https://google.com" target="_blank">Resource 2 for Topic 2</a></li>
-</ol>
-<h1 id="homework">Homework</h1>
-<ol>
-<li><p>First part of Homework - Easy</p>
-</li>
-<li><p>Second part of Homework - Intermediate/Hard</p>
-</li>
-<li><p><strong>[Bonus/Optional]</strong> Third part/optional - Hardest</p>
-</li>
-</ol>
-<h2 id="prepare-for-the-next-class">Prepare for the next class</h2>
-<ol>
-<li>Read this <a href="https://google.com" target="_blank">Some Tutorial or Video etc...</a></li>
-</ol>
+<h2 id="more-array-methods">More array methods</h2>
+<p>Previously we&apos;ve used for loops to create new versions of an array doing something like this:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> newArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> current <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  newArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>current <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [2,3,4]</span>
+</code></pre>
+<p>There are several methods on <code>Array.prototype</code> that can be used for this sort of task.</p>
+<p>The most popular method is <code>.map()</code>, which does the following:</p>
+<ul>
+<li>iterates over the array it is called on</li>
+<li>calls a callback function on every iteration</li>
+<li>passes in the current array item and its index to the callback function</li>
+<li>uses the returned value from the callback function to populate a new array</li>
+<li>returns the new array</li>
+</ul>
+<p>That sounds like a lot but once you use <code>.map()</code> a few times it&apos;ll begin to feel more intuitive. Let&apos;s try it and see if we can refactor the for loop example:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> newArr <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> num <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [2,3,4]</span>
+</code></pre>
+<p>Another useful array method is <code>.filter()</code>. It works in a similar way to map except that rather than return a value in the callback function, you return <code>true</code> or <code>false</code> depending on whether you want the current item to be included in the new array. Returning <code>true</code> means that you want to keep the item, returning <code>false</code> means it should be omitted.</p>
+<p>Let&apos;s create a new array with only numbers greater than 5:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> newArr <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> arr <span class="token operator">&gt;</span> <span class="token number">5</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [5,6,7,8,9]</span>
+</code></pre>
+<blockquote>
+<p>Remember: Most array methods do not change the current array, they return a new array. Check the MDN documentation for the array method if you are not sure about this.</p>
+</blockquote>
+<h2 id="chaining-methods">Chaining methods</h2>
+<p>If we want to apply more than one array method to an array we might try something like this, creating an intermediate variable after each transformation.</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arrMapped <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arrFiltered <span class="token operator">=</span> newArr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> num <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>This can get quite awkward though, especially when you have to think of a variable name for each stage. Thankfully there is a much simpler way. We can <em>chain</em> methods together:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> newArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
+  <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> num <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>There&apos;s nothing magical happening here. This works because:</p>
+<ul>
+<li>the array methods are returning new arrays</li>
+<li>every array has access to all the array methods on <code>Array.prototype</code></li>
+</ul>
+<p>As soon as an array is returned by an array method we can call another array method on the return value.</p>
+<blockquote>
+<p>Exercise</p>
+<p>Transform the following array [4,5,3,6,7,8,9,1,2] by 1) sorting it, 2) doubling each number, and 3) filtering numbers less than 10
+Write named functions that can be used as callbacks.</p>
+</blockquote>
+<h1 id="more-functions">More functions</h1>
+<p>[<a href="https://github.com/CodeYourFuture/unit-testing-london" target="_blank">https://github.com/CodeYourFuture/unit-testing-london</a>]</p>
 
                                 
                                 </section>
@@ -855,7 +813,7 @@ Remember the button that changes the color of the jumbotron to <code>red</code>?
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.5.1","depth":2,"next":{"title":"Week 8 - More DOM and AJAX","level":"1.5.2","depth":2,"path":"js-core-2/week-08/lesson.md","ref":"js-core-2/week-08/lesson.md","articles":[]},"previous":{"title":"JavaScript II","level":"1.5","depth":1,"ref":"","articles":[{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.5.1","depth":2,"path":"js-core-2/week-07/lesson.md","ref":"js-core-2/week-07/lesson.md","articles":[]},{"title":"Week 8 - More DOM and AJAX","level":"1.5.2","depth":2,"path":"js-core-2/week-08/lesson.md","ref":"js-core-2/week-08/lesson.md","articles":[]},{"title":"Week 9 - Good Code","level":"1.5.3","depth":2,"path":"js-core-2/week-09/lesson.md","ref":"js-core-2/week-09/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-07/lesson.md","mtime":"2017-11-19T10:13:18.125Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-19T10:14:30.366Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.5.1","depth":2,"next":{"title":"Week 8 - More DOM and AJAX","level":"1.5.2","depth":2,"path":"js-core-2/week-08/lesson.md","ref":"js-core-2/week-08/lesson.md","articles":[]},"previous":{"title":"JavaScript II","level":"1.5","depth":1,"ref":"","articles":[{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.5.1","depth":2,"path":"js-core-2/week-07/lesson.md","ref":"js-core-2/week-07/lesson.md","articles":[]},{"title":"Week 8 - More DOM and AJAX","level":"1.5.2","depth":2,"path":"js-core-2/week-08/lesson.md","ref":"js-core-2/week-08/lesson.md","articles":[]},{"title":"Week 9 - Good Code","level":"1.5.3","depth":2,"path":"js-core-2/week-09/lesson.md","ref":"js-core-2/week-09/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-07/lesson.md","mtime":"2017-11-19T13:31:23.239Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-19T13:33:20.199Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
