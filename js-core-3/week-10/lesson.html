@@ -709,81 +709,141 @@
 <hr>
 <h1 id="before-we-get-started">Before we get started</h1>
 <blockquote>
-<p><strong>Fork</strong> <a href="https://github.com/CodeYourFuture/js-core-3-exercises" target="_blank">this repository</a> to your own Github account, then <strong>clone</strong> it to your computer.<br>Today&apos;s exercises will be based on this repository.</p>
+<p><strong>Fork</strong>
+<a href="https://github.com/CodeYourFuture/js-core-3-exercises" target="_blank">this repository</a> to
+your own Github account, then <strong>clone</strong> it to your computer.\
+Today&apos;s exercises will be based on this repository.</p>
 </blockquote>
 <h1 id="unit-testing">Unit Testing</h1>
-<p>Testing is a key skill for any software programmer. We need to make sure our software is thoroughly tested, otherwise bad things happen. Testing makes sure our programs behave like we intend them to do - <strong>if we don&apos;t test, we can cause severe bugs</strong>. Bad software can make planes crash, companies bankrupt, and users of your software really frustrated.</p>
-<p>There are different levels on which we can test software, for example integration testing, end-to-end testing, and unit testing. Today we will deal with unit testing, which is probably the most universal testing discipline.</p>
-<p>A unit test is exactly that - it tests a <em>unit</em> of code. &quot;Unit&quot; can mean different things, but in JavaScript it usually refers to a single function.</p>
-<p>Remember when we talked about functions? Functions take <em>input</em> (as arguments), do something with it (in the function body), and return <em>output</em> (using the <code>return</code> statement). Ideally, a function should always return the same output if the same input is given. It makes it predictable and testable - and that&apos;s what we want!</p>
+<p>Testing is a key skill for any software programmer. We need to make sure our
+software is thoroughly tested, otherwise bad things happen. Testing makes sure
+our programs behave like we intend them to do - <strong>if we don&apos;t test, we can cause
+severe bugs</strong>. Bad software can make planes crash, companies bankrupt, and users
+of your software really frustrated.</p>
+<p>There are different levels on which we can test software, for example
+integration testing, end-to-end testing, and unit testing. Today we will deal
+with unit testing, which is probably the most universal testing discipline.</p>
+<p>A unit test is exactly that - it tests a <em>unit</em> of code. &quot;Unit&quot; can mean
+different things, but in JavaScript it usually refers to a single function.</p>
+<p>Remember when we talked about functions? Functions take <em>input</em> (as arguments),
+do something with it (in the function body), and return <em>output</em> (using the
+<code>return</code> statement). Ideally, a function should always return the same output if
+the same input is given. It makes it predictable and testable - and that&apos;s what
+we want!</p>
 <pre class="language-"><code>         |-----------------|
 input =&gt; | doing something | =&gt; output
          |-----------------|
-</code></pre><p>So, when unit testing a function, we want to make sure that <em>for a certain input, we get the expected output</em>. For this we need to make sure that the output matches our expectations. In the simplest form that means we do an equality check:</p>
-<pre class="language-"><code class="lang-js"><span class="token function">myFunction</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span> <span class="token operator">===</span> expectedOutput
+</code></pre><p>So, when unit testing a function, we want to make sure that <em>for a certain
+input, we get the expected output</em>. For this we need to make sure that the
+output matches our expectations. In the simplest form that means we do an
+equality check:</p>
+<pre class="language-"><code class="lang-js"><span class="token function">myFunction</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span> <span class="token operator">===</span> expectedOutput<span class="token punctuation">;</span>
 </code></pre>
-<p>We can formalise this using another function that compares two values and complains when they do not match. Such a function is prepared in <code>unit-testing/equals.js</code>.</p>
+<p>We can formalise this using another function that compares two values and
+complains when they do not match. Such a function is prepared in
+<code>unit-testing/equals.js</code>.</p>
 <p>We can use this function to simply compare to values:</p>
 <pre class="language-"><code class="lang-js"><span class="token function">equals</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// This should pass</span>
 <span class="token function">equals</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// This should fail</span>
 <span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// This should pass</span>
 </code></pre>
-<p>Now we can use this <code>equals()</code> function to test our own code by comparing a function result to an expected value.</p>
+<p>Now we can use this <code>equals()</code> function to test our own code by comparing a
+function result to an expected value.</p>
 <blockquote>
 <p><em>Together:</em> Follow the instructions in <code>unit-testing/sum.js</code>!</p>
-<p><em>Exercise:</em> Now you! Take the provided <code>unit-testing/findNeedle.js</code> and turn it into a function that returns a result instead of
-printing it. Then run it using multiple inputs and make sure it returns the correct results each time!</p>
+<p><em>Exercise:</em> Now you! Take the provided <code>unit-testing/findNeedle.js</code> and turn
+it into a function that returns a result instead of printing it. Then run it
+using multiple inputs and make sure it returns the correct results each time!</p>
 </blockquote>
 <h2 id="test-driven-development-tdd">Test-driven development (TDD)</h2>
 <blockquote>
-<p>Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only. (<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Wikipedia</a>)</p>
+<p>Test-driven development (TDD) is a software development process that relies on
+the repetition of a very short development cycle: requirements are turned into
+very specific test cases, then the software is improved to pass the new tests,
+only. (<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Wikipedia</a>)</p>
 </blockquote>
-<p>A key principle in TDD is that we write think about our requirements before we dive into code: What should our program be able to do? What are our edge cases?</p>
-<p>We formalise those requirements by writing tests - <em>even before our program is written</em>! At this time, all our tests will fail, because we haven&apos;t written any code yet. Our tests are now <strong>RED</strong> (the colour represents a failing test).</p>
-<p>Now we want to turn this <strong>RED</strong> into <strong>GREEN</strong>. We do this by implementing our function in a way that covers all our test cases.</p>
+<p>A key principle in TDD is that we write think about our requirements before we
+dive into code: What should our program be able to do? What are our edge cases?</p>
+<p>We formalise those requirements by writing tests - <em>even before our program is
+written</em>! At this time, all our tests will fail, because we haven&apos;t written any
+code yet. Our tests are now <strong>RED</strong> (the colour represents a failing test).</p>
+<p>Now we want to turn this <strong>RED</strong> into <strong>GREEN</strong>. We do this by implementing our
+function in a way that covers all our test cases.</p>
 <blockquote>
 <p><em>Exercise:</em> Follow the instructions in <code>tdd/findNeedle.js</code>!</p>
 </blockquote>
 <h2 id="refactoring">Refactoring</h2>
-<p>There are times when we want to make our code better without changing any functionality, for example because we just learnt about a better way to solve a certain problem (like, finding needles in haystacks). This is called <em>refactoring</em>.</p>
-<p>When previously <strong>GREEN</strong> code - working code! - suddenly does not work anymore, we call this a <em>regression</em>. Our existing tests can make sure that when we refactor, the functionality of our code actually stays the same, and does not regress.</p>
+<p>There are times when we want to make our code better without changing any
+functionality, for example because we just learnt about a better way to solve a
+certain problem (like, finding needles in haystacks). This is called
+<em>refactoring</em>.</p>
+<p>When previously <strong>GREEN</strong> code - working code! - suddenly does not work anymore,
+we call this a <em>regression</em>. Our existing tests can make sure that when we
+refactor, the functionality of our code actually stays the same, and does not
+regress.</p>
 <blockquote>
-<p><em>Together:</em> Refactor the <code>findNeedle</code> function we just wrote to be implemented using <code>.map()</code> and <code>.filter()</code>.</p>
+<p><em>Together:</em> Refactor the <code>findNeedle</code> function we just wrote to be implemented
+using <code>.map()</code> and <code>.filter()</code>.</p>
 </blockquote>
 <h2 id="unit-testing-frameworks">Unit testing frameworks</h2>
-<p>There are lots of other things you might want to test for than two things being equal. You might want to test if a number is smaller or greater than another, if a function was called, if an error happened, or if one thing happened before another thing, or how long a function call took to execute.</p>
-<p>We don&apos;t have to build all these things ourselves. Instead there are <em>unit testing frameworks</em> that take all that work off our shoulders. All we need to do is provide the code and the tests.</p>
+<p>There are lots of other things you might want to test for than two things being
+equal. You might want to test if a number is smaller or greater than another, if
+a function was called, if an error happened, or if one thing happened before
+another thing, or how long a function call took to execute.</p>
+<p>We don&apos;t have to build all these things ourselves. Instead there are <em>unit
+testing frameworks</em> that take all that work off our shoulders. All we need to do
+is provide the code and the tests.</p>
 <h3 id="jest">Jest</h3>
-<p>The unit testing framework we are trying to day is called <a href="https://facebook.github.io/jest/" target="_blank">Jest</a>. It&apos;s created by Facebook and useful for all kinds of unit testing (especially testing React, which we will do in a later lesson).</p>
-<p>Look into your <code>jest/</code> folder. You will find a file there, <code>sum.test.js</code>. The suffix <code>.test.js</code> tells Jest that this file contains tests it should execute. To execute the test, run the following command in your terminal:</p>
+<p>The unit testing framework we are trying to day is called
+<a href="https://facebook.github.io/jest/" target="_blank">Jest</a>. It&apos;s created by Facebook and useful
+for all kinds of unit testing (especially testing React, which we will do in a
+later lesson).</p>
+<p>Look into your <code>jest/</code> folder. You will find a file there, <code>sum.test.js</code>. The
+suffix <code>.test.js</code> tells Jest that this file contains tests it should execute. To
+execute the test, run the following command in your terminal:</p>
 <pre class="language-"><code class="lang-sh"><span class="token function">npm</span> <span class="token function">test</span>
 </code></pre>
-<p>This command runs the test in <code>sum.test.js</code>, which tests the <code>sum()</code> function. You can see the test output and the fact that the test passed.</p>
+<p>This command runs the test in <code>sum.test.js</code>, which tests the <code>sum()</code> function.
+You can see the test output and the fact that the test passed.</p>
 <p>Tests cases in Jest have the following structure:</p>
-<pre class="language-"><code class="lang-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">&apos;test description&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">&quot;test description&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// Test instructions</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Jest provides a set of functions that you can use to write your actual tests. They are created in a way that imitates natural language, for example:</p>
+<p>Jest provides a set of functions that you can use to write your actual tests.
+They are created in a way that imitates natural language, for example:</p>
 <pre class="language-"><code>_Expect_ sum of 1 and 2 _to be_ 3
 </code></pre><p>becomes</p>
 <pre class="language-"><code class="lang-js"><span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>You can add multiple test statements in the same test case (a test case is one call of the <code>test</code> function, but you can also create multiple test cases in one file. It is important that you give all your test cases meaningful descriptions.</p>
+<p>You can add multiple test statements in the same test case (a test case is one
+call of the <code>test</code> function, but you can also create multiple test cases in one
+file. It is important that you give all your test cases meaningful descriptions.</p>
 <blockquote>
-<p><em>Exercise:</em> Add another test case to <code>sum.test.js</code>. Is the sum of 10 and -10 really zero? Run the tests using Jest.</p>
-<p><em>Exercise:</em> Take the <code>findNeedle</code> function you have tested previously, copy it into the <code>jest/</code> folder and call it <code>findNeedle.test.js</code>. Then write a test to be used with Jest, similar to <code>sum.test.js</code>. Make sure you cover multiple inputs and give all tests meaningful descriptions! Run the tests using Jest.</p>
+<p><em>Exercise:</em> Add another test case to <code>sum.test.js</code>. Is the sum of 10 and -10
+really zero? Run the tests using Jest.</p>
+<p><em>Exercise:</em> Take the <code>findNeedle</code> function you have tested previously, copy it
+into the <code>jest/</code> folder and call it <code>findNeedle.test.js</code>. Then write a test to
+be used with Jest, similar to <code>sum.test.js</code>. Make sure you cover multiple
+inputs and give all tests meaningful descriptions! Run the tests using Jest.</p>
 </blockquote>
 <h3 id="test-coverage">Test coverage</h3>
-<p>Test coverage describes the extent to which a code base is tested. When Jest runs your tests, it generates a so-called <em>coverage report</em>. This report tells you how many of your <em>lines of code</em> are covered by tests, how many functions, statements, and branches.</p>
+<p>Test coverage describes the extent to which a code base is tested. When Jest
+runs your tests, it generates a so-called <em>coverage report</em>. This report tells
+you how many of your <em>lines of code</em> are covered by tests, how many functions,
+statements, and branches.</p>
 <blockquote>
-<p>A branch is one of multiple ways a code control flow can go. For example, if you have an <code>if() ... else ...</code>, both the &quot;if&quot; and the &quot;else&quot; branch must be covered by tests.</p>
+<p>A branch is one of multiple ways a code control flow can go. For example, if
+you have an <code>if() ... else ...</code>, both the &quot;if&quot; and the &quot;else&quot; branch must be
+covered by tests.</p>
 </blockquote>
-<p>We want to keep our code coverage as high as possible. Jest allows us to generate a coverage report when we run the following command in the terminal:</p>
+<p>We want to keep our code coverage as high as possible. Jest allows us to
+generate a coverage report when we run the following command in the terminal:</p>
 <pre class="language-"><code class="lang-sh"><span class="token function">npm</span> <span class="token function">test</span> -- --coverage
 </code></pre>
 <blockquote>
-<p><em>Exercise:</em> Check your code coverage for the tests you wrote. Is any of the numbers below 100%? If so, try and bring it up to 100%!</p>
+<p><em>Exercise:</em> Check your code coverage for the tests you wrote. Is any of the
+numbers below 100%? If so, try and bring it up to 100%!</p>
 </blockquote>
 <h1 id="resources">Resources</h1>
 <ol>
@@ -793,13 +853,16 @@ printing it. Then run it using multiple inputs and make sure it returns the corr
 </ol>
 <h1 id="homework">Homework</h1>
 <ol>
-<li>Read the Wikipedia article about <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Test-driven development</a></li>
-<li>Solve the exercises in this repo (using TDD) <a href="https://github.com/CodeYourFuture/js-tdd-exercises" target="_blank">https://github.com/CodeYourFuture/js-tdd-exercises</a></li>
+<li>Read the Wikipedia article about
+<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Test-driven development</a></li>
+<li>Solve the exercises in this repo (using TDD)
+<a href="https://github.com/CodeYourFuture/js-tdd-exercises" target="_blank">https://github.com/CodeYourFuture/js-tdd-exercises</a></li>
 </ol>
 <p><strong>TODO</strong></p>
 <h2 id="research">Research</h2>
 <ul>
-<li>Research other module formats than CommonJS. What is AMD? What are ES6 modules and how do their differ from CommonJS?</li>
+<li>Research other module formats than CommonJS. What is AMD? What are ES6 modules
+and how do their differ from CommonJS?</li>
 <li>What are other test frameworks for JavaScript?</li>
 <li>More parts of the Jest (Jasmine) DSL than just <code>.toBe()</code></li>
 </ul>
@@ -846,7 +909,7 @@ printing it. Then run it using multiple inputs and make sure it returns the corr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 10 - TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - ES6 and Promises","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - ES6 and Promises","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-11-20T22:04:35.908Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-20T22:05:50.696Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 10 - TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - ES6 and Promises","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - ES6 and Promises","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-11-22T16:30:12.983Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-22T16:31:23.983Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

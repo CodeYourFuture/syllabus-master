@@ -687,7 +687,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""> </p>
+                                <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""></p>
 <h1 id="javascript-core-6">JavaScript Core 6</h1>
 <p><strong> What we will learn today?</strong></p>
 <ul>
@@ -696,22 +696,15 @@
 </ul>
 <hr>
 <h1 id="intro-to-es6">Intro to ES6</h1>
-<p>ECMAScript 2015 (or ES6) is a significant update to JavaScript that introduces new syntax for writing complex applications including classes and modules and other features.</p>
+<p>ECMAScript 2015 (or ES6) is a significant update to JavaScript that introduces
+new syntax for writing complex applications including classes and modules and
+other features.</p>
 <h2 id="const-and-let">const and let</h2>
-<p>on JS Bin, let&apos;s write this simple code snippet
-``js
-function sayGreeting(name, gender) {
-    var greeting = &apos;Hello&apos;;
-    var nameWithTitle;
-    if (gender === &apos;female&apos;) {
-        nameWithTitle = &apos;Ms. &apos; + name;
-    } else {
-        nameWithTitle = &apos;Mr. &apos; + name;
-    }
-    return greeting + name;
-}
-// sayGreeting(&apos;Rares&apos;, &apos;male&apos;) should return &apos;Hello Mr. Rares&apos;
-// sayGreeting(&apos;Irina&apos;, &apos;female&apos;) should return &apos; Hello Ms. Irina&apos;</p>
+<p>on JS Bin, let&apos;s write this simple code snippet ``js function sayGreeting(name,
+gender) { var greeting = &apos;Hello&apos;; var nameWithTitle; if (gender === &apos;female&apos;) {
+nameWithTitle = &apos;Ms. &apos; + name; } else { nameWithTitle = &apos;Mr. &apos; + name; } return
+greeting + name; } // sayGreeting(&apos;Rares&apos;, &apos;male&apos;) should return &apos;Hello Mr.
+Rares&apos; // sayGreeting(&apos;Irina&apos;, &apos;female&apos;) should return &apos; Hello Ms. Irina&apos;</p>
 <pre class="language-"><code>&gt; Exercise: Let&apos;s update this code to use `let` and `const` instead of `var`
 
 ## Template literals
@@ -758,35 +751,52 @@ function printName(name) {
 }
 
 module.exports = printName;
-</code></pre><p>The key here is the line containing <code>module.exports</code>. As you see, this is an assignment, and whatever is assigned to <code>module.exports</code> will be made available to other modules and program when this file is imported.</p>
+</code></pre><p>The key here is the line containing <code>module.exports</code>. As you see, this is an
+assignment, and whatever is assigned to <code>module.exports</code> will be made available
+to other modules and program when this file is imported.</p>
 <h2 id="using-modules-importing-code">Using modules, importing code</h2>
-<p>But how do we make use of another module in our program? We need to <em>import</em> it, and this is done using a function called <code>require()</code>.</p>
+<p>But how do we make use of another module in our program? We need to <em>import</em> it,
+and this is done using a function called <code>require()</code>.</p>
 <blockquote>
-<p>There are different module formats for JavaScript. The one we are using here, which is natively supported by Node, is called <strong>CommonJS</strong>.</p>
+<p>There are different module formats for JavaScript. The one we are using here,
+which is natively supported by Node, is called <strong>CommonJS</strong>.</p>
 </blockquote>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> printName <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./printName.js&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> printName <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;./printName.js&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote>
-<p>The string passed to the <code>require()</code> function is a <em>path</em> to the file you are importing. <code>./</code> signifies the current directory, so the above command will import a file called &quot;printName.js&quot; that is in the same directory as our program.</p>
+<p>The string passed to the <code>require()</code> function is a <em>path</em> to the file you are
+importing. <code>./</code> signifies the current directory, so the above command will
+import a file called &quot;printName.js&quot; that is in the same directory as our
+program.</p>
 </blockquote>
-<p>Assuming our program is in the same folder as <code>printName.js</code>, we can use the above code to import the functionality provided by that module and store it in the <code>printName</code> variable.</p>
-<p>We can then continue to use the <code>printName</code> function as if it we defined it in our own program!</p>
+<p>Assuming our program is in the same folder as <code>printName.js</code>, we can use the
+above code to import the functionality provided by that module and store it in
+the <code>printName</code> variable.</p>
+<p>We can then continue to use the <code>printName</code> function as if it we defined it in
+our own program!</p>
 <pre class="language-"><code>var printName = require(&apos;./printName.js&apos;);
 
 printName();
 </code></pre><blockquote>
-<p>Modules can not only export functions, but all variable types you already learned about. Most commonly, they export a function or an object containing multiple functions.</p>
+<p>Modules can not only export functions, but all variable types you already
+learned about. Most commonly, they export a function or an object containing
+multiple functions.</p>
 <p><em>Together:</em> Edit the file <code>modules/main.js</code> and follow the instructions.</p>
 </blockquote>
 <h2 id="separating-code-and-tests">Separating code and tests</h2>
 <p>Exporting and importing modules is really useful for testing, too.</p>
-<p>As a rule of thumb, we never want to mix our actual code with our tests. It is therefore common to put them in separate files. We are going to call the file containing the tests after the file containing the code to be tested, just appending <code>.test</code> at the end of the filename. Like so:</p>
+<p>As a rule of thumb, we never want to mix our actual code with our tests. It is
+therefore common to put them in separate files. We are going to call the file
+containing the tests after the file containing the code to be tested, just
+appending <code>.test</code> at the end of the filename. Like so:</p>
 <pre class="language-"><code>main.js               # Our main program
 main.test.js          # Tests for our main program
 someOtherCode.js      # A module called &quot;someOtherCode&quot;
 someOtherCode.test.js # Tests for the &quot;someOtherCode&quot; module
 </code></pre><blockquote>
-<p>The naming is really up to convention - you can even put your tests in a different folder! However, for Jest it is important to call test files &quot;*.test.js&quot;.</p>
+<p>The naming is really up to convention - you can even put your tests in a
+different folder! However, for Jest it is important to call test files
+&quot;*.test.js&quot;.</p>
 </blockquote>
 <h1 id="resources">Resources</h1>
 <ul>
@@ -795,14 +805,17 @@ someOtherCode.test.js # Tests for the &quot;someOtherCode&quot; module
 </ul>
 <h1 id="homework">Homework</h1>
 <ol>
-<li><p>Watch Wes Bos videos about ES6 - <a href="https://es6.io/" target="_blank">https://es6.io/</a> (if you don&apos;t have access, let us know)</p>
+<li><p>Watch Wes Bos videos about ES6 - <a href="https://es6.io/" target="_blank">https://es6.io/</a> (if you don&apos;t have access,
+let us know)</p>
 </li>
-<li><p>Fork, Clone and Do the exercises in this repo - <a href="https://github.com/CodeYourFuture/js-core-2-exercises" target="_blank">https://github.com/CodeYourFuture/js-core-2-exercises</a></p>
+<li><p>Fork, Clone and Do the exercises in this repo -
+<a href="https://github.com/CodeYourFuture/js-core-2-exercises" target="_blank">https://github.com/CodeYourFuture/js-core-2-exercises</a></p>
 </li>
 </ol>
 <h2 id="prepare-for-the-next-class">Prepare for the next class</h2>
 <ol>
-<li>Finish this tutorial about Chrome Dev Tools(<a href="https://developers.google.com/web/tools/chrome-devtools/javascript/" target="_blank">https://developers.google.com/web/tools/chrome-devtools/javascript/</a>)</li>
+<li>Finish this tutorial about Chrome Dev
+Tools(<a href="https://developers.google.com/web/tools/chrome-devtools/javascript/" target="_blank">https://developers.google.com/web/tools/chrome-devtools/javascript/</a>)</li>
 </ol>
 
                                 
@@ -843,7 +856,7 @@ someOtherCode.test.js # Tests for the &quot;someOtherCode&quot; module
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 11 - ES6 and Promises","level":"1.7.2","depth":2,"next":{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Week 10 - TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-11/lesson.md","mtime":"2017-11-20T22:04:35.908Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-20T22:05:50.696Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 11 - ES6 and Promises","level":"1.7.2","depth":2,"next":{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Week 10 - TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-11/lesson.md","mtime":"2017-11-22T16:30:12.983Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-22T16:31:23.983Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

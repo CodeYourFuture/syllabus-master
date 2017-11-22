@@ -698,40 +698,65 @@
 </ul>
 <h2 id="what-is-a-computer-program">What is a computer program?</h2>
 <blockquote>
-<p>Intro to programming logic &#x2013; Making a sandwich (Source: <a href="http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf" target="_blank">http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf</a>)</p>
+<p>Intro to programming logic &#x2013; Making a sandwich (Source:
+<a href="http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf" target="_blank">http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf</a>)</p>
 </blockquote>
 <ol>
 <li>Ask the students what they think a program is at its most basic level<ul>
-<li>Guide, if necessary, towards the idea that its instructions or an action etc.</li>
+<li>Guide, if necessary, towards the idea that its instructions or an action
+etc.</li>
 </ul>
 </li>
 <li>Focus on the idea of instructions:<ul>
-<li>Explain that like with a physical activity - tools and steps are required to carry out instructions</li>
-<li>Introduce the group activity of programming the activity of making a sandwich</li>
+<li>Explain that like with a physical activity - tools and steps are required
+to carry out instructions</li>
+<li>Introduce the group activity of programming the activity of making a
+sandwich</li>
 </ul>
 </li>
 <li>Ask the students what items we will need to make a sandwich:<ul>
 <li>As they shout them out list them on the screen for the whole class to see</li>
-<li>Introduce the concept of objects and classes. Tie into the idea of how in a program these would be the &#x2018;tools&#x2019; required for an activity and how for our sandwich making task the items we have listed previously are our classes</li>
+<li>Introduce the concept of objects and classes. Tie into the idea of how in a
+program these would be the &#x2018;tools&#x2019; required for an activity and how for our
+sandwich making task the items we have listed previously are our classes</li>
 </ul>
 </li>
-<li>Now that we have all of the tools we need to make a sandwich ask the students to shout out what they think the first step or instruction is:<ul>
-<li>Write the instruction out on the screen and ask the students which object would be needed to carry out that instruction</li>
-<li>Copy the instruction and place it under the object that the students have decided is responsible for it and introduce the idea of methods</li>
-<li>Continue asking the students for instructions and listing them under the objects that would be responsible for them (in the case where two objects are required to carry out an instruction try and break it down further with the students until only one object is responsible for any one instruction &#x2013; could be a good way to introduce the idea of how specific you need to be in programming and the concepts that are detailed in the source example of this exercise)</li>
+<li>Now that we have all of the tools we need to make a sandwich ask the students
+to shout out what they think the first step or instruction is:<ul>
+<li>Write the instruction out on the screen and ask the students which object
+would be needed to carry out that instruction</li>
+<li>Copy the instruction and place it under the object that the students have
+decided is responsible for it and introduce the idea of methods</li>
+<li>Continue asking the students for instructions and listing them under the
+objects that would be responsible for them (in the case where two objects
+are required to carry out an instruction try and break it down further with
+the students until only one object is responsible for any one instruction &#x2013;
+could be a good way to introduce the idea of how specific you need to be in
+programming and the concepts that are detailed in the source example of
+this exercise)</li>
 </ul>
 </li>
-<li>Once the students are satisfied with the instructions take the best formed class and ask the students to come up with a one word summary for each instruction that is has. Explain the benefits of well named methods in programming and (maybe?) touch on naming conventions.</li>
+<li>Once the students are satisfied with the instructions take the best formed
+class and ask the students to come up with a one word summary for each
+instruction that is has. Explain the benefits of well named methods in
+programming and (maybe?) touch on naming conventions.</li>
 </ol>
 <h2 id="getting-started-with-javascript">Getting started with JavaScript</h2>
-<p>We will spend most of this lesson in Codepen. To get started, go to <a href="codepen.io/pen">codepen.io/pen/</a> to create a new Pen. On the bottom left, click the &quot;Console&quot; button to open the console.</p>
+<p>We will spend most of this lesson in Codepen. To get started, go to
+<a href="codepen.io/pen">codepen.io/pen/</a> to create a new Pen. On the bottom left,
+click the &quot;Console&quot; button to open the console.</p>
 <p><img src="assets/codepen-console.png" alt="Codepen console"></p>
-<p>You can place your cursor right behind the <code>&gt;</code> sign. Type a simple expression, such as <code>2 + 2</code> and hit enter. You will see expression, as well as its result, in the window above.</p>
+<p>You can place your cursor right behind the <code>&gt;</code> sign. Type a simple expression,
+such as <code>2 + 2</code> and hit enter. You will see expression, as well as its result,
+in the window above.</p>
 <p><img src="assets/repl.gif" alt="Entering expressions in the Codepen console"></p>
-<p>You will be able to follow most of this session along just entering expressions in the console like this.</p>
+<p>You will be able to follow most of this session along just entering expressions
+in the console like this.</p>
 <h2 id="variables-and-assignments">Variables and assignments</h2>
-<p>For an expression or a value to be of any use to us, we need to store it in a variable.</p>
-<p>Variables have a name (<em>identifier</em>) that we can use to refer to a value. You can assign a value to a variable with the following statement:</p>
+<p>For an expression or a value to be of any use to us, we need to store it in a
+variable.</p>
+<p>Variables have a name (<em>identifier</em>) that we can use to refer to a value. You
+can assign a value to a variable with the following statement:</p>
 <pre class="language-"><code>var x = 3;
 ^   ^ ^ ^
 |   | | value
@@ -740,39 +765,48 @@
 declaration statement
 </code></pre><p>Let&#x2019;s break this statement down:</p>
 <ul>
-<li><code>var</code>: With the <code>var</code> statement we tell the JavaScript engine that <code>x</code> is now a variable</li>
-<li><code>x</code>: The variable name/identifier. It can be short or long, but must not contain spaces and must not start with a number.</li>
+<li><code>var</code>: With the <code>var</code> statement we tell the JavaScript engine that <code>x</code> is now
+a variable</li>
+<li><code>x</code>: The variable name/identifier. It can be short or long, but must not
+contain spaces and must not start with a number.</li>
 <li><code>=</code>: The equal sign is the assigmnent operator</li>
-<li><code>3</code>: The value that we assign to the variable. This can be any number, string or boolean, or any more complex data type that we will introduce later. You can also use an existing variable here.</li>
-<li><code>;</code>: THe semicolon is not strictly needed, but is generally used to terminate a statement.</li>
+<li><code>3</code>: The value that we assign to the variable. This can be any number, string
+or boolean, or any more complex data type that we will introduce later. You
+can also use an existing variable here.</li>
+<li><code>;</code>: THe semicolon is not strictly needed, but is generally used to terminate
+a statement.</li>
 </ul>
 <p>Now you can use the identifier instead of the actual value in an expression:</p>
 <p><code>x + x</code>, <code>x * x</code>, <code>console.log(x)</code></p>
 <h2 id="simple-data-types--expressions">Simple data types &amp; Expressions</h2>
 <h3 id="numbers">Numbers</h3>
 <p>Let&#x2019;s start with something seemingly simple - numbers. Here are some:</p>
-<pre class="language-"><code class="lang-js"><span class="token number">1</span>
-<span class="token number">15</span>
-<span class="token number">3195803798</span>
-<span class="token number">1.4</span>
-<span class="token number">0.0000005</span>
-<span class="token number">0</span>
-<span class="token operator">-</span><span class="token number">23</span>
+<pre class="language-"><code class="lang-js"><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token number">15</span><span class="token punctuation">;</span>
+<span class="token number">3195803798</span><span class="token punctuation">;</span>
+<span class="token number">1.4</span><span class="token punctuation">;</span>
+<span class="token number">0.0000005</span><span class="token punctuation">;</span>
+<span class="token number">0</span> <span class="token operator">-</span> <span class="token number">23</span><span class="token punctuation">;</span>
 </code></pre>
-<p>You will see that there are whole numbers (no decimal point) and real numbers (decimal point), which in JavaScript are so-called &#x201C;floating point&#x201D; numbers. Numbers can be positive or negative and they support all the basic math operators that you would expect:</p>
-<pre class="language-"><code class="lang-js"><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token comment" spellcheck="true">// 4</span>
-<span class="token number">2</span> <span class="token operator">-</span> <span class="token number">5</span> <span class="token comment" spellcheck="true">// -3</span>
-<span class="token number">2</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token comment" spellcheck="true">// 6</span>
-<span class="token number">10</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token comment" spellcheck="true">// 5</span>
-<span class="token number">3</span> <span class="token operator">*</span> <span class="token operator">-</span><span class="token number">2</span> <span class="token comment" spellcheck="true">// -6</span>
+<p>You will see that there are whole numbers (no decimal point) and real numbers
+(decimal point), which in JavaScript are so-called &#x201C;floating point&#x201D; numbers.
+Numbers can be positive or negative and they support all the basic math
+operators that you would expect:</p>
+<pre class="language-"><code class="lang-js"><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 4</span>
+<span class="token number">2</span> <span class="token operator">-</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// -3</span>
+<span class="token number">2</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 6</span>
+<span class="token number">10</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 5</span>
+<span class="token number">3</span> <span class="token operator">*</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// -6</span>
 </code></pre>
-<p>Operators have the same precedence as in algebra: <code>*</code> and <code>/</code> have higher precedence than <code>+</code> and <code>-</code>.</p>
+<p>Operators have the same precedence as in algebra: <code>*</code> and <code>/</code> have higher
+precedence than <code>+</code> and <code>-</code>.</p>
 <ul>
 <li><strong>TODO:</strong> Do math exercise</li>
 <li><strong>TODO:</strong> What about Infinity, Math.PI, IEEE floating point bullshit, NaN</li>
 </ul>
 <h3 id="strings">Strings</h3>
-<p>Strings represent any sort of text. They are delimited by single quotes (<code>&apos;</code>) or double quotes (<code>&#x201D;</code>) and can be of any length.</p>
+<p>Strings represent any sort of text. They are delimited by single quotes (<code>&apos;</code>) or
+double quotes (<code>&#x201D;</code>) and can be of any length.</p>
 <pre class="language-"><code>&apos;&apos; // empty string
 &quot;&quot; // empty string
 &apos;Hello&apos;
@@ -780,44 +814,59 @@ declaration statement
 &apos;It\&apos;s been a great journey so far!&apos;
 &quot;Double quotes work as well&quot;
 </code></pre><blockquote>
-<p>If you need single or double quotes <em>inside the string</em>, you need to &#x201C;escape&#x201D; them by putting a backslash in front of them. If you don&#x2019;t do this, the JavaScript engine will think the string ends here, because it encounters a quote.</p>
+<p>If you need single or double quotes <em>inside the string</em>, you need to &#x201C;escape&#x201D;
+them by putting a backslash in front of them. If you don&#x2019;t do this, the
+JavaScript engine will think the string ends here, because it encounters a
+quote.</p>
 </blockquote>
-<p>The most common operation on strings is to append one string to another. This is called <em>string concatenation</em>. It&#x2019;s achieved by the plus (<code>+</code>) operator:</p>
+<p>The most common operation on strings is to append one string to another. This is
+called <em>string concatenation</em>. It&#x2019;s achieved by the plus (<code>+</code>) operator:</p>
 <pre class="language-"><code>&quot;Hello&quot; + &quot;World&quot; // &quot;HelloWorld&quot;
 </code></pre><ul>
 <li><strong>TODO:</strong> Introduce string concatenation</li>
 <li><strong>TODO:</strong> What about basic string functions, like substr, replace etc?</li>
 </ul>
 <h3 id="booleans">Booleans</h3>
-<p><a href="https://en.wikipedia.org/wiki/Boolean_data_type" target="_blank">Booleans</a> are a data type that can only have two values: <code>true</code> and <code>false</code>.</p>
-<p>Like numbers, they can be combined using operators, but there are different operators for booleans (analoguous to <a href="https://en.wikipedia.org/wiki/Boolean_algebra" target="_blank">Boolean algebra</a>). The most important ones are:</p>
+<p><a href="https://en.wikipedia.org/wiki/Boolean_data_type" target="_blank">Booleans</a> are a data type that
+can only have two values: <code>true</code> and <code>false</code>.</p>
+<p>Like numbers, they can be combined using operators, but there are different
+operators for booleans (analoguous to
+<a href="https://en.wikipedia.org/wiki/Boolean_algebra" target="_blank">Boolean algebra</a>). The most
+important ones are:</p>
 <ul>
-<li><code>!</code> (NOT), which negates a value:<pre class="language-"><code class="lang-js"><span class="token operator">!</span><span class="token boolean">true</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token operator">!</span><span class="token boolean">false</span> <span class="token comment" spellcheck="true">// true</span>
-</code></pre>
-</li>
-<li><code>&amp;&amp;</code> (AND), which is only true if both operands are true:<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
-</code></pre>
-</li>
-<li><code>||</code> (OR), which is true if at least one of the operands is true:<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// true</span>
-</code></pre>
-</li>
+<li><code>!</code> (NOT), which negates a value:</li>
 </ul>
+<pre class="language-"><code class="lang-js"><span class="token operator">!</span><span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token operator">!</span><span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+</code></pre>
+<ul>
+<li><code>&amp;&amp;</code> (AND), which is only true if both operands are true:</li>
+</ul>
+<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+</code></pre>
+<ul>
+<li><code>||</code> (OR), which is true if at least one of the operands is true:</li>
+</ul>
+<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+</code></pre>
 <p><strong>TODO:</strong> When to introduce truthiness and falsiness? Probably in <code>comparisons</code>?</p>
 <hr>
 <blockquote>
-<p><strong>Exercise</strong>: Put simple mathematical expressions into the console: <code>2 * 2</code>, <code>2 + 2</code>, <code>5 * 7 - 13</code>
-<strong>Exercise</strong>: Calculate the area of a circle (<code>r * r * pi</code>). Do a quick Google search on how to use PI in JavaScript.</p>
+<p><strong>Exercise</strong>: Put simple mathematical expressions into the console: <code>2 * 2</code>,
+<code>2 + 2</code>, <code>5 * 7 - 13</code> &gt; <strong>Exercise</strong>: Calculate the area of a circle (<code>r * r *
+pi</code>). Do a quick Google search on how to use PI in JavaScript.</p>
 <p>See what happens when you &quot;add&quot; two strings together</p>
 <p>Research the JS Math library. sqrt, floor, ceil, round</p>
-<p>Write an expression that outputs the percentage of students who are female. Make it so it outputs it as <code>58%</code>, and make sure you use the actual numbers of women and the total number of students.
-Solution: <code>console.log(Math.round(7 / 17 * 100) + &quot;%&quot;);</code></p>
+<p>Write an expression that outputs the percentage of students who are female.
+Make it so it outputs it as <code>58%</code>, and make sure you use the actual numbers of
+women and the total number of students. Solution: <code>console.log(Math.round(7 /
+17 * 100) + &quot;%&quot;);</code></p>
 </blockquote>
 <h3 id="from-repl-to-consolelog">From REPL to console.log</h3>
 <ul>
@@ -828,7 +877,9 @@ Solution: <code>console.log(Math.round(7 / 17 * 100) + &quot;%&quot;);</code></p
 <li>Write statements below each other</li>
 </ul>
 <blockquote>
-<p><strong>THOUGHT:</strong> Codepen does not have a &quot;run&quot; button, so it&apos;s quite intransparent when it actually re-runs a program. Maybe a different tool is better? A simple jsbin configuration, maybe?</p>
+<p><strong>THOUGHT:</strong> Codepen does not have a &quot;run&quot; button, so it&apos;s quite intransparent
+when it actually re-runs a program. Maybe a different tool is better? A simple
+jsbin configuration, maybe?</p>
 </blockquote>
 
                                 
@@ -873,7 +924,7 @@ Solution: <code>console.log(Math.round(7 / 17 * 100) + &quot;%&quot;);</code></p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Coding 101","level":"1.12","depth":1,"next":{"title":"House Rules","level":"1.13","depth":1,"path":"house-rules.md","ref":"house-rules.md","articles":[]},"previous":{"title":"AWS Workshop 2 - DynamoDB","level":"1.11.2","depth":2,"path":"others/aws-workshop-2.md","ref":"others/aws-workshop-2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/coding-101.md","mtime":"2017-11-20T22:04:35.948Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-20T22:05:50.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Coding 101","level":"1.12","depth":1,"next":{"title":"House Rules","level":"1.13","depth":1,"path":"house-rules.md","ref":"house-rules.md","articles":[]},"previous":{"title":"AWS Workshop 2 - DynamoDB","level":"1.11.2","depth":2,"path":"others/aws-workshop-2.md","ref":"others/aws-workshop-2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/coding-101.md","mtime":"2017-11-22T16:30:13.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-22T16:31:23.983Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
