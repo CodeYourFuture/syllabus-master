@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>JavaScript III · GitBook</title>
+        <title>Compiling SCSS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="week-10/lesson.html" />
+    <link rel="next" href="../js-core/" />
     
     
-    <link rel="prev" href="../js-core-2/week-09/lesson.html" />
+    <link rel="prev" href="week-03/lesson.html" />
     
 
     </head>
@@ -128,9 +128,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="../html-css/">
+        <li class="chapter " data-level="1.4" data-path="./">
             
-                <a href="../html-css/">
+                <a href="./">
             
                     
                     HTML/CSS
@@ -142,9 +142,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../html-css/week-01/lesson.html">
+        <li class="chapter " data-level="1.4.1" data-path="week-01/lesson.html">
             
-                <a href="../html-css/week-01/lesson.html">
+                <a href="week-01/lesson.html">
             
                     
                     Week 1 - Semantic HTML and CSS
@@ -155,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../html-css/week-02/lesson.html">
+        <li class="chapter " data-level="1.4.2" data-path="week-02/lesson.html">
             
-                <a href="../html-css/week-02/lesson.html">
+                <a href="week-02/lesson.html">
             
                     
                     Week 2 - Responsive Web and layout
@@ -168,9 +168,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="../html-css/week-03/lesson.html">
+        <li class="chapter " data-level="1.4.3" data-path="week-03/lesson.html">
             
-                <a href="../html-css/week-03/lesson.html">
+                <a href="week-03/lesson.html">
             
                     
                     Week 3 - Design frameworks, Naming patterns and Forms
@@ -181,9 +181,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="../html-css/compile-scss-instructions.html">
+        <li class="chapter active" data-level="1.4.4" data-path="compile-scss-instructions.html">
             
-                <a href="../html-css/compile-scss-instructions.html">
+                <a href="compile-scss-instructions.html">
             
                     
                     Compiling SCSS
@@ -315,9 +315,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="./">
+        <li class="chapter " data-level="1.7" data-path="../js-core-3/">
             
-                <a href="./">
+                <a href="../js-core-3/">
             
                     
                     JavaScript III
@@ -329,9 +329,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="week-10/lesson.html">
+        <li class="chapter " data-level="1.7.1" data-path="../js-core-3/week-10/lesson.html">
             
-                <a href="week-10/lesson.html">
+                <a href="../js-core-3/week-10/lesson.html">
             
                     
                     Week 10 - TDD
@@ -342,9 +342,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="week-11/lesson.html">
+        <li class="chapter " data-level="1.7.2" data-path="../js-core-3/week-11/lesson.html">
             
-                <a href="week-11/lesson.html">
+                <a href="../js-core-3/week-11/lesson.html">
             
                     
                     Week 11 - ES6 and Promises
@@ -687,7 +687,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >JavaScript III</a>
+        <a href=".." >Compiling SCSS</a>
     </h1>
 </div>
 
@@ -702,30 +702,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="javascript-core-3">JavaScript Core 3</h1>
-<p>Example structure:</p>
-<table>
-<thead>
-<tr>
-<th>Week</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>JSON <br> HTTP, AJAX, APIS</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Promises <br> fetch</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Classes and Object Oriented Programming</td>
-</tr>
-</tbody>
-</table>
+                                <h1 id="building-scss-with-vs-code">Building SCSS with VS Code</h1>
+<ul>
+<li>Create a file with a <code>.scss</code> extension. For example, <code>skin.scss</code>.</li>
+<li><p>Open the VS Code Extension manager, on the left.</p>
+<p>  <img src="assets/compile-sass/vscode-extensions.png" alt=""></p>
+</li>
+<li><p>Search for the <code>Easy SASS</code> extension and install it. Click the &quot;Reload&quot; button.</p>
+<p>  <img src="assets/compile-sass/vscode-easy-sass.png" alt=""></p>
+</li>
+<li><p>Edit your <code>.scss</code> file and save it.</p>
+</li>
+<li><p>After saving your file, <code>Easy Sass</code> will create another file next to it, with a <code>.min.css</code> extension. This is the compiled code, ready to include in index.html.</p>
+<p>  <img src="assets/compile-sass/vscode-generated-skin.png" alt=""></p>
+</li>
+<li><p>In your html, include the compiled code using a <code>link</code> tag. In the case of <code>css-skin</code>, replace <code>skin.css</code> with <code>skin.min.css</code> and remove the <code>skin.css</code> file, in order to avoid confusion.</p>
+<p>  <img src="assets/compile-sass/vscode-import.png" alt=""></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -753,12 +747,12 @@
 
             
                 
-                <a href="../js-core-2/week-09/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 9 - Good Code">
+                <a href="week-03/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 3 - Design frameworks, Naming patterns and Forms">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="week-10/lesson.html" class="navigation navigation-next " aria-label="Next page: Week 10 - TDD">
+                <a href="../js-core/" class="navigation navigation-next " aria-label="Next page: JavaScript I">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -769,7 +763,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript III","level":"1.7","depth":1,"next":{"title":"Week 10 - TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},"previous":{"title":"Week 9 - Good Code","level":"1.6.3","depth":2,"path":"js-core-2/week-09/lesson.md","ref":"js-core-2/week-09/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/index.md","mtime":"2017-11-23T14:44:30.799Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-23T14:46:16.046Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Compiling SCSS","level":"1.4.4","depth":2,"next":{"title":"JavaScript I","level":"1.5","depth":1,"path":"js-core/index.md","ref":"js-core/index.md","articles":[{"title":"Week 4 - Hello JavaScript","level":"1.5.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},{"title":"Week 5 - Arrays and Objects","level":"1.5.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},{"title":"Week 6 - Debugging and more Data Structures","level":"1.5.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]}]},"previous":{"title":"Week 3 - Design frameworks, Naming patterns and Forms","level":"1.4.3","depth":2,"path":"html-css/week-03/lesson.md","ref":"html-css/week-03/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"html-css/compile-scss-instructions.md","mtime":"2017-11-23T14:44:30.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-23T14:46:16.046Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
