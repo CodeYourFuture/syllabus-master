@@ -302,7 +302,7 @@
                 <a href="../week-09/lesson.html">
             
                     
-                    Week 9 - Promises, AJAX
+                    Week 9 - AJAX, Async, Promises
             
                 </a>
             
@@ -711,30 +711,30 @@ it. You can see full details of the functionality
 <p>The DOM offers a lot of useful functions we can use to find elements on the
 page. Here are some we&apos;ll be using today:</p>
 <pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// gets an Element with id &apos;submit&apos;</span>
-<span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;submit&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;submit&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><code>getElementById</code> accepts an id string as argument and returns an <code>Element</code> from
 the document with a matching id. If no matching <code>Element</code> is found the function
 returns <code>null</code>.</p>
 <pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// get an HTMLCollection containing elements with class &apos;link&apos;</span>
-<span class="token keyword">var</span> links <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">&apos;link&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> links <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">&quot;link&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><code>getElementsByClassName</code> takes a string containing one or more classes and
 returns an <code>HTMLCollection</code>, which is an array-like object containing all
 elements whose class attributes match the string. We can pass multiple classes
 as an argument to query for elements matching all classes.</p>
 <pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// get an Element with id &apos;submit&apos;</span>
-<span class="token keyword">var</span> form <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;myform&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> form <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;myform&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// get an HTMLCollection containing elements with class &apos;red&apos;</span>
 <span class="token comment" spellcheck="true">// which are children of the &apos;form&apos; element</span>
-<span class="token keyword">var</span> inputs <span class="token operator">=</span> form<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">&apos;red&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> inputs <span class="token operator">=</span> form<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">&quot;red&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><code>getElementsByClassName</code> can be called on individual <code>elements</code> as well as the
 top-level <code>document</code> object. When calling <code>getElementsByClassName</code> on an
 <code>element</code>, the method will query only the children of the <code>element</code> rather than
 the entire <code>document</code></p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&apos;div&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// or:</span>
-<span class="token keyword">var</span> elements <span class="token operator">=</span> someElement<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&quot;div&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// or:</span>
+<span class="token keyword">var</span> elements <span class="token operator">=</span> someElement<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Much like <code>getElementsByClassName</code>, <code>getElementsByTagName</code> allows us to query
 for elements using the tag name. <code>getElementsByTagName</code> also returns
@@ -747,8 +747,9 @@ will be automatically updated with all changes since the query.</p>
 <li>Clone the repo from HTML and CSS class into new <code>bikes</code> directory. <code>git
 clone git@github.com:dmitrigrabov/bikes-for-refugees.git bikes</code></li>
 <li>Once cloned run <code>npm install</code> to download the dependencies:</li>
-<li>Implement <code>getTitle</code>, <code>getNumberOfBikes</code>, <code>getAllButtonText</code>, <code>getNavLinksText</code> in <code>src/functions.js</code>
-using above methods to get all tests passing using <code>npm test</code>:</li>
+<li>Implement <code>getTitle</code>, <code>getNumberOfBikes</code>, <code>getAllButtonText</code>,
+<code>getNavLinksText</code> in <code>src/functions.js</code> using above methods to get all tests
+passing using <code>npm test</code>:</li>
 </ul>
 </blockquote>
 <h3 id="query-selector">Query selector</h3>
@@ -767,9 +768,8 @@ updates to the elements.</p>
 <blockquote>
 <p><strong>Exercise</strong>:</p>
 <ul>
-<li>Rewrite solutions to previous exercise using
-<code>querySelector</code> and <code>querySelectorAll</code>. You may need to look up
-documentation for <code>NodeList</code>.</li>
+<li>Rewrite solutions to previous exercise using <code>querySelector</code> and
+<code>querySelectorAll</code>. You may need to look up documentation for <code>NodeList</code>.</li>
 </ul>
 </blockquote>
 <h3 id="dom-manipulation">DOM manipulation</h3>
@@ -782,14 +782,14 @@ x<span class="token punctuation">.</span>textContent <span class="token operator
 <p>Similarly, <code>innerHTML</code> property of elements can be used to get the HTML content
 of an element as well as</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> x <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&quot;.jumbotron h1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-x<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">&apos;&lt;strong&gt;&apos;</span> <span class="token operator">+</span> x<span class="token punctuation">.</span>textContent <span class="token operator">+</span> <span class="token string">&apos;&lt;/strong&gt;&apos;</span><span class="token punctuation">;</span>
+x<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">&quot;&lt;strong&gt;&quot;</span> <span class="token operator">+</span> x<span class="token punctuation">.</span>textContent <span class="token operator">+</span> <span class="token string">&quot;&lt;/strong&gt;&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p>We can also access the <code>style</code> property of elements and update various
 properties</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">&quot;.btn-primary&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 elements<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  element<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">&quot;red&quot;</span>
+  element<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">&quot;red&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Please note the use of camelCase style attribute names</p>
@@ -844,8 +844,9 @@ to be inserted and <code>referenceNode</code> is the node before which newNode i
 <p><strong>Exercise</strong>:</p>
 <ul>
 <li>Use the inspector to examine the navbar</li>
-<li>Using <code>createElement</code> etc. create a new navbar item link &apos;Code Your Future&apos; which links to
-<code>https://codeyourfuture.io/</code>. It should have same structure as the other links</li>
+<li>Using <code>createElement</code> etc. create a new navbar item link &apos;Code Your Future&apos;
+which links to <code>https://codeyourfuture.io/</code>. It should have same structure
+as the other links</li>
 <li>Insert it at the end of the navbar</li>
 <li>Ensure all tests for above pass</li>
 </ul>
@@ -946,7 +947,8 @@ event handlers placed by parent elements will not be triggered.</p>
 <blockquote>
 <p><strong>Together</strong>:</p>
 <ul>
-<li>Let&apos;s prevent clicks on &apos;Volunteer&apos; button from bubbling up to above listener using <code>stopPropagation</code></li>
+<li>Let&apos;s prevent clicks on &apos;Volunteer&apos; button from bubbling up to above
+listener using <code>stopPropagation</code></li>
 </ul>
 </blockquote>
 <h1 id="resources">Resources</h1>
@@ -1003,7 +1005,7 @@ Request after completing each part</li>
                 </a>
                 
                 
-                <a href="../week-09/lesson.html" class="navigation navigation-next " aria-label="Next page: Week 9 - Promises, AJAX">
+                <a href="../week-09/lesson.html" class="navigation navigation-next " aria-label="Next page: Week 9 - AJAX, Async, Promises">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1014,7 +1016,7 @@ Request after completing each part</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 8 - DOM, Events","level":"1.6.2","depth":2,"next":{"title":"Week 9 - Promises, AJAX","level":"1.6.3","depth":2,"path":"js-core-2/week-09/lesson.md","ref":"js-core-2/week-09/lesson.md","articles":[]},"previous":{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.6.1","depth":2,"path":"js-core-2/week-07/lesson.md","ref":"js-core-2/week-07/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-08/lesson.md","mtime":"2017-11-29T12:49:38.307Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-29T12:51:17.003Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 8 - DOM, Events","level":"1.6.2","depth":2,"next":{"title":"Week 9 - AJAX, Async, Promises","level":"1.6.3","depth":2,"path":"js-core-2/week-09/lesson.md","ref":"js-core-2/week-09/lesson.md","articles":[]},"previous":{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.6.1","depth":2,"path":"js-core-2/week-07/lesson.md","ref":"js-core-2/week-07/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-08/lesson.md","mtime":"2017-12-01T20:10:06.204Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-01T20:11:28.264Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
