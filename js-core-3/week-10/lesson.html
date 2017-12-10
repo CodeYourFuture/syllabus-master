@@ -705,19 +705,21 @@
                                 <p><img src="https://img.shields.io/badge/status-review-orange.svg" alt=""></p>
 <p><strong>What will we learn today?</strong></p>
 <ul>
-<li><a href="#functions">Functions and Good Design</a></li>
-<li><a href="#tdd">TDD</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#good-design">Good Design</a></li>
+<li><a href="#unit-testing">Unit Testing</a></li>
+<li><a href="#test-driven-development">Test-driven Development</a></li>
+<li><a href="#refactoring">Refactoring</a></li>
+<li><a href="#unit-testing-frameworks">Unit testing frameworks</a></li>
 </ul>
-<hr>
 <h2 id="functions">Functions</h2>
-<h2 id="why-functions">Why Functions?</h2>
+<h3 id="why-functions">Why Functions?</h3>
 <p>The function is considered one of the greatest inventions in computer science.
 It makes programs easier to read and to understand. It allows for us to more
 easily modify and extend code. It saves space and improves performance.</p>
 <p>At the most basic level, a function is a series of instructions that can take an
 input and produce an output. Parameters dictate how the function behaves.</p>
-<p><img src="https://arthurleon.files.wordpress.com/2014/09/function_machine.png?w=240" alt="Function Diagram" title="Function Diagram">
-<img src="https://i2.kknews.cc/large/19f00001508ee348ee0c" alt="Function &amp; Parameters Diagram" title="Function &amp; Parameters Diagram"></p>
+<p><img src="../assets/function-diagram.png" alt="Function Diagram"></p>
 <p>We&apos;ve used functions a bit, but now we need to know how to use them well.</p>
 <p>There are many ways to write code that does the same thing. But are they all
 equal?</p>
@@ -867,37 +869,15 @@ appropriate improvements to the code.</p>
 <p>Exercise: Write a function that will print out the number of vowels that are
 in mentors&apos; names.</p>
 </blockquote>
-<h2 id="resources">Resources</h2>
-<ol>
-<li><a href="http://bdcampbell.net/javascript/book/javascript_the_good_parts.pdf" target="_blank">JavaScript: The Good Parts by Douglas Crockford, chapter 4 - Functions</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics" target="_blank">MDN Objects basics</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS" target="_blank">MDN OOP in JS</a></li>
-</ol>
-<h1 id="tdd">TDD</h1>
-<p><strong> What we will learn today?</strong></p>
-<ul>
-<li>Unit Testing</li>
-<li>The <em>Jest</em> testing framework<ul>
-<li>The <code>test()</code> function</li>
-<li><code>expect()</code> and <code>toBe()</code></li>
-<li><code>npm test</code></li>
-<li>Test coverage</li>
-</ul>
-</li>
-<li>Test-driven development (TDD)<ul>
-<li>Red, green, refactoring</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="before-we-get-started">Before we get started</h1>
+<h2 id="tdd">TDD</h2>
+<h3 id="before-we-get-started">Before we get started</h3>
 <blockquote>
 <p><strong>Fork</strong> &gt;
 <a href="https://github.com/CodeYourFuture/js-core-3-exercises" target="_blank">this repository</a> to
 your own Github account, then <strong>clone</strong> it to your computer.\
 Today&apos;s exercises will be based on this repository.</p>
 </blockquote>
-<h1 id="unit-testing">Unit Testing</h1>
+<h2 id="unit-testing">Unit Testing</h2>
 <p>Testing is a key skill for any software programmer. We need to make sure our
 software is thoroughly tested, otherwise bad things happen. Testing makes sure
 our programs behave like we intend them to do - <strong>if we don&apos;t test, we can cause
@@ -1030,6 +1010,9 @@ numbers below 100%? If so, try and bring it up to 100%!</p>
 </blockquote>
 <h1 id="resources">Resources</h1>
 <ol>
+<li><a href="http://bdcampbell.net/javascript/book/javascript_the_good_parts.pdf" target="_blank">JavaScript: The Good Parts by Douglas Crockford, chapter 4 - Functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics" target="_blank">MDN Objects basics</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS" target="_blank">MDN OOP in JS</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Test-driven development</a></li>
 <li><a href="https://facebook.github.io/jest/" target="_blank">Jest</a></li>
 <li><a href="https://nodejs.org/api/modules.html" target="_blank">Modules</a></li>
@@ -1093,7 +1076,7 @@ modules and how do their differ from CommonJS?</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-12-10T11:55:45.954Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-10T11:57:40.580Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-12-10T16:36:51.913Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-10T16:38:03.179Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
