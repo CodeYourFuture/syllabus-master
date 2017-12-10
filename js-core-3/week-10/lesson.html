@@ -798,14 +798,12 @@ three.</p>
   <span class="token keyword">var</span> originalSalary <span class="token operator">=</span> salary<span class="token punctuation">;</span>
   <span class="token keyword">var</span> nationalInsurance <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>taxCode <span class="token operator">===</span> <span class="token string">&apos;1150L&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>taxCode <span class="token operator">===</span> <span class="token string">&apos;ST&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>taxCode <span class="token operator">===</span> <span class="token string">&quot;1150L&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>taxCode <span class="token operator">===</span> <span class="token string">&quot;ST&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.05</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.08</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.08</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">var</span> deductions <span class="token operator">=</span> <span class="token punctuation">[</span>nationalInsurance<span class="token punctuation">,</span> totalIncomeTax<span class="token punctuation">,</span> studentLoan<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -814,41 +812,60 @@ three.</p>
   salary <span class="token operator">=</span> salary <span class="token operator">-</span> deductions<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   salary <span class="token operator">=</span> salary <span class="token operator">-</span> deductions<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">return</span> <span class="token string">&quot;Your gross income is &#xA3;&quot;</span> <span class="token operator">+</span> originalSalary<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; and your net income is &#xA3;&quot;</span> <span class="token operator">+</span> salary<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;.&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;Your gross income is &#xA3;&quot;</span> <span class="token operator">+</span>
+    originalSalary<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span>
+    <span class="token string">&quot; and your net income is &#xA3;&quot;</span> <span class="token operator">+</span>
+    salary<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span>
+    <span class="token string">&quot;.&quot;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token number">28000</span><span class="token punctuation">,</span> <span class="token string">&apos;1150L&apos;</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">580</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token number">28000</span><span class="token punctuation">,</span> <span class="token string">&quot;1150L&quot;</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">580</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>What is wrong with this function?</p>
 <ol>
-<li><p>Naming: the function has a bad name, myFunction() tells you nothing about what the function does. 
-It&apos;s also considered bad practice to name variables vaguely by separating them through numbers (incomeTax1, incomeTax2, etc). 
-If you find yourself doing this then you should either use an array (such as incomeTax[]). </p>
+<li><p>Naming: the function has a bad name, myFunction() tells you nothing about
+what the function does. It&apos;s also considered bad practice to name variables
+vaguely by separating them through numbers (incomeTax1, incomeTax2, etc). If
+you find yourself doing this then you should either use an array (such as
+incomeTax[]).</p>
 </li>
-<li><p>Commenting: the function isn&apos;t documented at all. It&apos;s very difficult to understand what the function&apos;s purpose is and 
-how each part of the code contributes to it. By writing comments, the coder communicates their reasoning and helps the function be human readable.</p>
+<li><p>Commenting: the function isn&apos;t documented at all. It&apos;s very difficult to
+understand what the function&apos;s purpose is and how each part of the code
+contributes to it. By writing comments, the coder communicates their
+reasoning and helps the function be human readable.</p>
 </li>
 <li><p>Layout/formatting: unnecessary spacing between the if and else statement.</p>
 </li>
-<li><p>Single responsibility: the function doesn&apos;t have a single purpose. It calculates national insurance and salary deductions. Maybe the national insurance calculation
-could be moved to a separate function.</p>
+<li><p>Single responsibility: the function doesn&apos;t have a single purpose. It
+calculates national insurance and salary deductions. Maybe the national
+insurance calculation could be moved to a separate function.</p>
 </li>
-<li><p>Input variable being overwritten: the function requires gross salary (before deductions) and net salary (after deductions) the <code>salary</code> input variable
-is therefore copied into an <code>originalSalary</code> variable so that it can be changed. It would be much clearer to create a new <code>netSalary</code> variable and leave <code>salary</code> unmodified.</p>
+<li><p>Input variable being overwritten: the function requires gross salary (before
+deductions) and net salary (after deductions) the <code>salary</code> input variable is
+therefore copied into an <code>originalSalary</code> variable so that it can be changed.
+It would be much clearer to create a new <code>netSalary</code> variable and leave
+<code>salary</code> unmodified.</p>
 </li>
-<li><p>DRY principle: the function validates the DRY (Don&apos;t Repeat Yourself) rule. The line where a deduction is taken from the salary is repeated 3 times with different indices.
-This can be replaced with a <code>for</code> loop.</p>
+<li><p>DRY principle: the function validates the DRY (Don&apos;t Repeat Yourself) rule.
+The line where a deduction is taken from the salary is repeated 3 times with
+different indices. This can be replaced with a <code>for</code> loop.</p>
 </li>
-<li><p>Magic numbers. The code contains a lot of magic numbers, including  <code>17775</code>, <code>0.09</code> and <code>0.1</code>.</p>
+<li><p>Magic numbers. The code contains a lot of magic numbers, including <code>17775</code>,
+<code>0.09</code> and <code>0.1</code>.</p>
 </li>
-<li><p>Useless parameters: the code contains a variable which isn&apos;t used. They should be removed because they are confusing. 
-It is tempting when you&apos;re starting to code a function to add more parameters thinking that you might need them, but it&apos;s important to remove them if you don&apos;t end up using them.</p>
+<li><p>Useless parameters: the code contains a variable which isn&apos;t used. They
+should be removed because they are confusing. It is tempting when you&apos;re
+starting to code a function to add more parameters thinking that you might
+need them, but it&apos;s important to remove them if you don&apos;t end up using them.</p>
 </li>
 </ol>
 <blockquote>
-<p>Exercise: Working in pairs, go through all of these issues and make appropriate improvements to the code.</p>
-<p>Exercise: Write a function that will print out the number of vowels that are in mentors&apos;
-names.</p>
+<p>Exercise: Working in pairs, go through all of these issues and make
+appropriate improvements to the code.</p>
+<p>Exercise: Write a function that will print out the number of vowels that are
+in mentors&apos; names.</p>
 </blockquote>
 <h2 id="resources">Resources</h2>
 <ol>
@@ -1017,19 +1034,6 @@ numbers below 100%? If so, try and bring it up to 100%!</p>
 <li><a href="https://facebook.github.io/jest/" target="_blank">Jest</a></li>
 <li><a href="https://nodejs.org/api/modules.html" target="_blank">Modules</a></li>
 </ol>
-<h1 id="homework">Homework</h1>
-<ol>
-<li>Find examples in your own code where you violated the three principles of good code (Clarity, Reusability, Extensibility).
-For each principle, find one example.</li>
-<li>Clone the repo of the <a href="https://github.com/Buroni/cyf-election" target="_blank">election project</a> and finish all of the part 1 exercises.</li>
-</ol>
-<h2 id="research">Research</h2>
-<ul>
-<li>Research other module formats than CommonJS. What is AMD? What are ES6 modules
-and how do their differ from CommonJS?</li>
-<li>What are other test frameworks for JavaScript?</li>
-<li>More parts of the Jest (Jasmine) DSL than just <code>.toBe()</code></li>
-</ul>
 
                                 
                                 </section>
@@ -1073,7 +1077,7 @@ and how do their differ from CommonJS?</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-12-10T10:36:04.798Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-10T10:37:56.390Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-12-10T11:50:41.917Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-10T11:52:38.511Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -716,29 +716,35 @@
 new syntax for writing complex applications including classes and modules and
 other features.</p>
 <h2 id="const-and-let">const and let</h2>
-<p>You have already come across the <code>var</code> keyword as a way to create new variables. The <code>let</code> and <code>const</code> keywords are also used for variable creation,
-but the variables created using these keywords have different scope. Var has &quot;function scope&quot;, whereas let and const have &quot;block scope&quot;.</p>
+<p>You have already come across the <code>var</code> keyword as a way to create new variables.
+The <code>let</code> and <code>const</code> keywords are also used for variable creation, but the
+variables created using these keywords have different scope. Var has &quot;function
+scope&quot;, whereas let and const have &quot;block scope&quot;.</p>
 <blockquote>
-<p>Exercise: This <strong>badly designed</strong> function will throw the error <code>message is not defined</code>. What is the problem, and how could we fix it?</p>
+<p>Exercise: This <strong>badly designed</strong> function will throw the error <code>message is
+not defined</code>. What is the problem, and how could we fix it?</p>
 </blockquote>
-<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">compareNumbers</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">compareNumbers</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>m <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">let</span> message <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token string">&quot; is smaller than &quot;</span> <span class="token operator">+</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> message <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token string">&quot; is smaller than &quot;</span> <span class="token operator">+</span> n<span class="token punctuation">;</span>
   <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      <span class="token keyword">let</span> message <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token string">&quot; is bigger than or equal to &quot;</span> <span class="token operator">+</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> message <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token string">&quot; is bigger than or equal to &quot;</span> <span class="token operator">+</span> n<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> message<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>const</code> keyword is similar to <code>let</code>, the only difference is that a variable declared using <code>const</code> can&apos;t be changed after it is assigned.</p>
+<p>The <code>const</code> keyword is similar to <code>let</code>, the only difference is that a variable
+declared using <code>const</code> can&apos;t be changed after it is assigned.</p>
 <blockquote>
-<p>Exercise: What advantages might a block scope variable have over a function scope variable? In what situation might you want to use <code>const</code> instead of a variable that can be re-assigned?</p>
+<p>Exercise: What advantages might a block scope variable have over a function
+scope variable? In what situation might you want to use <code>const</code> instead of a
+variable that can be re-assigned?</p>
 <p>Exercise: Let&apos;s update this code to use <code>let</code> and <code>const</code> instead of <code>var</code></p>
 </blockquote>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">getCircleArea</span><span class="token punctuation">(</span>radius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">var</span> pi <span class="token operator">=</span> Math<span class="token punctuation">.</span>PI<span class="token punctuation">;</span>
-  <span class="token keyword">var</span> rSquared <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>radius<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rSquared <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>radius<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token keyword">return</span> pi <span class="token operator">*</span> rSquared<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -747,127 +753,158 @@ but the variables created using these keywords have different scope. Var has &qu
   <span class="token keyword">var</span> areasArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> radiusArr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">var</span> circleArea <span class="token operator">=</span> <span class="token function">getCircleArea</span><span class="token punctuation">(</span>radiusArr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      areasArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>circleArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> circleArea <span class="token operator">=</span> <span class="token function">getCircleArea</span><span class="token punctuation">(</span>radiusArr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    areasArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>circleArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> areasArr<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="template-literals">Template literals</h2>
-<p>We do a lot of string concatenation in JavaScript - ES6 introduces a more elegant way of accomplishing the same. </p>
+<p>We do a lot of string concatenation in JavaScript - ES6 introduces a more
+elegant way of accomplishing the same.</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">greeting</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token string">&apos;Hello &apos;</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">&apos;, welcome to JS core 3!&apos;</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token string">&quot;Hello &quot;</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">&quot;, welcome to JS core 3!&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>Rewriting this function in ES6, we have</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">greeting</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, welcome to JS core 3!`</span></span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, welcome to JS core 3!`</span></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="arrow-functions">Arrow functions</h2>
 <blockquote>
-<p>Exercise: ES6 also has a new way of declaring functions. Let&apos;s see how it works.</p>
-<p>Exercise: Refactor the previous code to have a separate function that checks if gender is &apos;female&apos; or not, and use it in sayGreeting. Let&apos;s try and make the code as compact as possible together using ES6 features.</p>
+<p>Exercise: ES6 also has a new way of declaring functions. Let&apos;s see how it
+works.</p>
+<p>Exercise: Refactor the previous code to have a separate function that checks
+if gender is &apos;female&apos; or not, and use it in sayGreeting. Let&apos;s try and make
+the code as compact as possible together using ES6 features.</p>
 </blockquote>
 <h1 id="classes-and-context">Classes and Context</h1>
-<p>A class is an important concept in object-oriented programming. In general, a class can be described as a &quot;blueprint&quot; or a &quot;plan&quot; for creating objects. After a class
-is created, new objects with all of the features defined in that class can then be created. These objects are called <em>instances</em> of the class. </p>
-<p>Secondly, It&apos;s hard to talk about objects without talking about context and the <code>this</code> keyword. When we execute a function in javascript, that function is associated with some enclosing object.
-That object could be one that we made ourselves, or it could be the global scope (the <code>Window</code> object). Understanding context allows us to understand when and where
-we can manipulate an object&apos;s properties.</p>
+<p>A class is an important concept in object-oriented programming. In general, a
+class can be described as a &quot;blueprint&quot; or a &quot;plan&quot; for creating objects. After
+a class is created, new objects with all of the features defined in that class
+can then be created. These objects are called <em>instances</em> of the class.</p>
+<p>Secondly, It&apos;s hard to talk about objects without talking about context and the
+<code>this</code> keyword. When we execute a function in javascript, that function is
+associated with some enclosing object. That object could be one that we made
+ourselves, or it could be the global scope (the <code>Window</code> object). Understanding
+context allows us to understand when and where we can manipulate an object&apos;s
+properties.</p>
 <h2 id="a-warning-about-javascript-classes">A warning about javascript &quot;classes&quot;</h2>
-<p>Speaking strictly, javascript does not have proper classes. However ES6 provides functionality that allows us to create things that usually look and act like proper classes.
-At this point in your learning, this difference might not seem important but it will be useful to remember when you are doing more complex work in the future. Part of the homework
-after this class is to read about these differences.</p>
+<p>Speaking strictly, javascript does not have proper classes. However ES6 provides
+functionality that allows us to create things that usually look and act like
+proper classes. At this point in your learning, this difference might not seem
+important but it will be useful to remember when you are doing more complex work
+in the future. Part of the homework after this class is to read about these
+differences.</p>
 <h1 id="creating-a-class">Creating a class</h1>
-<p>I own a library and want to keep track of the books that people are borrowing and returning. Using the style that we previously learned, we could
-implement a system like this:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> myBooks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;Wild Swans&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;The Dharma Bums&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Nausea&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;The Very Hungry Caterpillar&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<p>I own a library and want to keep track of the books that people are borrowing
+and returning. Using the style that we previously learned, we could implement a
+system like this:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> myBooks <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">&quot;Wild Swans&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;The Dharma Bums&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Nausea&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;The Very Hungry Caterpillar&quot;</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> library <span class="token operator">=</span> <span class="token punctuation">{</span>
-    books<span class="token punctuation">:</span> myBooks<span class="token punctuation">,</span> 
-    availableBooks<span class="token punctuation">:</span> myBooks<span class="token punctuation">,</span>
-    checkoutBook<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>book<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>b <span class="token operator">=</span><span class="token operator">&gt;</span> b <span class="token operator">!==</span> book<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+  books<span class="token punctuation">:</span> myBooks<span class="token punctuation">,</span>
+  availableBooks<span class="token punctuation">:</span> myBooks<span class="token punctuation">,</span>
+  checkoutBook<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>b <span class="token operator">=</span><span class="token operator">&gt;</span> b <span class="token operator">!==</span> book<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Now our book system has become popular in the library world, and we need to represent a lot of different libraries, each one requiring a copy
-of the object format we specified above. We might even need to extend our library object to suit specific cases. We can
-prepare for this scenario by creating a class called <code>Library</code>, provided a plan for our library objects.</p>
+<p>Now our book system has become popular in the library world, and we need to
+represent a lot of different libraries, each one requiring a copy of the object
+format we specified above. We might even need to extend our library object to
+suit specific cases. We can prepare for this scenario by creating a class called
+<code>Library</code>, provided a plan for our library objects.</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">Library</span> <span class="token punctuation">{</span>
-    <span class="token function">constructor</span><span class="token punctuation">(</span>books<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>books <span class="token operator">=</span> books<span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks <span class="token operator">=</span> books<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>books<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>books <span class="token operator">=</span> books<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks <span class="token operator">=</span> books<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-   <span class="token function">checkoutBook</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>b <span class="token operator">=</span><span class="token operator">&gt;</span> b <span class="token operator">!==</span> book<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+  <span class="token function">checkoutBook</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>availableBooks<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>b <span class="token operator">=</span><span class="token operator">&gt;</span> b <span class="token operator">!==</span> book<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">let</span> myBooks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;Wild Swans&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;The Dharma Bums&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Nausea&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;The Very Hungry Caterpillar&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> myBooks <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">&quot;Wild Swans&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;The Dharma Bums&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Nausea&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;The Very Hungry Caterpillar&quot;</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> myLibrary <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Library</span><span class="token punctuation">(</span>myBooks<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote>
-<p>Exercise: Add a <code>returnBook</code> function which appends a book onto the <code>availableBooks</code> variable in our <code>myLibrary</code> object.</p>
+<p>Exercise: Add a <code>returnBook</code> function which appends a book onto the
+<code>availableBooks</code> variable in our <code>myLibrary</code> object.</p>
 <p>Exercise: check out &quot;Nausea&quot; and return it to the library.</p>
-<p>Exercise: Alter the <code>checkoutBook</code> function to return <code>false</code> when a book isn&apos;t available, and true otherwise.</p>
+<p>Exercise: Alter the <code>checkoutBook</code> function to return <code>false</code> when a book
+isn&apos;t available, and true otherwise.</p>
 </blockquote>
 <h2 id="using-inheritance-to-extend-our-library">Using Inheritance to extend our library</h2>
-<p>We want to store information about a new library which contains audiobooks as well as ordinary books. Audiobooks cannot be checked out,
-so they only need to be stored. This new library should have all the same functionality regarding ordinary books as our old <code>Library</code> object, 
-but the class should be extended to allow for the storage of an <code>audiobooks</code> array.</p>
+<p>We want to store information about a new library which contains audiobooks as
+well as ordinary books. Audiobooks cannot be checked out, so they only need to
+be stored. This new library should have all the same functionality regarding
+ordinary books as our old <code>Library</code> object, but the class should be extended to
+allow for the storage of an <code>audiobooks</code> array.</p>
 <h2 id="more-on-this">More on <code>this</code></h2>
 <blockquote>
 <p>Exercise: what does <code>this</code> refer to in the following code snippets?</p>
 </blockquote>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span>
+  <span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-    <span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> myClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myClass<span class="token punctuation">.</span><span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span>
+  <span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span>
+      thisFunction<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> myObject<span class="token punctuation">.</span><span class="token function">thisFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">let</span> myClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myClass<span class="token punctuation">.</span><span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span>
-
-    <span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">let</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span>
-            thisFunction<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-                <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span> 
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> myObject<span class="token punctuation">.</span><span class="token function">thisFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">let</span> myClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myClass<span class="token punctuation">.</span><span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span>
-
-    <span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">let</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span>thisFunction<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">this</span><span class="token punctuation">}</span>
-        <span class="token keyword">return</span> myObject<span class="token punctuation">.</span><span class="token function">thisFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+  <span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span> thisFunction<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">this</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> myObject<span class="token punctuation">.</span><span class="token function">thisFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">let</span> myClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myClass<span class="token punctuation">.</span><span class="token function">getThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="more-es6">More ES6</h2>
-<p>There are so many features in ES6. They&apos;re mostly what we call <code>syntax sugar</code>. They don&apos;t provide new functionality, but new (more elegant) ways of accomplishing the same tasks.</p>
-<p>Since not all ES6 features are supported in all browsers, many developers and projects use what is called <code>Transpilation</code> - a process that transpiles/translates ES6 code to ES5 syntax that is supported by all browsers.</p>
+<p>There are so many features in ES6. They&apos;re mostly what we call <code>syntax sugar</code>.
+They don&apos;t provide new functionality, but new (more elegant) ways of
+accomplishing the same tasks.</p>
+<p>Since not all ES6 features are supported in all browsers, many developers and
+projects use what is called <code>Transpilation</code> - a process that
+transpiles/translates ES6 code to ES5 syntax that is supported by all browsers.</p>
 <p>On Node, most ES6 features are now natively supported in Node 8.</p>
 <blockquote>
-<p>From now on, we expect you to use ES6 syntax in your assignments and the code you write.</p>
+<p>From now on, we expect you to use ES6 syntax in your assignments and the code
+you write.</p>
 </blockquote>
 <h1 id="tdd-again">TDD again</h1>
 <blockquote>
@@ -876,21 +913,26 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <ol>
 <li>Why do we do TDD</li>
 <li>How do we run the tests? Read some of the tests</li>
-<li>Notice we&apos;re separating our tests from our code now. We are making use of <strong>modules</strong></li>
+<li>Notice we&apos;re separating our tests from our code now. We are making use of
+<strong>modules</strong></li>
 <li>Also notice the <strong>coverage</strong></li>
 </ol>
 </blockquote>
 <h2 id="how-do-modules-work">How do modules work?</h2>
-<p>So far, all our programs have been in their own single files. But Node programs can become really large, and having all our code in only one file will not be maintainable.</p>
-<p>We can therefore split our code into so-called <em>modules</em>. A module is basically a JavaScript file that makes its functionality available to other modules and programs.</p>
+<p>So far, all our programs have been in their own single files. But Node programs
+can become really large, and having all our code in only one file will not be
+maintainable.</p>
+<p>We can therefore split our code into so-called <em>modules</em>. A module is basically
+a JavaScript file that makes its functionality available to other modules and
+programs.</p>
 <h2 id="creating-modules-exporting-code">Creating modules, exporting code</h2>
-<p>It is really simple to take existing JavaScript code and turn it into a module by exporting its functionality:</p>
+<p>It is really simple to take existing JavaScript code and turn it into a module
+by exporting its functionality:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">printName</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;My name is &quot;</span> <span class="token operator">+</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> printName<span class="token punctuation">;</span>
-`
 </code></pre>
 <p>The key here is the line containing <code>module.exports</code>. As you see, this is an
 assignment, and whatever is assigned to <code>module.exports</code> will be made available
@@ -944,20 +986,6 @@ different folder! However, for Jest it is important to call test files
 <li><a href="http://es6-features.org/" target="_blank">ES6 features</a></li>
 <li><a href="http://wesbos.com/let-vs-const/" target="_blank">Let and const</a></li>
 </ul>
-<h1 id="homework">Homework</h1>
-<ol>
-<li><p>Watch Wes Bos videos about ES6 - <a href="https://es6.io/" target="_blank">https://es6.io/</a> (if you don&apos;t have access,
-let us know)</p>
-</li>
-<li><p>Fork, Clone and Do the exercises in this repo -
-<a href="https://github.com/CodeYourFuture/js-core-2-exercises" target="_blank">https://github.com/CodeYourFuture/js-core-2-exercises</a></p>
-</li>
-</ol>
-<h2 id="prepare-for-the-next-class">Prepare for the next class</h2>
-<ol>
-<li>Finish this tutorial about Chrome Dev
-Tools(<a href="https://developers.google.com/web/tools/chrome-devtools/javascript/" target="_blank">https://developers.google.com/web/tools/chrome-devtools/javascript/</a>)</li>
-</ol>
 
                                 
                                 </section>
@@ -1001,7 +1029,7 @@ Tools(<a href="https://developers.google.com/web/tools/chrome-devtools/javascrip
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"next":{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]},"previous":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-11/lesson.md","mtime":"2017-12-10T10:36:04.798Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-10T10:37:56.390Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"next":{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]},"previous":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-11/lesson.md","mtime":"2017-12-10T11:50:41.917Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-10T11:52:38.511Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
