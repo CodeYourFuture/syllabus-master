@@ -702,7 +702,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""></p>
+                                <p><img src="https://img.shields.io/badge/status-review-orange.svg" alt=""></p>
 <p><strong>What will we learn today?</strong></p>
 <ul>
 <li><a href="#functions">Functions and Good Design</a></li>
@@ -733,17 +733,10 @@ code. What could we do to improve it?</p>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Introducing a simple for loop makes our lives a lot easier. This way we can more
-easily see what the function does and make modifications.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">printHelloFiveTimes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
 <blockquote>
-<p>Exercise: Now, let&apos;s look at a different example. Let&apos;s say we wanted to
-welcome mentors:</p>
+<p>Exercise: write an improved version of this function</p>
 </blockquote>
+<p>Now, let&apos;s look at a different example. Let&apos;s say we wanted to welcome mentors:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">welcomeMentors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello Mozafar&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello Rares&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -760,13 +753,9 @@ welcome mentors:</p>
 </code></pre>
 <p>But it&apos;s not quite the output we wanted. And we can be smarter about it. Why not
 a loop?</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">welcomeMentors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">var</span> mentorNames <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Mozafar&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Rares&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Tim&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Ashleigh&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Gordon&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mentorNames<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello &quot;</span> <span class="token operator">+</span> mentorNames<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<blockquote>
+<p>Exercise: write an improved version of this function</p>
+</blockquote>
 <p>So functions help us to organise and enhance our code. But what makes good
 design? Is it just &quot;shorter is always better&quot;?</p>
 <h2 id="good-design">Good Design</h2>
@@ -775,15 +764,14 @@ humans, but also to us in the future), to be easy to use and easy to expand.</p>
 <p>There are three main principles you need to know now: clarity, reusability and
 extensibility. There are also others, but they are deeply related to these
 three.</p>
-<p>To</p>
 <ul>
 <li><p>Ease of Maintenance / Clarity</p>
 <ul>
 <li>Naming</li>
-<li>Formatting</li>
 <li>Commenting</li>
 <li>Clear logic</li>
 <li>Concise</li>
+<li>Formatting</li>
 <li>Avoiding Redundancy</li>
 </ul>
 </li>
@@ -803,123 +791,64 @@ three.</p>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>Exercise: Find all the design issues with this function.</p>
-</blockquote>
-<p>As an aside: if you try to run the code it won&apos;t work, but not because it&apos;s not
-correct. It&apos;s only because it is a fragment of a larger program and lacks some
-code such as the function updateCorpDatabase(), the initialisation of the global
-variables referenced (e.g. quarter, profit) and, of course, the HandlesStuff()
-function also hasn&apos;t been called.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">HandlesStuff</span><span class="token punctuation">(</span>
-  inputRecord<span class="token punctuation">,</span>
-  savedrecord<span class="token punctuation">,</span>
-  income1<span class="token punctuation">,</span>
-  income2<span class="token punctuation">,</span>
-  expenseType<span class="token punctuation">,</span>
-  revenue<span class="token punctuation">,</span>
-  expense0<span class="token punctuation">,</span>
-  expense1<span class="token punctuation">,</span>
-  expense2<span class="token punctuation">,</span>
-  screenx<span class="token punctuation">,</span>
-  screeny<span class="token punctuation">,</span>
-  success
-<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">var</span> i<span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    inputRecord<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<p>Now let&apos;s take a look at a bigger example of a badly written function</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span>salary<span class="token punctuation">,</span> taxCode<span class="token punctuation">,</span> incomeTax1<span class="token punctuation">,</span> incomeTax2<span class="token punctuation">,</span> ownsCar<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> totalIncomeTax <span class="token operator">=</span> incomeTax1 <span class="token operator">+</span> incomeTax2<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> studentLoan <span class="token operator">=</span> <span class="token punctuation">(</span>salary <span class="token operator">-</span> <span class="token number">17775</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.09</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> originalSalary <span class="token operator">=</span> salary<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> nationalInsurance <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>taxCode <span class="token operator">===</span> <span class="token string">&apos;1150L&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>taxCode <span class="token operator">===</span> <span class="token string">&apos;ST&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.05</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
-  <span class="token function">updateCorpDatabase</span><span class="token punctuation">(</span>savedrecord<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  income1 <span class="token operator">=</span> income2 <span class="token operator">*</span> <span class="token number">4.0</span> <span class="token operator">/</span> quarter<span class="token punctuation">;</span>
-
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>expenseType <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    profit <span class="token operator">=</span> revenue <span class="token operator">-</span> expense0<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>expenseType <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    profit <span class="token operator">=</span> revenue <span class="token operator">-</span> expense1<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>expenseType <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    profit <span class="token operator">=</span> revenue <span class="token operator">-</span> expense2<span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      nationalInsurance <span class="token operator">=</span> salary <span class="token operator">*</span> <span class="token number">0.08</span>
   <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> deductions <span class="token operator">=</span> <span class="token punctuation">[</span>nationalInsurance<span class="token punctuation">,</span> totalIncomeTax<span class="token punctuation">,</span> studentLoan<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  salary <span class="token operator">=</span> salary <span class="token operator">-</span> deductions<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  salary <span class="token operator">=</span> salary <span class="token operator">-</span> deductions<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  salary <span class="token operator">=</span> salary <span class="token operator">-</span> deductions<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token string">&quot;Your gross income is &#xA3;&quot;</span> <span class="token operator">+</span> originalSalary<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; and your net income is &#xA3;&quot;</span> <span class="token operator">+</span> salary<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;.&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token number">28000</span><span class="token punctuation">,</span> <span class="token string">&apos;1150L&apos;</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">580</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>What is wrong with this function?</p>
 <ol>
-<li><p>Naming: the function has a bad name, HandleStuff() tells you nothing about
-what the function does. It&apos;s also considered bad practice to name variables
-vaguely by separating them through numbers (debt1, expense1, etc). If you
-find yourself doing this then you should either use an array (such as
-expenses[]) or use a more specific name for each variable (such as pastIncome
-and currentIncome). There is also inconsistency in the use of camel casing
-(inputRecord versus savedrecord).</p>
+<li><p>Naming: the function has a bad name, myFunction() tells you nothing about what the function does. 
+It&apos;s also considered bad practice to name variables vaguely by separating them through numbers (incomeTax1, incomeTax2, etc). 
+If you find yourself doing this then you should either use an array (such as incomeTax[]). </p>
 </li>
-<li><p>Commenting: the function isn&apos;t documented at all. It&apos;s very difficult to
-understand what the function&apos;s purpose is and how each part of the code
-contributes to it. By writing comments, the coder communicates their
-reasoning and helps the function be human readable.</p>
+<li><p>Commenting: the function isn&apos;t documented at all. It&apos;s very difficult to understand what the function&apos;s purpose is and 
+how each part of the code contributes to it. By writing comments, the coder communicates their reasoning and helps the function be human readable.</p>
 </li>
-<li><p>Layout/ Formatting: the physical organisation of the code on the page gives
-few hints about its logical organisation. Layout strategies are used
-inconsistently throughout the code: incorrect indentation, unnecessary
-spacing (between the two else ifs) and the long list of parameters is
-unreadable. This makes the code look messy and confusing.</p>
+<li><p>Layout/formatting: unnecessary spacing between the if and else statement.</p>
 </li>
-<li><p>Input variables: the function&apos;s input variable, inputRecord, is set
-(hardcoded) within the function. If it&apos;s an input variable, its value should
-not be modified. If the value of the variable is supposed to be modified,
-then the variable should not be called inputRecord.</p>
+<li><p>Single responsibility: the function doesn&apos;t have a single purpose. It calculates national insurance and salary deductions. Maybe the national insurance calculation
+could be moved to a separate function.</p>
 </li>
-<li><p>Global variables: the function reads and writes global variables - it reads
-from quarter and writes to profit. It should communicate with other functions
-more directly, rather than by reading and writing global variables.</p>
+<li><p>Input variable being overwritten: the function requires gross salary (before deductions) and net salary (after deductions) the <code>salary</code> input variable
+is therefore copied into an <code>originalSalary</code> variable so that it can be changed. It would be much clearer to create a new <code>netSalary</code> variable and leave <code>salary</code> unmodified.</p>
 </li>
-<li><p>Single Responsibility: the function does not have a single purpose. It
-initialises some variables, writes to a database, does some calculations -
-none of which seem to be related to each other in any way. A function should
-have a single, clearly defined purpose. This function looks like it needs
-restructuring: breaking it into multiple functions.</p>
+<li><p>DRY principle: the function validates the DRY (Don&apos;t Repeat Yourself) rule. The line where a deduction is taken from the salary is repeated 3 times with different indices.
+This can be replaced with a <code>for</code> loop.</p>
 </li>
-<li><p>Data checks: the function doesn&apos;t defend itself against bad data. If quarter
-equals 0, the expression income2 * 4.0 / quarter causes a divide-by-zero
-error.</p>
+<li><p>Magic numbers. The code contains a lot of magic numbers, including  <code>17775</code>, <code>0.09</code> and <code>0.1</code>.</p>
 </li>
-<li><p>Magic numbers: the function uses several magic numbers: 100, 4.0, 1, 2 and 3.
-These are numbers that are used directly in an expression rather than saving
-them first in a variable. This is discouraged as it makes it more difficult
-to manipulate the values. If we were to save them in a variable they would be
-easier to find and modify.</p>
+<li><p>Useless parameters: the code contains a variable which isn&apos;t used. They should be removed because they are confusing. 
+It is tempting when you&apos;re starting to code a function to add more parameters thinking that you might need them, but it&apos;s important to remove them if you don&apos;t end up using them.</p>
 </li>
 </ol>
-<pre class="language-"><code class="lang-js">tenSquared <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">;</span>
-tenCubed <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">;</span>
-
-x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-xSquared <span class="token operator">=</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
-xCubed <span class="token operator">=</span> x <span class="token operator">*</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
-</code></pre>
-<ol>
-<li><p>Useless parameters: some of the function&apos;s parameters are never used
-(screenx, screeny and success). They should be removed because they are
-confusing. It is tempting when you&apos;re starting to code a function to add more
-parameters thinking that you might need them, but it&apos;s important to remove
-them if you don&apos;t end up using them.</p>
-</li>
-<li><p>DRY principle: the function breaks the DRY (Don&apos;t Repeat Yourself) rule. The
-expression profit = revenue - expense0 is written 3 times unnecessarily, the
-only difference being whether it&apos;s the first, second or third expense. This
-variable can be restructured into an array.</p>
-</li>
-</ol>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> expense <span class="token operator">=</span> <span class="token punctuation">[</span>expense1<span class="token punctuation">,</span> expense2<span class="token punctuation">,</span> expense3<span class="token punctuation">]</span><span class="token punctuation">;</span>
-profit <span class="token operator">=</span> revenue <span class="token operator">-</span> expense<span class="token punctuation">[</span>expenseType<span class="token punctuation">]</span><span class="token punctuation">;</span>
-</code></pre>
 <blockquote>
-<p>Exercise: We have the following problem to solve, write really bad code that
-gives the right result. Tell us why it is bad.</p>
-</blockquote>
-<p>Write a function that will print out the number of vowels that are in mentors&apos;
+<p>Exercise: Working in pairs, go through all of these issues and make appropriate improvements to the code.</p>
+<p>Exercise: Write a function that will print out the number of vowels that are in mentors&apos;
 names.</p>
-<blockquote>
-<p>Exercise: Now, let&apos;s write it well together.</p>
 </blockquote>
 <h2 id="resources">Resources</h2>
 <ol>
@@ -1090,12 +1019,10 @@ numbers below 100%? If so, try and bring it up to 100%!</p>
 </ol>
 <h1 id="homework">Homework</h1>
 <ol>
-<li>Read the Wikipedia article about
-<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Test-driven development</a></li>
-<li>Solve the exercises in this repo (using TDD)
-<a href="https://github.com/CodeYourFuture/js-tdd-exercises" target="_blank">https://github.com/CodeYourFuture/js-tdd-exercises</a></li>
+<li>Find examples in your own code where you violated the three principles of good code (Clarity, Reusability, Extensibility).
+For each principle, find one example.</li>
+<li>Clone the repo of the <a href="https://github.com/Buroni/cyf-election" target="_blank">election project</a> and finish all of the part 1 exercises.</li>
 </ol>
-<p><strong>TODO</strong></p>
 <h2 id="research">Research</h2>
 <ul>
 <li>Research other module formats than CommonJS. What is AMD? What are ES6 modules
@@ -1146,7 +1073,7 @@ and how do their differ from CommonJS?</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-12-03T12:46:08.934Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-03T12:48:01.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"next":{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.7","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Good Code, TDD","level":"1.7.1","depth":2,"path":"js-core-3/week-10/lesson.md","ref":"js-core-3/week-10/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.7.2","depth":2,"path":"js-core-3/week-11/lesson.md","ref":"js-core-3/week-11/lesson.md","articles":[]},{"title":"Week 12 - Exam maybe","level":"1.7.3","depth":2,"path":"js-core-3/week-12/lesson.md","ref":"js-core-3/week-12/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-10/lesson.md","mtime":"2017-12-10T10:33:19.883Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-10T10:34:45.700Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
