@@ -452,9 +452,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="../../node-db-2/">
+        <li class="chapter " data-level="1.8" data-path="../../node-db/">
             
-                <a href="../../node-db-2/">
+                <a href="../../node-db/">
             
                     
                     Node/DB II
@@ -466,9 +466,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="../../node-db-2/week-16/lesson.html">
+        <li class="chapter " data-level="1.8.1" data-path="../../node-db/week-16/lesson.html">
             
-                <a href="../../node-db-2/week-16/lesson.html">
+                <a href="../../node-db/week-16/lesson.html">
             
                     
                     Week 16 - MongoDB
@@ -479,9 +479,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.2" data-path="../../node-db-2/week-17/lesson.html">
+        <li class="chapter " data-level="1.8.2" data-path="../../node-db/week-17/lesson.md">
             
-                <a href="../../node-db-2/week-17/lesson.html">
+                <span>
             
                     
                     Week 17 - Mongoose
@@ -492,9 +492,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../../node-db-2/week-18/lesson.html">
+        <li class="chapter " data-level="1.8.3" data-path="../../node-db/week-18/lesson.md">
             
-                <a href="../../node-db-2/week-18/lesson.html">
+                <span>
             
                     
                     Week 18 - Node/DB Recap
@@ -731,20 +731,23 @@
 <hr>
 <h2 id="getting-started">Getting Started</h2>
 <ol>
-<li>Download and install the latest Current version of NodeJS.<ul>
-<li>Windows and Max users: Download the <em>installer</em> (.msi or .pkg) from
-<a href="https://nodejs.org/en/download/" target="_blank">here</a></li>
-<li>Linux (Ubuntu) users: you can run the following script in your terminal:<pre class="language-"><code class="lang-Shell">curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
+<li><p>Download and install the latest Current version of NodeJS.</p>
+</li>
+<li><p>Windows and Max users: Download the <em>installer</em> (.msi or .pkg) from
+<a href="https://nodejs.org/en/download/" target="_blank">here</a></p>
+</li>
+<li>Linux (Ubuntu) users: you can run the following script in your terminal:</li>
+</ol>
+<pre class="language-"><code class="lang-sh">  curl -sL https://deb.nodesource.com/setup_8.x <span class="token operator">|</span> <span class="token function">sudo</span> -E <span class="token function">bash</span> -
+  <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y nodejs
 </code></pre>
-This will require you to enter your password and will configure your computer
+<p>This will require you to enter your password and will configure your computer
 automatically. You can find the full instructions, if necessary,
 <a href="https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions" target="_blank">here</a>.
 A note on security: don&apos;t execute a script on your terminal if you don&apos;t
 trust its source, especially if they use the <code>sudo</code> command to get admin
-access to your machine.</li>
-</ul>
-</li>
+access to your machine.</p>
+<ol>
 <li><p>To test that it was installed and that it&apos;s running properly, go to your
 terminal and run the command: <code>node -v</code> You should get the node version printed
 on your terminal, for example, <code>v8.9.3</code></p>
@@ -773,8 +776,7 @@ printing the words <strong>Hello World</strong> to the terminal.</p>
 semicolon, the dot, the parentheses - these are all elements of JavaScript
 <strong>Syntax</strong></p>
 </li>
-<li><p>Try to <code>console.log()</code> something different, for example, <code>Hello World. I
-just started learning JavaScript!</code>. (run <code>node main.js</code> after each change
+<li><p>Try to <code>console.log()</code> something different, for example, <code>Hello World. I just started learning JavaScript!</code>. (run <code>node main.js</code> after each change
 and look at the output in the console)</p>
 </li>
 <li>Try to <code>console.log()</code> several things at once.</li>
@@ -819,18 +821,18 @@ arrays).</p>
 <p>Strings are simple text, ranging anywhere from a single character to lengthy
 paragraphs. A string is always written inside a pair of quotes (single or
 double).</p>
-<pre class="language-"><code class="lang-js"><span class="token string">&quot;node girls&quot;</span>
+<pre class="language-"><code class="lang-js"><span class="token string">&quot;node girls&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="numbers">Numbers</h2>
 <p>Numbers do not need to be wrapped in quotes like strings, and can just be
 written as is.</p>
-<pre class="language-"><code class="lang-js"><span class="token number">100</span> <span class="token comment" spellcheck="true">// an integer number</span>
-<span class="token number">100.89</span> <span class="token comment" spellcheck="true">// a decimal number (floating point)</span>
+<pre class="language-"><code class="lang-js"><span class="token number">100</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// an integer number</span>
+<span class="token number">100.89</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// a decimal number (floating point)</span>
 </code></pre>
 <h2 id="booleans">Booleans</h2>
 <p>There is a special data type in JavaScript known as a &quot;boolean&quot; value. A boolean
 is either <code>true</code> or <code>false</code>, and it should be written without quotes.</p>
-<pre class="language-"><code class="lang-js"><span class="token boolean">true</span>
+<pre class="language-"><code class="lang-js"><span class="token boolean">true</span><span class="token punctuation">;</span>
 </code></pre>
 <p>You&apos;ve seen what they look like, now make sure they are what you think they are.
 There is a built-in feature in JavaScript which allows you to check the type of
@@ -889,8 +891,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <blockquote>
 <p><strong>Exercise:</strong> Now that you know how to create variables, rewrite this code.
 This time, define these values as variables at the top of the file, create a
-<strong>variable</strong> called <code>courseName</code> and <strong>assign</strong> it the value <code>Code Your
-Future</code>. Then create a variable called courseDuration and assign it the value
+<strong>variable</strong> called <code>courseName</code> and <strong>assign</strong> it the value <code>Code Your Future</code>. Then create a variable called courseDuration and assign it the value
 6, and a variable called isHard and assign it the value false.</p>
 <p>Refer to the three variables that you just created to get their types (i.e.
 <code>console.log(typeof courseName)</code> etc...)</p>
@@ -1018,8 +1019,7 @@ there. And we are increasing the value of <code>i</code> by one each time.</p>
 <p>Write a for loop that loops over the numbers from 1 to 100, printing only
 every second number. So it should return <code>2, 4, 6, 8, 10...</code>.</p>
 <p><strong>Exercise</strong></p>
-<p>Write a for loop that prints out all the numbers between 1 and 100 divisible by
-5.</p>
+<p>Write a for loop that prints out all the numbers between 1 and 100 divisible by 5.</p>
 <p>See if you can think or more than one way to solve this.</p>
 <p><strong>Exercise</strong></p>
 <p>Write a for loop that prints out the sum of all the numbers between 1 and 100.</p>
@@ -1135,7 +1135,7 @@ class and beyond.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"next":{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},"previous":{"title":"JavaScript I","level":"1.4","depth":1,"path":"js-core/index.md","ref":"js-core/index.md","articles":[{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},{"title":"Week 6 - Debugging and more Data Structures","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-04/lesson.md","mtime":"2018-01-14T14:27:53.994Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-14T14:29:23.097Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"next":{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},"previous":{"title":"JavaScript I","level":"1.4","depth":1,"path":"js-core/index.md","ref":"js-core/index.md","articles":[{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},{"title":"Week 6 - Debugging and more Data Structures","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-04/lesson.md","mtime":"2018-01-15T18:06:25.609Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-15T18:07:38.041Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
