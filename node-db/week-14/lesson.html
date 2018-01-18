@@ -712,19 +712,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""></p>
+                                <p><img src="https://img.shields.io/badge/status-review-orange.svg" alt=""></p>
 <h1 id="node-2">Node 2</h1>
 <p><strong>What we will learn today?</strong></p>
 <ul>
-<li>Recap</li>
-<li>Templating</li>
-<li>Callbacks and Callback hell</li>
-<li>APIs</li>
-<li>Deploying to Heroku</li>
+<li><a href="#recap">Recap</a></li>
+<li><a href="#templating">Templating</a></li>
+<li><a href="#callbacks-and-callback-hell">Callbacks and Callback hell</a></li>
+<li><a href="#apis">APIs</a></li>
+<li><a href="#deploying-to-heroku">Deploying to Heroku</a></li>
 </ul>
 <hr>
 <h1 id="before-we-start">Before we start</h1>
-<p>Fork and Clone the repo - <a href="https://github.com/CodeYourFuture/express-workshop-2" target="_blank">https://github.com/CodeYourFuture/express-workshop-2</a></p>
+<p>Fork and Clone the <a href="https://github.com/CodeYourFuture/express-workshop-2" target="_blank">express-workshop-2</a> repository</p>
 <h1 id="recap">Recap</h1>
 <p>Let&apos;s have a look at the repo we&apos;ve just forked.</p>
 <ul>
@@ -749,10 +749,8 @@ through the code and remember what it does.</p>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>Let&apos;s run the server and check it in the browser. This is what you should see
-on your browser: <img src="assets/blog-screenshot.png" alt=""></p>
-</blockquote>
+<p>Let&apos;s run the server and check it in the browser. This is what you should see on your browser:</p>
+<p><img src="../assets/blog-screenshot.png" alt=""></p>
 <ul>
 <li>The theme used for this website is based on Bootstrap. You can get more open
 source Bootsrap-based themes from
@@ -766,9 +764,9 @@ Let&apos;s add an enpoint to return a simple string <strong>this is a contact pa
 <blockquote>
 <p><strong>Exercise</strong>: Let&apos;s change the text for the link, <strong>Contact</strong>, to <strong>Contact
 Information</strong>.</p>
+<p>How many files do you have to change? Wouldn&apos;t be nice if we could change one file and that reflects in all pages.</p>
 </blockquote>
-<pre class="language-"><code>- How many files do you have to change? Wouldn&apos;t be nice if we could change one file and that reflects in all pages.
-</code></pre><p>At the moment, we&apos;re just serving static HTML files from the <em>public</em> folder.
+<p>At the moment, we&apos;re just serving static HTML files from the <em>public</em> folder.
 <strong>NodeJS</strong> and <strong>ExpressJS</strong> allows us to build dynamic web pages.</p>
 <blockquote>
 <p>A server-side dynamic web page is a web page whose construction is controlled
@@ -921,13 +919,13 @@ a first class manner like any other object since they are objects themselves. We
 can pass them as arguments to functions which is common technique in JavaScript
 for dealing with <strong>asynchronous</strong> behaviour. We have in fact already encountered
 callbacks when we looked at array methods such as <code>.forEach()</code>, <code>.map()</code> and
-<code>.filter</code>.</p>
+<code>.filter()</code>.</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> evenNumbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-evenNumbers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+evenNumbers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>num <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Here we are passing the <code>function( num ) {console.log(num);}</code> function as an
+<p>Here we are passing the <code>function (num) { console.log(num); }</code> function as an
 argument to <code>.forEach()</code> to execute with each item in the array <code>evenNumbers</code>.</p>
 <p>The above example is <strong>synchronous</strong> which means that code the callback is
 executed immediately. Let&apos;s look at an example where the code is executed
@@ -982,13 +980,13 @@ oReq<span class="token punctuation">.</span><span class="token function">addEven
     oReq2<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;load&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment" spellcheck="true">// 4. Now we finally have all the info we need and we can the info we retrieved from the three API calls.</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    oReq3<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3. third url for branch info</span>
+    oReq3<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span> BRANCH_INFO_URL<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3. third url for branch info</span>
     oReq3<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  oReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2. second url for branches</span>
+  oReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span> BRANCH_URL<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2. second url for branches</span>
   oReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-oReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1. first url for Repo</span>
+oReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span><span class="token punctuation">,</span> REPO_URL<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1. first url for Repo</span>
 oReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The code above is very hard to understand and follow. Notice the pyramid shape
@@ -1007,8 +1005,7 @@ Mobile Application, or a TV setbox etc...</p>
 consume through the url <code>/api/get-posts</code>. Hint: make use <code>res.sendFile</code></p>
 </blockquote>
 <h2 id="rest-api">REST API</h2>
-<p>REST (REpresentational State Transfer) and RESTful APIs provide a way (an
-architecture) for building APIs that is simple and scalable.</p>
+<p><a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST</a> (REpresentational State Transfer) and RESTful APIs provide a convention and architecture for building APIs that is simple and scalable.</p>
 <p>There are many constraints and aspects to building a REST API, but one
 fundamental constraint is the use of a URL (Uniform Resource Locator) and HTTP
 Methods (GET, POST, PUT, DELETE etc..)</p>
@@ -1019,12 +1016,12 @@ URL is redundant as the HTTP Method <code>GET</code> already tells that we are <
 <p>Exercise: Let&apos;s rename our endpoint to <code>/posts</code> so that it follows RESTful
 architecture.</p>
 <p><strong>What would the endpoint for creating posts be called?</strong></p>
-<p><strong>Watch</strong>: <a href="https://www.youtube.com/watch?v=7YcW25PHnAA" target="_blank">https://www.youtube.com/watch?v=7YcW25PHnAA</a> - What is a REST API
+<p><strong>Watch</strong>: <a href="https://www.youtube.com/watch?v=7YcW25PHnAA" target="_blank">What is a REST API</a>
 (up to 3 minutes)</p>
 </blockquote>
 <p>REST is a big topic that we will revisit again. The table below from Wikipedia
 shows how a typical RESTful API would look like.</p>
-<p><img src="assets/REST.png" alt="">
+<p><img src="../assets/REST.png" alt="">
 <a href="https://en.wikipedia.org/wiki/Representational_state_transfer#Uniform_interface" target="_blank">Wikipedia</a></p>
 <p>For now, remember when building APIs, to use <strong>Resource</strong> names to identify your
 endpoints and make use of the <strong>HTTP methods (Verbs)</strong> to describe operations
@@ -1036,13 +1033,12 @@ scale modern apps. Heroku is fully managed, giving developers the freedom to
 focus on their core product without the distraction of maintaining servers,
 hardware, or infrastructure.</p>
 <ol>
-<li>Go to <a href="https://signup.heroku.com/" target="_blank">https://signup.heroku.com/</a> and signup for an account<ul>
+<li><a href="https://signup.heroku.com/" target="_blank">Signup for an account</a> on Heroku<ul>
 <li>It will send a verification to your email so make sure you&apos;ve entered a
 valid email</li>
 </ul>
 </li>
-<li>Download the Heroku CLI from
-<a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install" target="_blank">https://devcenter.heroku.com/articles/heroku-cli#download-and-install</a></li>
+<li>Download the <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install" target="_blank">Heroku CLI</a></li>
 <li>We need to do a small tweak to our app to be ready to be deployed on Heroku.</li>
 </ol>
 <p>On server.js, add the <code>process.env.PORT</code> bit of code</p>
@@ -1076,9 +1072,11 @@ git remote that must be used to receive your application source.</p>
 commands from Heroku, then you should see a url similar to
 <code>https://some-random-name-XXXX.herokuapp.com</code> - go to the URL and if all goes
 well, your app should be up and running.</p>
-<p>To read more about Heroku and deploying Node Apps to Heroku, check
-<a href="https://devcenter.heroku.com/articles/git" target="_blank">https://devcenter.heroku.com/articles/git</a> and
-<a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up" target="_blank">https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up</a></p>
+<p>To read more about Heroku and deploying Node Apps to Heroku, check:</p>
+<ol>
+<li><a href="https://devcenter.heroku.com/articles/git" target="_blank">Deploying with Git</a></li>
+<li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up" target="_blank">Getting Started on Heroku with Node.js</a></li>
+</ol>
 <h1 id="homework">Homework</h1>
 <ul>
 <li>Deploy to Heroku if you haven&apos;t yet</li>
@@ -1112,12 +1110,19 @@ for solutions in <strong>Express.js</strong></li>
 </ul>
 <h1 id="resources">Resources</h1>
 <ul>
-<li>Callback hell - <a href="http://callbackhell.com/" target="_blank">http://callbackhell.com/</a></li>
-<li>Fetch - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch</a></li>
-<li>StackOverFlow answer to What is REST - <a href="https://stackoverflow.com/a/671132" target="_blank">https://stackoverflow.com/a/671132</a></li>
-<li>How I explained REST to my wife -
-<a href="http://web.archive.org/web/20130116005443/http://tomayko.com/writings/rest-to-my-wife" target="_blank">http://web.archive.org/web/20130116005443/http://tomayko.com/writings/rest-to-my-wife</a></li>
+<li>Read: <a href="http://callbackhell.com/" target="_blank">Callback hell</a></li>
+<li>Review: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">MDN - Using fetch</a></li>
+<li>Read: <a href="https://stackoverflow.com/a/671132" target="_blank">StackOverFlow answers to What is REST</a></li>
+<li>Read: <a href="http://web.archive.org/web/20130116005443/http://tomayko.com/writings/rest-to-my-wife" target="_blank">How I explained REST to my wife</a></li>
 </ul>
+<h1 id="escalation-policy">Escalation policy</h1>
+<p>When you get stuck during the homework you should follow the
+following:</p>
+<ol>
+<li>First, search for answers on Google and Stack Overflow. If you have an error message, copy and paste it into Google.</li>
+<li>When you are stuck for longer than 20 minutes - no longer! - write a question to your fellow students in your class channel on slack. Take a while to think carefully about the question. This is an important skill. There is a great guide to writing good questions <a href="http://stackoverflow.com/help/how-to-ask" target="_blank">here</a></li>
+<li>If you cannot get an answer from your fellow students, post your question in your class public channel, @ the mentor for the class that covered the topic and we will reply as soon as we can.</li>
+</ol>
 
                                 
                                 </section>
@@ -1161,7 +1166,7 @@ for solutions in <strong>Express.js</strong></li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 14 - Templating and APIs","level":"1.7.2","depth":2,"next":{"title":"Week 15 - Node and Mongo maybe","level":"1.7.3","depth":2,"path":"node-db/week-15/lesson.md","ref":"node-db/week-15/lesson.md","articles":[]},"previous":{"title":"Week 13 - Node and Express 101","level":"1.7.1","depth":2,"path":"node-db/week-13/lesson.md","ref":"node-db/week-13/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-14/lesson.md","mtime":"2018-01-18T10:11:45.092Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-18T10:14:01.886Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 14 - Templating and APIs","level":"1.7.2","depth":2,"next":{"title":"Week 15 - Node and Mongo maybe","level":"1.7.3","depth":2,"path":"node-db/week-15/lesson.md","ref":"node-db/week-15/lesson.md","articles":[]},"previous":{"title":"Week 13 - Node and Express 101","level":"1.7.1","depth":2,"path":"node-db/week-13/lesson.md","ref":"node-db/week-13/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-14/lesson.md","mtime":"2018-01-18T10:41:16.502Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-18T10:42:33.770Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
