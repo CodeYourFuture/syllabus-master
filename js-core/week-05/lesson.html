@@ -722,50 +722,78 @@
 </ul>
 <hr>
 <h2 id="arrays">Arrays</h2>
-<p>If you want to store a <strong>bunch of things</strong>, a <strong>collection</strong> or a <strong>list</strong> of
-things, identifiers like <code>name1</code>, <code>name2</code>, <code>name3</code> and so on quickly become
-tiresome. <strong>Arrays</strong> to the rescue!</p>
-<p>Imagine an array like a list or a collection of variables, but instead of each
-variable having its own name, only the array has a name. So how do you access a
-variable inside, then? How do you read and write? Using an <em>index</em>!</p>
-<p>An index is just a whole number, such as <code>0</code>, <code>1</code>, <code>2</code> and so forth. As in many
-areas of computing, indices in JavaScript arrays start with <code>0</code> --- so <code>0</code> is
-the index of the first element of an Array, <code>1</code> is the index of the second
-element, and so forth.</p>
-<p>The syntax is to list the values separated by commas, inside square brackets:</p>
-<pre class="language-"><code class="lang-js"><span class="token punctuation">[</span>value1<span class="token punctuation">,</span> value2<span class="token punctuation">,</span> value3<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<p>If you want to store a <strong>list of values</strong>, declaring manually a number of
+varibles becomes quickly tiresome and untenable:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> name1 <span class="token operator">=</span> <span class="token string">&apos;Bill&apos;</span>
+<span class="token keyword">var</span> name2 <span class="token operator">=</span> <span class="token string">&apos;Marta&apos;</span>
+<span class="token keyword">var</span> name3 <span class="token operator">=</span> <span class="token string">&apos;Andrew&apos;</span>
+<span class="token operator">...</span>
 </code></pre>
-<p>You can store any type of value inside an array: strings, numbers, booleans. You
-can even store other arrays, or objects (which you will learn about next).</p>
-<h3 id="try-it-out">Try it out</h3>
-<p>Defining an array as a variable looks something like this:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> animals <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;tiger&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;puppy&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;snake&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;llama&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<p><strong>Arrays</strong> to the rescue!</p>
+<p>An Array is a native javascript data type, like the integers, strings and
+boolean that you saw last week.</p>
+<p>It contains a ordered list of values, and each of those values can be of any
+data type (even another array and objects, which you will learn about next!).</p>
+<p>Arrays are <em>ordered</em>, which means that each value has a specific position in it.
+This is very useful, as it allows us to access and interact with the single
+values present in the array. They are also <em>mutable</em>, which means that values
+inside them can be changed, added and removed.</p>
+<p>The syntax for an array is a number of variables separated by commas, with
+square brackets and the start and end.</p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">[</span><span class="token string">&apos;Bill&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Marta&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Andrew&apos;</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">// an array of 3 strings</span>
+
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">53</span><span class="token punctuation">,</span> <span class="token number">135</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// an array of 5 integers</span>
+
+<span class="token punctuation">[</span><span class="token string">&apos;Hello world&apos;</span><span class="token punctuation">,</span> <span class="token number">98</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">&apos;Rachel&apos;</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// an array containing different data types</span>
+
+<span class="token keyword">var</span> myArrayOfFriends <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;Bill&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Marta&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Andrew&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// assigning the array to a variable</span>
+</code></pre>
+<h3 id="interacting-with-the-array">Interacting with the array</h3>
+<p>An array data type is only useful if we can interact with the values stored
+within. Like other data type, arrays in Javascript have a number of methods
+already defined to make our life easier.</p>
+<p>Let&apos;s start by defining an array of animals!</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> animals <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;tiger&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;puppy&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;snake&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;llama&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Pretty neat! Now you have all the animals grouped together rather than having to
-define them separately. You can see how many animals there are by using
-<code>.length</code>:</p>
-<pre class="language-"><code class="lang-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+define them separately. One of the useful methods that we get from arrays lets
+us check the number of values present in it by accessing the <code>length</code> attribute.</p>
+<p>We do that with a <code>.</code>, like so:</p>
+<pre class="language-"><code class="lang-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 4</span>
 </code></pre>
+<p>We have the length, but how do you access a single value inside?
+Using an <em>index</em>!</p>
+<p>An index is an integer, such as <code>0</code>, <code>1</code>, <code>2</code>, etc. It indicates the
+position of the values inside the array. As is common in many programming
+languages, indices in JavaScript arrays start with <code>0</code> --- so <code>0</code> is
+the index of the first element of an Array, <code>1</code> is the index of the second
+element, and so forth.</p>
 <p>If you want to refer to one specific member of the array, you can do so by using
-their &quot;index number&quot; like so.</p>
-<pre class="language-"><code class="lang-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+their &apos;index number&apos; like so:</p>
+<pre class="language-"><code class="lang-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Guess the output before running the command!</span>
 </code></pre>
 <blockquote>
 <p>Take a guess at which animal that will print out, and see if you&apos;re right.</p>
 </blockquote>
-<p>Spoiler alert, it will print out &quot;puppy&quot;. That might seem weird, until you learn
-that JavaScript is a &quot;0-index&quot; language. What that means is that counting in
-JavaScript starts at 0. So <code>animals[0]</code>will print out &quot;tiger&quot;. We don&apos;t make the
-rules...</p>
+<p>Spoiler alert, it will print out <code>&apos;puppy&apos;</code>. That might seem weird, until you
+remember the paragraph just before the example: arrays in Javascript are
+0-indexed, which means that the first value is accessed with <code>animals[0]</code> :</p>
+<pre class="language-"><code class="lang-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// &apos;tiger&apos;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// &apos;puppy&apos;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// &apos;snake&apos;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// &apos;llama&apos;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>animals<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// undefined! the array has 4 elements, animal[5] would try to access the 5th!</span>
+</code></pre>
 <blockquote>
 <p><strong>Exercise:</strong></p>
 <ol>
 <li>Create an array that contains the countries of all the students in the
 class (at least five nationalities)</li>
 <li><code>console.log</code> the number of countries in the Array</li>
-<li>Now, <code>console.log()</code> each country in the list. Hint: <strong>For loops</strong></li>
+<li>Now, <code>console.log()</code> each country in the list</li>
+<li>Update point 3 to work for arrays of any length (hint: use for loops and the length property)</li>
 </ol>
-<p><strong>Don&apos;t ask a mentor - Google it!</strong> Try googling to find the answer if you&apos;re
+<p>Extra points: <strong>Don&apos;t ask a mentor - Google it!</strong> Try googling to find the answer if you&apos;re
 stuck. Google skills are an essential part of being a developer.</p>
 </blockquote>
 <h2 id="objects">Objects</h2>
@@ -775,19 +803,19 @@ you might want to save the name, model and colour of a car. Or the name, time
 and location of a film playing at the cinema.</p>
 <p>The syntax looks like this:</p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
-  property1<span class="token punctuation">:</span> <span class="token string">&quot;value1&quot;</span><span class="token punctuation">,</span>
-  property2<span class="token punctuation">:</span> <span class="token string">&quot;value2&quot;</span><span class="token punctuation">,</span>
-  property3<span class="token punctuation">:</span> <span class="token string">&quot;value3&quot;</span>
+  property1<span class="token punctuation">:</span> <span class="token string">&apos;value1&apos;</span><span class="token punctuation">,</span>
+  property2<span class="token punctuation">:</span> <span class="token string">&apos;value2&apos;</span><span class="token punctuation">,</span>
+  property3<span class="token punctuation">:</span> <span class="token string">&apos;value3&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The names on the left (&quot;property1&quot;) are known &quot;keys&quot;. Any values can be given to
+<p>The names on the left (&apos;property1&apos;) are known &apos;keys&apos;. Any values can be given to
 them: strings, booleans, integers.</p>
 <h3 id="try-it-out">Try it out</h3>
 <p>Let&apos;s define an object that represents a person:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
-  firstName<span class="token punctuation">:</span> <span class="token string">&quot;Nelson&quot;</span><span class="token punctuation">,</span>
-  lastName<span class="token punctuation">:</span> <span class="token string">&quot;Mandela&quot;</span><span class="token punctuation">,</span>
-  occupation<span class="token punctuation">:</span> <span class="token string">&quot;freedom fighter&quot;</span><span class="token punctuation">,</span>
+  firstName<span class="token punctuation">:</span> <span class="token string">&apos;Nelson&apos;</span><span class="token punctuation">,</span>
+  lastName<span class="token punctuation">:</span> <span class="token string">&apos;Mandela&apos;</span><span class="token punctuation">,</span>
+  occupation<span class="token punctuation">:</span> <span class="token string">&apos;freedom fighter&apos;</span><span class="token punctuation">,</span>
   age<span class="token punctuation">:</span> <span class="token number">95</span><span class="token punctuation">,</span>
   alive<span class="token punctuation">:</span> <span class="token boolean">false</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -799,15 +827,15 @@ the properties. Run this code:</p>
 <blockquote>
 <p><strong>Exercise</strong> Using an object representing a person, <code>console.log()</code> a sentence
 introducing the person. Print out the following:</p>
-<p><em>&quot;Hi, my name is {firstName} {lastName}. I am {age} years old, and work as a
-{occupation}.&quot;</em></p>
+<p><em>&apos;Hi, my name is {firstName} {lastName}. I am {age} years old, and work as a
+{occupation}.&apos;</em></p>
 <p>Hint: you can construct longer strings by adding them together. This includes
 variables. For example:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">&quot;Jane&quot;</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;People call me &quot;</span> <span class="token operator">+</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">&apos;Jane&apos;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;People call me &apos;</span> <span class="token operator">+</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// the previous line will print</span>
-<span class="token comment" spellcheck="true">// &quot;People call me Jane&quot;</span>
+<span class="token comment" spellcheck="true">// &apos;People call me Jane&apos;</span>
 </code></pre>
 </blockquote>
 <h2 id="useful-array-methods">Useful array methods</h2>
@@ -817,8 +845,8 @@ this work for arrays? A simple <code>arr1 + arr2</code> will not do, but there i
 you can use: <code>concat()</code>. It is a method that you call on the array (similar to
 how <code>console.log</code> is the <code>log</code> function called on <code>console</code>) and takes the array
 you want to append as a parameter.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> countries <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Scotland&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Germany&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Syria&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> moreCountries <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Sudan&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Ethiopia&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;France&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> countries <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;Scotland&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Germany&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Syria&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> moreCountries <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;Sudan&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Ethiopia&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;France&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 countries<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>moreCountries<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>countries<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [&apos;Scotland&apos;, &apos;Germany&apos;, &apos;Syria&apos;, &apos;Sudan&apos;, &apos;Ethiopia&apos;, &apos;France&apos;]</span>
@@ -826,13 +854,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h3 id="appending-an-element">Appending an element</h3>
 <p>If you want to append an element to an array, you can just put it after the last
 existing element like so:</p>
-<pre class="language-"><code class="lang-js">countries<span class="token punctuation">[</span>countries<span class="token punctuation">.</span>length<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;United States of America&quot;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js">countries<span class="token punctuation">[</span>countries<span class="token punctuation">.</span>length<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&apos;United States of America&apos;</span><span class="token punctuation">;</span>
 </code></pre>
 <p>There is another way though, which is a bit more elegant: the <code>push</code> function.</p>
-<pre class="language-"><code class="lang-js">countries<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;United States of America&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js">countries<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&apos;United States of America&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// .push can also be called with multiple parameters</span>
-countries<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;United States of America&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;France&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+countries<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&apos;United States of America&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;France&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote>
 <p><strong>Exercise</strong>: Search <code>.slice</code>, <code>.splice</code> and <code>.pop</code> and tell us what they do</p>
@@ -844,50 +872,95 @@ countries<span class="token punctuation">.</span><span class="token function">pu
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">Strings</a></li>
 </ol>
 <h1 id="homework">Homework</h1>
-<ol>
-<li><p><a href="https://github.com/Code-Your-Future/JS-Core-1-Exercises" target="_blank">The repo</a> that you
-have forked during the last class contains few challenges - solve them all in
-JavaScript. You should know all the needed information by now.</p>
-</li>
-<li><p>Follow
-<a href="https://www.khanacademy.org/computing/computer-programming/programming" target="_blank">this course</a>
-on Khan Academy. It will go through some of the basics that we covered in the
-class and beyond.</p>
-</li>
-<li><p><strong>Research:</strong></p>
-</li>
-</ol>
-<p>Read the chapter from JS: The Good parts</p>
+<h3 id="challenges">Challenges</h3>
+<p>Go back to <a href="https://github.com/Code-Your-Future/JS-Core-1-Exercises" target="_blank">the repo</a>
+that you have forked during the last class:</p>
 <ul>
-<li>Chapter 9: Style - it&apos;s a short chapter, everyone start by reading that
-chapter.</li>
-<li>ALL: Read the chapter about <strong>Objects</strong> (up to Reference)</li>
-<li>Read the chapter about <strong>Arrays</strong> (ignore the Methods section)</li>
-<li>Read the chapter about Functions up to the section about <strong>Return</strong></li>
+<li>If you haven&apos;t attempted all the week 1 base challenges, go back and work on
+them!</li>
+<li>If you&apos;re all done, challenge yourself with the week 1 advanced challenges,
+and the ones present in week 2.</li>
 </ul>
-<p>When reading always try the code snippets by yourself in Node. (change
-document.writeln to console.log)</p>
-<p>Next class - we want you to do a presentation (including showing some code
-sample) for one of these concepts:</p>
+<h3 id="code-style-and-best-practices">Code style and best practices</h3>
+<p>As you might have noticed, there are often several <em>valid</em> ways to write the
+same code.</p>
+<p>For example we can define a string with either single or double:
+quotes:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> singleQuotes <span class="token operator">=</span> <span class="token string">&apos;Hello&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> doubleQuotes <span class="token operator">=</span> <span class="token string">&quot;Hello&quot;</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// exactly the same as singleQuotes</span>
+
+<span class="token comment" spellcheck="true">// check if they&apos;re actually the same</span>
+singleQuotes <span class="token operator">==</span> doubleQuotes  <span class="token comment" spellcheck="true">// true</span>
+</code></pre>
+<p>Another example, on spacing and newlines:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// is the same as</span>
+<span class="token keyword">function</span> sayHello <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// or</span>
+<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// and even</span>
+<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+</code></pre>
+<p>While functionally the same, good developer are <strong>consistent</strong> in the way they
+write their code.</p>
+<p>Consistency and predictability in the <em>visual structure</em> of the code won&apos;t
+change the way the computer will execute the code, but will make it way easier
+to maintain the code and spot bugs for both you and other programmers.</p>
+<p>To this end, many organisation and people develop a set of <em>conventions</em> ,
+or <strong>style guide</strong> on how to structure their code. While often one option is not strictly &apos;better&apos; than others, it is tremendously helpful if all the people
+working on a project write in the same style.</p>
+<p>To get some more insight on the argument, read these links:</p>
 <ul>
-<li>Switch Statements and Ternary Operators</li>
-<li>Math methods in JavaScript</li>
-<li>While loops (compare them to for Loops)</li>
-<li>Array.slice and Array.splice</li>
-<li>Array.map and Array.forEach</li>
-<li>Array.find and Array.filter</li>
-<li>String.replace, String.search and other String methods</li>
-<li>Object.keys (How to loop the properties of an object)</li>
-<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank">Function arguments</a></li>
-<li>[Advanced]<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Creating_new_objects" target="_blank">different ways of creating objects</a></li>
-<li>[Advanced]<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Inheritance" target="_blank">inheritance</a></li>
-<li>[Advanced]<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank">regular expressions</a></li>
+<li><a href="https://www.smashingmagazine.com/2012/10/why-coding-style-matters/" target="_blank">https://www.smashingmagazine.com/2012/10/why-coding-style-matters/</a> dig a bit
+more on the <em>why</em> a style guide is a good thing. The publishing date is old and
+the resources are mostly outdated, but the article itself is still very good.</li>
+<li><a href="https://webdesign.tutsplus.com/articles/css-documentation-best-practices--cms-30139" target="_blank">https://webdesign.tutsplus.com/articles/css-documentation-best-practices--cms-30139</a>
+a recent article by a UX designer sharing tips on how she organise her css.</li>
+<li><a href="https://github.com/airbnb/javascript/tree/es5-deprecated/es5" target="_blank">https://github.com/airbnb/javascript/tree/es5-deprecated/es5</a> and
+<a href="https://github.com/airbnb/css" target="_blank">https://github.com/airbnb/css</a>, the official airbnb styleguides for JavaScript
+and css. Two notes here: first, just skim these. Like a foreign language
+dictionary, a beginner can have the most benefit using it as a reference rather
+than memorising it in its entirety. Second: the &apos;es5&apos; link is <em>deprecated</em> as
+airbnb uses &apos;es6&apos;, which is a version of JavaScript with new syntax which you
+will learn in the future.</li>
+<li><a href="https://en.wiktionary.org/wiki/bikeshedding" target="_blank">https://en.wiktionary.org/wiki/bikeshedding</a>. This is sometime mentioned to
+refer to developer spending huge amount of time fighting on which style of code
+is &apos;better&apos;</li>
+<li><a href="https://www.bbc.co.uk/cbbc/styleguide" target="_blank">https://www.bbc.co.uk/cbbc/styleguide</a>. Styleguides are not only about code,
+but they are used for book writing, communication, and design.</li>
 </ul>
-<h2 id="prepare-for-the-next-class">Prepare for the next class</h2>
-<ol>
-<li>Reserach <strong>Unit Testing</strong> (next time, know how to answer the question: <strong>what
-is TDD?</strong>)</li>
-</ol>
+<h3 id="code-testing">Code Testing</h3>
+<p>The styleguide section introduced us to the concept of &apos;maintainability&apos; of our
+code, which is the ability of going back to it at a later date and change it,
+improve it of fix bugs.</p>
+<p>As a project&apos;s size grows and more people work on it, it becomes more and more
+complicated, and it&apos;s increasingly difficult for developers, especially juniors,
+to have a mental map of every single line of code. Every change on the codebase
+risks breaking the functionality in unexpected ways leading to a never-ending
+loop of bugs.</p>
+<p>One of the ways to mitigate this is testing: in essence, writing extra code,
+often with the aid of specialised tools, to validate the functionality of the
+actual program.</p>
+<p>This will be a subject in future lessons and there are several other good
+reasons to implement testing in software, but for now do some research on the
+topic. Here are some starting links:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=UZy1Dj9JIg4&amp;feature=youtu.be&amp;t=356" target="_blank">https://www.youtube.com/watch?v=UZy1Dj9JIg4&amp;feature=youtu.be&amp;t=356</a> start at
+6 minute mark. A high-level overview on testing in general</li>
+<li><a href="https://www.codeproject.com/Tips/351122/What-is-software-testing-What-are-the-different-ty" target="_blank">https://www.codeproject.com/Tips/351122/What-is-software-testing-What-are-the-different-ty</a></li>
+<li>Look up &apos;TDD&apos; (Test Driven Development) and try to get a basic understanding
+of what it entails.</li>
+</ul>
 
                                 
                                 </section>
@@ -931,7 +1004,7 @@ is TDD?</strong>)</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"next":{"title":"Week 6 - Debugging and more Data Structures","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]},"previous":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-05/lesson.md","mtime":"2018-01-15T18:06:25.609Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-15T18:07:38.041Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"next":{"title":"Week 6 - Debugging and more Data Structures","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]},"previous":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-05/lesson.md","mtime":"2018-01-18T00:20:10.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-18T00:21:32.772Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
