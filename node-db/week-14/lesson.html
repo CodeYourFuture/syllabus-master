@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Week 14 - Templating and APIs · GitBook</title>
+        <title>Week 14 - Middlewares, Templating and APIs · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -381,7 +381,7 @@
                 <a href="../../js-core-3/week-12/lesson.html">
             
                     
-                    Week 12 - Exam maybe
+                    Week 12 - Recap
             
                 </a>
             
@@ -426,7 +426,7 @@
                 <a href="lesson.html">
             
                     
-                    Week 14 - Templating and APIs
+                    Week 14 - Middlewares, Templating and APIs
             
                 </a>
             
@@ -439,7 +439,7 @@
                 <a href="../week-15/lesson.html">
             
                     
-                    Week 15 - Node and Mongo maybe
+                    Week 15 - Advanced Node
             
                 </a>
             
@@ -697,7 +697,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Week 14 - Templating and APIs</a>
+        <a href="../.." >Week 14 - Middlewares, Templating and APIs</a>
     </h1>
 </div>
 
@@ -716,16 +716,38 @@
 <h1 id="node-2">Node 2</h1>
 <p><strong>What we will learn today?</strong></p>
 <ul>
-<li><a href="#recap">Recap</a></li>
+<li><a href="#middlewares">Middlewares</a></li>
 <li><a href="#templating">Templating</a></li>
-<li><a href="#callbacks-and-callback-hell">Callbacks and Callback hell</a></li>
+<li><a href="#callbacks">Callbacks</a></li>
 <li><a href="#apis">APIs</a></li>
 <li><a href="#deploying-to-heroku">Deploying to Heroku</a></li>
 </ul>
 <hr>
-<h1 id="before-we-start">Before we start</h1>
+<h2 id="middlewares">Middlewares</h2>
+<p>One of the most powerful features of <a href="https://expressjs.com" target="_blank">Express</a> compared to other node frameworks like <a href="https://hapijs.com/" target="_blank">Hapi</a> is that it is middleware oriented.</p>
+<p>Middlewares in Express can be used to process all the requests that come through your application. For example, let&apos;s imagine that you wanted to log every request</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;express&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> myLogger <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> visitTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`visited </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>req<span class="token punctuation">.</span>urll<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> at </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>visitTime<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>myLogger<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;Hello World!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Server is listening on port 3000. Ready to accept requests!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>As you can imagine it can be very useful to <a href="https://expressjs.com/en/guide/writing-middleware.html" target="_blank">write your own Middlewares</a>, but you can also find <a href="https://github.com/rajikaimal/awesome-express#middleware" target="_blank">many useful middlewares</a> to add to your program for rapid development.</p>
+<h2 id="templating">Templating</h2>
 <p>Fork and Clone the <a href="https://github.com/CodeYourFuture/express-workshop-2" target="_blank">express-workshop-2</a> repository</p>
-<h1 id="recap">Recap</h1>
 <p>Let&apos;s have a look at the repo we&apos;ve just forked.</p>
 <ul>
 <li><p><strong>Package.json</strong>: Remember how in the last lesson we added a <em>package.json</em>
@@ -760,7 +782,7 @@ source Bootsrap-based themes from
 <p><strong>Exercise</strong>: Notice how the link to <strong>Contact me</strong> doesn&apos;t return a page -
 Let&apos;s add an enpoint to return a simple string <strong>this is a contact page</strong>.</p>
 </blockquote>
-<h1 id="templating">Templating</h1>
+<h2 id="using-templates">Using templates</h2>
 <blockquote>
 <p><strong>Exercise</strong>: Let&apos;s change the text for the link, <strong>Contact</strong>, to <strong>Contact
 Information</strong>.</p>
@@ -774,17 +796,6 @@ by an application server that processes server-side scripts. In server-side
 scripting, parameters determine how the assembly of every new web page
 proceeds, including the setting up of more client-side processing.</p>
 </blockquote>
-<h2 id="websites---a-small-detour">Websites - a small detour</h2>
-<p>What is wrong with this
-<a href="http://cyf-template-1.s3-website-eu-west-1.amazonaws.com/" target="_blank">website?</a></p>
-<p>Is this one any
-<a href="http://cyf-template-2.s3-website-eu-west-1.amazonaws.com" target="_blank">better?</a></p>
-<p>The final view is
-<a href="http://cyf-template-3.s3-website-eu-west-1.amazonaws.com/" target="_blank">here</a></p>
-<p>What was missing in the first example?</p>
-<p><img src="https://s3-eu-west-1.amazonaws.com/cyf-template-1/data.json.png" alt="alt text"></p>
-<p>So what is the point of all these?</p>
-<p><img src="https://s3-eu-west-1.amazonaws.com/cyf-template-1/html-data-template.png" alt="alt text"></p>
 <h2 id="template-engines">Template Engines</h2>
 <p>A template engine enables you to use static template files in your application.
 At <strong>runtime</strong>, the template engine replaces variables in a template file with
@@ -814,7 +825,7 @@ find it?</li>
 <li>Notice the <em>index.handlebars</em>, <em>my-cv.handlebars</em> and <em>admin.handlebars</em>.</li>
 </ul>
 <p>Then add these routes:</p>
-<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">&quot;index&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -838,7 +849,7 @@ static files? <strong>Express</strong> and <strong>Handlebars</strong> allow you
 <strong>routes</strong> and the <strong>views</strong>. Here is how we can do it:</p>
 <ol>
 <li><p>Let&apos;s modify the <code>/</code> route to pass the title of the page.</p>
-<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">&quot;index&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     title<span class="token punctuation">:</span> <span class="token string">&quot;Etzali Profile&quot;</span> <span class="token comment" spellcheck="true">// insert your name instead</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -897,9 +908,9 @@ and <a href="handlebarsjs.com">handlebars documentation</a></p>
 {{/each}}
 </code></pre>
 <p>In the <code>route</code>, let&apos;s load the file in <code>data/posts.json</code>:</p>
-<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> filePath <span class="token operator">=</span> __dirname <span class="token operator">+</span> <span class="token string">&quot;/data/posts.json&quot;</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> callbackFunction <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> callbackFunction <span class="token operator">=</span> <span class="token punctuation">(</span>error<span class="token punctuation">,</span> file<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// we call .toString() to turn the file buffer to a String</span>
     <span class="token keyword">const</span> fileData <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// we use JSON.parse to get an object out the String</span>
@@ -1155,7 +1166,7 @@ following:</p>
                 </a>
                 
                 
-                <a href="../week-15/lesson.html" class="navigation navigation-next " aria-label="Next page: Week 15 - Node and Mongo maybe">
+                <a href="../week-15/lesson.html" class="navigation navigation-next " aria-label="Next page: Week 15 - Advanced Node">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1166,7 +1177,7 @@ following:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 14 - Templating and APIs","level":"1.7.2","depth":2,"next":{"title":"Week 15 - Node and Mongo maybe","level":"1.7.3","depth":2,"path":"node-db/week-15/lesson.md","ref":"node-db/week-15/lesson.md","articles":[]},"previous":{"title":"Week 13 - Node and Express 101","level":"1.7.1","depth":2,"path":"node-db/week-13/lesson.md","ref":"node-db/week-13/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-14/lesson.md","mtime":"2018-01-18T10:41:16.502Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-18T10:42:33.770Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 14 - Middlewares, Templating and APIs","level":"1.7.2","depth":2,"next":{"title":"Week 15 - Advanced Node","level":"1.7.3","depth":2,"path":"node-db/week-15/lesson.md","ref":"node-db/week-15/lesson.md","articles":[]},"previous":{"title":"Week 13 - Node and Express 101","level":"1.7.1","depth":2,"path":"node-db/week-13/lesson.md","ref":"node-db/week-13/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-14/lesson.md","mtime":"2018-01-18T16:54:44.547Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-18T16:55:54.363Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
