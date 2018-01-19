@@ -769,10 +769,8 @@ to choose the data structures you will use to solve it. So when do you use an
 Array and when do you use an Object.</p>
 <p>&quot;Bad programmers worry about the code. Good programmers worry about data structures and their relationships.&quot; Linus Torvalds</p>
 <p>Let&apos;s talk about the differences between Arrays and Objects - when can you use or the other. As a general rule of thumb:</p>
-<ol>
-<li>Does the order of data matter? Then use Arrays.</li>
-<li>Can the data be organised by a label? Then use Objects.</li>
-</ol>
+<p>1 Does the order of data matter? Then use Arrays.
+2 Can the data be organised by a label? Then use Objects.</p>
 <blockquote>
 <p>Exercise: Let&apos;s say we&apos;re writing a program to model and display a Newspaper:
 what data structure would you use to model the different sections of the
@@ -897,24 +895,18 @@ the total money in the wallet.</p>
 </code></pre>
 <blockquote>
 <p>Exercises</p>
-<ol>
-<li><p>Write a function - <code>sumWallets</code> - that takes the array <code>wallets</code> and
+<p>1 Write a function - <code>sumWallets</code> - that takes the array <code>wallets</code> and
 returns the total amount of money for all of the wallets.</p>
-</li>
-<li><p>Write another function - <code>combineWallets</code> - that takes the array of wallets
+<p>2 Write another function - <code>combineWallets</code> - that takes the array of wallets
 and combines all of the notes in each of them, returning a single wallet
 with all of the other wallets&apos; notes.</p>
-</li>
-<li><p>See if you can write a function - <code>sumDynamicWallet</code> - that will sum up and
+<p>3 See if you can write a function - <code>sumDynamicWallet</code> - that will sum up and
 return the total amount in a single wallet, but it could have any number of
 different notes inside it (&#xA3;7 note or a &#xA3;13 or any other number).</p>
-</li>
-<li><p>See if you can write a function that takes in any number of wallets, which
+<p>4 See if you can write a function that takes in any number of wallets, which
 could contain any denomination/type of notes inside them (each being
 different). Tip: have a think about if you could re-use a function from a
 previous example...</p>
-</li>
-</ol>
 </blockquote>
 <h2 id="value-vs-reference-types">Value vs Reference Types</h2>
 <p>A variable can hold two types of values: primitives (value types) and reference
@@ -941,8 +933,7 @@ our program where to look for that object in memory.</p>
 <p><img src="assets/stack_heap.png" alt="Memory assignment"></p>
 <h2 id="pass-by-value--reference">Pass by value / reference</h2>
 <p>Consider the example below.</p>
-<pre class="language-"><code class="lang-js">
-<span class="token keyword">function</span> <span class="token function">addFive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span> value <span class="token operator">=</span> value <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">addFive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span> value <span class="token operator">=</span> value <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> ten <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token function">addFive</span><span class="token punctuation">(</span>ten<span class="token punctuation">)</span><span class="token punctuation">;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ten<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -977,9 +968,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>object<span class="token punctuation">.</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// &quot;how are you?&quot;</span>
 </code></pre>
 <blockquote>
-<p>Let&apos;s look at the illustrations here:
-<a href="http://www.javascripttutorial.net/javascript-primitive-vs-reference-values/" target="_blank">http://www.javascripttutorial.net/javascript-primitive-vs-reference-values/</a> to
-understand this behavior better</p>
+<p>Let&apos;s look at the illustrations <a href="http://www.javascripttutorial.net/javascript-primitive-vs-reference-values/" target="_blank">here</a>
+to understand this behavior better</p>
 <p><strong>Exercise</strong></p>
 <ul>
 <li>Open up the
@@ -1089,28 +1079,17 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 </blockquote>
 <h1 id="resources">Resources</h1>
-<ol>
-<li>Objects vs Arrays -
-<a href="https://www.metaltoad.com/blog/javascript-understanding-objects-vs-arrays-and-when-use-them-part-1" target="_blank">https://www.metaltoad.com/blog/javascript-understanding-objects-vs-arrays-and-when-use-them-part-1</a></li>
-<li>JavaScript Arrays and Objects Are Just Like Books and Newspapers
-<a href="https://medium.freecodecamp.org/javascript-arrays-and-objects-are-just-like-books-and-newspapers-6e1cbd8a1746" target="_blank">https://medium.freecodecamp.org/javascript-arrays-and-objects-are-just-like-books-and-newspapers-6e1cbd8a1746</a></li>
-</ol>
+<p>1 <a href="https://www.metaltoad.com/blog/javascript-understanding-objects-vs-arrays-and-when-use-them-part-1" target="_blank">Objects vs Arrays</a>
+2 <a href="https://medium.freecodecamp.org/javascript-arrays-and-objects-are-just-like-books-and-newspapers-6e1cbd8a1746" target="_blank">JavaScript Arrays and Objects Are Just Like Books and Newspapers</a></p>
 <h1 id="homework">Homework</h1>
-<ol>
-<li>Create an account on <a href="http://www.codewars.com/" target="_blank">CodeWars</a> and do at least 15
-challenges.</li>
-<li>Sign up for the <a href="https://javascript30.com/" target="_blank">JavaScript 30</a> course and do at
-least 2 project. You can find the starter files for the project here:
-<a href="https://github.com/wesbos/JavaScript30" target="_blank">https://github.com/wesbos/JavaScript30</a></li>
-</ol>
+<p>1 Create an account on <a href="http://www.codewars.com/" target="_blank">CodeWars</a> and do at least 15
+   challenges.
+2 Sign up for the <a href="https://javascript30.com/" target="_blank">JavaScript 30</a> course and do at
+   least 2 project. You can find the starter files for the project <a href="https://github.com/wesbos/JavaScript30" target="_blank">here</a></p>
 <h1 id="research">Research</h1>
-<ol>
-<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Closures" target="_blank">Closures</a></li>
-<li><strong>.call</strong>, <strong>.apply* and </strong>.bind**:
-<a href="https://alexperry.io/personal/2016/04/03/How-to-use-apply-bind-and-call.html" target="_blank">https://alexperry.io/personal/2016/04/03/How-to-use-apply-bind-and-call.html</a></li>
-<li>Higher-order functions:
-<a href="https://medium.com/functional-javascript/higher-order-functions-78084829fff4" target="_blank">https://medium.com/functional-javascript/higher-order-functions-78084829fff4</a></li>
-</ol>
+<p>1 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Closures" target="_blank">Closures</a>
+2 <a href="https://alexperry.io/personal/2016/04/03/How-to-use-apply-bind-and-call.html" target="_blank"><em>.call</em>, <em>.apply</em> and <em>.bind</em></a>
+3 <a href="https://medium.com/functional-javascript/higher-order-functions-78084829fff4" target="_blank">Higher-order functions</a></p>
 
                                 
                                 </section>
@@ -1154,7 +1133,7 @@ least 2 project. You can find the starter files for the project here:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 6 - Debugging and more Data Structures","level":"1.4.3","depth":2,"next":{"title":"JavaScript II","level":"1.5","depth":1,"path":"js-core-2/index.md","ref":"js-core-2/index.md","articles":[{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.5.1","depth":2,"path":"js-core-2/week-07/lesson.md","ref":"js-core-2/week-07/lesson.md","articles":[]},{"title":"Week 8 - DOM, Events","level":"1.5.2","depth":2,"path":"js-core-2/week-08/lesson.md","ref":"js-core-2/week-08/lesson.md","articles":[]},{"title":"Week 9 - AJAX, Async, Promises","level":"1.5.3","depth":2,"path":"js-core-2/week-09/lesson.md","ref":"js-core-2/week-09/lesson.md","articles":[]}]},"previous":{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-06/lesson.md","mtime":"2018-01-18T17:46:51.849Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-18T17:48:15.063Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 6 - Debugging and more Data Structures","level":"1.4.3","depth":2,"next":{"title":"JavaScript II","level":"1.5","depth":1,"path":"js-core-2/index.md","ref":"js-core-2/index.md","articles":[{"title":"Week 7 - In-depth Functions and Intro to DOM","level":"1.5.1","depth":2,"path":"js-core-2/week-07/lesson.md","ref":"js-core-2/week-07/lesson.md","articles":[]},{"title":"Week 8 - DOM, Events","level":"1.5.2","depth":2,"path":"js-core-2/week-08/lesson.md","ref":"js-core-2/week-08/lesson.md","articles":[]},{"title":"Week 9 - AJAX, Async, Promises","level":"1.5.3","depth":2,"path":"js-core-2/week-09/lesson.md","ref":"js-core-2/week-09/lesson.md","articles":[]}]},"previous":{"title":"Week 5 - Arrays and Objects","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-06/lesson.md","mtime":"2018-01-19T15:32:35.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-19T15:34:15.235Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
