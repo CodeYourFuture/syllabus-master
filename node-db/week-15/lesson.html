@@ -634,6 +634,19 @@
             
         </li>
     
+        <li class="chapter " data-level="3.3" data-path="workshop.html">
+            
+                <a href="workshop.html">
+            
+                    
+                    Hotel Workshop
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -717,7 +730,11 @@
 <p><strong> What we will learn today?</strong></p>
 <ul>
 <li><a href="#node-recap">Node Recap</a></li>
-<li><a href="#advanced-topics">Advanced Topics</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#node-process-managers">Node Process Managers</a></li>
+<li><a href="#rest">REST</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#authentication">Authentication</a></li>
 <li><a href="#hotel-workshop">Hotel Workshop</a></li>
 </ul>
 <hr>
@@ -759,10 +776,9 @@ app<span class="token punctuation">.</span><span class="token keyword">get</span
 <li>Express Documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Routing</a></li>
 </ul>
 </blockquote>
-<h2 id="advanced-topics">Advanced Topics</h2>
-<h3 id="performance">Performance</h3>
+<h2 id="best-practices">Best Practices</h2>
 <p>Express have their own recommended <a href="https://expressjs.com/en/advanced/best-practice-performance.html" target="_blank">best practices page</a></p>
-<h3 id="node-process-managers">Node Process Managers</h3>
+<h2 id="node-process-managers">Node Process Managers</h2>
 <p>These process managers monitor for any changes in your node.js application and automatically restart the server, perfect for development and production.</p>
 <blockquote>
 <p>Popular PMs include:</p>
@@ -771,17 +787,25 @@ app<span class="token punctuation">.</span><span class="token keyword">get</span
 <li><a href="https://expressjs.com/en/advanced/pm.html#pm2" target="_blank">pm2</a></li>
 </ul>
 </blockquote>
-<h3 id="rest">REST</h3>
+<h2 id="rest">REST</h2>
 <p>REST is a convention of how to design your API, whether it is for your own frontend, or other frontends and clients.</p>
 <blockquote>
 <ul>
 <li>Read: Resource naming in <a href="http://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank">REST</a> convention</li>
 </ul>
 </blockquote>
-<h3 id="security">Security</h3>
+<h2 id="security">Security</h2>
 <p>When you take your website to production there is a whole range of things to consider.</p>
 <p><img src="../assets/http-vs-https.png" alt="HTTP vs HTTPS"></p>
-<h3 id="authentication">Authentication</h3>
+<p>Node has built in support for HTTPS, and once you have your own certificates you can use this feature. However sometimes when you deploy to <code>cloud</code> Platform Platform as a Service (PaaS) providers such as Heroku, they provide SSL and configure it for you automatically.</p>
+<blockquote>
+<ul>
+<li>Read: <a href="https://nodejs.org/api/https.html" target="_blank">Node: HTTPS</a></li>
+<li>Read/Watch: <a href="https://www.globalsign.com/en/ssl-information-center/what-is-an-ssl-certificate/" target="_blank">What is an SSL Certificate?</a></li>
+<li>Read: <a href="https://devcenter.heroku.com/articles/ssl" target="_blank">Heroku SSL</a></li>
+</ul>
+</blockquote>
+<h2 id="authentication">Authentication</h2>
 <p>Sometimes you need to add user functionality for your website. To do this you can make use of external libraries like <a href="www.passportjs.org">passport</a> to add authentication to your website.</p>
 <blockquote>
 <p>For more information read:</p>
@@ -791,7 +815,7 @@ app<span class="token punctuation">.</span><span class="token keyword">get</span
 </ul>
 </blockquote>
 <h2 id="hotel-workshop">Hotel Workshop</h2>
-<p>Get in to groups of 3/4 and checkout the <a href="workshop.md">workshop brief</a>.</p>
+<p>Get in to groups of 3/4 and checkout the <a href="workshop.html">workshop brief</a>.</p>
 <blockquote>
 <p><strong>Exercise</strong>: Please fork and clone <a href="https://github.com/CodeYourFuture/cyf-hotel" target="_blank">CYF-Hotel</a> repository and follow the exercises in the <code>README.MD</code>.</p>
 </blockquote>
@@ -855,7 +879,7 @@ following:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 15 - Advanced Node","level":"1.7.3","depth":2,"next":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"previous":{"title":"Week 14 - Middleware, Templating and APIs","level":"1.7.2","depth":2,"path":"node-db/week-14/lesson.md","ref":"node-db/week-14/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-15/lesson.md","mtime":"2018-01-26T11:59:27.831Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-26T12:00:45.823Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 15 - Advanced Node","level":"1.7.3","depth":2,"next":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"previous":{"title":"Week 14 - Middleware, Templating and APIs","level":"1.7.2","depth":2,"path":"node-db/week-14/lesson.md","ref":"node-db/week-14/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-15/lesson.md","mtime":"2018-01-27T11:55:32.581Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-27T11:56:41.361Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
