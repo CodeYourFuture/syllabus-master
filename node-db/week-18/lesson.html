@@ -728,42 +728,98 @@
                                 <h1 id="lesson-3-data-integrity-and-analytics">LESSON 3: DATA INTEGRITY AND ANALYTICS</h1>
 <p><strong>What we will learn today?</strong></p>
 <ul>
-<li>Adding invalid data.</li>
-<li>How to fix invalid data with foreign keys.</li>
-<li>Database Nulls</li>
+<li>How to add invalid relational data to a database</li>
+<li>How to prevent invalid relational data with foreign keys</li>
+<li>Database nulls</li>
+<li>Predicates</li>
 <li>Combining SQL predicates with AND and OR</li>
-<li>Order by</li>
-<li>Count / Sum / Avg</li>
-<li>Group by</li>
-<li>HAVING</li>
-<li>LIMIT</li>
-<li>like</li>
-<li>DISTINCT</li>
-<li>&apos;IN&apos;</li>
-<li>!=</li>
+<li>SQL - Order by</li>
+<li>SQL - Count / Sum / Avg</li>
+<li>SQL - Group by</li>
+<li>SQL - HAVING</li>
+<li>SQL - LIMIT</li>
+<li>SQL - like</li>
+<li>SQL - DISTINCT</li>
+<li>SQL - &apos;IN&apos;</li>
 </ul>
-<h3 id="workon-sqlite-on-the-command-line">Workon SQLite on the command line</h3>
+<h1 id="lesson--installing-sqlite-on-the-command-line">LESSON : Installing SQLite on the command line</h1>
 <ul>
-<li>need to add snippets of sqllite commands</li>
-<li>and on line quick reference</li>
+<li>Windows: <a href="https://sqlite.org/download.html" target="_blank">https://sqlite.org/download.html</a></li>
+<li>Ubuntu: apt-get install sqlite</li>
+<li>Mac OS: brew install sqlite</li>
 </ul>
-<h3 id="recreate-the-same-database-as-in-the-previous-set-of-exercises">Recreate the same database as in the previous set of exercises</h3>
-<h3 id="add-more-entries">Add more entries</h3>
-<p>Ask them to add relevat data to each of the tables <code>Costumer</code>, <code>Room</code> and <code>Reservation</code>.</p>
-<p>Then, ask them to add more data with incomplete relationships - reservation without a room.</p>
-<p>Highlight issue.</p>
-<p><strong> Wait a minute! Wasn&apos;t this the issue that we were talking about? A reservation needs to have both a room and a costumer associated to. </strong></p>
-<p>Ask class how to deal with this problem?</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>sqlite temp.sqlite</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>sqlite&gt; create table rooms (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  type_name varchar(50),
+  original_price integer,
+  current_price int,
+);</p>
+<p>sqlite&gt; insert into rooms (1, &apos;seaview&apos;, 50.0, 55.0);</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>sqlite temp.sqlite &lt; example.sql</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="exercise-1-recreate-the-hotel-database-and-add-some-entries">EXERCISE 1: Recreate the hotel database and add some entries</h1>
+<ul>
+<li>Recreate customer, room and reservation tables</li>
+<li>Insert some example data making sure that the IDs match</li>
+</ul>
+<h1 id="lesson-2-data-integrity">LESSON 2: Data integrity</h1>
+<p>Try this in your database:</p>
+<p>INSERT INTO Invoices (reservation_id, total, surcharges, invoice_date_time, paid) values (9999, 35.0, 0, &apos;01/01/2018&apos;, 0);</p>
+<h1 id="questions-for-class">QUESTIONS FOR CLASS:</h1>
+<ul>
+<li><p>What&apos;s the problem with the above SQL statement?</p>
+</li>
+<li><p>What happens to the application and the end user if you accidentally do this?</p>
+</li>
+<li><p>How can you deal with a problem like this? There are 2/3 answers to this question - what are they?</p>
+</li>
+</ul>
 <p>A1: Delete data</p>
-<p>A2: Make it impossible to add invalid data in the first place.</p>
-<h3 id="how-to-delete-records-from-a-table">How to delete records from a table</h3>
-<p>We can now delete the wrong records.</p>
-<p>We should probably highlicht the need to do a select before the delete so that we are only deleting what we want to delete - the <code>where</code> should be the same !!!</p>
+<p>A2: Make it impossible to add invalid data in the first place in the code.</p>
+<p>A3: Make it impossible to add invalid data in the first place in the database.</p>
+<h1 id="lesson-deleting-records-from-a-table">LESSON: Deleting records from a table</h1>
+<p>To fix the invalid data we can first delete the data from the database. This is as
+good a time as any to tell you about deleting, so here goes:</p>
+<p>  DELETE FROM [ TABLE ] WHERE id = [ ID ];</p>
+<h1 id="exercise-first-find-the-row-with-select-then-delete-it">EXERCISE: First find the row with select, then delete it</h1>
 <p>Start with the <code>SELECT</code>:</p>
 <pre class="language-"><code>SELECT * FROM customers WHERE <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>...</span><span class="token punctuation">&gt;</span></span>
 </code></pre><p>Then the delete.</p>
 <pre class="language-"><code>DELETE FROM customers WHERE <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>...</span><span class="token punctuation">&gt;</span></span>
-</code></pre><h3 id="how-to-make-it-impossible-to-add-invalid-data">How to make it impossible to add invalid data</h3>
+</code></pre><h3 id="lesson--foreign-keys">LESSON : Foreign Keys</h3>
+<p>Ex</p>
+<p>CREATE TABLE customers (
+    id        INTEGER       PRIMARY KEY AUTOINCREMENT,
+    title     VARCHAR(10),
+    firstname VARCHAR (50),
+    surname   VARCHAR (50),
+    email     VARCHAR (255) 
+);</p>
+<p>CREATE TABLE reservations (
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_id INTEGER,
+  room_id INTEGER,
+  check_in_date DATETIME NOT NULL,
+  checkout_out_date DATETIME,
+  room_price_per_night REAL,
+  FOREIGN KEY (customer_id) REFERENCES customers(id)
+);</p>
+<p>Now, try running this again:</p>
+<p>INSERT INTO reservations (9999, 35, &apos;01/01/2018&apos;, &apos;01/01/2018&apos;, invoice_date_time, paid) values (9999, 35.0, 0, &apos;01/01/2018&apos;, 0);</p>
+<p>A foreign key is a <em>constraint</em>.</p>
+<h3 id="exercise-add-foreign-key-for-invoices">EXERCISE: Add foreign key for invoices</h3>
 <h4 id="deal-with-imcomplete-data---foreign-keys">Deal with imcomplete data - foreign keys</h4>
 <ul>
 <li>Add reservations without either costumer or room</li>
@@ -878,7 +934,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - State","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - React-router & Recap","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2018-01-28T22:45:17.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-28T22:47:06.976Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - State","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - React-router & Recap","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2018-01-28T22:45:53.791Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-28T22:47:17.540Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

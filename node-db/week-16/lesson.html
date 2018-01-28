@@ -728,12 +728,19 @@
                                 <h1 id="week-16-lesson-1--basic-sql">WEEK 16 LESSON 1 : BASIC SQL</h1>
 <p><strong>What we will learn today?</strong></p>
 <ul>
-<li>Why we need databases.</li>
-<li>Creating a database with SQL, storing data in it.</li>
-<li>Retrieving data from a database using SQL.</li>
+<li>Why we need databases</li>
+<li>Installing SQLite</li>
+<li>Creating a database with SQL and storing data in it.</li>
 <li>Inserting data into a database using SQL.</li>
+<li>Retrieving data from a database using SQL.</li>
 <li>Joins</li>
 </ul>
+<h1 id="lesson-1a-why-we-need-databases">LESSON 1.A: Why we need databases</h1>
+<p>So, in your previous lessons you have been taught how to store and retrieve data
+using files. This is fine and works well for some data - particularly simple data -
+but it can quickly cause issues with your data.</p>
+<p>For our first lesson we&apos;re going to break the code you did last week in a subtle
+way.</p>
 <h1 id="exercise-1--breaking-your-code-with-nulls">EXERCISE 1 : Breaking your code with nulls</h1>
 <p>Start by checking out <a href="https://github.com/CodeYourFuture/cyf-hotel" target="_blank">https://github.com/CodeYourFuture/cyf-hotel</a> (branch - master?)</p>
 <p>Go to API end point for add reservation.</p>
@@ -756,10 +763,19 @@
 <li><p>How should you make that happen?</p>
 </li>
 </ol>
-<h1 id="lesson-1--what-is-the-point-of-a-database">LESSON 1 : What is the point of a database?</h1>
-<p>The database is a way to store <em>valid</em> structured data in a way that <em>cannot easily be violated</em> and then retrieve it.</p>
-<p>The way we use a database is completely different to the way we store things in files. In a file, you can put anything in and get it out. How you get it out is up to you. The program needs to open, close, retrieve, store or modify everything itself. All the responsibility for that belongs to the program.</p>
-<p>A Database is stored using a Relational Database Management system (RDBMS) which enfores:</p>
+<h1 id="lesson-1b--what-is-the-point-of-an-sql-database">LESSON 1B : What is the point of an SQL database?</h1>
+<p>We&apos;re going to teach you a new programming language. It&apos;s called SQL. Pronounced &quot;S - Q - L&quot; or sequel, either is fine.</p>
+<p>Databases are simply programs that take data and stuff it in files just like you were doing in the previous lesson.</p>
+<p>However, the way we use a database is different to the way we store things in files. In a file, you can put any random jumble of data in and get it out again. How you put it in and get it out is up to you. Your code needs to open the file, close the file, retrieve, store or modify and validate everything itself. Offloading some of that responsibility to another program means that your code can achieve all the same things but be simpler.</p>
+<p>You interact with almost all of them using the same programming language which is called &quot;SQL&quot;. It&apos;s been around for 31 years and is still completely dominant. Computing moves fast, but SQL doesn&apos;t change. This kind of lesson will probably still be taught in 50 years. Probably 4 out of 5 software jobs involve SQL In some way.</p>
+<p>SQL is a different, and usually simpler kind of programming language that you use <em>with</em> a database (sometimes called an RDBMS) to:</p>
+<ul>
+<li><p>Store data in a way such that its structure cannot be violated.</p>
+</li>
+<li><p>Retrieve data (get me all the reservations under the name &quot;Trump&quot;) and answer questions about data (&quot;what was the sum total of all of the invoices in february?&quot;).</p>
+</li>
+</ul>
+<p>An RDBMS (relational database management system) will do this by, for example:</p>
 <ul>
 <li>Data constraints (e.g. each reservation <em>must</em> have a customer)</li>
 <li>Data types (e.g. check in date <em>can only</em> be a date)</li>
@@ -767,25 +783,23 @@
 <li>Organizing how the data is retrieved and assembled (e.g. fetch me all reservations under customer &quot;Donald Trump&quot;).</li>
 <li>Executes on a different process/machine, meaning that the queries can be parallelized, and work can be offloaded from the main server.</li>
 </ul>
-<p>We&apos;re going to teach you a new programming language. It&apos;s called SQL. Pronounced &quot;S - Q - L&quot; or sequel,
-as in &quot;the sequel to the original 3 stars films were awful.&quot;</p>
-<p>The language is <em>just</em> used for two things:</p>
+<h2 id="exercise-1b-installing-sqlite-on-your-laptop-and-creating-your-first-database">EXERCISE 1B: INSTALLING SQLITE ON YOUR LAPTOP AND CREATING YOUR FIRST DATABASE</h2>
+<p>The RDBMS we are going to teach you first is called &quot;sqlite&quot;. It&apos;s pretty much the industry standard for creating small, self contained database that fit in one file - quite a common task.</p>
 <ul>
-<li>Telling a big store of data (the database) to store data</li>
-<li>Telling a big store of data (the database) to retrieve data</li>
+<li>Windows: <a href="https://sqlite.org/download.html" target="_blank">https://sqlite.org/download.html</a></li>
+<li>Ubuntu: apt-get install sqlite</li>
+<li>Mac OS: brew install sqlite</li>
 </ul>
-<h2 id="create-a-database">Create a Database</h2>
-<p>Students, first open up your browsers and visit <a href="https://www.db-fiddle.com/" target="_blank">DB Fiddle</a>
-at www.db-fiddle.com.</p>
-<p>Then, select SQLite:</p>
-<p><img src="db-fiddle-select-sqlite.png" alt="Select SQLite 3.18"></p>
-<p>So, on the left hand side here is where we write the code that <em>creates</em> the data.</p>
-<p>On the right hand side is where we write the code that <em>retrieves</em> the data.</p>
-<h3 id="lesson-how-to-create-a-table">LESSON: How to create a table</h3>
-<p>First thing we want to store is customers, since without customers,
-you don&apos;t have a hotel.</p>
-<p>Students. Type the following in:</p>
-<p>What to put in the <em>left</em> hand side (data definition):</p>
+<p>To run SQLite, open a command prompt and run &quot;sqlite mydatabase.sqlite&quot;.</p>
+<p>This should give you a prompt like this:</p>
+<pre class="language-"><code class="lang-sql">SQLite version <span class="token number">2.8</span><span class="token punctuation">.</span><span class="token number">17</span>
+Enter <span class="token string">&quot;.help&quot;</span> <span class="token keyword">for</span> instructions
+sqlite<span class="token operator">&gt;</span>
+</code></pre>
+<p>This is a command prompt where you can run snippets of SQL and load files containing SQL.</p>
+<h3 id="lesson-1c-creating-a-table">LESSON 1C: CREATING A TABLE</h3>
+<p>The first thing we want to store is customers, since without customers, you don&apos;t have a hotel.</p>
+<p>First, open a file in any text editor and put the following in a file called &apos;hotel.sql&apos;:</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> customers <span class="token punctuation">(</span>
     title <span class="token keyword">varchar</span><span class="token punctuation">,</span>
     firstname <span class="token keyword">varchar</span><span class="token punctuation">,</span>
@@ -793,9 +807,6 @@ you don&apos;t have a hotel.</p>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">insert</span> <span class="token keyword">into</span> customers <span class="token punctuation">(</span>title<span class="token punctuation">,</span> firstname<span class="token punctuation">,</span> surname<span class="token punctuation">,</span> email<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token string">&apos;Mr&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Donald&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Trump&apos;</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>What to put on the <em>right</em> hand side (data retrieval):</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> customers<span class="token punctuation">;</span>
 </code></pre>
 <p>What we have here:</p>
 <ul>
@@ -806,13 +817,22 @@ you don&apos;t have a hotel.</p>
 <li><p>&apos;title varchar&apos; - this means we&apos;re creating a column with the name &apos;title&apos; which holds a &apos;variable number of characters&apos;. This is pretty much the same thing as a string in javascript.</p>
 </li>
 </ul>
-<h2 id="exercise-create-tables-and-insert-data">EXERCISE: Create tables and insert data</h2>
+<p>Now, in the command prompt run the following:</p>
+<pre class="language-"><code class="lang-sql">sqlite<span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token keyword">read</span> hotel<span class="token punctuation">.</span>sql
+</code></pre>
+<p>Now that the file has been loaded with one table containing one row of data, you can read it back
+out again like this:</p>
+<p>What to put on the <em>right</em> hand side (data retrieval):</p>
+<pre class="language-"><code class="lang-sql">sqlite<span class="token operator">&gt;</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> customers<span class="token punctuation">;</span>
+</code></pre>
+<p>Now that you&apos;ve done all that, delete the mydatabase.sqlite file.</p>
+<h2 id="exercise-1c-create-tables-and-insert-data">EXERCISE 1C: Create tables and insert data</h2>
 <ol>
-<li>Add yourselves as <em>second</em> customers to Donald Trump.</li>
+<li>Create the database again and add yourselves as <em>second</em> customer - so you&apos;re staying in a hotel with Donald Trump.</li>
 <li>Collect email addresses from yourself and Donald (donald.trump@whitehouse.gov) and have them displayed on screen.</li>
 <li>Add me - &quot;Colm O&apos;Conner&quot; - as your third customer. My email address is &quot;colm.oconner.github@gmail.com&quot;.</li>
 </ol>
-<h2 id="lesson--data-types">LESSON : Data types</h2>
+<h2 id="lesson-1d-data-types">LESSON 1D: Data types</h2>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> invoices <span class="token punctuation">(</span>
     reservation_id      <span class="token keyword">integer</span><span class="token punctuation">,</span>
     total               number<span class="token punctuation">,</span>
@@ -1112,7 +1132,7 @@ but they&apos;re not always ideal.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"next":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"previous":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-16/lesson.md","mtime":"2018-01-28T22:45:17.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-28T22:47:06.976Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"next":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"previous":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-16/lesson.md","mtime":"2018-01-28T22:45:53.791Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-28T22:47:17.540Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
