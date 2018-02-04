@@ -762,7 +762,8 @@ to the hotels who would use them to bill guests.</p>
 <p>All fine so far. Except we would sometimes send reports with invoices which didn&apos;t have enrollments,
 enrollments which didn&apos;t have guests. Sometimes the amounts on those invoices would rack up to
 tens even hundreds of thousands of dollars. Of invoices <em>without</em> customers.</p>
-<p>This was what the hotel managers looked like. [ GRUMPY CAT SLIDE ]</p>
+<p>This was how the face of the hotel manager looked:</p>
+<p><img src="grumpy-cat.jpg" alt="Hotel manager" title="Hotel manager&apos;s face"></p>
 <p>This was a very, very serious problem. We were &gt;.&lt; this close to losing Marriott as a customer - and
 a large part of it was because of this.</p>
 <p>This was a problem because our system was buggy, so we had what are generally called &quot;data integrity&quot;
@@ -836,7 +837,7 @@ out again like this:</p>
 <p>Now that you&apos;ve done all that, DELETE the mydatabase.sqlite file, run it again and make sure you get the same result again.</p>
 <h2 id="exercise-1c-create-tables-and-insert-data">EXERCISE 1C: Create tables and insert data</h2>
 <ol>
-<li><p>Create the database again with an amended hotel.sql and add yourselves as <em>second</em> customer using INSERT - so you&apos;re staying in a hotel with Donald Trump. Run select * and ensure that you see yourself both as guests. Then delete mydatabase.sqlite again.</p>
+<li><p>Amend hotel.sql create the database again and add yourselves as <em>second</em> customer using INSERT - so you&apos;re now staying in a hotel with Donald Trump. Run select * and ensure that you see yourself both as guests. Then delete mydatabase.sqlite again.</p>
 </li>
 <li><p>Change hotel.sql again to store email addresses from yourself and Donald (donald.trump@whitehouse.gov) and have them displayed on screen. Run select * and ensure you are both guests. Then delete mydatabase.sqlite again.</p>
 </li>
@@ -860,7 +861,7 @@ out again like this:</p>
 </code></pre>
 <p>What we have here:</p>
 <ul>
-<li><p>An &apos;integer&apos;, a &apos;number&apos;, a &apos;datetime&apos; and a boolean. These are all analogous to data types which you have learned about in javascript but there are sometimes subtle differences that you need to be wary of.</p>
+<li><p>An &apos;integer&apos;, a &apos;number&apos;, a &apos;datetime&apos; and a boolean. These are all analogous to data types which you have learned about in javascript but there are sometimes subtle differences that you will eventually run in to.</p>
 </li>
 <li><p>For &quot;paid&quot; which is either yes or no - we have a default of &apos;no&apos; - it&apos;s saying that if you insert data and don&apos;t specify &apos;paid&apos; as a column when you INSERT data, it will assume you meant &apos;no&apos;.</p>
 </li>
@@ -959,8 +960,7 @@ out again like this:</p>
 <span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>reservation_id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">999</span><span class="token punctuation">,</span> <span class="token number">250.50</span><span class="token punctuation">,</span> <span class="token string">&apos;03/01/2017&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Now, picking primary keys is a tricky problem. You need to make sure that you pick some kind of
-identifier which you know can&apos;t be repeated. Usually arbitrary incrementing numbers are good,
-but they&apos;re not always ideal.</p>
+identifier which you know will always be <em>unique</em>.</p>
 <p>QUESTION FOR CLASS:</p>
 <ul>
 <li>Is first name a good candidate for a primary key?</li>
@@ -1110,7 +1110,7 @@ a reservation ID.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"next":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"previous":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-16/lesson.md","mtime":"2018-02-04T12:21:08.567Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-04T12:22:49.301Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"next":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"previous":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-16/lesson.md","mtime":"2018-02-04T12:39:29.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-04T12:41:05.458Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
