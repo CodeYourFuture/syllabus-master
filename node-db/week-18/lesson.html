@@ -755,12 +755,31 @@
 <li>SQL - DISTINCT</li>
 <li>SQL - &apos;IN&apos;</li>
 </ul>
-<h1 id="lesson--installing-sqlite-on-the-command-line">LESSON : Installing SQLite on the command line</h1>
+<h3 id="lesson-7--join-me-and-together-we-can-rule-the-internet-as-father-and-son">LESSON 7 : JOIN ME, AND TOGETHER WE CAN RULE THE INTERNET AS FATHER AND SON!</h3>
+<p>Now let&apos;s say we want to get the <em>names</em> of customers who have a reservation <em>today</em>.</p>
+<p>From what we know now, we <em>could</em> do it like this:</p>
 <ul>
-<li>Windows: <a href="https://sqlite.org/download.html" target="_blank">https://sqlite.org/download.html</a></li>
-<li>Ubuntu: apt-get install sqlite</li>
-<li>Mac OS: brew install sqlite</li>
+<li>select customer_id from reservations where date_started = &apos;01/01/2018&apos;</li>
+<li>write down the list of customer ids on paper (e.g. 3, 5, 7)</li>
+<li>select * from customers where id = 3 or id = 5 or id = 7</li>
 </ul>
+<p>However, that&apos;s stupid. We want the computer to figure that out. That&apos;s where a database &quot;join&quot; comes in handy. In real life, if you work with databases, you will be using this thing <em>all</em> of the time.</p>
+<p>Now, we have data that spans two tables - we have reservations with a &quot;customer_id&quot; column that refers to the id column in the &quot;customers&quot; table.</p>
+<pre class="language-"><code>SELECT reservations.date_started, customers.firstname, customers.surname
+from reservations join customers on reservations.customer_id = customer.id
+where reservation.date_started = &apos;01/01/2018&apos;;
+</code></pre><h3 id="exercise-7">EXERCISE 7</h3>
+<p><strong>User Story:</strong> As a staff member, I want to get the list of all the invoices, and the details of the referring reservations.</p>
+<p>Create and endpoint <code>/detailed-invoices</code> from where we can get the list of invoices, together with the details for the reservation that they refer to.</p>
+<ul>
+<li>join</li>
+</ul>
+<h3 id="exercise-8">EXERCISE 8</h3>
+<p><strong>User Story:</strong> As a staff member, I want to consult reservations, but including the room and customer information.</p>
+<p>Update the exercies 5.* to retreieve the information of the rooms and customers as well.</p>
+<h3 id="exercise-8-stretch-goal">EXERCISE 8: STRETCH GOAL</h3>
+<p><strong>User story:</strong> As a staff member, I want ot retrieve the reservations and details for rooms and customers, that happened between a given date range.</p>
+<p>Create and endpoint to get from <code>/reservations/details-between/:from_day/:to_day</code> all the reservations and details about customer and room, between a given date range.</p>
 <blockquote>
 <blockquote>
 <blockquote>
@@ -947,7 +966,7 @@ good a time as any to tell you about deleting, so here goes:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - State","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - React-router & Recap","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2018-02-11T12:21:45.603Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-11T12:23:07.763Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - State","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - React-router & Recap","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2018-02-11T18:11:06.874Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-11T18:12:30.133Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

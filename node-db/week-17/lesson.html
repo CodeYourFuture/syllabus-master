@@ -829,7 +829,7 @@ router<span class="token punctuation">.</span><span class="token keyword">get</s
 <li>select and filter by id</li>
 <li>hint: simple select and filter by ID</li>
 </ul>
-<p>STRETCH GOAL : If you get a request of /customers/notanumber (anything that isn&apos;t a number) it should return an HTTP 400 bad request.</p>
+<p>STRETCH GOAL (OPTIONAL) : If you get a request of /customers/notanumber (anything that isn&apos;t a number) it should return an HTTP 400 bad request.</p>
 <h3 id="lesson-2--like-whatever">LESSON 2 : LIKE, WHATEVER</h3>
 <p>So, now we&apos;re going to deal with one of the most common issues with hotel databases: the guest&apos;s name being misspelled.</p>
 <p>So, &quot;Hilary Clinten&quot; is added to the database. She calls up on the phone asking about her reservation and spells her name correctly on the phone. The hotel staff knows what <em>some of her name</em> sounds like but not all of it and they want to find her as a customer on the system.</p>
@@ -852,8 +852,8 @@ router<span class="token punctuation">.</span><span class="token keyword">get</s
 <h3 id="exercise-3">EXERCISE 3</h3>
 <p><strong>User Story:</strong> As a guest, I want to register my details in the system so that I can check availability for my stay.</p>
 <p><strong>User Acceptance test</strong>: Take the data being POSTed to the <code>/customers</code> endpoint check it is inserted into the database.</p>
-<p>STRETCH GOAL : If a bad request is made to customers - first name is missing, for instance, return an HTTP 400 Bad reqest.</p>
-<h3 id="exercise-4">EXERCISE 4</h3>
+<p>STRETCH GOAL (OPTIONAL): If a bad request is made to customers - first name is missing, for instance, return an HTTP 400 Bad reqest.</p>
+<h3 id="homework-4">HOMEWORK 4</h3>
 <p><strong>Notes on Postman</strong></p>
 <p>In the next image you can see Postman doing a POST request. Highlighed areas indicate the fields that need to be changed and/or information that needs to be added. The arrow points to a tab where you will need to set the type of content of this request. As denoted by the arrow legend, you will need to set <code>Content-Type</code> to <code>application/json</code>.
 <img src="postman-post-1.png" alt="postman-get-1"></p>
@@ -865,9 +865,9 @@ router<span class="token punctuation">.</span><span class="token keyword">get</s
 <li>remember your previous lesson</li>
 <li>hint: in the javascript code, instead of db.all() you will need ... what?</li>
 </ul>
-<h3 id="exercise-4--stretch-goal">EXERCISE 4 : STRETCH GOAL</h3>
+<h3 id="homework-4--stretch-goal-optional">HOMEWORK 4 : STRETCH GOAL (OPTIONAL)</h3>
 <p>The end point should properly detect which customer properties are being updated, and generate the appropriate SQL update statement.</p>
-<h3 id="exercise-5">EXERCISE 5</h3>
+<h3 id="homework-5">HOMEWORK 5</h3>
 <p><strong>User Story:</strong> As a staff member, I want to create a new reservation.</p>
 <p>Create and end-point to post a new reservation to <code>/reservations/</code>.</p>
 <ul>
@@ -875,7 +875,7 @@ router<span class="token punctuation">.</span><span class="token keyword">get</s
 <li>create the endpoint from scratch</li>
 <li>which HTTP method should you use?</li>
 </ul>
-<p>STRETCH GOAL : Return {&quot;status&quot;: &quot;error&quot;: &quot;reason&quot;: &quot;reason...&quot;} if <em>anything</em> was wrong with the request.</p>
+<p>STRETCH GOAL (OPTIONAL) : Return {&quot;status&quot;: &quot;error&quot;: &quot;reason&quot;: &quot;reason...&quot;} if <em>anything</em> was wrong with the request.</p>
 <h3 id="lesson-6--i-wish-i-could-delete-him-in-real-life">LESSON 6 : I WISH I COULD DELETE HIM IN REAL LIFE</h3>
 <p>We&apos;ve currently done inserting data and updating data, but sometimes inserting data was just a mistake
 and it needs to go.</p>
@@ -894,7 +894,7 @@ and it needs to go.</p>
 <li><p>Often it&apos;s a good idea to give data the &apos;status&apos; deleted instead of actually deleting it.</p>
 </li>
 </ul>
-<h3 id="exercise-6">EXERCISE 6</h3>
+<h3 id="homework-6">HOMEWORK 6</h3>
 <p><strong>User Story:</strong> As a staff member, I want to delete a canceled reservation from the database.</p>
 <p><strong>Notes on Postman</strong>
 The delete request is actually pretty straight forward. We only need to select the type and provide the url:
@@ -903,52 +903,27 @@ The delete request is actually pretty straight forward. We only need to select t
 <ul>
 <li>delete</li>
 </ul>
-<h3 id="lesson-7--join-me-and-together-we-can-rule-the-internet-as-father-and-son">LESSON 7 : JOIN ME, AND TOGETHER WE CAN RULE THE INTERNET AS FATHER AND SON!</h3>
-<p>Now let&apos;s say we want to get the <em>names</em> of customers who have a reservation <em>today</em>.</p>
-<p>From what we know now, we <em>could</em> do it like this:</p>
-<ul>
-<li>select customer_id from reservations where date_started = &apos;01/01/2018&apos;</li>
-<li>write down the list of customer ids on paper (e.g. 3, 5, 7)</li>
-<li>select * from customers where id = 3 or id = 5 or id = 7</li>
-</ul>
-<p>However, that&apos;s stupid. We want the computer to figure that out. That&apos;s where a database &quot;join&quot; comes in handy. In real life, if you work with databases, you will be using this thing <em>all</em> of the time.</p>
-<p>Now, we have data that spans two tables - we have reservations with a &quot;customer_id&quot; column that refers to the id column in the &quot;customers&quot; table.</p>
-<pre class="language-"><code>SELECT reservations.date_started, customers.firstname, customers.surname
-from reservations join customers on reservations.customer_id = customer.id
-where reservation.date_started = &apos;01/01/2018&apos;;
-</code></pre><h3 id="exercise-7">EXERCISE 7</h3>
-<p><strong>User Story:</strong> As a staff member, I want to get the list of all the invoices, and the details of the referring reservations.</p>
-<p>Create and endpoint <code>/detailed-invoices</code> from where we can get the list of invoices, together with the details for the reservation that they refer to.</p>
-<ul>
-<li>join</li>
-</ul>
-<h3 id="exercise-8">EXERCISE 8</h3>
-<p><strong>User Story:</strong> As a staff member, I want to consult reservations, but including the room and customer information.</p>
-<p>Update the exercies 5.* to retreieve the information of the rooms and customers as well.</p>
-<h3 id="exercise-8-stretch-goal">EXERCISE 8: STRETCH GOAL</h3>
-<p><strong>User story:</strong> As a staff member, I want ot retrieve the reservations and details for rooms and customers, that happened between a given date range.</p>
-<p>Create and endpoint to get from <code>/reservations/details-between/:from_day/:to_day</code> all the reservations and details about customer and room, between a given date range.</p>
-<h3 id="homework-1a">HOMEWORK 1A</h3>
+<h3 id="homework-7">HOMEWORK 7</h3>
 <p><strong>User Story:</strong> As a staff member, I want to get a list of all the existing reservations.</p>
 <p>Create an end-point to get from <code>/reservations</code> all existing reservations.</p>
 <ul>
 <li>create the endpoint from scratch</li>
 </ul>
-<h3 id="homework-1b">HOMEWORK 1B</h3>
+<h3 id="homework-8">HOMEWORK 8</h3>
 <p><strong>User Story:</strong> As a customer, I want to check the details of a reservation.</p>
 <p>Create and end-point to get from <code>/reservations/:id</code> the details of a resrevation through its <code>id</code>.</p>
 <ul>
 <li>simple filtering</li>
 <li>create the enpoint from scratch</li>
 </ul>
-<h3 id="homework-1c">HOMEWORK 1C</h3>
+<h3 id="homework-9">HOMEWORK 9</h3>
 <p><strong>User Story:</strong> As a staff member, I want to get a list of all the reservations that start at a given date.</p>
 <p>Create and end-point to get from <code>/reservations/starting-on/:startDate</code> all the reservations that start at a given date.</p>
 <ul>
 <li>simple filtering</li>
 <li>create the enpoint from scratch</li>
 </ul>
-<h3 id="homework-1d">HOMEWORK 1D</h3>
+<h3 id="homework-10">HOMEWORK 10</h3>
 <p><strong>User Story:</strong> As a staff member, i want to get a list of all the reservations that are active at a given date.</p>
 <p>Create and end-point to get from <code>/reservations/active-on/:date</code> all the reservations that are active on a given date - some customer has a room reserved on that day.</p>
 <ul>
@@ -998,7 +973,7 @@ where reservation.date_started = &apos;01/01/2018&apos;;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"next":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]},"previous":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-17/lesson.md","mtime":"2018-02-11T12:21:45.603Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-11T12:23:07.763Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"next":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]},"previous":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-17/lesson.md","mtime":"2018-02-11T18:11:06.870Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-11T18:12:30.133Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
