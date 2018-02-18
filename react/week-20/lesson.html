@@ -742,15 +742,65 @@
 <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""></p>
 <p><strong>What will we learn today?</strong></p>
 <ul>
-<li>Props</li>
+<li><a href="#recap">Recap</a></li>
+<li><a href="#making-an-argument-for-props">Making an Argument for Props</a></li>
+<li><a href="#what-are-props">What are props</a></li>
 <li>Reacting to Changes</li>
 <li>State</li>
 </ul>
+<h2 id="recap">Recap</h2>
+<p>Last week we looked at how to write a <code>HelloMentor</code> React component (<a href="https://stackblitz.com/edit/react-jnkuqk" target="_blank">interactive example</a>):</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Mentor.js</span>
+<span class="token keyword">class</span> <span class="token class-name">Mentor</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>Ali<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// index.js</span>
+<span class="token keyword">import</span> Greeting <span class="token keyword">from</span> <span class="token string">&apos;./Greeting&apos;</span>
+<span class="token keyword">import</span> Mentor <span class="token keyword">from</span> <span class="token string">&apos;./Mentor&apos;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">HelloMentor</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>Greeting <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>Mentor <span class="token operator">/</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="making-an-argument-for-props">Making an Argument for Props</h2>
+<p>What&apos;s the problem with this component? Hint: imagine what a user story might look like for this small application. How might changes to the user story affect changes to the code?</p>
+<p>Our components are very inflexible. They cannot say hello to other mentors, and they can only say hello. If our user stories change, for example if we wanted to say hello to s different mentor, we would have to to change the code too. This is easy in our tiny application but for &quot;real&quot; applications this might be more difficult.</p>
+<p>Instead wouldn&apos;t it be good if we could change which mentor we are saying hello to every time we render the component? This is what &quot;props&quot; are for.</p>
+<h2 id="what-are-props">What are props?</h2>
+<p>Props are what we use in React to pass &quot;arguments&quot; to components. They are very similar to arguments in functions - you can &quot;pass&quot; props to components, and you can use those props in a component.</p>
+<p>First let&apos;s look at passing props to your components (<a href="https://stackblitz.com/edit/react-ketrwi?file=index.js" target="_blank">interactive example</a>):</p>
+<pre class="language-"><code class="lang-js"><span class="token operator">&lt;</span>Mentor mentor<span class="token operator">=</span><span class="token string">&quot;Kash&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre>
+<p>As you can see props are key-value pairs, in this example the key is <code>mentor</code> and the value is the string <code>&apos;Kash&apos;</code>. We don&apos;t have to use strings, we can use any valid JavaScript data like numbers, arrays and objects. Remember that in JSX you can use curly braces (<code>{</code> &amp; <code>}</code>) to inject data that is not a string:</p>
+<pre class="language-"><code class="lang-js"><span class="token operator">&lt;</span>HotelRoomPrice price<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">123</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+</code></pre>
+<p>Now let&apos;s take a look at using props that we have passed to a component (<a href="https://stackblitz.com/edit/react-ketrwi?file=Mentor.js" target="_blank">interactive example</a>):</p>
+<pre class="language-"><code class="lang-js"><span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>mentor<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+</code></pre>
+<p>React gives you access to props via the <code>this.props</code> object. We can then inject into our component using curly braces. Because <code>this.props</code> is just a regular object, you can also inject into DOM attributes:</p>
+<pre class="language-"><code class="lang-js"><span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&apos;my-id-&apos;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>content<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+</code></pre>
+<blockquote>
+<p><strong>Exercise:</strong>
+Open the <code>my-hotel</code> React application that your created last week</p>
+<ol>
+<li>Edit the <code>Header</code> component so that the hotel name in the welcome message is passed as a prop</li>
+<li>Edit the <code>SpecialDeals</code> component so that the array is passed as a prop</li>
+</ol>
+</blockquote>
 <h2 id="reacting-to-changes">Reacting to Changes</h2>
-<p>DO WE WANT TO MOVE THIS TO FIRST LESSON?
-WANTED TO INCLUDE IT EARLY IF POSSIBLE BECAUSE IT DEMOS VIRTUAL DOM</p>
 <p>Now let&apos;s write a more interesting app that responds to some user input. We&apos;ll see how React will take care of updating the DOM for you.</p>
-<p>A counter is a common React example, showing the number of times a button has been clicked. First lets render a button and a counter which set to 0 clicks:</p>
+<p>A counter is a common React example, showing the number of times a button has been clicked. First lets render a button and a counter which set to 0 clicks (<a href="https://stackblitz.com/edit/react-bb5vjg" target="_blank">interactive example</a>):</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -769,7 +819,8 @@ WANTED TO INCLUDE IT EARLY IF POSSIBLE BECAUSE IT DEMOS VIRTUAL DOM</p>
 
 <span class="token function">renderCounter</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
 </code></pre>
-<p>Now let&apos;s listen for clicks on the button and increment the counter (<a href="http://jsbin.com/nebatulaka/edit?js,output" target="_blank">interactive version</a>):</p>
+<p>Note that this example is simplified from your <code>my-hotel</code> application, because some parts are split into separate files to keep the code clean. You&apos;ll find the <code>ReactDOM.render</code> call in <code>index.js</code></p>
+<p>This example isn&apos;t very useful yet as it doesn&apos;t do anything when clicking the button. Now let&apos;s listen for clicks on the button and increment the counter (<a href="https://stackblitz.com/edit/react-tghfje" target="_blank">interactive version</a>):</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -787,6 +838,26 @@ document<span class="token punctuation">.</span><span class="token function">get
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>As you can see, the DOM automatically updates when you render. This is an incredibly powerful feature of React. Even better, React will figure out exactly the right bits of the DOM that need to be changed. This makes it extremely efficient and fast. This is concept is called the &quot;virtual DOM&quot;.</p>
+<blockquote>
+<p><strong>Exercise:</strong></p>
+<ol>
+<li></li>
+</ol>
+</blockquote>
+<h3 id="state">State</h3>
+<p>Let&apos;s take another look at the the counter example. A new user story has been created to show multiple counters. How would you add another counter?</p>
+<p>You could add some more <code>count</code> global variables:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count1 <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">let</span> count2 <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">let</span> count3 <span class="token operator">=</span> <span class="token number">0</span>
+</code></pre>
+<p>What might be the problem here?</p>
+<ul>
+<li>It&apos;s quite verbose</li>
+<li>It&apos;s hard to make sure that you&apos;re updating the correct counter</li>
+<li>It&apos;s stuck at 3 counters - to add more, a new user story would have to be created</li>
+</ul>
+<p>What other approaches can we take?</p>
 
                                 
                                 </section>
@@ -830,7 +901,7 @@ document<span class="token punctuation">.</span><span class="token function">get
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 20 - State","level":"1.9.2","depth":2,"next":{"title":"Week 21 - React-router & Recap","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]},"previous":{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-20/lesson.md","mtime":"2018-02-18T13:38:35.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-18T13:39:50.391Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 20 - State","level":"1.9.2","depth":2,"next":{"title":"Week 21 - React-router & Recap","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]},"previous":{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-20/lesson.md","mtime":"2018-02-18T13:40:09.041Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-18T13:41:27.281Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
