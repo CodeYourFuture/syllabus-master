@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Week 21 - Fetching Data · GitBook</title>
+        <title>Week 21 - Lifecycle · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -542,7 +542,7 @@
                 <a href="../week-20/lesson.html">
             
                     
-                    Week 20 - Reacting to Changes
+                    Week 20 - Props & State
             
                 </a>
             
@@ -555,7 +555,7 @@
                 <a href="lesson.html">
             
                     
-                    Week 21 - Fetching Data
+                    Week 21 - Lifecycle
             
                 </a>
             
@@ -736,7 +736,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Week 21 - Fetching Data</a>
+        <a href="../.." >Week 21 - Lifecycle</a>
     </h1>
 </div>
 
@@ -1000,6 +1000,36 @@ Open your <code>my-hotel</code> application again</p>
 <p>Convert the <code>SpecialDeals</code> component to fetch data from <a href="http://www.mocky.io/v2/5a9ad31d3400002c00a39a3c" target="_blank">http://www.mocky.io/v2/5a9ad31d3400002c00a39a3c</a>.
 Make sure that you include a loading state and error handling.</p>
 </blockquote>
+<h2 id="default-props">Default Props</h2>
+<p>Last week we looked at how we can pass props to our components, but so far we&apos;ve had to pass a value for every prop. But React has a way of giving a &quot;default&quot; value for a prop, so that you don&apos;t always have to pass it. This makes props more useful as &quot;initial configuration&quot; for our component.</p>
+<p>Let&apos;s revisit an example from React week 1 with an application that says a greeting to a mentor. We could improve the app by allowing the greeting and the mentor&apos;s name to be passed as props:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> Greeting <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>greeting<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+<span class="token keyword">const</span> Mentor <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+
+<span class="token keyword">const</span> App <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>Greeting greeting<span class="token operator">=</span><span class="token string">&quot;Hello&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>Mentor name<span class="token operator">=</span><span class="token string">&quot;Lucy&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<p>Passing a prop every time we want to use <code>Greeting</code> is a bit annoying. We want to always use &quot;Hello&quot; as our greeting, unless we explicitly override it with a prop. We can do this with <code>defaultProps</code> (<a href="https://stackblitz.com/edit/react-bbwbnv" target="_blank">interactive example</a>):</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> Greeting <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>greeting<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+Greeting<span class="token punctuation">.</span>defaultProps <span class="token operator">=</span> <span class="token punctuation">{</span>
+  greeting<span class="token punctuation">:</span> <span class="token string">&apos;Hello&apos;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Or we can use the class/static properties syntax (<a href="https://stackblitz.com/edit/react-72dj65" target="_blank">interactive example</a>):</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">Greeting</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> defaultProps <span class="token operator">=</span> <span class="token punctuation">{</span>
+    greeting<span class="token punctuation">:</span> <span class="token string">&apos;Hello&apos;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>greeting<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h2 id="refs">Refs</h2>
 <p>As we have seen, React manages the DOM for us. That means we generally don&apos;t have to worry about keeping track of DOM nodes, or manipulating them directly. However sometimes you need to be able to access a DOM node that React is managing. Some common use cases are managing browser focus and integrating with third party libraries like a jQuery plugin.</p>
 <p>We can do this with a <em>ref</em>. Let&apos;s look at an example that will change browser focus to an input when a button is clicked (<a href="https://stackblitz.com/edit/react-nbezfm" target="_blank">interactive example</a>):</p>
@@ -1052,7 +1082,7 @@ Make sure that you include a loading state and error handling.</p>
 
             
                 
-                <a href="../week-20/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 20 - Reacting to Changes">
+                <a href="../week-20/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 20 - Props & State">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1068,7 +1098,7 @@ Make sure that you include a loading state and error handling.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"next":{"title":"Coding Standards and Best Practices","level":"2.1","depth":1,"path":"PRACTICES.md","ref":"PRACTICES.md","articles":[]},"previous":{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-21/lesson.md","mtime":"2018-04-15T14:35:53.077Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-15T14:38:42.266Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 21 - Lifecycle","level":"1.9.3","depth":2,"next":{"title":"Coding Standards and Best Practices","level":"2.1","depth":1,"path":"PRACTICES.md","ref":"PRACTICES.md","articles":[]},"previous":{"title":"Week 20 - Props & State","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-21/lesson.md","mtime":"2018-04-17T08:52:20.386Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-17T08:54:12.060Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
