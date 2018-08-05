@@ -963,8 +963,8 @@ define a handler function in Express. It takes two parameters: the <strong>endpo
 at which to trigger an action (we&apos;ll explain more about this in the next step),
 and the handler function that tells it exactly what to do. Here&apos;s a simple
 &quot;Hello World!&quot; example:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// req is the Request object, res is the Response object</span>
-<span class="token comment" spellcheck="true">// (these are just variable names, they can be anything but it&apos;s a convention to call them req and res)</span>
+<pre class="language-"><code class="lang-js"><span class="token comment">// req is the Request object, res is the Response object</span>
+<span class="token comment">// (these are just variable names, they can be anything but it&apos;s a convention to call them req and res)</span>
 app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;Hello World!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1079,7 +1079,7 @@ blogposts from there.</p>
 <p>Open up the <code>index.html</code> file in your text editor. If you have a look, you
 should see this:</p>
 <pre class="language-"><code class="lang-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>entry-container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token comment" spellcheck="true">&lt;!--PASTE YOUR CODE HERE!! --&gt;</span>
+    <span class="token comment">&lt;!--PASTE YOUR CODE HERE!! --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <p><strong>Replace the greyed-out comment with this code snippet:</strong></p>
@@ -1193,7 +1193,7 @@ come automatically with Node itself.</p>
 </code></pre>
 <p>The method we need to write to your hard drive is <code>fs.writeFile</code>.</p>
 <pre class="language-"><code class="lang-js">fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">&quot;path/to/file&quot;</span><span class="token punctuation">,</span> yourData<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// do something</span>
+  <span class="token comment">// do something</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
@@ -1208,7 +1208,7 @@ we already have <code>posts.json</code>, so not to worry.</p>
 <p>To read data that&apos;s already there, you would use <code>fs.readFile</code>. The way to use
 <code>fs.readFile</code> is very similar to <code>fs.writeFile</code>:</p>
 <pre class="language-"><code class="lang-js">fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">&quot;path/to/file&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// do something</span>
+  <span class="token comment">// do something</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
@@ -1237,7 +1237,7 @@ to a string, like this:</p>
 <p><code>file</code> is in JSON format right now. If we want to access the blog post message
 inside <code>file</code>, we need to parse it from JSON back to a JavaScipt object.</p>
 <p>Add this next bit of code to your <code>fs.readFile</code>&apos;s callback function:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> parsedFile <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> parsedFile <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Now <code>parsedFile</code> is a normal JavaScript object, and we can access the data
 inside it.</p>
@@ -1322,7 +1322,7 @@ files back to the client. Feel free to use this with your JSON.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Express Workshop","level":"3.3","depth":1,"next":{"title":"Hotel Workshop","level":"3.4","depth":1,"path":"node-db/week-15/workshop.md","ref":"node-db/week-15/workshop.md","articles":[]},"previous":{"title":"Compiling SCSS","level":"3.2","depth":1,"path":"html-css/compile-scss-instructions.md","ref":"html-css/compile-scss-instructions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-13/workshop.md","mtime":"2018-06-15T19:08:24.783Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-15T19:09:34.467Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Express Workshop","level":"3.3","depth":1,"next":{"title":"Hotel Workshop","level":"3.4","depth":1,"path":"node-db/week-15/workshop.md","ref":"node-db/week-15/workshop.md","articles":[]},"previous":{"title":"Compiling SCSS","level":"3.2","depth":1,"path":"html-css/compile-scss-instructions.md","ref":"html-css/compile-scss-instructions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-13/workshop.md","mtime":"2018-08-05T10:58:12.949Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-05T10:59:18.127Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

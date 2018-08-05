@@ -830,18 +830,18 @@
 <h3 id="expression">Expression</h3>
 <p>An expression returns a value. Sometimes we will say that an expression <em>evaluates to</em> a value.</p>
 <p>The following are all examples of expressions:</p>
-<pre class="language-"><code class="lang-js"><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 2</span>
-<span class="token punctuation">(</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns &quot;hello&quot;</span>
-<span class="token number">2</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 8</span>
-<span class="token string">&quot;hello&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;world&quot;</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns &quot;helloworld&quot;</span>
+<pre class="language-"><code class="lang-js"><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// returns 2</span>
+<span class="token punctuation">(</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns &quot;hello&quot;</span>
+<span class="token number">2</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment">// returns 8</span>
+<span class="token string">&quot;hello&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;world&quot;</span><span class="token punctuation">;</span> <span class="token comment">// returns &quot;helloworld&quot;</span>
 </code></pre>
 <p>We can take the value produced by an expression and assign it to a variable. That line of code would be called a statement.</p>
 <h3 id="statement">Statement</h3>
 <p>A statement is some code that performs an action. Here are some examples:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// action: assigns result of `1 + 1` to variable `sum`</span>
-<span class="token keyword">var</span> greeting <span class="token operator">=</span> <span class="token string">&quot;hello&quot;</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// action: assigns result of the expression &quot;hello&quot; to variable `greeting`</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// action: logs the result of `2 * 4` to the console</span>
-<span class="token function">sayGreeting</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// action: calls the function `sayGreeting` with the parameter `greeting`</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// action: assigns result of `1 + 1` to variable `sum`</span>
+<span class="token keyword">var</span> greeting <span class="token operator">=</span> <span class="token string">&quot;hello&quot;</span><span class="token punctuation">;</span> <span class="token comment">// action: assigns result of the expression &quot;hello&quot; to variable `greeting`</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// action: logs the result of `2 * 4` to the console</span>
+<span class="token function">sayGreeting</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// action: calls the function `sayGreeting` with the parameter `greeting`</span>
 </code></pre>
 <p>There are some other different types of statements that we will learn in the coming weeks.</p>
 <h3 id="exercise">Exercise</h3>
@@ -914,8 +914,8 @@ $
   <span class="token keyword">return</span> <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">&quot;number&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns true</span>
-<span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns false</span>
+<span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns true</span>
+<span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns false</span>
 </code></pre>
 <p>JavaScript programmers often give predicate functions a name that starts with a verb e.g. <code>isBig</code>, <code>isNegative</code>, <code>isActive</code>, <code>shouldUpdate</code>,</p>
 <p>Calling a predicate function is like asking a question: &quot;is this value a number&quot;. The return value is the answer to your question.</p>
@@ -935,29 +935,29 @@ $
 <span class="token punctuation">}</span>
 </code></pre>
 <p>The code in paratheses - e.g. <code>(isHappy)</code> - is the condition. The condition can be <em>any</em> expression. The following are all valid conditions:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// boolean value</span>
+<pre class="language-"><code class="lang-js"><span class="token comment">// boolean value</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// do something</span>
+  <span class="token comment">// do something</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// variable assigned to boolean value</span>
+<span class="token comment">// variable assigned to boolean value</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>isHappy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// do something</span>
+  <span class="token comment">// do something</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// equality operator returns a boolean value</span>
+<span class="token comment">// equality operator returns a boolean value</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// do something</span>
+  <span class="token comment">// do something</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// comparison operator returns a boolean value</span>
+<span class="token comment">// comparison operator returns a boolean value</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// do something</span>
+  <span class="token comment">// do something</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// function call returns boolean value</span>
+<span class="token comment">// function call returns boolean value</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">greaterThan10</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// do something</span>
+  <span class="token comment">// do something</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>An if statement runs code when a condition is met. What if the condition is not met? Sometimes you want to run an alternative bit of code.</p>
@@ -1068,8 +1068,8 @@ Water
 <p>You can also <strong>set</strong> a value using bracket notation and an assignment operator (<code>=</code>).</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> scores <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-scores<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Change the last score</span>
-scores<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">51</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Add a new score</span>
+scores<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">;</span> <span class="token comment">// Change the last score</span>
+scores<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">51</span><span class="token punctuation">;</span> <span class="token comment">// Add a new score</span>
 </code></pre>
 <h2 id="array-methods">Array methods</h2>
 <p>Do you remember how strings have special functions called methods? Don&apos;t worry if not! Here&apos;s an example to jog your memory:</p>
@@ -1085,7 +1085,7 @@ daniel
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> unorderedLetters <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;z&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;v&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;b&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;f&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;g&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> orderedLetters <span class="token operator">=</span> unorderedLetters<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>orderedLetters<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// logs [ &apos;b&apos;, &apos;f&apos;, &apos;g&apos;, &apos;v&apos;, &apos;z&apos; ]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>orderedLetters<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs [ &apos;b&apos;, &apos;f&apos;, &apos;g&apos;, &apos;v&apos;, &apos;z&apos; ]</span>
 </code></pre>
 <blockquote>
 <p>When you call an array method it uses the array on the left side of the dot as an input, and returns a new, transformed, array.</p>
@@ -1105,7 +1105,7 @@ undefined
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> newArr <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// logs [1, 2, 3, 4]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs [1, 2, 3, 4]</span>
 </code></pre>
 <h2 id="more-array-methods">More Array methods</h2>
 <p>Let&apos;s explore some more array methods.</p>
@@ -1129,7 +1129,7 @@ undefined
 <span class="token punctuation">}</span>
 
 consooe<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Is Rukmuni a mentor?&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isAMentor</span><span class="token punctuation">(</span><span class="token string">&quot;Rukmini&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// logs false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isAMentor</span><span class="token punctuation">(</span><span class="token string">&quot;Rukmini&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs false</span>
 </code></pre>
 <h3 id="join"><code>.join()</code></h3>
 <p><em>Returns all the array values joined together in a string.</em></p>
@@ -1153,7 +1153,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p><em>Runs every item in the array through a function and returns a new array with the values returned by the function</em>.</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> tidyMentors <span class="token operator">=</span> mentors<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>tidy<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tidyMentors<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// logs [&quot;daniel&quot;, &quot;irina&quot;, &quot;gordon&quot;, &quot;ashleigh&quot;]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tidyMentors<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs [&quot;daniel&quot;, &quot;irina&quot;, &quot;gordon&quot;, &quot;ashleigh&quot;]</span>
 </code></pre>
 <h1 id="homework">Homework</h1>
 <ol>
@@ -1202,7 +1202,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 5 - Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 6 - More Arrays","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]},"previous":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-05/lesson.md","mtime":"2018-06-15T19:08:24.719Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-15T19:09:34.467Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 5 - Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 6 - More Arrays","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]},"previous":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-05/lesson.md","mtime":"2018-08-05T10:58:12.893Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-05T10:59:18.127Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

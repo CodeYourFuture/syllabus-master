@@ -829,7 +829,7 @@
 <hr>
 <h3 id="linux-ubuntu-users">Linux (Ubuntu) users</h3>
 <p>Run the following commands in your terminal:</p>
-<pre class="language-"><code class="lang-sh">  curl -sL https://deb.nodesource.com/setup_8.x <span class="token operator">|</span> <span class="token function">sudo</span> -E <span class="token function">bash</span> -
+<pre class="language-"><code class="lang-sh">  <span class="token function">curl</span> -sL https://deb.nodesource.com/setup_8.x <span class="token operator">|</span> <span class="token function">sudo</span> -E <span class="token function">bash</span> -
   <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y nodejs
 </code></pre>
 <p>Source: <a href="https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions" target="_blank">https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions</a></p>
@@ -901,7 +901,7 @@ Hello world
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token string">&quot;This is a string&quot;</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> messageType <span class="token operator">=</span> <span class="token keyword">typeof</span> message<span class="token punctuation">;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>messageType<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// logs &apos;string&apos;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>messageType<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs &apos;string&apos;</span>
 </code></pre>
 <h3 id="exercise">Exercise</h3>
 <ul>
@@ -918,7 +918,7 @@ string
 
 <span class="token keyword">var</span> greeting <span class="token operator">=</span> greetingStart <span class="token operator">+</span> name<span class="token punctuation">;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Logs &quot;Hello, my name is Daniel&quot;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Logs &quot;Hello, my name is Daniel&quot;</span>
 </code></pre>
 <h3 id="exercise">Exercise</h3>
 <ul>
@@ -933,10 +933,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
 </code></pre>
 <p>You can use mathematical operators to caclulate numbers:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 12</span>
-<span class="token keyword">var</span> product <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 20</span>
-<span class="token keyword">var</span> quotient <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 5</span>
-<span class="token keyword">var</span> difference <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 8</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 12</span>
+<span class="token keyword">var</span> product <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+<span class="token keyword">var</span> quotient <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+<span class="token keyword">var</span> difference <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
 </code></pre>
 <h3 id="exercise">Exercise</h3>
 <ul>
@@ -954,7 +954,7 @@ Total numnber of students and mentors: 23
 </code></pre>
 <p>Floats can be rounded to the nearest whole number using the <code>Math.round</code> function:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> preciseAge <span class="token operator">=</span> <span class="token number">30.612437</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> roughAge <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>preciseAge<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 30</span>
+<span class="token keyword">var</span> roughAge <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>preciseAge<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 30</span>
 </code></pre>
 <h3 id="exercise">Exercise</h3>
 <ul>
@@ -976,7 +976,7 @@ a) <em>call</em> it with an input and
 b) assign the returned value to a variable</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">double</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 4</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
 </code></pre>
 <h3 id="exercise-1">Exercise 1</h3>
 <ul>
@@ -1138,7 +1138,7 @@ JavaScript!</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"next":{"title":"Week 5 - Arrays","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},"previous":{"title":"JavaScript I","level":"1.4","depth":1,"path":"js-core/index.md","ref":"js-core/index.md","articles":[{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},{"title":"Week 5 - Arrays","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},{"title":"Week 6 - More Arrays","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-04/lesson.md","mtime":"2018-06-15T19:08:24.719Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-15T19:09:34.467Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"next":{"title":"Week 5 - Arrays","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},"previous":{"title":"JavaScript I","level":"1.4","depth":1,"path":"js-core/index.md","ref":"js-core/index.md","articles":[{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},{"title":"Week 5 - Arrays","level":"1.4.2","depth":2,"path":"js-core/week-05/lesson.md","ref":"js-core/week-05/lesson.md","articles":[]},{"title":"Week 6 - More Arrays","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-04/lesson.md","mtime":"2018-08-05T10:58:12.893Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-05T10:59:18.127Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
