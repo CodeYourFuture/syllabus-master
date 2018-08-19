@@ -804,12 +804,14 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="lesson-3-data-integrity-and-analytics">LESSON 3: DATA INTEGRITY AND ANALYTICS</h1>
-<p><strong>Review of last lesson</strong></p>
+<p><strong>Recap of last lesson</strong></p>
 <ul>
-<li>How to run a database query that retrieves tabular data in node express to an endpoint.</li>
-<li>Inserting data from an endpoint.</li>
-<li>Updating data from an endpoint.</li>
 <li>What is the difference between user story, use case and user acceptance test.</li>
+<li>How to run a database query that retrieves tabular data in node express to an endpoint.</li>
+<li>Inserting data from an endpoint using postman.</li>
+<li>Updating data from an endpoint using postman.</li>
+<li>Using &apos;IN&apos;</li>
+<li>Deleting data</li>
 </ul>
 <p><strong>What we will learn today?</strong></p>
 <ul>
@@ -817,45 +819,61 @@
 <li>SQL Injection</li>
 <li>LIMIT</li>
 <li>DISTINCT</li>
-<li>Sum / Avg / Count</li>
-<li>Group by</li>
+<li>SUM / AVG / COUNT</li>
+<li>GROUP BY</li>
 <li>HAVING</li>
 </ul>
-<h3 id="lesson-1--join-me-and-together-we-can-rule-the-galaxy-as-father-and-son">LESSON 1 : JOIN ME, AND TOGETHER WE CAN RULE THE GALAXY AS FATHER AND SON!</h3>
+<h3 id="lesson-1-join-me-and-together-we-can-rule-the-galaxy-as-father-and-son">LESSON 1: JOIN ME, AND TOGETHER WE CAN RULE THE GALAXY AS FATHER AND SON!</h3>
+<p>So far, we&apos;ve put data in tables and kept references to each of them using IDs, but
+we&apos;ve not yet learned how to link them automatically.</p>
+<p>We don&apos;t know how to get the <em>name</em> of a customer from a reservation - only their ID.</p>
 <p>Now let&apos;s say we want to get the <em>names</em> of customers who have a reservation <em>today</em>.</p>
 <p>From what we know now, we <em>could</em> do it like this:</p>
 <ul>
-<li>select customer_id from reservations where date_started = &apos;2018/12/31&apos;</li>
-<li>write down the list of customer ids on paper (e.g. 3, 5, 7)</li>
-<li>select * from customers where id in (3, 5, 7)</li>
+<li><code>SELECT customer_id FROM reservations WHERE check_in_date = &apos;2018/08/19&apos;;</code></li>
+<li>write down the list of customer IDs on paper (e.g. 3, 5, 7)</li>
+<li><code>SELECT * FROM customers WHERE id IN (3, 5, 7);</code></li>
 </ul>
-<p>However, we want the computer to figure out that we want ids 3, 5 and 7 by itself.</p>
-<p>That&apos;s where a database &quot;join&quot; comes in handy. In real life, if you work with databases, you will be using this thing <em>all</em> of the time.</p>
-<p>Now, we have data that spans two tables - we have reservations with a &quot;customer_id&quot; column that refers to the id column in the &quot;customers&quot; table.</p>
-<pre class="language-"><code>select reservations.date_started, customers.firstname, customers.surname
-from reservations JOIN customers ON reservations.customer_id = customer.id
-WHERE reservation.date_started = &apos;2018/12/31&apos;;
-</code></pre><p>Note that:</p>
+<p>However, we want the computer to figure out that we want IDs 3, 5 and 7 by itself.</p>
+<p>This is what a database &quot;JOIN&quot; is. In real life, if you work with databases, you will be using this thing <em>all</em> of the time - relationships between data are vitally important.</p>
+<p>Now, we have data that spans two tables - we have reservations with a &quot;customer_id&quot; column that refers to the ID column in the &quot;customers&quot; table.</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
+<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Note that:</p>
 <ul>
 <li>Because we are selecting columns from two tables and need to distinguish them, we use &quot;table.column&quot; syntax.</li>
-<li>We explicitly link reservations.customer_id and customer.id <em>even if they have a foreign key relationship</em>.</li>
-<li>reservations.customer_id and customer.id don&apos;t actually <em>have</em> to have a foreign key relationship, but they should.</li>
+<li>We explicitly link reservations.customer_id and customers.id <em>even if they have a foreign key relationship</em>.</li>
+<li>reservations.customer_id and customers.id don&apos;t actually <em>have</em> to have a foreign key relationship, but they should.</li>
 </ul>
-<h5 id="exercise-1a">EXERCISE 1.a</h5>
-<p>Get the list of rooms together with their room types.</p>
+<p>Let&apos;s try the query.</p>
+<p>First, go to the <code>cyf-hotel-db</code> repo in your terminal and switch to the <code>class3</code> branch. Next, run <code>npm i</code> and <code>npm start</code> to start the server. Then, open a new terminal tab in the <code>cyf-hotel-db</code> directory and run <code>sqlite3 database/database.sqlite</code> to open SQLite.</p>
+<p>Now, copy and paste the above <code>SELECT</code> query into SQLite. You should get this:</p>
+<pre class="language-"><code>2018/08/19|Marie|Niki
+2018/08/19|Anna|Kolen
+</code></pre><h5 id="exercise-1a">EXERCISE 1.a</h5>
+<p>Get the list of all room IDs together with their room type names.</p>
 <h5 id="exercise-1b-optional-stretch-goal">EXERCISE 1.b: OPTIONAL STRETCH GOAL</h5>
-<p>Get the list of reservations together with the details of the title, first name and surname customer who made it.</p>
+<p>Get the list of reservations (all columns) together with the the title, first name and surname customer who made it.</p>
 <h3 id="lesson-2-sql-injection">LESSON 2: SQL INJECTION</h3>
-<p>So, the hotel has a new guest:</p>
+<p>So, our hotel has a shady new guest. Let&apos;s say that we have a react frontend on top which uses the
+APIs we&apos;re building - users won&apos;t use the APIs directly but they can just fire up postman and use them
+if they want.</p>
+<p>This is very common - lots of websites have a single page application that uses an API underneath just like the one
+we&apos;re building.</p>
+<p>Now, this guest does a little poking around and he realizes that he can delete his reservation.</p>
+<pre class="language-"><code>DELETE http://localhost:8080/api/reservations/6
+</code></pre><p>Now, open a new terminal window and run &quot;sqlite3 databases/database.sqlite&quot;:</p>
+<pre class="language-"><code>sqlite&gt; SELECT * FROM reservations;
+</code></pre><p>The reservation with ID 6 should be deleted - as you coded it to work.</p>
+<p>This is fine, but not very interesting. However, let&apos;s experiment - try doing <em>this</em> with your reservation API:</p>
+<pre class="language-"><code>DELETE http://localhost:8080/api/reservations/6%20or%201%3D1
+</code></pre><p>And run this again:</p>
+<pre class="language-"><code>sqlite&gt; SELECT * FROM reservations;
+</code></pre><p>And voila, he&apos;s just emptied out the entire hotel. Nobody has a reservation any more!</p>
 <p><img src="hackerman.jpg" alt="Hackerman" title="Hackerman"></p>
-<p>Now, Mr Hackerman has a problem with our hotel. He booked a room and then decided he didn&apos;t want it. That&apos;s fine, no problem, he can cancel using the DELETE reservations endpoint you created.</p>
-<p>However, he&apos;s decided that he wants to stay</p>
-<p>So you should all have a delete reservations endpoint.</p>
-<p>So, try calling the end point in postman with:</p>
-<pre class="language-"><code>DELETE http://localhost:8080/api/reservation/6%20or%201%3D1
-</code></pre><p>Now, enter your database in sqlite and run the command:</p>
-<pre class="language-"><code>sqlite&gt; select * from reservations;
-</code></pre><h5 id="exercise-2a">EXERCISE 2.a</h5>
+<h5 id="exercise-2a">EXERCISE 2.a</h5>
 <p>You have five minutes. Work in teams. Figure out what happened between you and <em>why</em>.</p>
 <p>Clue : You might want to use this <a href="https://meyerweb.com/eric/tools/dencoder/" target="_blank">https://meyerweb.com/eric/tools/dencoder/</a></p>
 <h3 id="lesson-3-order-by-something">LESSON 3: ORDER BY SOMETHING</h3>
@@ -864,122 +882,131 @@ WHERE reservation.date_started = &apos;2018/12/31&apos;;
 them in an <em>arbitrary</em> order. The database has chosen what order to return records in. It&apos;s
 generally the order you put them in but there is <em>no</em> guarantee it will be in that order.</p>
 <p>Using &apos;order by&apos; we can get records back in a specified order:</p>
-<pre class="language-"><code>SELECT reservations.date_started, customers.firstname, customers.surname
-from reservations join customers on reservations.customer_id = customer.id
-where reservation.date_started = &apos;2018/12/31&apos; order by customers.surname
-</code></pre><p>We have Mrs Clinton, Mr Trump and me staying at the hotel? What order will will the reservations be displayed in?</p>
-<p>If we want to get <em>explicit</em> the three of them in ascending order:</p>
-<pre class="language-"><code>SELECT reservations.date_started, customers.firstname, customers.surname
-from reservations join customers on reservations.customer_id = customer.id
-where reservation.date_started = &apos;2018/12/31&apos; order by customers.surname asc
-</code></pre><p>Now, if we want them in descending order:</p>
-<pre class="language-"><code>SELECT reservations.date_started, customers.firstname, customers.surname
-from reservations join customers on reservations.customer_id = customer.id
-where reservation.date_started = &apos;2018/12/31&apos; order by customers.surname desc
-</code></pre><pre class="language-"><code>Date Started  Firstname  Surname
----------------------------------
-2018/12/31    Melania    Trump
-2018/12/31    Donald     Trump
-2018/12/31    Bill       Clinton
-2018/12/31    Hillary    Clinton
-2018/12/31    Colm       O&apos;Connor
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
+<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname<span class="token punctuation">;</span>
+</code></pre>
+<p>This will give the output in a new order:</p>
+<pre class="language-"><code>2018/08/19|Anna|Kolen
+2018/08/19|Marie|Niki
+</code></pre><p>We have Mrs Clinton, Mr Trump and Mr Hackerman staying at the hotel. What order will the reservations be displayed in?</p>
+<p>If we want to get <em>explicitly</em> the three of them in ascending order:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
+<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">ASC</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Now, if we want them in descending order:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
+<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-"><code>Check In Date  First Name  Surname
+------------------------------------
+2018/08/19     Melania     Trump
+2018/08/19     Donald      Trump
+2018/08/19     Colm        Hackerman
+2018/08/19     Bill        Clinton
+2018/08/19     Hillary     Clinton
 </code></pre><p>This is just one way the results could come out. They could also come out (e.g. on a different computer, or done at a different time), for instance, like this:</p>
-<pre class="language-"><code>Date Started  Firstname  Surname
----------------------------------
-2018/12/31    Donald     Trump
-2018/12/31    Melania    Trump
-2018/12/31    Hillary    Clinton
-2018/12/31    Bill       Clinton
-2018/12/31    Colm       O&apos;Connor
+<pre class="language-"><code>Check In Date  First Name  Surname
+------------------------------------
+2018/08/19     Donald      Trump
+2018/08/19     Melania     Trump
+2018/08/19     Colm        Hackerman
+2018/08/19     Hillary     Clinton
+2018/08/19     Bill        Clinton
 </code></pre><p>Note that Donald and Melania and Bill and Hillary are both reversed this time. This is because we said to sort by surname, which it does, but there are no guarantees about what order rows appear in where the surname is the same.</p>
-<p>So, if we want to make it more <em>deterministic</em> (opposite of arbitrary), we can make it sort by surname <em>first</em> and first name <em>second</em>.</p>
-<p>And, if we want to order by surname first and first name second, we can do this:</p>
-<pre class="language-"><code>SELECT reservations.date_started, customers.firstname, customers.surname
-from reservations join customers on reservations.customer_id = customer.id
-where reservation.date_started = &apos;2018/12/31&apos; order by customers.surname desc, customers.firstname desc
-</code></pre><pre class="language-"><code>Date Started  Firstname  Surname
----------------------------------
-2018/12/31    Donald     Trump
-2018/12/31    Melania    Trump
-2018/12/31    Bill       Clinton
-2018/12/31    Hillary    Clinton
-2018/12/31    Colm       O&apos;Connor
-</code></pre><p>In this case, Donald always comes before Melania (D comes before M in the alphabet) and Bill comes before Hillary (because B comes before H in the alphabet).</p>
+<p>So, if we want to make it more <em>deterministic</em> (opposite of arbitrary), we can make it sort by surname <em>first</em> and first name <em>second</em>:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
+<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">DESC</span><span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name <span class="token keyword">ASC</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-"><code>Check In Date  First Name  Surname
+------------------------------------
+2018/08/19     Donald      Trump
+2018/08/19     Melania     Trump
+2018/08/19     Colm        Hackerman
+2018/08/19     Bill        Clinton
+2018/08/19     Hillary     Clinton
+</code></pre><p>In this case, since we&apos;re ordering by first name ascending, Donald always comes before Melania (D comes before M in the alphabet) and Bill comes before Hillary (because B comes before H in the alphabet).</p>
 <h3 id="lesson-4-limit-your-queries">LESSON 4: LIMIT YOUR QUERIES</h3>
 <p>Now, the database you&apos;re working with right now is essentially just a toy. However,
 when you work with a real database you&apos;re often going to have a number of problems</p>
-<p>1) select * from table is going to return thousands of rows. This take ages
+<p>1) SELECT * FROM table is going to return thousands of rows. This take ages
 to load and display and if you just want to see a representative sample it&apos;s overkill.</p>
 <p>2) You want to return the top 10 of something.</p>
 <p>3) You want to show results 1-10 on page 1, results 2-20 on page 2, etc.</p>
 <p>SQL has a keyword called &quot;LIMIT&quot; which you can put at the end of a query to cut down
 on the number of returned rows:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> customers <span class="token keyword">order</span> <span class="token keyword">by</span> surname <span class="token keyword">asc</span> <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customers <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> surname <span class="token keyword">ASC</span> <span class="token keyword">LIMIT</span> <span class="token number">2</span><span class="token punctuation">;</span>
 </code></pre>
 <h5 id="exercise-4a">EXERCISE 4.a</h5>
 <p>Select two rooms only.</p>
 <h5 id="exercise-4b-optional-stretch-goal">Exercise 4.b: OPTIONAL STRETCH GOAL</h5>
 <p>Select the latest 5 reservations on the database.</p>
+<h5 id="exercise-4c-optional-stretch-goal">Exercise 4.c: OPTIONAL STRETCH GOAL</h5>
+<p>Select the reservations, primarily selecting the most recent ones, and secondarily selecting the longest ones.</p>
 <h3 id="lesson-5-distinct">LESSON 5: DISTINCT</h3>
 <p>Remember the JOIN query from above? We&apos;re going to do another similar one.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> customers<span class="token punctuation">.</span>firstname<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">from</span> reservations <span class="token keyword">join</span> customers <span class="token keyword">on</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customer<span class="token punctuation">.</span>id
-<span class="token keyword">where</span> reservation<span class="token punctuation">.</span>date_started <span class="token operator">&gt;</span> <span class="token string">&apos;2018/12/31&apos;</span> <span class="token operator">and</span> <span class="token keyword">order</span> <span class="token keyword">by</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">desc</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
+<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">&gt;</span> <span class="token string">&apos;2017/12/31&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">ASC</span><span class="token punctuation">;</span>
 </code></pre>
 <p>QUESTION FOR CLASS : What does this do?</p>
 <p>ANS : Get a list of all customers who have a reservation that begins this year</p>
 <p>Now, this is going to work with one exception. The list in my database
 is going to look a bit like this:</p>
-<pre class="language-"><code>Firstname  Surname
--------------------
-Hillary    Clinton
-Colm       O&apos;Connor
-Colm       O&apos;Connor
-Colm       O&apos;Connor
-Donald     Trump
+<pre class="language-"><code>First Name  Surname
+---------------------
+Hillary     Clinton
+Colm        Hackerman
+Colm        Hackerman
+Colm        Hackerman
+Donald      Trump
 </code></pre><p>QUESTION FOR CLASS : Why?</p>
-<p>ANS : Because I love this hotel more than Hillary and Donald and I&apos;ve arranged to stay there a few times.</p>
-<p>Of course, we only want to know <em>IF</em> I&apos;ve stayed there once, not that I&apos;m their most popular guest.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token keyword">DISTINCT</span> customers<span class="token punctuation">.</span>firstname<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">from</span> reservations <span class="token keyword">join</span> customers <span class="token keyword">on</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customer<span class="token punctuation">.</span>id
-<span class="token keyword">where</span> reservation<span class="token punctuation">.</span>date_started <span class="token operator">&gt;</span> <span class="token string">&apos;2018/12/31&apos;</span> <span class="token operator">and</span> <span class="token keyword">order</span> <span class="token keyword">by</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">desc</span>
+<p>ANS : Because Mr Hackerman loves this hotel more than Hillary and Donald and has arranged to stay there a few times.</p>
+<p>Of course, we only want to know <em>IF</em> Hackerman has stayed there once, not that he&apos;s their most popular guest.</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
+<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">&gt;</span> <span class="token string">&apos;2017/12/31&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">ASC</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Will output:</p>
-<pre class="language-"><code>Firstname  Surname
--------------------
-Hillary    Clinton
-Colm       O&apos;Connor
-Donald     Trump
+<pre class="language-"><code>First Name  Surname
+---------------------
+Hillary     Clinton
+Colm        Hackerman
+Donald      Trump
 </code></pre><p>Problem solved.</p>
 <h5 id="exercise-5a">EXERCISE 5.a</h5>
 <p>Get the list of check in dates in the summer 2017.</p>
 <h5 id="exercise-5b-optional-stretch-goal">EXERCISE 5.b: OPTIONAL STRETCH GOAL</h5>
 <p>Get the list of customers that made a reservation in the last year, including their details.</p>
 <h3 id="lesson-6-sum-average-and-count">LESSON 6: SUM, AVERAGE AND COUNT</h3>
-<p>Let us imagine that we want to know how many reservations we have on our database. Similarly to the previous lesson, we could get all the records and count them ourselves, but that sounds boring and irrealistic in real life cases, where databases can have several milions of entries. So, for that purpose we have aggregation functions:</p>
-<pre class="language-"><code>COUNT, SUM or AVERAGE,
+<p>Let us imagine that we want to know how many reservations we have on our database. Similarly to the previous lesson, we could get all the records and count them ourselves, but that sounds boring and unrealistic in real life cases, where databases can have several millions of entries. So, for that purpose we have aggregation functions:</p>
+<pre class="language-"><code>COUNT, SUM or AVG
 </code></pre><p>The usages of each are pretty obvious.
 So, this means that we can count, sum and calculate the average of a set of values.</p>
 <p>Let&apos;s check an example for <code>COUNT</code>:</p>
-<p><code>select count(*) from customers;</code></p>
+<p><code>SELECT COUNT(*) FROM customers;</code></p>
 <p>This will return the number of customers on a database.</p>
-<p>Well call these aggregation functions, and we use them to modify the results while aggregating the table results - we had a list of rows for customers, now we have the count of customers: we aggregated the rows by counting them.</p>
+<p>We call these aggregation functions, and we use them to modify the results while aggregating the table results - we had a list of rows for customers, now we have the count of customers: we aggregated the rows by counting them.</p>
 <h5 id="exercise-6a">EXERCISE 6.a</h5>
-<p>Count the number of reservations for a given customer id.</p>
+<p>COUNT the number of reservations for a given customer ID.</p>
 <h5 id="exercise-6b-optional-stretch-goal">EXERCISE 6.b: OPTIONAL STRETCH GOAL</h5>
 <p>Calculate the average paid amount across all invoices.</p>
 <h3 id="lesson-7-grouping">LESSON 7: GROUPING</h3>
-<p>Lets us say that we need to get the list of different surnames on our list of customers, and how many times each surname shows up on our database?</p>
-<p>Here the idea is that we could group the columns by the surname and get a list of each different surname, and then we can apply an aggregation function to the rest.</p>
-<p>For this we can user <code>GROUP BY</code> as follows:</p>
-<pre class="language-"><code>select <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>column_to_aggregate_1</span><span class="token punctuation">&gt;</span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>column_to_aggregate_2</span><span class="token punctuation">&gt;</span></span> from <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span> group by <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>column_to_aggregate_1</span><span class="token punctuation">&gt;</span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>column_to_aggregate_2</span><span class="token punctuation">&gt;</span></span>;
-</code></pre><p>For instance, if we have the following entries on the customers:</p>
+<p>Let us say that we need to get the list of different surnames from our list of customers, and how many times each surname shows up on our database.</p>
+<p>Here the idea is that we could group the columns by the surname and get a list of each different surname, and then we can apply an aggregation function to them.</p>
+<p>For this we can use <code>GROUP BY</code> as follows:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">&lt;</span>column_to_aggregate_1<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>column_to_aggregate_2<span class="token operator">&gt;</span> <span class="token keyword">FROM</span> <span class="token operator">&lt;</span><span class="token keyword">table</span><span class="token operator">&gt;</span> <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token operator">&lt;</span>column_to_aggregate_1<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>column_to_aggregate_2<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>For instance, if we have the following entries on the customers:</p>
 <table>
 <thead>
 <tr>
 <th>id</th>
 <th>title</th>
-<th>firsname</th>
+<th>first_name</th>
 <th>surname</th>
 <th>email</th>
 </tr>
@@ -990,63 +1017,70 @@ So, this means that we can count, sum and calculate the average of a set of valu
 <td>Doc.</td>
 <td>Tom</td>
 <td>Jones</td>
-<td>tom.jones@sub-domain.domain</td>
+<td>tom.jones@domain.com</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Mr.</td>
 <td>Jorge</td>
 <td>Silva</td>
-<td>jorge-silva@sub-domain.com</td>
+<td>jorge-silva@domain.com</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Mr.</td>
 <td>Jorge</td>
 <td>Silva</td>
-<td>jorge2-silva@sub-domain.com</td>
+<td>jorge2-silva@domain.com</td>
 </tr>
 <tr>
 <td>16</td>
 <td>Doc.</td>
 <td>Pedro</td>
 <td>Silva</td>
-<td>pedro.silva@sub-domain.domain</td>
+<td>pedro.silva@domain.com</td>
 </tr>
 <tr>
 <td>17</td>
 <td>Doc.</td>
 <td>Colm</td>
 <td>O&apos;Conner</td>
-<td>colm.oconner@sub-domain.domain</td>
+<td>colm.oconner@domain.com</td>
 </tr>
 <tr>
 <td>18</td>
 <td>Doc.</td>
 <td>James</td>
 <td>Lennon</td>
-<td>john.lennon@sub-domain.domain</td>
+<td>john.lennon@domain.com</td>
 </tr>
 <tr>
 <td>19</td>
 <td>Sir.</td>
 <td>John</td>
 <td>O&apos;Conner</td>
-<td>John.oconner@sub-domain.domain</td>
+<td>John.oconner@domain.com</td>
 </tr>
 </tbody>
 </table>
-<p>If we group by surname we have 4 different surnames: <code>O&apos;conner</code>, <code>Silva</code>, <code>Jones</code>, <code>Lennon</code>, but for <code>Silva</code> and <code>O&apos;Conner</code>, we have more than one entry, so we need to aggregate the rest of the columns. In this case, we want to count the occurrences so we can simply do:</p>
-<pre class="language-"><code>select surname, count(*) from customers group by surname;
+<p>If we group by surname we have 4 different surnames: <code>O&apos;Conner</code>, <code>Silva</code>, <code>Jones</code>, <code>Lennon</code>, but for <code>Silva</code> and <code>O&apos;Conner</code>, we have more than one entry, so we need to aggregate them. In this case, we want to count the occurrences so we can simply do:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> surname<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> customers <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> surname<span class="token punctuation">;</span>
+</code></pre>
+<p>This should give this output:</p>
+<pre class="language-"><code>Jones|1
+Silva|3
+O&apos;Conner|2
+Lennon|1
 </code></pre><h5 id="exercise-7a">EXERCISE 7.a</h5>
-<p>Count the occurrences of the DIFFERENT titles on the database.</p>
+<p>COUNT the occurrences of the DIFFERENT titles on the database.</p>
 <h5 id="exercise-7b-optional-stretch-goal">EXERCISE 7.b: OPTIONAL STRETCH GOAL</h5>
-<p>Count the occurrences of a combination of first-name and surname to get a list of customers with the same name.</p>
+<p>COUNT the occurrences of a combination of first-name and surname to get a list of customers with the same name.</p>
 <h3 id="lesson-8-having-your-table-and-eating-it">LESSON 8: HAVING YOUR TABLE AND EATING IT</h3>
-<p>Suppose that we want to filter the result of what we got on the previous example - count of customers each surname - to select only the surnames for which there are 3 or more customers?</p>
+<p>Suppose that we want to filter the result of what we got on the previous example - count of each customer&apos;s surname - to select only the surnames for which there are 3 or more customers?</p>
 <p>To accomplish that we can use <code>HAVING</code> as follows:</p>
-<pre class="language-"><code>select surname, count(*) from customers group by surname having count &gt;= 3;
-</code></pre><p>Note that <code>WHERE</code> would not work, because it enables us to filter data that will grouped, and we want to filter the result of that grouping. We want to filter by the count of customers.</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> surname<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> count <span class="token keyword">FROM</span> customers <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> surname <span class="token keyword">HAVING</span> count <span class="token operator">&gt;=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Note that <code>WHERE</code> would not work, because it enables us to filter data that will grouped, and we want to filter the result of that grouping. We want to filter by the count of customers.</p>
 <h5 id="exercise-8a">EXERCISE 8.a</h5>
 <p>Get the list of customers that have 5 or more reservations on our hotel.</p>
 <h1 id="homework">HOMEWORK</h1>
@@ -1059,7 +1093,7 @@ So, this means that we can count, sum and calculate the average of a set of valu
 <p><strong>User Story:</strong> As a staff member, I want to check the number reservations for each customer, including their own details, so that we check who are our best customers.</p>
 <p>Complete the endpoint to get from <code>/reservations-per-customer/</code> the number of reservations per customer, with details for the customer and the reservation.</p>
 <h5 id="homework-4">HOMEWORK 4</h5>
-<p>Get the number of reservations for each room id and include the details for the room details.</p>
+<p>Get the number of reservations for each room ID and include the details for the room details.</p>
 <h5 id="homework-5">HOMEWORK 5</h5>
 <p>Adapt the previous query (8.c) to include the details for the type of room.</p>
 <h5 id="homework-6">HOMEWORK 6</h5>
@@ -1121,7 +1155,7 @@ So, this means that we can count, sum and calculate the average of a set of valu
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2018-08-12T11:03:13.291Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-12T11:04:17.533Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2018-08-19T11:13:27.274Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-19T11:14:29.198Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
