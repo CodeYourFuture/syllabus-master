@@ -804,7 +804,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="react-3">React 3</h1>
-<p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""></p>
+<p><img src="https://img.shields.io/badge/status-ready-green.svg" alt="Lesson Ready"></p>
 <p><strong>What will we learn today?</strong></p>
 <ul>
 <li><a href="#recap">Recap</a></li>
@@ -841,7 +841,7 @@
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> <span class="token function-variable function">IsShown</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token constant">I</span>&apos;m shown when <span class="token boolean">true</span> &#x2705;<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
 <span class="token punctuation">)</span>
-<span class="token keyword">const</span> <span class="token function-variable function">IsNotShwon</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+<span class="token keyword">const</span> <span class="token function-variable function">IsNotShown</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token constant">I</span>&apos;m shown when <span class="token boolean">false</span> &#x2611;&#xFE0F;<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
 <span class="token punctuation">)</span>
 
@@ -886,7 +886,8 @@
 <p><strong>Exercise:</strong>
 Open the <code>my-hotel</code> application from the last 2 weeks</p>
 <ol>
-<li>Implement the lifecycle hook methods in the <code>BookingsMessage</code> component and add a <code>console.log</code> to each of them. Try interacting with the component and see what order the logs appear</li>
+<li>Add <code>constructor</code>, <code>shouldComponentUpdate</code>, <code>componentDidMount</code>, <code>componentDidUpdate</code> and <code>componentWillUnmount</code> methods in the <code>BookingsMessage</code> component and add a <code>console.log</code> that logs out the name of the method (e.g. <code>console.log(&apos;componentDidMount&apos;)</code>. Also add <code>console.log(&apos;render&apos;)</code> in the <code>render</code> method.</li>
+<li>Try interacting with the component and see what order the logs appear</li>
 <li>The <code>componentWillUnmount</code> method will never be called. Can you explain why?</li>
 <li>Return <code>false</code> from <code>shouldComponentUpdate</code> in <code>BookingsMessage</code>. Try incrementing the number of bookings and explain what happens (change it back to return <code>true</code> after you are done!)</li>
 </ol>
@@ -937,16 +938,16 @@ Open the <code>my-hotel</code> React application from last week</p>
 <ol>
 <li>Render the <code>Clock</code> component in the <code>App</code> component</li>
 <li>Add a <code>componentDidMount</code> method to the <code>Time</code> component and use <code>setInterval</code> to call <code>this.tick</code> every second (1000 milliseconds)</li>
-<li>Implement the <code>tick</code> method, and set the <code>date</code> state to the current date (hint: <code>new Date()</code>)</li>
-<li>Add a <code>console.log</code> to the <code>tick</code> method. Try clicking the &quot;Toggle time&quot; button and look at what happens in the console. What do you think the problem is here? How can we fix it?</li>
-<li>Assign the return value of <code>setInterval</code> to <code>this.timer</code></li>
+<li>Implement the <code>tick</code> method, and use <code>this.setState</code> to set the <code>date</code> to the current date (hint: <code>new Date()</code>). Your clock should now start working</li>
+<li>Add <code>console.log(&apos;tick&apos;)</code> to the <code>tick</code> method. Try clicking the &quot;Toggle time&quot; button and look at what happens in the console. What do you think the problem is here? How can we fix it?</li>
+<li>Assign the return value of <code>setInterval</code> to <code>this.timer</code> (<strong>not</strong> <code>this.state.timer</code>)</li>
 <li>In <code>componentWillUnmount</code>, remove the timer by calling <code>clearInterval(this.timer)</code></li>
 <li>Try playing around with the toggle, like in step 6. How have we solved the problem?</li>
 </ol>
 </blockquote>
 <h2 id="fetching-data-in-react">Fetching Data in React</h2>
 <p>Most web applications will load data from the server. How do we do this in React? The component lifecycle is very important - we don&apos;t want to be calling our API at the wrong time, or multiple times with the same data!</p>
-<p>If we tried to fetch data in our <code>render</code> method, it would make a request every time props or state changed. This would create lots of unnecessary requests. As we saw above, <code>componentDidMount</code> is called only once when the component is first rendered and so it is an ideal place for making requests. Let&apos;s look at an example:</p>
+<p>If we tried to fetch data in our <code>render</code> method, it would make a request every time props or state changed. This would create lots of unnecessary requests. As we saw above, <code>componentDidMount</code> is called only once when the component is first rendered and so it is an ideal place for making requests. Let&apos;s look at an example (<a href="https://stackblitz.com/edit/react-dyupps?file=index.js" target="_blank">interactive example</a>):</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">PokemonFetcher</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
   <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`https://pokeapi.co/api/v2/pokemon/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
@@ -1076,7 +1077,8 @@ Make sure that you include a loading state and error handling.</p>
 </code></pre>
 <p>The key method here is <code>setInputRef</code>. It is called by React when rendering the <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span><span class="token punctuation">&gt;</span></span></code>, and passes a reference to the real DOM node as an argument. We remember the reference by assigning it to <code>this.input</code>. Then when the button is clicked we can call the <code>focus</code> method (a vanilla method, not part of React) on the input DOM node.</p>
 <h1 id="homework">Homework</h1>
-<p>Complete user stories 8, 9 and 10 from <a href="https://github.com/CodeYourFuture/cyf-hotel-react" target="_blank">cyf-hotel-react</a> project</p>
+<p>Complete user stories 9, 10, 11 and 12 from <a href="https://github.com/CodeYourFuture/cyf-hotel-react" target="_blank">cyf-hotel-react</a> project.
+Try to complete the Stretch Goal exercises.</p>
 
                                 
                                 </section>
@@ -1120,7 +1122,7 @@ Make sure that you include a loading state and error handling.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"next":{"title":"Useful links","level":"2.1","depth":1,"path":"useful-links.md","ref":"useful-links.md","articles":[]},"previous":{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-21/lesson.md","mtime":"2018-08-19T15:00:27.643Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-19T15:01:42.975Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"next":{"title":"Useful links","level":"2.1","depth":1,"path":"useful-links.md","ref":"useful-links.md","articles":[]},"previous":{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-21/lesson.md","mtime":"2018-09-06T16:14:11.820Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-06T16:15:47.870Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
