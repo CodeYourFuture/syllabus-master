@@ -918,12 +918,8 @@
 </code></pre>
 <h2 id="unmounting">Unmounting</h2>
 <p>So far we&apos;ve looked at components that are always rendered in the browser. However (and this is often the case in large applications), we might want to control whether components are shown or not. Let&apos;s look at a Toggle component (<a href="https://codesandbox.io/s/xmo8oo514" target="_blank">interactive example</a>):</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> <span class="token function-variable function">IsShown</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token constant">I</span>&apos;m shown when <span class="token boolean">true</span> &#x2705;<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token function-variable function">IsNotShown</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token constant">I</span>&apos;m shown when <span class="token boolean">false</span> &#x2611;&#xFE0F;<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> <span class="token function-variable function">Message</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token constant">I</span>&apos;m shown when <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>isShown is <span class="token boolean">true</span> &#x2705;<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Toggle</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
@@ -939,14 +935,14 @@
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
-        <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>isShown <span class="token operator">?</span> <span class="token operator">&lt;</span>IsShown <span class="token operator">/</span><span class="token operator">&gt;</span> <span class="token punctuation">:</span> <span class="token operator">&lt;</span>IsNotShown <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span>
+        <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>isShown <span class="token operator">?</span> <span class="token operator">&lt;</span>Message <span class="token operator">/</span><span class="token operator">&gt;</span> <span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span>
         <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>toggle<span class="token punctuation">}</span><span class="token operator">&gt;</span>Toggle<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
       <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>If you open up dev tools, you will see that the element changes based on the <code>isShown</code> state. The hidden element is not hidden with CSS, it is actually removed from the DOM. This is important in larger applications as it can free up resources (CPU &amp; memory) that aren&apos;t being used any more.</p>
+<p>If you open up dev tools, you will see that the element changes based on the <code>isShown</code> state. The hidden element is not hidden with CSS, it is actually removed from the DOM. This is because <code>this.state.isShown</code> is <code>false</code> which means the Toggle component returns <code>null</code> for that part of the JSX. If you return <code>null</code> in JSX then React will render nothing at all.</p>
 <h2 id="the-circle-of-life">The Circle of Life</h2>
 <p>When a component is within the DOM, we call it <em>mounted</em>. When a component is removed from the DOM, we call it <em>unmounted</em>. When we change state like in the unmounting example above, we can switch between these statuses. This gives us a clue that components go through a <em>lifecycle</em> of different statuses. We have seen 2 of the statuses: mounting and unmounting, there is also a third called <em>updating</em>.</p>
 <p>We can hook into this lifecycle through special component methods that are added by React&apos;s <code>Component</code> class. They are run at different points of the lifecycle, often before and after they change to a different status. The method names contain <code>will</code> or <code>did</code> based on whether they run before or after a status change.</p>
@@ -1175,106 +1171,114 @@ Open the <code>pokedex</code> React application again and open the <code>src/Bes
 <h2 id="working-with-forms-in-react">Working with forms in React</h2>
 <p>Modern web applications often involve interacting with forms such as creating an account, adding a blog post or posting a comment. This would involve using inputs, buttons and various form elements and being able to get the values entered by users to do something with it (like display them on a page or send them in a POST request). So, how do we do this in React?</p>
 <p>A popular pattern for building forms and collect user data is the <em>controlled component</em> pattern. A pattern is a repeated solution to a problem that is useful in multiple similar cases. Let&apos;s have a look at an example (<a href="https://codesandbox.io/s/4jq1yqy8kx" target="_blank">interactive example</a>):</p>
-<pre class="language-"><code>class SimpleReminder extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reminder: &quot;&quot;
-    };
-  }
+<pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">SimpleReminder</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+      reminder<span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  handleChange = event =&gt; {
-    this.setState({
-      reminder: event.target.value
-    });
-  };
+  <span class="token function-variable function">handleChange</span> <span class="token operator">=</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      reminder<span class="token punctuation">:</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  render() {
-    return (
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-          <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
-          <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Some reminder<span class="token punctuation">&quot;</span></span>
-          <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span>{this.state.reminder}</span>
-          <span class="token attr-name">onChange</span><span class="token attr-value"><span class="token punctuation">=</span>{this.handleChange}</span>
-        <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Today I need to remember to... {this.state.reminder}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-    );
-  }
-}
-</code></pre><p>We&apos;re controlling the <code>value</code> of the input by using the value from the <code>reminder</code> state. This means that we can only change the value by updating the state. It is done using the <code>onChange</code> attribute and the method <code>handleChange</code> which is called every time the input value changes (typically when a new character is added or removed). If you didn&apos;t call <code>this.setState()</code> in the <code>handleChange</code> method, then the input&apos;s value would never change and it would appear as if you couldn&apos;t type in the input! Finally, the value we keep in the <code>reminder</code> state is displayed on the screen as today&apos;s reminder. </p>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>input
+          type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+          placeholder<span class="token operator">=</span><span class="token string">&quot;Some reminder&quot;</span>
+          value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>reminder<span class="token punctuation">}</span>
+          onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleChange<span class="token punctuation">}</span>
+        <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>Today <span class="token constant">I</span> need to remember to<span class="token operator">...</span> <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>reminder<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>We&apos;re controlling the <code>value</code> of the input by using the value from the <code>reminder</code> state. This means that we can only change the value by updating the state. It is done using the <code>onChange</code> attribute and the method <code>handleChange</code> which is called every time the input value changes (typically when a new character is added or removed). If you didn&apos;t call <code>this.setState()</code> in the <code>handleChange</code> method, then the input&apos;s value would never change and it would appear as if you couldn&apos;t type in the input! Finally, the value we keep in the <code>reminder</code> state is displayed on the screen as today&apos;s reminder. </p>
 <p>In addition, instead of just saving the value of the input in the state, we could have also transformed the string before we set it with <code>this.setState()</code>, for example by calling <code>toUpperCase()</code> on the string.</p>
 <p>Let&apos;s have a look at a more complex example where we want to build a form to let users enter information to create a personal account (<a href="https://codesandbox.io/s/m7p083zn6p" target="_blank">interactive example</a>):</p>
-<pre class="language-"><code>class CreateAccountForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: &quot;&quot;,
-      email: &quot;&quot;,
-      password: &quot;&quot;
-    };
-  }
+<pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">CreateAccountForm</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+      username<span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+      email<span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+      password<span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  handleChange = event =&gt; {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+  <span class="token function-variable function">handleChange</span> <span class="token operator">=</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token punctuation">[</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>name<span class="token punctuation">]</span><span class="token punctuation">:</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  submit = () =&gt; {
-    console.log(&quot;Do something with the form values...&quot;);
-    console.log(`Username = ${this.state.username}`);
-    console.log(`Email = ${this.state.email}`);
-    console.log(`Password = ${this.state.password}`);
-  };
+  <span class="token function-variable function">submit</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Do something with the form values...&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Username = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>username<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Email = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>email<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Password = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>password<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  render() {
-    return (
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-            <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>username<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Username<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span>{this.state.username}</span>
-            <span class="token attr-name">onChange</span><span class="token attr-value"><span class="token punctuation">=</span>{this.handleChange}</span>
-          <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-            <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>email<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Email<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span>{this.state.email}</span>
-            <span class="token attr-name">onChange</span><span class="token attr-value"><span class="token punctuation">=</span>{this.handleChange}</span>
-          <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-            <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>password<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>password<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>Password<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span>{this.state.password}</span>
-            <span class="token attr-name">onChange</span><span class="token attr-value"><span class="token punctuation">=</span>{this.handleChange}</span>
-          <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span> <span class="token attr-name">onClick</span><span class="token attr-value"><span class="token punctuation">=</span>{this.submit}</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>input
+            type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+            name<span class="token operator">=</span><span class="token string">&quot;username&quot;</span>
+            placeholder<span class="token operator">=</span><span class="token string">&quot;Username&quot;</span>
+            value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>username<span class="token punctuation">}</span>
+            onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleChange<span class="token punctuation">}</span>
+          <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>input
+            type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+            name<span class="token operator">=</span><span class="token string">&quot;email&quot;</span>
+            placeholder<span class="token operator">=</span><span class="token string">&quot;Email&quot;</span>
+            value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>email<span class="token punctuation">}</span>
+            onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleChange<span class="token punctuation">}</span>
+          <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>input
+            type<span class="token operator">=</span><span class="token string">&quot;password&quot;</span>
+            name<span class="token operator">=</span><span class="token string">&quot;password&quot;</span>
+            placeholder<span class="token operator">=</span><span class="token string">&quot;Password&quot;</span>
+            value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>password<span class="token punctuation">}</span>
+            onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleChange<span class="token punctuation">}</span>
+          <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button type<span class="token operator">=</span><span class="token string">&quot;submit&quot;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>submit<span class="token punctuation">}</span><span class="token operator">&gt;</span>
           Create account
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-    );
-  }
-}
-</code></pre><p>We now have three different inputs named <code>username</code>, <code>email</code> and <code>password</code>, and we keep each entered value in a state with the same name. The method <code>handleChange</code> is reused to keep track of each change of value. The trick here is to use the name of the input element to update the corresponding state. Finally, when the user clicks on the submit button, the <code>submit</code> method is called to process the values. They are currently just displayed in the console but you could imagine validating the format of these values and sending them in a POST request.</p>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>We now have three different inputs named <code>username</code>, <code>email</code> and <code>password</code>, and we keep each entered value in a state with the same name. The method <code>handleChange</code> is reused to keep track of each change of value. The trick here is to use the name of the input element to update the corresponding state. Finally, when the user clicks on the submit button, the <code>submit</code> method is called to process the values. They are currently just displayed in the console but you could imagine validating the format of these values and sending them in a POST request.</p>
 <p><strong>Additional note:</strong> Have you seen this strange syntax in the <code>setState</code> of <code>handleChange</code>? It&apos;s called a computed property name. In a Javascript object, you can use a variable wrapped in square brackets which acts as a dynamic key, such as: </p>
 <pre class="language-"><code>const myFirstKey = &quot;key1&quot;;
 const myFirstValue = &quot;value1&quot;;
 const dynamicKeyObject = { [myFirstKey]: myFirstValue };
 console.log(dynamicKeyObject); // =&gt; { key1: &quot;value1&quot; }
-</code></pre><h1 id="homework">Homework</h1>
-<p>Complete all of the lesson 3 exercises in the <a href="https://github.com/CodeYourFuture/cyf-hotel-react#lesson-3" target="_blank">cyf-hotel-react</a> project.</p>
-<p>Try to complete the <a href="https://github.com/CodeYourFuture/cyf-hotel-react#stretch-goals" target="_blank">Stretch Goal exercises</a>.</p>
+</code></pre><h2 id="further-reading">Further Reading</h2>
+<p>There is a new update to React, which adds a new feature called <em>Hooks</em>. It allows you to access the special super powers of state and lifecycle in regular function components. There is an extensive guide in the <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">official React tutorial</a>.</p>
+<h1 id="homework">Homework</h1>
+<ol>
+<li>If you haven&apos;t already, complete the in-class exercises on your <code>pokedex</code> app</li>
+<li>Complete all of the lesson 3 exercises in the <a href="https://github.com/CodeYourFuture/cyf-hotel-react#lesson-3" target="_blank">cyf-hotel-react</a> project</li>
+<li>Deploy your pokedex application on Netlify and share the link in the class Slack channel</li>
+<li>Try to complete the <a href="https://github.com/CodeYourFuture/cyf-hotel-react#stretch-goals" target="_blank">Stretch Goal exercises</a> in the cyf-hotel-react homework</li>
+</ol>
 
                                 
                                 </section>
@@ -1318,7 +1322,7 @@ console.log(dynamicKeyObject); // =&gt; { key1: &quot;value1&quot; }
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"next":{"title":"Code of Conduct","level":"2.1","depth":1,"path":"conduct.md","ref":"conduct.md","articles":[]},"previous":{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-21/lesson.md","mtime":"2019-05-14T21:32:31.296Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-14T21:33:25.674Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"next":{"title":"Code of Conduct","level":"2.1","depth":1,"path":"conduct.md","ref":"conduct.md","articles":[]},"previous":{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-21/lesson.md","mtime":"2019-05-22T20:02:05.096Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-22T20:03:07.270Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
