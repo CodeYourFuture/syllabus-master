@@ -893,387 +893,230 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="week-16-lesson-1--basic-sql">WEEK 16 LESSON 1 : BASIC SQL</h1>
-<p><strong>What we will learn today?</strong></p>
+                                <h1 id="database-1-introduction-to-sql">Database 1: Introduction to SQL</h1>
+<p><strong>What will we learn today?</strong></p>
 <ul>
-<li>Why we need databases</li>
-<li>Installing SQLite</li>
-<li>Creating a database with SQL and storing data in it.</li>
-<li>Inserting data into a database using SQL.</li>
-<li>Retrieving data from a database using SQL.</li>
-<li>Escaping</li>
+<li><p><a href="#introduction-to-databases">Introduction to databases</a></p>
+<ul>
+<li>Why do we need them?</li>
+<li>Different types of database</li>
 </ul>
-<h2 id="lesson-1a-why-we-need-databases">LESSON 1A: Why we need databases</h2>
-<p>So, in your previous lessons you have been taught how to store and retrieve data
-using files. This is fine and works well for some data - particularly simple data -
-but it can quickly cause issues when you have a <em>lot</em> of data and <em>complicated</em> data.</p>
-<p>TEACHER STORY:</p>
-<p>Back in 2013 I used to work for a company that ran hotel wifi for big hotel chain.
-We did at least 4 big brands that you&apos;ve probably heard of and a whole bunch of others.
-This company had been going for a long time and used to make $8 when, back in the dark ages, you paid $12 for a day of wifi.</p>
-<p>The code for this system had the notion of &quot;invoices&quot;, &quot;wifi enrollments&quot; and &quot;guests&quot; and
-stored data on each of them as well as the links between them. We would store data about
-these things and we would run reports on each and send them to the hotels who would use them to bill guests.</p>
-<p>All normal so far. Except we would sometimes send reports with invoices which didn&apos;t have enrollments, and enrollments which didn&apos;t have guests.</p>
-<p>Sometimes the amounts on those invoices would rack up to tens even hundreds of thousands of dollars of invoices <em>without</em> customers, and the hotel managers were rarely happy:</p>
-<!-- ![Hotel manager](grumpy-cat.jpg "Hotel manager's face") -->
+</li>
+<li><p><a href="#introduction-to-postgresql">Introduction to PostgreSQL</a></p>
+<ul>
+<li>What is SQL?</li>
+<li>What is a RDBMS?</li>
+<li>What characterises a relational database?</li>
+<li>Database modeling exercise</li>
+<li>Check your PostgreSQL installation</li>
+</ul>
+</li>
+<li><p><a href="#communicating-with-the-database-using-sql">Communicating with the database using SQL</a></p>
+<ul>
+<li>Creating a new database</li>
+<li>Creating a table</li>
+<li>Inserting data</li>
+<li>Retrieving data</li>
+<li>Retrieving data with conditions</li>
+</ul>
+</li>
+<li><p><a href="#homework">Homework</a></p>
+</li>
+</ul>
+<h2 id="introduction-to-databases">Introduction to databases</h2>
+<p>A database is a structured set of data held in a computer. It provides ways to store, retrieve and organize information.</p>
+<h3 id="why-do-we-need-them">Why do we need them?</h3>
+<p>In the past few weeks, you stored and retrieved data using files. This is fine for simple data but it can quickly become an issue as your application becomes more complex and needs to store and manipulate more complicated data. For example, imagine you want to develop the next biggest hotel booking application. You will need to store the list of hotels available for booking somewhere, and as you add more features, you will need to save users information, the reviews they post for each hotel, but also the bookings each user makes. You can see that the data you need to handle can become very complicated, especially when you need to consider that data are not static, as they can be updated or deleted. To work more effectively with data, we can then use a database, which present the following benefits:</p>
+<ul>
+<li>A database defines a structure for your data and the relationships between entities</li>
+<li>A database provides convenient and performant ways to safely store and retrieve data</li>
+<li>A database provides a mechanism to check the validity of your data</li>
+</ul>
+<h3 id="different-types-of-database">Different types of database</h3>
+<p>There are many different kinds of database and different implementations. Sometimes, a database type is a better fit to certain use case or certain problems. The most well-known database types include relational database, key/value database, graph database and document database (also known as NoSQL). For this class, we will focus specifically on relational database as they are the most widely used and supported. You can consult <a href="https://db-engines.com/en/ranking" target="_blank">DB-Engines</a> to see a ranking of the most used database, as you can see, there is a lot of them!</p>
+<h2 id="introduction-to-postgresql">Introduction to PostgreSQL</h2>
+<p><em>&quot;PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads. The origins of PostgreSQL date back to 1986 as part of the POSTGRES project at the University of California at Berkeley and has more than 30 years of active development on the core platform.&quot;</em> (source: <a href="https://www.postgresql.org/about/" target="_blank">postgresql.org</a>)</p>
+<h3 id="what-is-sql">What is SQL?</h3>
+<ul>
+<li>Pronounced S-Q-L or sequel</li>
+<li>Stands for Structured Query Language</li>
+<li>SQL is the standard language used to communicate with relational database</li>
+<li>SQL statements are used to query, create, update, delete records in a database</li>
+<li>SQL statements are executed by a RDBMS.</li>
+</ul>
+<h3 id="what-is-a-rdbms">What is a RDBMS?</h3>
+<ul>
+<li>Stands for Relational Database Management System</li>
+<li>It is a program that processes SQL statements to manage a relational database</li>
+<li>PostgreSQL is a RDBMS.</li>
+</ul>
+<h3 id="what-characterizes-a-relational-database">What characterizes a relational database?</h3>
+<p>As mentioned previously, a relational database is a specific type of database. Data is stored in <em>tables</em> of <em>rows</em> and <em>columns</em> as per the example below:</p>
+<!-- ![table-diagram](table-diagram.png) -->
 <p align="center">
-  <img src="grumpy-cat.jpg" display="block" width="75%">
+  <img src="table-diagram.png" display="block" width="60%">
 </p>
 
-<p>This was a very, very serious problem. We were &gt;.&lt; this close to losing a big hotel chain as a customer - and a large part of it was because of this.</p>
-<p>This was a problem because our system was buggy, so we had what are generally called &quot;data integrity&quot; issues. You&apos;ve encountered bugs before on this course - data integrity issues bugs too - bugs with your data.</p>
-<p>The difference between a bug in your code and a bug in your data, caused by a bug in your code, is that bugs in your code can always be fixed. Bugs in your data - sometimes they can never be fixed.</p>
-<p>These lessons are about using SQL and storing and retrieving data in your code in such a way that your data is kept clean.</p>
-<h2 id="lesson-1b--what-is-the-point-of-an-sql-database">LESSON 1B : What is the point of an SQL database?</h2>
-<p>We&apos;re going to teach you a new programming language. It&apos;s called SQL. Pronounced &quot;S - Q - L&quot; or sequel, either is fine.</p>
-<p>Databases are simply programs that take data and stuff it in files just like you were doing in the previous lesson.</p>
-<p>However, the way we use a database is different to the way we store things in files. In a file, you can put any random jumble of data in and get it out again. How you put it in and get it out is up to you. Your code needs to open the file, close the file, retrieve, store or modify and validate everything itself. Offloading some of that responsibility to another program means that your code can achieve all the same things but be simpler.</p>
-<p>You interact with almost all of them using the same programming language which is called &quot;SQL&quot;. It&apos;s been around for 31 years and is still completely dominant. Computing moves fast, but SQL doesn&apos;t change. This kind of lesson will probably still be taught in 50 years. Probably 4 out of 5 software jobs involve SQL In some way.</p>
-<p>SQL is a different, and usually simpler kind of programming language that you use <em>with</em> a database (sometimes called an RDBMS) to:</p>
-<ul>
-<li>Store data in a way such that its structure cannot be violated.</li>
-<li>Retrieve data (get me all the reservations under the name &quot;Trump&quot;) and answer questions about data (&quot;what was the sum total of all of the invoices in february?&quot;).</li>
-</ul>
-<p>An RDBMS (relational database management system) will do this by, for example:</p>
-<ul>
-<li>Data constraints (e.g. each reservation <em>must</em> have a customer)</li>
-<li>Data types (e.g. check in date <em>can only</em> be a date)</li>
-<li>Uniqueness of certain pieces of data (e.g. there is <em>only one</em> person with the driver&apos;s license ID 941413).</li>
-<li>Organizing how the data is retrieved and assembled (e.g. fetch me all reservations under customer &quot;Donald Trump&quot;).</li>
-<li>Executes on a different process/machine, meaning that the queries can be parallelized, and work can be offloaded from the main server.</li>
-</ul>
-<h3 id="should-i-use-sql-or-should-i-use-nosql">SHOULD I USE SQL OR SHOULD I USE NOSQL?</h3>
-<p>My short answer: if in doubt, I would just use SQL. Always.</p>
-<p>Long answer: There are two forms of NoSQL.</p>
-<p>1) Extremely high scale -- terabytes upon terabytes of data and tens of people working just on handling the database -- the canonical example is Cassandra --- constraints are not enforced <em>due to extremley high loads and high levels of data</em>. Some companies like Netflix, Google do this. 99% of tech companies do not.</p>
-<p>2) For beginner programmers - Mongo --- constraints (among other features) are not there <em>to simplify things for beginners</em>. This means it will be quicker to build your project but you face a higher risk of data integrity issues
-once you do and shifting from mongo to an SQL database once you&apos;re deep into a project is tricky.</p>
-<h4 id="exercise-1b-installing-sqlite-on-your-laptop-and-creating-your-first-database">EXERCISE 1B: INSTALLING SQLITE ON YOUR LAPTOP AND CREATING YOUR FIRST DATABASE</h4>
-<p>The RDBMS we are going to teach you first is called &quot;sqlite&quot;. It&apos;s pretty much the industry standard for creating small, self contained database that fits in one file or runs a small website (where small means under 100,000 hits per day). There is more <a href="https://www.sqlite.org/whentouse.html" target="_blank">here</a> on when it is and is not a good database to use.</p>
-<p>To set up, we do the following:</p>
-<ul>
-<li>Windows: <a href="https://sqlite.org/download.html#win32" target="_blank">https://sqlite.org/download.html#win32</a></li>
-<li>Ubuntu: <code>sudo apt-get install sqlite3</code></li>
-<li>Mac OS: <code>brew install sqlite3</code></li>
-</ul>
-<p>To run SQLite, open a command prompt and run &quot;sqlite mydatabase.sqlite&quot;.</p>
-<p>This should give you a prompt like this:</p>
-<pre class="language-"><code>sqlite3
-SQLite version 3.11.0 2016-02-15 17:29:24
-Enter &quot;.help&quot; for usage hints.
-sqlite&gt;
-</code></pre><p>This is a command prompt where you can run snippets of SQL and load files containing SQL.</p>
-<h2 id="lesson-1c-creating-a-table">LESSON 1C: CREATING A TABLE</h2>
-<p>The first thing we want to store is customers, since without customers, you don&apos;t have a hotel.</p>
-<p>First, open a file in any text editor and put the following in a file called &apos;hotel.sql&apos;:</p>
-<pre class="language-"><code class="lang-sql">PRAGMA foreign_keys <span class="token operator">=</span> <span class="token keyword">ON</span><span class="token punctuation">;</span>
-
-<span class="token keyword">create</span> <span class="token keyword">table</span> customers <span class="token punctuation">(</span>
-    title <span class="token keyword">varchar</span><span class="token punctuation">,</span>
-    firstname <span class="token keyword">varchar</span><span class="token punctuation">,</span>
-    surname <span class="token keyword">varchar</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> customers <span class="token punctuation">(</span>title<span class="token punctuation">,</span> firstname<span class="token punctuation">,</span> surname<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token string">&apos;Mr&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Donald&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Trump&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>What we have here:</p>
-<ul>
-<li>PRAGMA statement is to set up some relevant settings that we don&apos;t need to worry about just yet.</li>
-<li>Creating a table - this creates the <em>structure</em> which you can use to put data in. The items are <em>columns</em>.</li>
-<li>Insert into - puts data <em>into</em> that structure.</li>
-<li>&apos;title varchar&apos; - this means we&apos;re creating a column with the name &apos;title&apos; which holds a &apos;variable number of characters&apos;. This is pretty much the same thing as a string in javascript.</li>
-</ul>
-<p>Now, in the command prompt run the following:</p>
-<pre class="language-"><code>$ sqlite3 -init hotel.sql
-</code></pre><p>Now that the file has been loaded with one table containing one row of data, you can read it back
-out again like this:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> customers<span class="token punctuation">;</span>
-</code></pre>
-<p>This should display:</p>
-<pre class="language-"><code>sqlite&gt; select * from customers;
-Mr|Donald|Trump
-</code></pre><p><strong>Note</strong>: We are using a in memory database. This means that for each exercise we will be adding sql statements to our <code>hotel.sql</code> and then read this file into sqlite3 to create our database, because everytime we close <code>sqlite3</code> the database will be deleted and the data will be lost.</p>
-<h4 id="exercise-1c-create-tables-and-insert-data">EXERCISE 1C: Create tables and insert data</h4>
-<ol>
-<li><p>Amend hotel.sql create the database again and add yourselves as <em>second</em> customer using INSERT - so you&apos;re now staying in a hotel with Donald Trump. Run <code>select * from customers;</code> and ensure that you see yourself both as guests.</p>
-</li>
-<li><p>Change hotel.sql again to store email addresses from yourself and Donald (donald.trump@whitehouse.gov) and have them displayed on screen. Select everythin agian, and ensure you are both guests.</p>
-</li>
-<li><p>Change hotel.sql again. Add teacher - &quot;Colm OConner&quot; - as your third customer. My email address is &quot;colm.oconner.github@gmail.com&quot;.</p>
-</li>
-</ol>
-<h2 id="lesson-1d-data-types-and-directives">LESSON 1D: Data types and directives</h2>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> invoices <span class="token punctuation">(</span>
-    id                  <span class="token keyword">integer</span><span class="token punctuation">,</span>
-    total               number<span class="token punctuation">,</span>
-    invoice_date_time   <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    paid                <span class="token keyword">boolean</span> <span class="token keyword">default</span> <span class="token number">0</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">3444.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-01&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">124</span><span class="token punctuation">,</span> <span class="token number">3445.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-02&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>And in the command box:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> invoices<span class="token punctuation">;</span>
-</code></pre>
-<p>What we have here:</p>
-<ul>
-<li><p>An &apos;integer&apos;, a &apos;number&apos;, a &apos;datetime&apos; and a &apos;boolean&apos;. These are all analogous to data types which you have learned about in javascript.</p>
-</li>
-<li><p>For &quot;paid&quot; which is either yes (<code>1</code>) or no (<code>0</code>) - we have a default of no (<code>0</code>)- it&apos;s saying that if you insert data and don&apos;t specify &apos;paid&apos; as a column when you INSERT data, it will assume you meant &apos;no&apos;.</p>
-</li>
-<li><p>For &apos;invoice_date_time&apos; you must store the data in the form of a combination of date and time. It has a &apos;not null&apos; constraint which means that you <em>have</em> to give a datetime when you insert data, it will refuse to let you insert an invoice without specifying invoice_date_time and refuse to let you explicitly give your invoice_date_time as null.</p>
-</li>
-</ul>
-<p><strong>Note:</strong> For the sake of simplicity we will be using the <code>YYYY-MM-DD</code> date format.</p>
-<p>Further reading on sqlite3 types  <a href="https://www.sqlite.org/datatype3.html" target="_blank">here</a>.</p>
-<h4 id="exercise-1d--data-types-and-directives">EXERCISE 1D : Data types and directives</h4>
-<p>In your &quot;hotel.sql&quot; create a reservations table with columns for customer ID, room ID, check in date, check out date and price per night and insert a bunch of example data - maybe you and 10 friends or celebrities.</p>
-<p>The hotel manager has told you:</p>
-<ul>
-<li>Customers <em>do</em> have to give a check in date, but they don&apos;t have to give a check out date.</li>
-<li>Reservations need a customer ID and a room ID</li>
-<li>Reservations have a check in date, a check out date and a price per night.</li>
-</ul>
-<h2 id="lesson-1e--select">LESSON 1E : SELECT</h2>
-<p>Currently we&apos;ve just put data in to a table and gotten <em>all</em> of it out. What about if we only want <em>specific</em> data?</p>
-<p>For this we will introduce a SQL key word called &apos;WHERE&apos;.</p>
-<p>Lets go back to the invoices table and add a bunch of data.
-Replace the previous insert statements for invoices with the following ones:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">143.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-01&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">124</span><span class="token punctuation">,</span> <span class="token number">250.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-02&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">,</span> <span class="token number">431.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-03&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">155</span><span class="token punctuation">,</span> <span class="token number">300.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-04&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">156</span><span class="token punctuation">,</span> <span class="token number">284.35</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-04&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>So, if you do a regular query you just get all of the data:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> invoices<span class="token punctuation">;</span>
-</code></pre>
-<p>But you can filter the data through logical expressions like:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> invoices <span class="token keyword">where</span> id <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
-</code></pre>
-<p>or:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> invoices <span class="token keyword">where</span> invoice_date_time <span class="token operator">&lt;</span> <span class="token string">&apos;2017-01-03&apos;</span><span class="token punctuation">;</span>
-</code></pre>
-<h4 id="exercise-1f--select">EXERCISE 1F : SELECT</h4>
-<p>Write SQL for the following:</p>
-<ol>
-<li><p>Which invoices were paid?</p>
-</li>
-<li><p>Which invoices were for under 300 pounds?</p>
-</li>
-<li><p>Which invoices paid on 3rd January 2017 or after?</p>
-</li>
-</ol>
-<h2 id="lesson-1g--primary-keys">LESSON 1G : Primary Keys</h2>
-<p>Ok, now we&apos;re going to introduce a problem. Let&apos;s say a secretary types in a bunch of invoice IDs and values:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">323</span><span class="token punctuation">,</span> <span class="token number">143.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-01&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">323</span><span class="token punctuation">,</span> <span class="token number">250.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-02&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>QUESTION FOR CLASS : What is the problem here? [ A business calls up and says they need to pay invoice 323 ]</p>
-<p>We solve this problem with something called a &quot;primary key&quot; - what this does is make it so the database will refuse to accept a value that is already in the database, it will not accept duplicates. We can define a primary key for the <code>id</code> adding <code>primary key</code> after the type for <code>id</code> as follows:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> invoices <span class="token punctuation">(</span>
-    id                  <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
-    total               number<span class="token punctuation">,</span>
-    invoice_date_time   <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    paid                <span class="token keyword">boolean</span> <span class="token keyword">default</span> <span class="token number">0</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">323</span><span class="token punctuation">,</span> <span class="token number">143.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-01&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>Update your hotel.sql file to have the invoices table defined as above.</p>
-<p>Try entering an invoice with ID 323 now, what do you get?</p>
-<pre class="language-"><code class="lang-sql">sqlite<span class="token operator">&gt;</span> <span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">323</span><span class="token punctuation">,</span> <span class="token number">250.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-02&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Error: <span class="token keyword">UNIQUE</span> <span class="token keyword">constraint</span> failed: invoices<span class="token punctuation">.</span>id
-</code></pre>
-<p>Now, picking primary keys is a tricky problem. You need to make sure that you pick some kind of identifier which you know will always be <em>unique</em>.</p>
-<p>QUESTIONS FOR CLASS:</p>
-<ul>
-<li>Is first name a good candidate for a primary key?</li>
-<li>Is first name and surname together a good candidate for a primary key?</li>
-<li>Is a driver&apos;s license ID a good candidate for a primary key? [ if and only if everybody is from the same country ]</li>
-<li>Is a passport ID a good candidate for a primary key? [ if and only if everybody is from europe ]</li>
-<li>Is just coming up with an arbitrary number that is unique a good candidate for a primary key?</li>
-</ul>
-<h2 id="lesson-1h-autoincrementing-primary-keys">LESSON 1H: AUTOINCREMENTING PRIMARY KEYS</h2>
-<p>We still have a problem here. Joe the office manager who is entering invoices doesn&apos;t really want to keep coming up with random numbers every time he enters an invoice. Why not just get the database to give us an ID?</p>
-<p>We can do that with a magic feature called autoincrementing numbers. You don&apos;t specify the ID and the database will just give your row a new ID. What ID will it give it? The ID of the last row plus one.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> invoices <span class="token punctuation">(</span>
-    id                  <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> autoincrement<span class="token punctuation">,</span>
-    total               number<span class="token punctuation">,</span>
-    invoice_date_time   <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    paid                <span class="token keyword">boolean</span> <span class="token keyword">default</span> <span class="token number">0</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">143.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-01&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">250.50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-02&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h4 id="exercise-1h--primary-keys">EXERCISE 1H : PRIMARY KEYS</h4>
-<ol>
-<li><p>Update yout hotel.sql file to account for the auto increment ids on the <code>invoices</code> table. Meaning, remove the id from the insert, because they should be automatically added now.</p>
-</li>
-<li><p>Recreate customer table with a primary key. Bear in mind that you don&apos;t have a driver&apos;s license or passport ID. Update all the insert statements for <code>customers</code> to not specify the id.</p>
-</li>
-</ol>
-<h2 id="lesson-1i--foreign-keys">LESSON 1I : FOREIGN KEYS</h2>
-<p>Now, as we&apos;ve seen two tables that have an intrinsic relationship to one another. Every invoice has a reservation ID.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> invoices <span class="token punctuation">(</span>
-    <span class="token punctuation">`</span>id<span class="token punctuation">`</span>                  <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> autoincrement<span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>reservation_id<span class="token punctuation">`</span>      <span class="token keyword">integer</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>total<span class="token punctuation">`</span>               number<span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>invoice_date_time<span class="token punctuation">`</span>   <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>paid<span class="token punctuation">`</span>                <span class="token keyword">boolean</span> <span class="token keyword">default</span> <span class="token number">0</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">create</span> <span class="token keyword">table</span> reservations <span class="token punctuation">(</span>
-    <span class="token punctuation">`</span>id<span class="token punctuation">`</span>                    <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>customer_id<span class="token punctuation">`</span>           <span class="token keyword">integer</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>room_id<span class="token punctuation">`</span>               <span class="token keyword">integer</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>check_in_date<span class="token punctuation">`</span>         <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>check_out_date<span class="token punctuation">`</span><span class="token punctuation">,</span>       <span class="token keyword">datetime</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>room_price_per_night<span class="token punctuation">`</span>  <span class="token keyword">real</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> reservations <span class="token punctuation">(</span>customer_id<span class="token punctuation">,</span> room_id<span class="token punctuation">,</span> check_in_date<span class="token punctuation">,</span> check_out_date<span class="token punctuation">,</span> room_price_per_night<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-01&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-02&apos;</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> reservations <span class="token punctuation">(</span>customer_id<span class="token punctuation">,</span> room_id<span class="token punctuation">,</span> check_in_date<span class="token punctuation">,</span> check_out_date<span class="token punctuation">,</span> room_price_per_night<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">124</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-03&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-05&apos;</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>reservation_id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-03&apos;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>reservation_id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">,</span> paid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">124</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-06&apos;</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>reservation_id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">124</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-06&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>Point out that the reservation ID corresponds with the ID on the reservations table.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>reservation_id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">125</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-06&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>QUESTION FOR CLASS: What&apos;s the problem with the last statement?</p>
-<p>A: Invoice isn&apos;t going to get paid because we don&apos;t know who it&apos;s for.</p>
-<p>To fix this problem we place an additional restriction on the data</p>
-<ul>
-<li>you can only add IDs that <em>exist</em> to columns referencing other tables</li>
-<li>and you really need to specify the <code>reservation_id</code> when you are inserting on the invoices.</li>
-</ul>
-<pre class="language-"><code class="lang-sql">
-<span class="token keyword">create</span> <span class="token keyword">table</span> reservations <span class="token punctuation">(</span>
-    <span class="token punctuation">`</span>id<span class="token punctuation">`</span>                    <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>customer_id<span class="token punctuation">`</span>           <span class="token keyword">integer</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>room_id<span class="token punctuation">`</span>               <span class="token keyword">integer</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>check_in_date<span class="token punctuation">`</span>         <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>check_out_date<span class="token punctuation">`</span><span class="token punctuation">,</span>       <span class="token keyword">datetime</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>room_price_per_night<span class="token punctuation">`</span>  <span class="token keyword">real</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">create</span> <span class="token keyword">table</span> invoices <span class="token punctuation">(</span>
-    <span class="token punctuation">`</span>id<span class="token punctuation">`</span>                            <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> autoincrement<span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>reservation_id<span class="token punctuation">`</span>                <span class="token keyword">integer</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>total<span class="token punctuation">`</span>                         number<span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>invoice_date_time<span class="token punctuation">`</span>             <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
-    <span class="token punctuation">`</span>paid<span class="token punctuation">`</span>                          <span class="token keyword">boolean</span> <span class="token keyword">default</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>reservation_id<span class="token punctuation">)</span>     <span class="token keyword">references</span> reservations<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>Now, if you try to add invoices without a <code>reservation_id</code> that really references a reservation entry on the reservations table you&apos;ll get this:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>reservation_id<span class="token punctuation">,</span> total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">125</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-06&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-Error: <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token keyword">constraint</span> failed
-</code></pre>
-<p>Or, if you try to add an invoice without specifying the <code>reservation_id</code> at all:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> invoices <span class="token punctuation">(</span>total<span class="token punctuation">,</span> invoice_date_time<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token string">&apos;2017-01-06&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Error: <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">constraint</span> failed:
-</code></pre>
-<p>Note that:</p>
-<ul>
-<li>&apos;foreign key(reservation_id)&apos; means that we&apos;re putting a foreign key relationship on the <em>reservation_id</em> column.</li>
-<li>&apos;references reservations(id)&apos; means that it&apos;s referring to the &apos;id&apos; column in the reservations table.</li>
-<li>reservation_id is a column on invoices. It is a number, like 3 - referring to the &apos;id&apos; of a row in reservations.</li>
-<li>reservation_id can <em>not</em> be null because it must <em>always</em> reference an existing row.</li>
-</ul>
-<p>Remember:</p>
-<ul>
-<li><p>If you removed &quot;foreign key(reservation_id) references reservations(id)&quot; it will let you insert invalid data without giving you an error - you won&apos;t be able to create an invoice with a reservation_id of 9435454 without a corresponding reservation with id 9435454 in the reservations table.</p>
-</li>
-<li><p>We WANT errors like this, which is why we put the foreign key there.</p>
-</li>
-</ul>
-<h4 id="exercise-1i--foreign-keys">EXERCISE 1I : Foreign keys</h4>
-<ol>
-<li><p>Change the <code>hotel.sql</code> file to respect the <code>foreign keys</code> and <code>not null</code> constraints on the invoice insert statements.</p>
-</li>
-<li><p>Change the file to add foreign key relationship for reservations table and customers table; update the insert statements accordingly; and add more data for those tables.</p>
-</li>
-</ol>
-<h2 id="lesson-1j--updating-data">LESSON 1J : Updating data</h2>
-<p>Let&apos;s say that we made a mistake with one of the invoices created above.</p>
-<p>First get the ID of an invoice entered earlier:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> invoices <span class="token keyword">where</span> invoice_date_time <span class="token operator">=</span> <span class="token string">&apos;2017-01-01&apos;</span><span class="token punctuation">;</span>
-</code></pre>
-<p>If you want to change this invoice to be &#xA3;300, you need to use &apos;UPDATE&apos;.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">update</span> invoices <span class="token keyword">set</span> room_price_per_night <span class="token operator">=</span> <span class="token number">300.0</span> <span class="token keyword">where</span> id <span class="token operator">=</span> <span class="token operator">&lt;</span>I<span class="token operator">-</span><span class="token keyword">FROM</span><span class="token operator">-</span>ABOVE<span class="token operator">&gt;</span><span class="token punctuation">;</span>
-</code></pre>
-<h4 id="exercise-1j--updating-data">EXERCISE 1J : Updating data</h4>
-<ol>
-<li>Run SQL from lesson 1C where my surname was entered as OConner. My name is actually O&apos;Connor. Fix it using &apos;UPDATE&apos;.</li>
-</ol>
-<h1 id="homework">HOMEWORK</h1>
-<h3 id="homework-part-1-setting-up-the-environment-for-next-class">Homework part 1: Setting up the environment for next class</h3>
-<p>You have already worked with back end servers using Express. This is just another yet another one that we will be connecting to a database.</p>
-<p>In order for us to interact with the server, we are going to use <a href="https://www.getpostman.com/" target="_blank">Postman</a>, which will accurately mimic API calls made from react. In the last three lessons you&apos;re going to make react do to this back end what postman is going to do today.</p>
-<p><strong>Task</strong> Fork and then clone the <a href="https://github.com/CodeYourFuture/cyf-hotel-db" target="_blank">repo</a>, and follow the instructions to set up and environment.</p>
-<p><strong>Task</strong> Install chrome extention for <a href="https://chrome.google.com/webstore/detail/tabbed-postman-rest-clien/coohjcphdfgbiolnekdpbcijmhambjff?hl=en-GB" target="_blank">Postman</a>.</p>
-<!-- ![postman-get-1](client-postman-server.jpg) -->
+<p><strong>How about storing everything in one big table as shown below? Why isn&apos;t it a good idea?</strong></p>
+<p>A customer could have several bookings. If the customer changes their telephone number, you would have to update every single rows for this customer with their new number, which is more prone to errors. As a general rule, try to avoid duplication of data, and instead design your system in a way that you have a single source of truth for each piece of data. The example below is <strong>NOT</strong> a good solution.</p>
+<!-- ![combined-diagram](combined-diagram.png) -->
 <p align="center">
-  <img src="client-postman-server.jpg" display="block" width="60%">
+  <img src="combined-diagram.png" display="block" width="60%">
 </p>
 
 
-
-<!-- ![postman-get-1](postman-get-1.png) -->
-<p align="center">
-  <img src="postman-get-1.png" display="block" width="85%">
-</p>
-
-<p>Run &quot;npm start&quot; and use postman to GET from <code>http://localhost:8080/api/customers</code> and email a screenshot
-to ams.pedro@gmail.com and crdoconnor@gmail.com.</p>
-<p>If you have any issues (and you might), please contact one of us or the mentors for help.</p>
-<h3 id="homework-part-2-add-tables-and-data-to-the-hotel-database">Homework part 2: Add tables and data to the hotel database</h3>
-<p>Using what you have learned in today&apos;s lesson, extend database/schema.sql in the cyf-hotel-db repo you
-just set up.</p>
-<p>It currently contains a customers table with one customer in it:</p>
-<pre class="language-"><code>CREATE TABLE IF NOT EXISTS customers (
-  ID INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT(16),
-  first_name TEXT(64) NOT NULL,
-  surname TEXT (64) NOT NULL,
-  email TEXT (64)
-);
-
-
-INSERT INTO customers (
-  title, first_name, surname, email
-) VALUES (
-  &apos;Mr&apos;,
-  &apos;John&apos;,
-  &apos;Dove&apos;,
-  &apos;john.doe@domain.com&apos;
-);
-</code></pre><p>Extend it so that it has a structure like so (each line is a foreign key):</p>
-<!-- ![postman-get-1](postman-get-1.png) -->
-<p align="center">
-  <img src="hotel-er-diagram.png" display="block" width="85%">
-</p>
-
-<p>As well as creating the database tables that create that structure, add insert statements for
-5-10 rows of example data for each table as well.</p>
-<p>Email your amended schema.sql to to ams.pedro@gmail.com and crdoconnor@gmail.com.</p>
+<h3 id="database-modeling-exercise">Database modeling exercise</h3>
+<p><strong>Scenario:</strong> You&apos;ve been hired to create a database for a new company which wants to revolutionize the hotel booking market. The first task you&apos;ve been given is to model how the company would store its data in a database. Here are your requirements:</p>
+<ul>
+<li>The company wants to store in the database all the hotels available on their website</li>
+<li>For each hotel, the company wants to record the name and the number of rooms. Also each hotel can have several room types and each room type has a specific price.</li>
+<li>The company also needs to store the information of customers who registered on their website with a name, an email and an address.</li>
+<li>Customers need to be able to record their bank details which consist of an account number and a sort code. Each customer can register several bank accounts if they want.</li>
+<li>Finally, as customers can book a room in an hotel starting on a specific date for a specific number of nights, the company wants to store the bookings.</li>
+</ul>
+<p>With mentors help, model the database for this company. In particular, show the different entities, fields and relationships between each entity.</p>
+<h3 id="check-your-postgresql-installation">Check your PostgreSQL installation</h3>
+<p>Open a terminal in your laptop and verify the command <code>psql -V</code> returns the version of PostgreSQL. In psql, you can type use the command <code>help</code> to show the help menu. Within the command prompt, you can enter SQL statements and run them against PostgreSQL. To quit psql, enter the command <code>\q</code>.</p>
+<h2 id="communicating-with-the-database-using-sql">Communicating with the database using SQL</h2>
+<p>All commands in the following need to be entered in a psql command prompt. However, sometimes it&apos;s easier to write the code in a file and then load the file with psql. For example, if you write your SQL code in a file called <code>test.sql</code>, you can then execute it with <code>psql -d DATABASE_NAME -f test.sql</code>.</p>
+<h3 id="creating-a-new-database">Creating a new database</h3>
+<p>In a terminal, create a new database named <code>cyf_hotels</code> with the following command:</p>
+<pre class="language-"><code>createdb cyf_hotels
+</code></pre><p>Then connect to your database with:</p>
+<pre class="language-"><code class="lang-sql">psql cyf_hotels
+</code></pre>
+<h3 id="creating-a-table">Creating a table</h3>
+<p>Data are stored in tables. Let&apos;s first create a <code>customers</code> table to hold the details of customers.</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> customers <span class="token punctuation">(</span>
+    id        <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+    name      <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    email     <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    address   <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    city      <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    postcode  <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    country   <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Few things to mention from the SQL statement above:</p>
+<ul>
+<li><code>SERIAL PRIMARY KEY</code> defines the column <code>id</code> as a unique identifier for each row. Moreover, this identifier will automatically incremented every time data is inserted. <code>id</code> is called the primary key of the table <code>customers</code>.</li>
+<li><code>VARCHAR(20)</code> defines the column to hold text data with a maximum length of 20 characters</li>
+<li><code>NOT NULL</code> defines the column as not nullable, which means that you must set a value.</li>
+<li>Other useful types include <code>INT</code>, <code>TEXT</code>, <code>BOOLEAN</code> and <code>DATE</code>.</li>
+<li>The database will reject any values which don&apos;t match the type.</li>
+</ul>
+<h4 id="exercise-1">Exercise 1</h4>
+<ul>
+<li>Create the <code>customers</code> table in the <code>cyf_hotels</code> database.</li>
+<li>Verify that the table <code>customers</code> is created with the psql command <code>\dt</code> which lists the existing tables.</li>
+<li>Display the table <code>customers</code> definition with the command <code>\d customers</code> and verify that it matches what you expect.</li>
+<li>Create a new table <code>hotels</code> in the <code>cyf_hotels</code> database with the following columns: an <code>id</code>, a <code>name</code>, the number of <code>rooms</code> and the hotel <code>postcode</code>. Use the commands above to verify that the table is correctly created.</li>
+</ul>
+<p>Now that we have a table to store <code>customers</code> and a table to store <code>hotels</code>, we can create a table to hold the bookings of customers for an hotel with the checkin date and the number of nights they intend to stay:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> bookings <span class="token punctuation">(</span>
+    id               <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+    customer_id      <span class="token keyword">INT</span> <span class="token keyword">REFERENCES</span> customers<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    hotel_id         <span class="token keyword">INT</span> <span class="token keyword">REFERENCES</span> hotels<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    checkin_date     <span class="token keyword">DATE</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    nights           <span class="token keyword">INT</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>In the above, <code>customer_id</code> and <code>hotel_id</code> are called <strong>foreign keys</strong> as they reference an id from a different table. This set a very strong constraint as you will not be able to create a booking for a customer id which does not exist in the customers table!</p>
+<h4 id="exercise-2">Exercise 2</h4>
+<ul>
+<li>Create the table <code>bookings</code> in your <code>cyf_hotels</code> database and verify that it is correctly created.</li>
+</ul>
+<h3 id="inserting-data">Inserting data</h3>
+<p>Once your <code>customers</code>, <code>hotels</code> and <code>bookings</code> table are created, you can insert data with the following SQL statements:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> customers <span class="token punctuation">(</span>name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> address<span class="token punctuation">,</span> city<span class="token punctuation">,</span> postcode<span class="token punctuation">,</span> country<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">&apos;John Smith&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;j.smith@johnsmith.org&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;11 New Road&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;Liverpool&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;L10 2AB&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;UK&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> hotels <span class="token punctuation">(</span>name<span class="token punctuation">,</span> rooms<span class="token punctuation">,</span> postcode<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">&apos;Triple Point Hotel&apos;</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">&apos;CM194JS&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> bookings <span class="token punctuation">(</span>customer_id<span class="token punctuation">,</span> hotel_id<span class="token punctuation">,</span> checkin_date<span class="token punctuation">,</span> nights<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;2019-10-01&apos;</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The data you insert should be of the same type with your table definition. For example, the following 2 insert statements will <strong>fail</strong>:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> bookings <span class="token punctuation">(</span>customer_id<span class="token punctuation">,</span> hotel_id<span class="token punctuation">,</span> checkin_date<span class="token punctuation">,</span> nights<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;2019-14-01&apos;</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> hotels <span class="token punctuation">(</span>name<span class="token punctuation">,</span> rooms<span class="token punctuation">,</span> postcode<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">&apos;CMHJ10&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-3">Exercise 3</h4>
+<ul>
+<li>Run the 3 SQL statements above.</li>
+<li>Insert yourself in the <code>customers</code> table.</li>
+<li>Insert the following 3 hotels in the <code>hotels</code> table:<ul>
+<li>The <code>Triple Point Hotel</code> has 10 rooms, its postcode is <code>CM194JS</code></li>
+<li>The <code>Royal Cosmos Hotel</code> has 5 rooms, its postcode is <code>TR209AX</code></li>
+<li>The <code>Pacific Petal Motel</code> has 15 rooms, its postcode is <code>BN180TG</code></li>
+</ul>
+</li>
+<li>Try to insert a booking for a customer id which does not exist in the <code>customers</code> table (for example ID <code>100</code>). What is happening and why?</li>
+</ul>
+<h3 id="retrieving-data">Retrieving data</h3>
+<p>Previously, you have inserted data in your tables. How do you make sure these data have been inserted correctly? The following SQL statement is used to request data from a specific table:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customers<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-4">Exercise 4</h4>
+<ul>
+<li>Use the above SQL statement to display all the data inserted in the <code>customers</code> table.</li>
+<li>Use the above SQL statement to display all the data inserted in the <code>hotels</code> table.</li>
+<li>Use the above SQL statement to display all the data inserted in the <code>bookings</code> table.</li>
+</ul>
+<h3 id="retrieving-data-with-conditions">Retrieving data with conditions</h3>
+<p>Actually, the <code>SELECT</code> statement is very powerful and you will see you can request a lot of different things with it. Have you seen the <code>*</code> character in the SQL statement above? It means that you want to see the data for all the columns of the table. What if you want to only return specific columns? For example, to retrieve all customers <code>name</code> and <code>address</code> from the table <code>customers</code>:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> name<span class="token punctuation">,</span>address <span class="token keyword">FROM</span> customers<span class="token punctuation">;</span>
+</code></pre>
+<p>Sometimes, you want to retrieve only data which verify a specific condition. In this case, you can use a <code>WHERE</code> clause. For example, to retrieve all hotels having more than 7 rooms:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> hotels <span class="token keyword">WHERE</span> rooms <span class="token operator">&gt;</span> <span class="token number">7</span><span class="token punctuation">;</span>
+</code></pre>
+<p>To retrieve the customer name and address with id 1:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> name<span class="token punctuation">,</span>address <span class="token keyword">FROM</span> customers <span class="token keyword">WHERE</span> id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</code></pre>
+<p>To retrieve all the bookings starting after 2019/10/01:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> bookings <span class="token keyword">WHERE</span> checkin_date <span class="token operator">&gt;</span> <span class="token string">&apos;2019/10/01&apos;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>To retrieve all the bookings starting after 2019/10/01 for a minimum of 2 nights:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> bookings <span class="token keyword">WHERE</span> checkin_date <span class="token operator">&gt;</span> <span class="token string">&apos;2019/10/01&apos;</span> <span class="token operator">AND</span> nights <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</code></pre>
+<p>To retrieve all the hotels with the postcode <code>CM194JS</code> or <code>TR209AX</code>:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> hotels <span class="token keyword">WHERE</span> postcode <span class="token operator">=</span> <span class="token string">&apos;CM194JS&apos;</span> <span class="token operator">OR</span> postcode <span class="token operator">=</span> <span class="token string">&apos;TR209AX&apos;</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-5">Exercise 5</h4>
+<ul>
+<li>Execute the file <a href="cyf_hotels_exercise5.sql"><code>cyf_hotels_exercise5.sql</code></a> which will reset your existing tables and insert more data in the <code>customers</code>, <code>hotels</code> and <code>bookings</code> tables. (hint: in the terminal, use <code>psql -d cyf_hotels -f cyf_hotels_exercise5.sql</code>).</li>
+<li>Retrieve all information for the customer Laurence Lebihan.</li>
+<li>Retrieve all customers name living in UK.</li>
+<li>Retrieve the address, city and postcode of Melinda Marsh.</li>
+<li>Retrieve all hotels located in the postcode DGQ127.</li>
+<li>Retrieve all hotels with more than 11 rooms.</li>
+<li>Retrieve all hotels with more than 6 rooms but less than 15 rooms.</li>
+<li>Retrieve all hotels with exactly 10 rooms or 20 rooms.</li>
+<li>Retrieve all bookings for customer id 1.</li>
+<li>Retrieve all bookings for more than 4 nights.</li>
+<li>Retrieve all bookings starting in 2020.</li>
+<li>Retrieve all bookings before 2020 for less than 4 nights.</li>
+</ul>
+<h2 id="homework">Homework</h2>
+<ul>
+<li>Create a new database called <code>cyf_classes</code> (hint: use <code>createdb</code> in the terminal)</li>
+<li>Create a new table <code>mentors</code>, for each mentor we want to save their name, how many years they lived in Glasgow, their address and their favourite programming language.</li>
+<li>Insert 5 mentors in the <code>mentors</code> table (you can make up the data, it doesn&apos;t need to be accurate ;-)).</li>
+<li>Create a new table <code>students</code>, for each student we want to save their name, address and if they have graduated from Code Your Future.</li>
+<li>Insert 10 students in the <code>students</code> table.</li>
+<li>Verify that the data you created for mentors and students are correctly stored in their respective tables (hint: use a <code>select</code> SQL statement).</li>
+<li>Create a new <code>classes</code> table to record the following information:<ul>
+<li>A class has a leading mentor</li>
+<li>A class has a topic (such as Javascript, NodeJS)</li>
+<li>A class is taught at a specific date and at a specific location</li>
+</ul>
+</li>
+<li>Insert a few classes in the <code>classes</code> table</li>
+<li>We now want to store who among the students attends a specific class. How would you store that? Come up with a solution and insert some data if you model this as a new table.</li>
+<li>Answer the following questions using a <code>select</code> SQL statement:<ul>
+<li>Retrieve all the mentors who lived more than 5 years in Glasgow</li>
+<li>Retrieve all the mentors whose favourite language is Javascript</li>
+<li>Retrieve all the students who are CYF graduates</li>
+<li>Retrieve all the classes taught before June this year</li>
+<li>Retrieve all the students (retrieving student ids only is fine) who attended the Javascript class (or any other class that you have in the <code>classes</code> table).</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1317,7 +1160,7 @@ INSERT INTO customers (
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"next":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"previous":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-16/lesson.md","mtime":"2019-06-22T10:18:28.760Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T10:19:22.636Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"next":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"previous":{"title":"Node/DB II","level":"1.8","depth":1,"path":"node-db/index.md","ref":"node-db/index.md","articles":[{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-16/lesson.md","mtime":"2019-07-20T10:28:48.185Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-20T10:29:47.675Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
