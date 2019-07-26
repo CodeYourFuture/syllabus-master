@@ -945,8 +945,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p>Example from inside a terminal window:</p>
 <pre class="language-"><code class="lang-bash">$ node
-<span class="token operator">&gt;</span> 1 + 2
-3
+<span class="token operator">&gt;</span> <span class="token number">1</span> + <span class="token number">2</span>
+<span class="token number">3</span>
 <span class="token operator">&gt;</span> <span class="token string">&quot;hello&quot;</span>
 <span class="token string">&apos;hello&apos;</span>
 <span class="token operator">&gt;</span> var greeting <span class="token operator">=</span> <span class="token string">&quot;hello&quot;</span>
@@ -977,7 +977,7 @@ $
 <h2 id="comparison-operators">Comparison Operators</h2>
 <p>We can also write <strong>expressions</strong> that return boolean values.</p>
 <p>Here&apos;s an expression that evaluates to a boolean.</p>
-<pre class="language-"><code class="lang-sh">1 <span class="token operator">&gt;</span> 2
+<pre class="language-"><code class="lang-sh"><span class="token number">1</span> <span class="token operator">&gt;</span> <span class="token number">2</span>
 </code></pre>
 <ul>
 <li>Can you work out what value this expression evaluates to?</li>
@@ -987,8 +987,8 @@ $
 <h2 id="more-comparison-operators">More comparison operators</h2>
 <pre class="language-"><code class="lang-sh"><span class="token operator">&gt;</span>   greater than
 <span class="token operator">&lt;</span>   <span class="token function">less</span> than
-<span class="token operator">&lt;=</span>  <span class="token function">less</span> than or equal
-<span class="token operator">&gt;=</span>  greater than or equal
+<span class="token operator">&lt;</span><span class="token operator">=</span>  <span class="token function">less</span> than or equal
+<span class="token operator">&gt;</span><span class="token operator">=</span>  greater than or equal
 <span class="token operator">==</span><span class="token operator">=</span> same value
 <span class="token operator">!=</span><span class="token operator">=</span> not the same value
 </code></pre>
@@ -1076,21 +1076,21 @@ $
 </code></pre>
 <p>We can test expressions with logical operators in a node console too:</p>
 <pre class="language-"><code class="lang-sh">$ node
-<span class="token operator">&gt;</span> var num <span class="token operator">=</span> 10<span class="token punctuation">;</span>
+<span class="token operator">&gt;</span> var num <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
 undefined
-<span class="token operator">&gt;</span> num <span class="token operator">&gt;</span> 5 <span class="token operator">&amp;&amp;</span> num <span class="token operator">&lt;</span> 15
+<span class="token operator">&gt;</span> num <span class="token operator">&gt;</span> <span class="token number">5</span> <span class="token operator">&amp;&amp;</span> num <span class="token operator">&lt;</span> <span class="token number">15</span>
 <span class="token boolean">true</span>
-<span class="token operator">&gt;</span> num <span class="token operator">&lt;</span> 10 <span class="token operator">||</span> num <span class="token operator">==</span><span class="token operator">=</span> 10
+<span class="token operator">&gt;</span> num <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">||</span> num <span class="token operator">==</span><span class="token operator">=</span> <span class="token number">10</span>
 <span class="token boolean">true</span>
 <span class="token operator">&gt;</span> <span class="token boolean">false</span> <span class="token operator">||</span> <span class="token boolean">true</span>
 <span class="token boolean">true</span>
 <span class="token operator">&gt;</span> <span class="token operator">!</span>true
 <span class="token boolean">false</span>
-<span class="token operator">&gt;</span> var greaterThan5 <span class="token operator">=</span> num <span class="token operator">&gt;</span> 5
+<span class="token operator">&gt;</span> var greaterThan5 <span class="token operator">=</span> num <span class="token operator">&gt;</span> <span class="token number">5</span>
 undefined
 <span class="token operator">&gt;</span> <span class="token operator">!</span>greaterThan5
 <span class="token boolean">false</span>
-<span class="token operator">&gt;</span> <span class="token operator">!</span><span class="token punctuation">(</span>num <span class="token operator">==</span><span class="token operator">=</span> 10<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> <span class="token operator">!</span><span class="token punctuation">(</span>num <span class="token operator">==</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span>
 <span class="token boolean">false</span>
 </code></pre>
 <h2 id="more-conditionals">More Conditionals</h2>
@@ -1132,24 +1132,24 @@ undefined
 <p>Arrays, like strings, have a <code>length</code> property.</p>
 <p>You can check this by starting a node console in your terminal.</p>
 <pre class="language-"><code class="lang-sh">$ node
-<span class="token operator">&gt;</span> var arr <span class="token operator">=</span> <span class="token punctuation">[</span>1, 2, 3<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token operator">&gt;</span> var arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 undefined
 <span class="token operator">&gt;</span> arr
-<span class="token punctuation">[</span>1, 2, 3<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token operator">&gt;</span> arr.length
-3
+<span class="token number">3</span>
 </code></pre>
 <h2 id="array-getters-and-setters">Array Getters and Setters</h2>
 <p>You can <strong>get</strong> a single value out of an array using <strong>bracket notation</strong>.</p>
 <pre class="language-"><code class="lang-sh">$ node
 <span class="token operator">&gt;</span> var ingredients <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Flour&quot;</span>, <span class="token string">&quot;Water&quot;</span>, <span class="token string">&quot;Salt&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 undefined
-<span class="token operator">&gt;</span> ingredients<span class="token punctuation">[</span>0<span class="token punctuation">]</span>
+<span class="token operator">&gt;</span> ingredients<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
 Flour
-<span class="token operator">&gt;</span> ingredients<span class="token punctuation">[</span>1<span class="token punctuation">]</span>
+<span class="token operator">&gt;</span> ingredients<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 Water
 <span class="token operator">&gt;</span> ingredients.length
-3
+<span class="token number">3</span>
 </code></pre>
 <p>Did you notice how we use <code>[0]</code> to get the first value? In programming we count starting at zero.</p>
 <blockquote>
@@ -1190,12 +1190,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h3 id="concat"><code>.concat()</code></h3>
 <p><em>Adds (or concatenates) another value or array to the array.</em></p>
 <pre class="language-"><code class="lang-sh">$ node
-<span class="token operator">&gt;</span> var arr <span class="token operator">=</span> <span class="token punctuation">[</span>1, 2, 3<span class="token punctuation">]</span>
+<span class="token operator">&gt;</span> var arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span><span class="token punctuation">]</span>
 undefined
-<span class="token operator">&gt;</span> arr.concat<span class="token punctuation">(</span>4<span class="token punctuation">)</span>
-<span class="token punctuation">[</span>1, 2, 3, 4<span class="token punctuation">]</span>
+<span class="token operator">&gt;</span> arr.concat<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span>, <span class="token number">4</span><span class="token punctuation">]</span>
 <span class="token operator">&gt;</span> arr
-<span class="token punctuation">[</span>1, 2, 3<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span><span class="token punctuation">]</span>
 </code></pre>
 <p>Did you notice how calling the concat method did not change <code>arr</code>? This is because <code>concat</code>, like most array methods, returns a <em>new</em> array, it does not alter the one you called the method on.</p>
 <p>If you wan to use the array returned by calling <code>.concat()</code> you should store it in a new variable.</p>
@@ -1210,11 +1210,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p><em>Returns a slice of the array.</em></p>
 <p>You can tell <code>.slice()</code> where you want the slice to begin and end by passing it two parameters.</p>
 <pre class="language-"><code class="lang-sh">$ node
-<span class="token operator">&gt;</span> var arr <span class="token operator">=</span> <span class="token punctuation">[</span>0, 1, 2, 3, 4<span class="token punctuation">]</span>
+<span class="token operator">&gt;</span> var arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span>, <span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span>, <span class="token number">4</span><span class="token punctuation">]</span>
 undefined
-<span class="token operator">&gt;</span> arr.slice<span class="token punctuation">(</span>0, 2<span class="token punctuation">)</span>
-<span class="token punctuation">[</span>0, 1<span class="token punctuation">]</span>
-<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token string">&quot;a&quot;</span>, <span class="token string">&quot;b&quot;</span>, <span class="token string">&quot;c&quot;</span>, <span class="token string">&quot;d&quot;</span><span class="token punctuation">]</span>.slice<span class="token punctuation">(</span>1, 2<span class="token punctuation">)</span>
+<span class="token operator">&gt;</span> arr.slice<span class="token punctuation">(</span><span class="token number">0</span>, <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">0</span>, <span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token string">&quot;a&quot;</span>, <span class="token string">&quot;b&quot;</span>, <span class="token string">&quot;c&quot;</span>, <span class="token string">&quot;d&quot;</span><span class="token punctuation">]</span>.slice<span class="token punctuation">(</span><span class="token number">1</span>, <span class="token number">2</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token string">&apos;b&apos;</span><span class="token punctuation">]</span>
 </code></pre>
 <h3 id="includes"><code>.includes()</code></h3>
@@ -1301,7 +1301,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 5 - Conditionals and Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 6 - More Arrays","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]},"previous":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-05/lesson.md","mtime":"2019-07-20T21:19:28.801Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-20T21:20:39.622Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 5 - Conditionals and Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 6 - More Arrays","level":"1.4.3","depth":2,"path":"js-core/week-06/lesson.md","ref":"js-core/week-06/lesson.md","articles":[]},"previous":{"title":"Week 4 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core/week-04/lesson.md","ref":"js-core/week-04/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core/week-05/lesson.md","mtime":"2019-07-26T06:51:54.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-26T06:52:55.581Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

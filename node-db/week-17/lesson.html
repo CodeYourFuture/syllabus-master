@@ -893,232 +893,212 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="lesson-2-linking-javascript-and-sql">LESSON 2: LINKING JAVASCRIPT AND SQL</h1>
-<p><strong>Review of last lesson</strong></p>
-<p>What we did last lesson:</p>
+                                <h1 id="database-2-more-sql-and-integration-with-nodejs">Database 2: More SQL and integration with NodeJS</h1>
+<p><strong>What will we learn today?</strong></p>
 <ul>
-<li>Why we need databases</li>
-<li>Why NoSQL why SQL?</li>
-<li>Installing SQLite</li>
-<li>Creating a database with SQL and storing data in it.</li>
-<li>Inserting data into a database using SQL.</li>
-<li>Retrieving data from a database using SQL.</li>
-<li>Primary keys</li>
-<li>Escaping (dealing with awkward people with the surname O&apos;Connor)</li>
-<li>How to run SQLite <em>with node</em> on your machine - setting up a development environment.</li>
+<li>Revision from last week</li>
+<li><a href="#more-sql">More SQL</a><ul>
+<li>Changing the definition of a table</li>
+<li>Dropping a table</li>
+<li>Updating a row</li>
+<li>Deleting a row</li>
+<li>Join tables</li>
+<li>Other useful operations</li>
 </ul>
-<p>Homework from last lesson:</p>
-<p><img src="hotel-er-diagram.png" alt="Hotel ER diagram" title="Hotel ER diagram"></p>
-<ul>
-<li>Did everybody finish hotel.sql so that it looks like the above diagram?</li>
-<li>Did we understand foreign keys?</li>
-<li>Does everybody have enough data in their database? Between 5 and 10 rows per table.</li>
+</li>
+<li><a href="#integration-with-nodejs">Integration with NodeJS</a><ul>
+<li>Introduction to node-postgres</li>
+<li>Loading data from a database with a GET endpoint</li>
 </ul>
-<p><strong>What we will learn today?</strong></p>
-<ul>
-<li>How to run a database query that retrieves tabular data in node express and returns it to an endpoint.</li>
-<li>Inserting data into a database from an endpoint.</li>
-<li>Updating data in a database from an endpoint.</li>
-<li>Dealing with unclear user stories. There is a trap in one of these user stories we will be giving you today.</li>
-<li>What is the difference between user story, use case and user acceptance test.</li>
+</li>
+<li><a href="#homework">Homework</a></li>
 </ul>
-<p>This lesson will primarily be about taking what you have stored in a <em>flat file</em>, and changing it such that it is stored in a database instead. This will be done to appease Big chain hotel manager grumpy cat - e.g. so that all invoices come attached to reservations. With all the constraints you have already added to the database, on your <code>hotel.sql</code> file, the application should be much safer now - if you screw up (and you will, because bugs are as inevitable as taxes), you can <em>see</em> the bugs getting deployed before they start screwing up your valuable data.</p>
-<p>Use <code>/server/class2.js</code> for the exercises of this class.</p>
-<h3 id="lesson-1-select-all-the-things">LESSON 1: SELECT ALL THE THINGS!</h3>
-<p><strong>User Story:</strong> As a staff member, I want to be able to view a list of customers so that I can see who has visited our hotel.</p>
-<p><strong>Use case</strong> When a user does a GET request to /customers it should return customer titles, first names, surnames.</p>
-<p><strong>User acceptance test</strong>: Do a GET request and get back [{&quot;title&quot;: &quot;mr&quot;, &quot;firstname&quot;: &quot;Donald&quot;, &quot;surname&quot;: &quot;Trump&quot;}, {&quot;title&quot;: &quot;Mrs&quot;, &quot;firstname&quot;: &quot;Hillary&quot;, &quot;surname&quot;: &quot;Clinton&quot;}]</p>
-<p>1) Grab the cyf-hotel-db.</p>
-<p>2) Change the branch to class2.</p>
-<p>3) Run &quot;npm i&quot; and then &quot;npm start&quot;.</p>
-<p>4) Use your browser to look at <a href="http://localhost:8080/api/customers/" target="_blank">http://localhost:8080/api/customers/</a>.</p>
-<p>You should get back:</p>
-<pre class="language-"><code class="lang-javascript"><span class="token punctuation">{</span><span class="token string">&quot;customers&quot;</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">&quot;ID&quot;</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot;title&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;Mr&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;first_name&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;Laurie&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;surname&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;Ainley&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;email&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;laurie@ainley.com&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+<h2 id="more-sql">More SQL</h2>
+<p>For the following, use the file <a href="../week-16/cyf_hotels_exercise5.sql"><code>cyf_hotels_exercise5.sql</code></a> from the previous class to reinitialise your database with <code>psql -d cyf_hotels -f cyf_hotels_exercise5.sql</code>.</p>
+<h3 id="changing-the-definition-of-a-table">Changing the definition of a table</h3>
+<p>Sometimes, you may need to change the definition of a table you created before without deleting it. Such changes include renaming a table, adding/removing a column, changing the name of a column, changing the type of a column etc... The general syntax to perform these operations is:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> table_name <span class="token keyword">action</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Remove the code that is returning a JSON object on end point <code>/customers</code>, and use what you have learned about to SQL to fill in the query that fetches all the customers from the database.</p>
-<ul>
-<li>select everything</li>
-</ul>
-<pre class="language-"><code class="lang-javascript">router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&apos;/customers&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    customers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-      id<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      title<span class="token punctuation">:</span> <span class="token string">&apos;Mr&apos;</span><span class="token punctuation">,</span>
-      firstname<span class="token punctuation">:</span> <span class="token string">&apos;Laurie&apos;</span><span class="token punctuation">,</span>
-      surname<span class="token punctuation">:</span> <span class="token string">&apos;Ainley&apos;</span><span class="token punctuation">,</span>
-      email<span class="token punctuation">:</span> <span class="token string">&apos;laurie@ainley.com&apos;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<p>For example, to add a new column to the existing <code>customers</code> table:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> customers <span class="token keyword">ADD</span> <span class="token keyword">COLUMN</span> date_of_birth <span class="token keyword">DATE</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Who can tell me what this is currently doing? What do we need to make it do?</p>
-<p>So, the answer is here:</p>
-<pre class="language-"><code class="lang-javascript">router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&apos;/customers&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
- <span class="token keyword">var</span> sql <span class="token operator">=</span> <span class="token string">&apos;select * from customers&apos;</span><span class="token punctuation">;</span>
+<p>To delete an existing column from the <code>customers</code> table:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> customers <span class="token keyword">DROP</span> <span class="token keyword">COLUMN</span> date_of_birth<span class="token punctuation">;</span>
+</code></pre>
+<p>To rename the table <code>customers</code> into <code>clients</code>:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> customers <span class="token keyword">RENAME</span> <span class="token keyword">TO</span> clients<span class="token punctuation">;</span>
+</code></pre>
+<p>For more examples, you can consul the following tutorial: <a href="http://www.postgresqltutorial.com/postgresql-alter-table/" target="_blank">Postgres alter table</a>.</p>
+<h4 id="exercise-1">Exercise 1</h4>
+<ul>
+<li>Add a column <code>date_of_birth</code> of type <code>DATE</code> in the <code>customers</code> table.</li>
+<li>Rename the column <code>date_of_birth</code> to <code>birthdate</code> in the <code>customers</code> table.</li>
+<li>Delete the column <code>birthdate</code> from the <code>customers</code> table.</li>
+</ul>
+<h3 id="dropping-a-table">Dropping a table</h3>
+<p>To delete the table <code>customers</code>:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> customers<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-2">Exercise 2:</h4>
+<ul>
+<li>Create a new table <code>test</code></li>
+<li>Drop the table <code>test</code></li>
+</ul>
+<h3 id="updating-a-row">Updating a row</h3>
+<p>The general construction to update a row is:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">UPDATE</span> <span class="token keyword">table</span> <span class="token keyword">SET</span> column1 <span class="token operator">=</span> value1<span class="token punctuation">,</span> column2 <span class="token operator">=</span> value2 <span class="token keyword">WHERE</span> condition<span class="token punctuation">;</span>
+</code></pre>
+<p>For example, to update the name and country of the customers with ID 3:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">UPDATE</span> customers <span class="token keyword">SET</span> name<span class="token operator">=</span><span class="token string">&apos;Bob Marley&apos;</span><span class="token punctuation">,</span> country<span class="token operator">=</span><span class="token string">&apos;Jamaica&apos;</span> <span class="token keyword">WHERE</span> id<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-3">Exercise 3</h4>
+<ul>
+<li>Update the postcode of the hotel named <code>Elder Lake Hotel</code> to <code>L10XYZ</code></li>
+<li>Update the number of rooms of <code>Cozy Hotel</code> to <code>25</code></li>
+<li>For the customer named <code>Nadia Sethuraman</code>, update her address to <code>2 Blue Street</code>, her city to <code>Glasgow</code> and her postcode to <code>G11ABC</code> in one query</li>
+<li>Update all the bookings of customer with ID <code>1</code> for the hotel with ID <code>1</code> to <code>5</code> nights in one query</li>
+</ul>
+<h3 id="deleting-a-row">Deleting a row</h3>
+<p>The syntax to delete a row is:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> <span class="token keyword">table</span> <span class="token keyword">WHERE</span> condition<span class="token punctuation">;</span>
+</code></pre>
+<p>For example, to delete the booking with ID 4:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> bookings <span class="token keyword">WHERE</span> id<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-4">Exercise 4</h4>
+<ul>
+<li>Delete the booking of customer ID <code>8</code> for the date <code>2020-01-03</code></li>
+<li>Delete all the bookings of customer ID <code>6</code></li>
+<li>Delete the customer with ID <code>6</code></li>
+</ul>
+<h3 id="joining-tables">Joining tables</h3>
+<p>Sometimes, you will need to retrieve data which are spread in different tables in a single response. For this purpose, you will need to join tables together. Below is the general syntax:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>column1<span class="token punctuation">,</span> B<span class="token punctuation">.</span>column2 <span class="token keyword">FROM</span> A <span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> B <span class="token keyword">ON</span> A<span class="token punctuation">.</span>b_id<span class="token operator">=</span>B<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+</code></pre>
+<p>For example, to load all the bookings along customer data:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customers <span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> bookings <span class="token keyword">ON</span> customers<span class="token punctuation">.</span>id<span class="token operator">=</span>bookings<span class="token punctuation">.</span>customer_id<span class="token punctuation">;</span>
+</code></pre>
+<p>To load all the bookings along customer data and hotel data:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> bookings 
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> customers<span class="token punctuation">.</span>id<span class="token operator">=</span>bookings<span class="token punctuation">.</span>customer_id 
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> hotels <span class="token keyword">ON</span> hotels<span class="token punctuation">.</span>id<span class="token operator">=</span>bookings<span class="token punctuation">.</span>hotel_id<span class="token punctuation">;</span>
+</code></pre>
+<p>To load the bookings date of customer ID <code>1</code> along with the customer name and the hotel name:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> bookings<span class="token punctuation">.</span>checkin_date<span class="token punctuation">,</span>customers<span class="token punctuation">.</span>name<span class="token punctuation">,</span>hotels<span class="token punctuation">.</span>name <span class="token keyword">FROM</span> bookings
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> customers<span class="token punctuation">.</span>id<span class="token operator">=</span>bookings<span class="token punctuation">.</span>customer_id
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> hotels <span class="token keyword">ON</span> hotels<span class="token punctuation">.</span>id<span class="token operator">=</span>bookings<span class="token punctuation">.</span>hotel_id
+<span class="token keyword">WHERE</span> customers<span class="token punctuation">.</span>id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-5">Exercise 5</h4>
+<ul>
+<li>Try and understand each of the query above in your <code>psql</code> prompt</li>
+<li>Retrieve all the bookings along customer data for bookings starting in 2020</li>
+<li>Retrieve the customer names, booking start dates and number of nights for all customers who booked the hotel name <code>Jade Peaks Hotel</code></li>
+<li>Retrieve all the booking start dates with customer names and hotels names for all bookings for more than 5 nights</li>
+</ul>
+<h3 id="other-useful-operations">Other useful operations</h3>
+<p>Ordering the result:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token keyword">table</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token keyword">column</span> <span class="token punctuation">(</span><span class="token keyword">DESC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Limiting the number of results returned:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token keyword">table</span> <span class="token keyword">LIMIT</span> <span class="token number">10</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Returning all customers whose ID is 1, 2, 3 or 4:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customers <span class="token keyword">WHERE</span> id <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Query by pattern matching, for example retrieve all customers whose name starts with Bob:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customers <span class="token keyword">WHERE</span> name <span class="token operator">LIKE</span> <span class="token string">&apos;Bob%&apos;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>You can combine different operations together, for example, if you want to retrieve all the booking start dates with the customer names and hotel names for customer names starting with the letter <code>M</code> ordered by hotel name with a limit of 3 results:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> bookings<span class="token punctuation">.</span>checkin_date<span class="token punctuation">,</span>customers<span class="token punctuation">.</span>name<span class="token punctuation">,</span>hotels<span class="token punctuation">.</span>name <span class="token keyword">FROM</span> bookings
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> customers<span class="token punctuation">.</span>id<span class="token operator">=</span>bookings<span class="token punctuation">.</span>customer_id
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> hotels <span class="token keyword">ON</span> hotels<span class="token punctuation">.</span>id<span class="token operator">=</span>bookings<span class="token punctuation">.</span>hotel_id
+<span class="token keyword">WHERE</span> customers<span class="token punctuation">.</span>name <span class="token operator">LIKE</span> <span class="token string">&apos;M%&apos;</span> 
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> hotels<span class="token punctuation">.</span>name
+<span class="token keyword">LIMIT</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-6">Exercise 6</h4>
+<ul>
+<li>Retrieve all customers whose name starts with the letter <code>S</code></li>
+<li>Retrieve all hotels which have the word <code>Hotel</code> in their name</li>
+<li>Retrieve the booking start date, customer name, hotel name for the top 5 bookings ordered by number of nights in descending order</li>
+</ul>
+<h2 id="integration-with-nodejs">Integration with NodeJS</h2>
+<h3 id="introduction-to-node-postgres">Introduction to node-postgres</h3>
+<p><em>&quot;node-postgres is a collection of node.js modules for interfacing with your PostgreSQL database.&quot;</em> - <a href="https://node-postgres.com/" target="_blank">https://node-postgres.com/</a></p>
+<p>In the following, we will use <em>node-postgres</em> to...</p>
+<ol>
+<li>Connect to a database</li>
+<li>Send SQL query to the database and get results</li>
+</ol>
+<h3 id="loading-data-from-a-database-with-a-get-endpoint">Loading data from a database with a GET endpoint</h3>
+<p>Let&apos;s build a brand new NodeJS application with a single GET endpoint to load the list of hotels that you already have in the <code>hotels</code> table of the <code>cyf_hotels</code> database.</p>
+<p>First, create a new NodeJS application that we will call <strong>cyf-hotels-api</strong> (enter <code>server.js</code> when asking about the entry point):</p>
+<pre class="language-"><code>mkdir cyf-hotels-api &amp;&amp; cd cyf-hotels-api &amp;&amp; npm init
+</code></pre><p>As before, we will use the Express library to build our API, and the node-postgres library to connect with our database:</p>
+<pre class="language-"><code>npm install --save express
+npm install --save pg
+</code></pre><p>Create a <code>server.js</code> file, import express, initialise the server and start listening for requests:</p>
+<pre class="language-"><code>const express = require(&quot;express&quot;);
+const app = express();
 
- db<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> rows</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-   <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR fetching from the database:&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-       <span class="token keyword">return</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Request succeeded, new data fetched&apos;</span><span class="token punctuation">,</span> rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-     customers<span class="token punctuation">:</span> rows
-   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h3 id="exercise-1">EXERCISE 1</h3>
-<p><strong>User Story:</strong> As a staff member I need to check the details of a given customer given its id.</p>
-<p><strong>User Acceptance test</strong>: Complete the end-point <code>/customers/:id</code>, so that it extracts that customer information from the database, and replies back with that information as JSON.</p>
-<ul>
-<li>select and filter by id</li>
-<li>hint: simple select and filter by ID</li>
-</ul>
-<p>OPTIONAL STRETCH GOAL : If you get a request of /customers/notanumber (anything that isn&apos;t a number) it should return an HTTP 400 bad request.</p>
-<h3 id="lesson-2--like-whatever">LESSON 2 : LIKE, WHATEVER</h3>
-<p>We&apos;re going to deal with one of the most common issues with hotel databases: the guest&apos;s name being misspelled.</p>
-<p>So, &quot;Hilary Clinten&quot; is added to the database by booking agent #1. She calls up on the phone asking about her reservation and booking agent #2 spells her name correctly on the phone. The hotel staff knows what <em>some of her name</em> sounds like but not all of it and they want to find her as a customer on the system.</p>
-<p>For this problem where we want to search for rows where a column matches <em>part</em> of a string we use the LIKE command:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> customers <span class="token keyword">where</span> surname <span class="token operator">like</span> <span class="token string">&apos;%lint%&apos;</span><span class="token punctuation">;</span>
-</code></pre>
-<p>It will search the <code>surname</code> string on each row for the substring <code>lint</code>, and return true for the ones where it is part of the string. The substring is matched <em>case insensitively</em> with the actual data - meaning that it makes no difference if the stored value is upper case and the provided substring is lower case (note that other databases like MySQL / Postgres are not case insensitive with LIKE).</p>
-<p>The <code>%</code> sign before and after <code>lint</code> indicates that we could have any character, and any number of characters before and after that substring.</p>
-<h3 id="exercise-2">EXERCISE 2</h3>
-<p><strong>User Story:</strong> As a staff member I want to search for a customer through their <code>surname</code>, but we don&apos;t know that it might be misspelled.</p>
-<p><strong>User Acceptance test</strong>: Complete the end-point <code>/customers/:surname</code>, so that it extracts that customer information from the database, and replies back with that information as JSON.</p>
-<ul>
-<li>select and filter through like</li>
-</ul>
-<h3 id="exercise-3">EXERCISE 3</h3>
-<p>For this exercise, we will need to use postman to do an HTTP POST and send some JSON:</p>
-<ul>
-<li><p>Can somebody tell me what an HTTP POST is? How is it different from an HTTP GET?</p>
-</li>
-<li><p>Can somebody tell me what JSON is?</p>
-</li>
-</ul>
-<p align="center">
-  <img src="postman-post-1.png" display="block" width="85%">
-</p>
+app.listen(3000, function() {
+    console.log(&quot;Server is listening on port 3000. Ready to accept requests!&quot;);
+});
+</code></pre><p>Import pg library and create a new GET endpoint to load the list of hotels:</p>
+<pre class="language-"><code>const { Pool } = require(&apos;pg&apos;);
 
-<p>To do this, we must:</p>
+const pool = new Pool({
+    user: &apos;postgres&apos;,
+    host: &apos;localhost&apos;,
+    database: &apos;cyf_hotels&apos;,
+    password: &apos;&apos;,
+    port: 5432
+});
+
+app.get(&quot;/hotels&quot;, function(req, res) {
+    pool.query(&apos;SELECT * FROM hotels&apos;, (error, result) =&gt; {
+        res.json(result.rows);
+    });
+});
+</code></pre><p>In the code above:</p>
 <ul>
-<li><p>Click on &quot;headers&quot; you will need to add the header <code>Content-Type</code> to <code>application/json</code> - this is telling the server that we&apos;re going to send some JSON.</p>
-</li>
-<li><p>You will also need to click the drop down and change GET to POST - we are no longer GETting data we are POSTing data.</p>
-</li>
+<li>We first import the Pool class from the pg library, which is used to connect to a database</li>
+<li>We create a new pool where we specify the credentials to connect to the cyf_hotels database</li>
+<li>We then create a new /hotels endpoint where we use the method <code>query()</code> to send a SQL query to load all the hotels from the table <code>hotels</code> and return the results with <code>result.rows</code>. You can write any valid SQL query that you learned in the <code>query()</code> method!</li>
 </ul>
-<p><strong>User Story:</strong> As a guest, I want to register my details in the system so that I can check availability for my stay.</p>
-<p><strong>User Acceptance test</strong>: Take this data being POSTed to the <code>/customers</code> endpoint check it is inserted into the database:</p>
-<p>  {
-    title: &apos;Mr&apos;,
-    firstname: &apos;Laurie&apos;,
-    surname: &apos;Ainley&apos;,
-    email: &apos;laurie@ainley.com&apos;
-  }</p>
-<p>STRETCH GOAL (OPTIONAL): If a bad request is made to customers - first name is missing, for instance, return an HTTP 400 Bad reqest.</p>
-<h3 id="exercise-4">EXERCISE 4</h3>
-<p><strong>Notes on Postman</strong></p>
-<p>In this case we want Postman to do a PUT request. Again, highlighed areas indicate the fields that need to be changed and/or information that needs to be added. The arrow points to a tab where you will need to set the type of content of this request. As denoted by the arrow legend, you will need to set <code>Content-Type</code> to <code>application/json</code>.
-<img src="postman-put-1.png" alt="postman-put-1"></p>
-<p><strong>User Story:</strong> As a guest, I noticed that there is a typo on my details and wish to correct it.</p>
-<p><strong>Use Case</strong>: I go to &apos;/customers/:id&apos; endpoint and send updated data for each customer parameter: title, firstname, surname.</p>
-<p><strong>User acceptance test</strong>: PUT title=mr, firstname=donald, surname=trump on /customers/:id and check that the database was updated.</p>
-<p>Hints:</p>
-<ul>
-<li>UPDATE table</li>
-<li>remember your previous lesson</li>
-<li>hint: in the javascript code, instead of db.all() you will need ... what?</li>
-</ul>
-<h3 id="lesson-3-in-it">LESSON 3: IN IT</h3>
-<p>Now let&apos;s say that you want to see all of the customers who have the surname O&apos;Connor or Trump.</p>
-<p>The way we&apos;ve learned so far (note the quotation marks):</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> customers <span class="token keyword">where</span> surname <span class="token operator">=</span> <span class="token string">&quot;O&apos;Connor&quot;</span> <span class="token operator">or</span> surname <span class="token operator">=</span> <span class="token string">&apos;Trump&apos;</span>
-</code></pre>
-<p>You can also do it like so:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> customers <span class="token keyword">where</span> surname <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token string">&quot;O&apos;Connor&quot;</span><span class="token punctuation">,</span> <span class="token string">&apos;Trump&apos;</span><span class="token punctuation">)</span>
-</code></pre>
-<p>This is might seem like a minor difference but:</p>
-<ul>
-<li><p>It is useful when you want your code to pass a list of things to the database and get a query which matches one or more of them.</p>
-</li>
-<li><p>You can put <em>a whole select statement</em> in there if it returns one column. Your homework will require this.</p>
-</li>
-</ul>
-<h5 id="exercise-3a">EXERCISE 3.a</h5>
-<p>Write a query to get all of the customers with the first name &quot;Colm&quot; or &quot;Hillary&quot; using <em>IN</em>.</p>
-<h5 id="exercise-3b-optional-stretch-goal">EXERCISE 3.b: OPTIONAL STRETCH GOAL</h5>
-<p>We&apos;re trying to locate a reservation for a customer. We know that:</p>
-<ul>
-<li>Their checkin date may have been June 1st, 2017 OR July 1st 2017</li>
-<li>Their checkout date may have been June 30th, 2017 OR July 30th 2017</li>
-</ul>
-<p>Write a query using <em>IN</em> that is guaranteed to return their reservation.</p>
-<p>N.B. Remember 01/01/2017? Remember to put the date in an <em>unambiguous format</em>.</p>
-<h3 id="lesson-5--i-wish-i-could-delete-him-in-real-life">LESSON 5 : I WISH I COULD DELETE HIM IN REAL LIFE</h3>
-<p>We&apos;ve currently done inserting data and updating data, but sometimes inserting data was just a mistake
-and it needs to go.</p>
-<p>It&apos;s a fairly simple command that looks like select, you just specify the table and a predicate and it wipes:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">delete</span> <span class="token keyword">from</span> customers <span class="token keyword">where</span> surname <span class="token operator">like</span> <span class="token string">&apos;%trump%&apos;</span><span class="token punctuation">;</span>
-</code></pre>
-<p>There are several things you need to worry about when you delete data and what you do about them will depend entirely upon what it is you are trying to do:</p>
-<ul>
-<li><p>What happens to the data that depends upon the data you deleted?
--- What if Trump had a reservation? Either a) delete the reservation as well? or b) raise an error and force the user to delete the data manually if they really want him gone.</p>
-</li>
-<li><p>What if you want to undo the deletion?</p>
-</li>
-<li><p>What if you want to mark some data as deleted but you might still want to refer to it?</p>
-</li>
-<li><p>Often it&apos;s a good idea to give data the &apos;status&apos; deleted instead of actually deleting it.</p>
-</li>
-</ul>
-<h3 id="exercise-5a">Exercise 5.a</h3>
-<p><strong>User Story:</strong> As a staff member, I want to delete a canceled reservation from the database.</p>
-<p><strong>Notes on Postman</strong>
-The delete request is actually pretty straight forward. We only need to select the type and provide the url:
-<img src="postman-delete-1.png" alt="postman-get-1"></p>
-<p>Create an end-point to delete a given reservation from <code>/reservation/:id/</code>.</p>
+<p>Start you server with <code>node server.js</code> and try to reach the <code>/hotels</code> endpoint to see the list of hotels currently available in your <code>hotels</code> table of your <code>cyf_hotels</code> database. You can try to create/update/delete hotels to verify that your API always returns what is stored in your database.</p>
 <h2 id="homework">Homework</h2>
-<h3 id="homework-1">HOMEWORK 1</h3>
-<p>Consider again the scenario of exercise 4.</p>
-<p>Change the code so that the end point detects which customer properties are being updated, and generate the appropriate SQL update statement - so that only those properties are updated, as opposed to the whole row.</p>
-<h3 id="homework-2">HOMEWORK 2</h3>
-<p><strong>User Story:</strong> As a staff member, I want to create a new reservation.</p>
-<p>Create and end-point to post a new reservation to <code>/reservations/</code>.</p>
-<ul>
-<li>insert into</li>
-<li>create the endpoint from scratch</li>
-<li>which HTTP method should you use?</li>
+<p>In this homework, you are going to work with an ecommerce database. In this database, you have <code>products</code> that <code>consumers</code> can buy from different <code>suppliers</code>. Customers can create an <code>order</code> and several products can be added in one order.</p>
+<p>To prepare your environment for this homework, open a terminal and create first a new database called <code>cyf_ecommerce</code>:</p>
+<pre class="language-"><code>createdb cyf_ecommerce
+</code></pre><p>Import the file <a href="cyf_ecommerce.sql"><code>cyf_ecommerce.sql</code></a> in your newly created database:</p>
+<pre class="language-"><code>psql -d cyf_ecommerce -f cyf_ecommerce.sql
+</code></pre><ul>
+<li>Open the file <code>cyf_ecommerce.sql</code> in VSCode and make sure you understand all the SQL code. Take a piece of paper and draw the database with the different relations between tables. Identify the foreign keys and make sure you understand the full database schema.</li>
 </ul>
-<p>STRETCH GOAL (OPTIONAL) : Return {&quot;status&quot;: &quot;error&quot;: &quot;reason&quot;: &quot;reason...&quot;} if <em>anything</em> was wrong with the request.</p>
-<h3 id="homework-3">HOMEWORK 3</h3>
-<p><strong>User Story:</strong> As a staff member, I want to get a list of all the existing reservations.</p>
-<p>Create an end-point to get from <code>/reservations</code> all existing reservations.</p>
+<p>Once you understand the database that you are going to work with, solve the following challenge by writing SQL queries using everything you learned about SQL:</p>
 <ul>
-<li>create the endpoint from scratch</li>
+<li>Retrieve all the customers name and address who lives in United States</li>
+<li>Retrieve all the customers ordered by ascending name</li>
+<li>Retrieve all the products which cost more than 100</li>
+<li>Retrieve all the products which name contains the word <code>socks</code></li>
+<li>Retrieve the top 5 of most expensive products</li>
+<li>Retrieve all the products with their corresponding suppliers. The result should only contain the columns <code>product_name</code>, <code>unit_price</code> and <code>supplier_name</code></li>
+<li>Retrieve all the products sold by suppliers based in United Kingdom. The result should only contain the columns <code>product_name</code> and <code>supplier_name</code>.</li>
+<li>Retrieve all orders from customer ID <code>1</code></li>
+<li>Retrieve all orders from customer named <code>Hope Crosby</code></li>
+<li>Retrieve all the products in the order <code>ORD006</code>. The result should only contain the columns <code>product_name</code>, <code>unit_price</code> and <code>quantity</code>.</li>
+<li>Retrieve all the products with their supplier for all orders of all customers. The result should only contain the column about customer <code>name</code>, <code>order_reference</code> <code>order_date</code>, <code>product_name</code>, <code>supplier_name</code> and <code>quantity</code>.</li>
+<li>Retrieve the names of all customers who bought a product from a supplier from China.</li>
 </ul>
-<h3 id="homework-4">HOMEWORK 4</h3>
-<p><strong>User Story:</strong> As a customer, I want to check the details of a reservation.</p>
-<p>Create and end-point to get from <code>/reservations/:id</code> the details of a resrevation through its <code>id</code>.</p>
+<p>For the second part of this homework:</p>
 <ul>
-<li>simple filtering</li>
-<li>create the endpoint from scratch</li>
-</ul>
-<h3 id="homework-5">HOMEWORK 5</h3>
-<p><strong>User Story:</strong> As a staff member, I want to get a list of all the reservations that start at a given date.</p>
-<p>Create and end-point to get from <code>/reservations/starting-on/:startDate</code> all the reservations that start at a given date.</p>
-<ul>
-<li>simple filtering</li>
-<li>create the endpoint from scratch</li>
-</ul>
-<h3 id="homework-6">HOMEWORK 6</h3>
-<p><strong>User Story:</strong> As a staff member, i want to get a list of all the reservations that are active at a given date.</p>
-<p>Create and end-point to get from <code>/reservations/active-on/:date</code> all the reservations that are active on a given date - some customer has a room reserved on that day.</p>
-<ul>
-<li>multiple filtering.</li>
-<li>create the endpoint from scratch</li>
+<li>Create a new NodeJS application called <code>cyf-ecommerce-api</code></li>
+<li>Add Express and node-postgres and make sure you can start the server with <code>node server.js</code></li>
+<li>Add a new GET endpoint <code>/customers</code> to load all the customers from the database</li>
+<li>Add a new GET endpoint <code>/suppliers</code> to load all the suppliers from the database</li>
+<li>(STRETCH GOAL) Add a new GET endpoint <code>/products</code> to load all the product names along their supplier names.</li>
 </ul>
 
                                 
@@ -1163,7 +1143,7 @@ The delete request is actually pretty straight forward. We only need to select t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"next":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]},"previous":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-17/lesson.md","mtime":"2019-07-20T21:19:28.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-20T21:20:39.622Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"next":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"path":"node-db/week-18/lesson.md","ref":"node-db/week-18/lesson.md","articles":[]},"previous":{"title":"Week 16 - Basic SQL","level":"1.8.1","depth":2,"path":"node-db/week-16/lesson.md","ref":"node-db/week-16/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-17/lesson.md","mtime":"2019-07-26T06:51:54.544Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-26T06:52:55.581Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
