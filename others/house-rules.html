@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Making a Pull Request · GitBook</title>
+        <title>House Rules · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="cors.html" />
+    <link rel="next" href="../html-css/" />
     
     
-    <link rel="prev" href="PRACTICES.html" />
+    <link rel="prev" href="lesson0.html" />
     
 
     </head>
@@ -131,7 +131,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="house-rules.html">
+        <li class="chapter active" data-level="1.2.2" data-path="house-rules.html">
             
                 <a href="house-rules.html">
             
@@ -614,7 +614,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.4" data-path="making-a-pull-request.html">
+        <li class="chapter " data-level="2.4" data-path="making-a-pull-request.html">
             
                 <a href="making-a-pull-request.html">
             
@@ -891,7 +891,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Making a Pull Request</a>
+        <a href=".." >House Rules</a>
     </h1>
 </div>
 
@@ -906,77 +906,63 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="making-a-pull-request">Making a Pull Request</h1>
-<p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""></p>
-<p><strong>What will we learn today?</strong></p>
+                                <h1 id="house-rules">House Rules</h1>
 <ul>
-<li><a href="#making-a-pull-request">Making a Pull Request</a><ul>
-<li><a href="#why-fork">Why fork?</a></li>
-<li><a href="#what-is-a-remote">What is a remote?</a></li>
-<li><a href="#how-to-fork-a-github-repo">How to fork a GitHub repo</a></li>
-<li><a href="#adding-a-remote">Adding a Remote</a></li>
-<li><a href="#creating-a-pr">Creating a PR</a></li>
-<li><a href="#resources">Resources</a></li>
-</ul>
+<li><p><strong>Whilst you&apos;re a student, arrive on time</strong>. Lots of people are giving freely
+of their time and knowledge to make the class possible and giving up other
+commitments to be here. Respect that, and always be on time.</p>
+</li>
+<li><p><strong>Leave our space cleaner and tidier than when we arrive</strong>. We are hosted by
+generous folks who are offering their space (and time) to help us - the least
+we can do is to keep their space tidy and clean, and consider it our own.</p>
+</li>
+<li><p><strong>Communication is key (and in English)</strong>. Setup Slack on your phone and
+computer, and use it all the time to ask and provide help, enquire about the
+classes etc... Also, the classes help lots of the students (and volunteers!)
+to improve their English as a nice side effect, so even if you share a
+language with some of the participants, resist the temptation and speak in
+English!</p>
+</li>
+<li><p><strong>Learn to find answers</strong>. A big part of what we teach you is about
+researching and finding answers by yourself - get in the habit of Googling and
+finding answers to your questions.</p>
+</li>
+<li><p><strong>Always be in control of the keyboard and mouse</strong>. Don&apos;t let the mentors take
+control of your keyboard and mouse, don&apos;t let them type for you, ask for help
+but do things yourself!</p>
+</li>
+<li><p><strong>Help each other</strong>. As students, you&apos;re the most qualified to help each
+other, as you&apos;re going through the same journey of learning - offer and ask
+for help from your fellow students (helping someone else is also one of the
+best ways to improve your own skills)</p>
+</li>
+<li><p><strong>We are a community</strong>. This project is special (it&apos;s more than just a coding
+school) and it belongs to all of us: students, mentors, volunteers and friends
+of CYF. Embrace it like that, be proactive about helping it grow and succeed
+in all of its aspects.</p>
 </li>
 </ul>
-<h2 id="why-fork">Why fork?</h2>
-<p>For many of the CodeYourFuture homework assignments, you will need to make a Pull Request to a GitHub repository. By default GitHub repos prevent most people from pushing to them. This is ensure that repo owners have control over the project.</p>
-<p>This doesn&apos;t mean you will never be able to make changes to the repo! On GitHub you do this by creating a &quot;fork&quot;. A fork is an exact copy of the original repo but copied to your own GitHub account. This means that now you can push to it!</p>
-<p>This is why you will need to create a fork when submitting a PR for your homework.</p>
-<h2 id="what-is-a-remote">What is a remote?</h2>
-<p>Git has a concept of a &quot;remote&quot;. These are other git repositories that can be connected to over the internet. You can push or pull code changes from them. Remotes have a <em>name</em> and a <em>URL</em>. Most of the remotes that you will use at CYF are hosted on GitHub, so have a github.com URL.</p>
-<p>When you clone a repo from GitHub, the default remote is named <code>origin</code> and the URL is set to that of the GitHub repo.</p>
-<p>You can view the remotes you have set up with:</p>
-<pre class="language-"><code>git remote -v
-</code></pre><h2 id="how-to-fork-a-github-repo">How to fork a GitHub repo</h2>
-<p>Firstly you need to click the &quot;Fork&quot; button:</p>
-<p><img src="assets/making-a-pull-request/fork-button.png" alt="Fork Button"></p>
-<p>Then you should be brought to your new fork (notice how the repo title changes):</p>
-<p><img src="assets/making-a-pull-request/forked.png" alt="Forked repo"></p>
-<p>Now you can clone from your fork by copying the URL here:</p>
-<p><img src="assets/making-a-pull-request/clone-fork.png" alt="Clone from fork"></p>
-<p>The command to clone is:</p>
-<pre class="language-"><code>git clone URL_YOU_JUST_COPIED
-</code></pre><h2 id="adding-a-remote">Adding a Remote</h2>
-<p>Follow these instructions if you are getting an permission error when pushing your changes. If you have cloned the original repo <em>before</em> forking, you&apos;ll need to follow these instructions. You can check this by running <code>git remote -v</code>. If the output looks something like:</p>
-<pre class="language-"><code>origin git@github.com:CodeYourFuture/css-skin.git (fetch)
-origin git@github.com:CodeYourFuture/css-skin.git (push)
-</code></pre><p>then you have cloned before forking. The key is that the <code>origin</code> remote is pointing to a CodeYourFuture URL. Don&apos;t worry, we can fix it!</p>
-<p>The first step is to fork the original repo. Follow the first 2 steps from <a href="#how-to-fork-a-github-repo">forking instructions</a> above.</p>
-<p>Now, instead of cloning the fork (you have already cloned), you need to add it as a remote.</p>
-<p>Run:</p>
-<pre class="language-"><code>git remote add fork URL_YOU_COPIED_FROM_FORK
-</code></pre><p>This will add a new remote called <code>fork</code> that points to your new fork. To check this, run <code>git remote -v</code> again. You should see both the <code>origin</code> and <code>fork</code> remotes.</p>
-<p>Now that you have your <code>fork</code> remote you can push to it (instead of the <code>origin</code> remote, which will error) by running:</p>
-<pre class="language-"><code>git push fork
-</code></pre><p>You&apos;ll need to remember to add the <code>fork</code> <em>every time you push</em>.</p>
-<h2 id="creating-a-pr">Creating a PR</h2>
-<p>So you&apos;ve done your homework, you&apos;ve committed your changes and are ready to make a PR. Congrats! &#x1F389;&#x1F389;&#x1F389;</p>
-<p>At this point you should have followed the instructions either to <a href="#how-to-fork-a-github-repo">fork the original repo</a> or <a href="#adding-a-remote">added a remote to your fork</a>. If you haven&apos;t make sure you read those sections first.</p>
-<p>You will need to push to your fork. If you forked and then cloned (as in the <a href="#how-to-fork-a-github-repo">how to fork instructions</a>) then you just need to run <code>git push</code>. If you <a href="#adding-a-remote">added a remote to your fork</a>, then you will need to run <code>git push fork</code>.</p>
-<p>Next you need to go the original repo in your browser (probably starting with <a href="https://github.com/CodeYourFuture" target="_blank">https://github.com/CodeYourFuture</a>). Next click the Pull Requests tab:</p>
-<p><img src="assets/making-a-pull-request/pr-tab.png" alt="PR tab"></p>
-<p>Then click the New pull request button:</p>
-<p><img src="assets/making-a-pull-request/new-pr-button.png" alt="New PR button"></p>
-<p>Then click the &quot;compare across forks&quot; link:</p>
-<p><img src="assets/making-a-pull-request/compare-across-forks.png" alt="Compare across forks"></p>
-<p>Then click the &quot;head fork&quot; dropdown button:</p>
-<p><img src="assets/making-a-pull-request/head-fork-dropdown.png" alt="Head fork dropdown button"></p>
-<p>Then find your fork in the list and click it:</p>
-<p><img src="assets/making-a-pull-request/found-head-fork.png" alt="Found head fork"></p>
-<p>Then click the Create pull request button:</p>
-<p><img src="assets/making-a-pull-request/create-pull-request-1.png" alt="Create PR"></p>
-<p>Almost there! Now fill out the PR form. Give it a sensible title and an (optional) description:</p>
-<p><img src="assets/making-a-pull-request/pr-form.png" alt="PR form"></p>
-<p>And finally click the Create pull request button at the bottom of the form:</p>
-<p><img src="assets/making-a-pull-request/create-pull-request-2.png" alt="Create pull request"></p>
-<p>That&apos;s it! You created your PR!</p>
-<p><img src="assets/making-a-pull-request/created-pr.png" alt="Created PR"></p>
-<h2 id="resources">Resources</h2>
-<ol>
-<li><a href="https://help.github.com/en/articles/creating-a-pull-request-from-a-fork" target="_blank">Creating a pull request from a fork</a></li>
-</ol>
+<h2 id="code-of-conduct">Code of Conduct</h2>
+<p>Our project is dedicated to providing a harassment-free experience for everyone,
+regardless of gender, gender identity and expression, age, nationality, sexual
+orientation, disability, physical appearance, body size, race, ethnicity,
+religion (or lack thereof) etc... We do not tolerate harassment of the project&apos;s
+members (mentors, students, volunteers etc...) in any form. Anyone violating
+these rules may be expelled from the course, at the discretion of
+CodeYourFuture.</p>
+<p>Harassment includes, but is not limited to:</p>
+<ul>
+<li>Verbal comments that reinforce social structures of domination [related to
+gender, gender identity and expression, sexual orientation, disability,
+physical appearance, body size, race, age, religion, nationality etc...</li>
+<li>Sexual images in public spaces</li>
+<li>Deliberate intimidation, stalking, or following</li>
+<li>Harassing photography or recording</li>
+<li>Sustained disruption of talks or other events</li>
+<li>Inappropriate physical contact</li>
+<li>Unwelcome sexual attention</li>
+<li>Advocating for, or encouraging, any of the above behaviour</li>
+</ul>
 
                                 
                                 </section>
@@ -1004,12 +990,12 @@ origin git@github.com:CodeYourFuture/css-skin.git (push)
 
             
                 
-                <a href="PRACTICES.html" class="navigation navigation-prev " aria-label="Previous page: Coding Standards and Best Practices">
+                <a href="lesson0.html" class="navigation navigation-prev " aria-label="Previous page: Week 0 - Introduction and basic setup">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="cors.html" class="navigation navigation-next " aria-label="Next page: CORS">
+                <a href="../html-css/" class="navigation navigation-next " aria-label="Next page: HTML/CSS">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1020,7 +1006,7 @@ origin git@github.com:CodeYourFuture/css-skin.git (push)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Making a Pull Request","level":"2.4","depth":1,"next":{"title":"CORS","level":"2.5","depth":1,"path":"others/cors.md","ref":"others/cors.md","articles":[]},"previous":{"title":"Coding Standards and Best Practices","level":"2.3","depth":1,"path":"others/PRACTICES.md","ref":"others/PRACTICES.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/making-a-pull-request.md","mtime":"2019-07-27T19:33:48.307Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-27T19:34:49.075Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"House Rules","level":"1.2.2","depth":2,"next":{"title":"HTML/CSS","level":"1.3","depth":1,"path":"html-css/index.md","ref":"html-css/index.md","articles":[{"title":"Week 1 - Semantic HTML and CSS","level":"1.3.1","depth":2,"path":"html-css/week-01/lesson.md","ref":"html-css/week-01/lesson.md","articles":[]},{"title":"Week 2 - Responsive Web and layout","level":"1.3.2","depth":2,"path":"html-css/week-02/lesson.md","ref":"html-css/week-02/lesson.md","articles":[]},{"title":"Week 3 - Design frameworks, Naming patterns and Forms","level":"1.3.3","depth":2,"path":"html-css/week-03/lesson.md","ref":"html-css/week-03/lesson.md","articles":[]}]},"previous":{"title":"Week 0 - Introduction and basic setup","level":"1.2.1","depth":2,"path":"others/lesson0.md","ref":"others/lesson0.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/house-rules.md","mtime":"2019-07-27T19:33:48.307Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-27T19:34:49.075Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

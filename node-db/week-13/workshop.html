@@ -131,9 +131,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../../house-rules.md">
+        <li class="chapter " data-level="1.2.2" data-path="../../others/house-rules.html">
             
-                <span>
+                <a href="../../others/house-rules.html">
             
                     
                     House Rules
@@ -1027,7 +1027,7 @@ that door. Setting a port will allow us to find where our server is running.</p>
 <p>We use the <strong><code>app.listen</code></strong> method to do this. This method takes two arguments:
 a <strong>port</strong> and a <strong>callback function</strong> telling it what to do once the server is
 running. Need clarification? Read more about the <code>app.listen</code> method in the
-<a href="http://expressjs.com/en/4x/api.html#app.listen" target="_blank">Express documentation</a>.</p>
+<a href="https://expressjs.com/en/4x/api.html#app.listen" target="_blank">Express documentation</a>.</p>
 <p>We&apos;re going to run our server on port <code>3000</code>, and run a simple <code>console.log</code> as
 our callback function. Update your <code>server.js</code> file, calling the <code>app.listen</code>
 method:</p>
@@ -1061,7 +1061,7 @@ requests and handles them, hence the name.</p>
 the response back to the client along with some information. You can decide what
 to send back in your response.</p>
 <h3 id="what-does-a-handler-function-look-like-in-express">What does a handler function look like in Express?</h3>
-<p>The <code>get()</code> <a href="http://expressjs.com/en/api.html#app.get.method" target="_blank">method</a> is used to
+<p>The <code>get()</code> <a href="https://expressjs.com/en/api.html#app.get.method" target="_blank">method</a> is used to
 define a handler function in Express. It takes two parameters: the <strong>endpoint</strong>
 at which to trigger an action (we&apos;ll explain more about this in the next step),
 and the handler function that tells it exactly what to do. Here&apos;s a simple
@@ -1095,7 +1095,7 @@ to see what it looks like. You should see a lot of data come through.</p>
 <h2 id="2-tell-your-handler-function-what-to-do">2. Tell your handler function what to do</h2>
 <p>We want our handler function to send back a message to the client. To do that,
 we&apos;re going to use the Express <code>send()</code>
-<a href="http://expressjs.com/en/api.html#res.send" target="_blank">method</a>. This will update the
+<a href="https://expressjs.com/en/api.html#res.send" target="_blank">method</a>. This will update the
 response object with the message.</p>
 <p>Update your handler function like so:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;express&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1156,7 +1156,7 @@ your server to &quot;serve&quot; static assets back to the browser, you need to 
 something different than just using the <code>res.send()</code> method.</p>
 <p>To be able to send any file from the server we need a special, built-in
 <strong>middleware</strong> function that comes with Express: <code>express.static()</code>. Read more
-about it <a href="http://expressjs.com/en/starter/static-files.html" target="_blank">here</a>.</p>
+about it <a href="https://expressjs.com/en/starter/static-files.html" target="_blank">here</a>.</p>
 <p>Say we want to serve all the static assets in our &quot;public&quot; folder. The
 <code>express.static()</code> function will look like this:</p>
 <pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span><span class="token string">&quot;public&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1425,7 +1425,7 @@ files back to the client. Feel free to use this with your JSON.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Express Workshop","level":"3.3","depth":1,"next":{"title":"Hotel Workshop","level":"3.4","depth":1,"path":"node-db/week-15/workshop.md","ref":"node-db/week-15/workshop.md","articles":[]},"previous":{"title":"Compiling SCSS","level":"3.2","depth":1,"path":"html-css/compile-scss-instructions.md","ref":"html-css/compile-scss-instructions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-13/workshop.md","mtime":"2019-07-27T18:08:32.077Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-27T18:09:29.874Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Express Workshop","level":"3.3","depth":1,"next":{"title":"Hotel Workshop","level":"3.4","depth":1,"path":"node-db/week-15/workshop.md","ref":"node-db/week-15/workshop.md","articles":[]},"previous":{"title":"Compiling SCSS","level":"3.2","depth":1,"path":"html-css/compile-scss-instructions.md","ref":"html-css/compile-scss-instructions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","todo","scripts"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"scripts":{"files":["./checkboxRemember.js"]},"todo":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-13/workshop.md","mtime":"2019-07-27T19:33:48.267Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-27T19:34:49.075Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
