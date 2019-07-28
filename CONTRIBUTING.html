@@ -795,70 +795,6 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" >
-            
-                <span>
-            
-                    
-                    HTML/CSS
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="4.3.1" data-path="html-css/mentor-guide.html">
-            
-                <a href="html-css/mentor-guide.html">
-            
-                    
-                    Mentors guide
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="4.4" >
-            
-                <span>
-            
-                    
-                    JavaScript I
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="4.4.1" data-path="js-core/week-04/mentors.html">
-            
-                <a href="js-core/week-04/mentors.html">
-            
-                    
-                    Week 4 - Hello JavaScript
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
 
     
 
@@ -906,58 +842,42 @@
                                 
                                 <h1 id="contributing">Contributing</h1>
 <p>Before starting, please read the following general guidelines and
-<a href="https://github.com/CodeYourFuture/syllabus/issues/9" target="_blank">Checklist for a lesson</a>.
-Participate in the discussion if you&apos;d like.</p>
-<p>There are <a href="https://github.com/CodeYourFuture/syllabus/issues" target="_blank">discussions</a>
-about each module and every class in a module, make sure to go through them (or
-add a new issue/discussion point).</p>
+<a href="https://github.com/CodeYourFuture/syllabus/issues/9" target="_blank">checklist for a lesson</a>.
+Participate in the discussion if you&apos;d like.
+There are <a href="https://github.com/CodeYourFuture/syllabus/issues" target="_blank">discussions</a>
+about each module and every class in a module.
+Make sure to go through them or add a new issue/discussion point.</p>
 <p>To contribute to the Code Your Future syllabus, fork and open a pull request to
-<a href="https://github.com/CodeYourFuture/syllabus" target="_blank">this repository</a>.</p>
-<p>Contributions are strictly through approved Pull Requests, even for
+<a href="https://github.com/CodeYourFuture/syllabus" target="_blank">this repository</a>.
+Contributions are strictly through approved Pull Requests, even for
 administrators of the repo.</p>
 <p>Since this repository is the blueprint of our syllabus we allow different
 cohorts to adapt to their classes&apos; needs, and also update their syllabus
-versions to reflect how the class goes.</p>
-<p>We should always make sure <strong>master</strong> is relevant and up to date for future
+versions to reflect how the class goes.
+We should always make sure <strong>master</strong> is relevant and up to date for future
 classes with the feedback from the on-going teaching in each CYF chapter.</p>
-<h3 id="legacy-versions">Legacy versions</h3>
-<p>Mentors should point the students to the individual classes on Github (not the
-gitbook links) to allow them to get familiar with Git and Github, and to focus
-on the individual class. Also Point them to the version on your branch.</p>
-<ul>
-<li><a href="https://codeyourfuture.github.io/syllabus-london/" target="_blank">London</a></li>
-<li><a href="https://codeyourfuture.github.io/syllabus-scotland/" target="_blank">Scotland</a></li>
-</ul>
 <h2 id="publish-the-gitbook">Publish the Gitbook</h2>
-<p>A Gitbook for each branch is published automatically on each push:</p>
-<ul>
-<li><a href="https://codeyourfuture.github.io/syllabus-master/" target="_blank">Master Syllabus</a></li>
-</ul>
-<p>For your convenience, you can run Gitbook locally</p>
-<p>Install the <a href="https://github.com/GitbookIO/gitbook" target="_blank">GitBook</a> CLI:</p>
-<pre class="language-"><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> -g gitbook-cli
+<p>A Gitbook for each branch is published automatically on each push.</p>
+<p>For your convenience, you can run Gitbook locally:</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span>
+<span class="token function">npm</span> run serve
 </code></pre>
-<p>Install gitbook plugins for this project, if not already installed:</p>
-<pre class="language-"><code class="lang-bash">gitbook <span class="token function">install</span>
-</code></pre>
-<p>Run the gitbook server which will autoupdate as you change the contents</p>
-<pre class="language-"><code>gitbook serve
-open http://localhost:4000
-</code></pre><h2 id="add-new-modules-or-lessons">Add new modules or lessons</h2>
-<p>The repo is stuctured as <code>module-name\week-number</code> - add your content in the
-correct file.</p>
-<p>If you&apos;ve added a new file, then Add it as new entry in
-<a href="https://github.com/CodeYourFuture/syllabus/blob/master/SUMMARY.md" target="_blank">SUMMARY.md</a>.</p>
+<h2 id="add-new-modules-or-lessons">Add new modules or lessons</h2>
+<p>The repo is stuctured as <code>module-name\week-number</code>.
+Add your content in the correct file.</p>
+<p>If you&apos;ve added a new file, add it as new entry in
+<a href="https://github.com/CodeYourFuture/syllabus/blob/master/SUMMARY.md" target="_blank">SUMMARY.md</a>
+to show it in the sidebar.</p>
 <p>If the module contains many individual markdown files, add them as nested
 bullets under the main README.</p>
-<h2 id="a-lesson-template">A Lesson template</h2>
-<p>Please check the <a href="lesson-template.md">lesson template</a> and use it as a starting
+<h2 id="a-lesson-template">A lesson template</h2>
+<p>Please use the <a href="lesson-template.md">lesson template</a> as a starting
 point for your new lessons.</p>
-<p>Each lesson should follow that format - starting with <strong>what we will learn
+<p>Each lesson should follow that format: starting with <strong>what we will learn
 today</strong> then <strong>class contents</strong>, <strong>homework</strong> and <strong>preparation for next
 class</strong>.</p>
-<p>The class contents and homework should follow these general guidelines -
-<a href="https://github.com/CodeYourFuture/syllabus/issues/9" target="_blank">Checklist for a lesson</a></p>
+<p>The class contents and homework should follow the
+<a href="https://github.com/CodeYourFuture/syllabus/issues/9" target="_blank">checklist for a lesson</a></p>
 <p>Some of the most important guidelines are:</p>
 <ul>
 <li>Focus on exercises in the class rather than presentations or long explanations</li>
@@ -1005,7 +925,7 @@ stretch goal for more advanced students.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Contributing","level":"4.1","depth":1,"next":{"title":"Lesson Template","level":"4.2","depth":1,"path":"others/lesson-template.md","ref":"others/lesson-template.md","articles":[]},"previous":{"title":"Java module","level":"3.7","depth":1,"url":"https://github.com/Thomas-Stewart/syllabus/tree/master/java","ref":"https://github.com/Thomas-Stewart/syllabus/tree/master/java","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"CONTRIBUTING.md","mtime":"2019-07-27T22:01:15.327Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-27T22:02:08.729Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Contributing","level":"4.1","depth":1,"next":{"title":"Lesson Template","level":"4.2","depth":1,"path":"others/lesson-template.md","ref":"others/lesson-template.md","articles":[]},"previous":{"title":"Java module","level":"3.7","depth":1,"url":"https://github.com/Thomas-Stewart/syllabus/tree/master/java","ref":"https://github.com/Thomas-Stewart/syllabus/tree/master/java","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"CONTRIBUTING.md","mtime":"2019-07-28T00:39:55.233Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-28T00:40:56.623Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

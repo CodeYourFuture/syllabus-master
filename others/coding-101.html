@@ -797,70 +797,6 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" >
-            
-                <span>
-            
-                    
-                    HTML/CSS
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="4.3.1" data-path="../html-css/mentor-guide.html">
-            
-                <a href="../html-css/mentor-guide.html">
-            
-                    
-                    Mentors guide
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="4.4" >
-            
-                <span>
-            
-                    
-                    JavaScript I
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="4.4.1" data-path="../js-core/week-04/mentors.html">
-            
-                <a href="../js-core/week-04/mentors.html">
-            
-                    
-                    Week 4 - Hello JavaScript
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
 
     
 
@@ -906,14 +842,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="https://camo.githubusercontent.com/997591db1749880b8b23c96b8f788e69af09c04d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d64726166742d6461726b7265642e737667" alt="Status: Draft"></p>
-<h1 id="coding-101">Coding 101</h1>
+                                <h1 id="coding-101">Coding 101</h1>
+<p><img src="https://camo.githubusercontent.com/997591db1749880b8b23c96b8f788e69af09c04d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d64726166742d6461726b7265642e737667" alt="Status: Draft"></p>
 <p><strong>What we will learn today?</strong></p>
 <ul>
 <li>What is a computer program?</li>
 <li>Getting started with JavaScript</li>
 </ul>
-<h2 id="what-is-a-computer-program">What is a computer program?</h2>
+<h2 id="what-is-a-computer-program">What is a computer program</h2>
 <blockquote>
 <p>Intro to programming logic &#x2013; Making a sandwich (Source:
 <a href="http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf" target="_blank">http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf</a>)</p>
@@ -974,13 +910,14 @@ in the console like this.</p>
 variable.</p>
 <p>Variables have a name (<em>identifier</em>) that we can use to refer to a value. You
 can assign a value to a variable with the following statement:</p>
-<pre class="language-"><code>var x = 3;
-^   ^ ^ ^
-|   | | value
-|   | assignment operator
-|   identifier
+<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token operator">^</span>   <span class="token operator">^</span> <span class="token operator">^</span> <span class="token operator">^</span>
+<span class="token operator">|</span>   <span class="token operator">|</span> <span class="token operator">|</span> value
+<span class="token operator">|</span>   <span class="token operator">|</span> assignment operator
+<span class="token operator">|</span>   identifier
 declaration statement
-</code></pre><p>Let&#x2019;s break this statement down:</p>
+</code></pre>
+<p>Let&#x2019;s break this statement down:</p>
 <ul>
 <li><code>var</code>: With the <code>var</code> statement we tell the JavaScript engine that <code>x</code> is now
 a variable</li>
@@ -1024,13 +961,14 @@ precedence than <code>+</code> and <code>-</code>.</p>
 <h3 id="strings">Strings</h3>
 <p>Strings represent any sort of text. They are delimited by single quotes (<code>&apos;</code>) or
 double quotes (<code>&#x201D;</code>) and can be of any length.</p>
-<pre class="language-"><code>&apos;&apos; // empty string
-&quot;&quot; // empty string
-&apos;Hello&apos;
-&apos;I am learning JavaScript&apos;
-&apos;It\&apos;s been a great journey so far!&apos;
-&quot;Double quotes work as well&quot;
-</code></pre><blockquote>
+<pre class="language-"><code class="lang-js"><span class="token string">&apos;&apos;</span> <span class="token comment">// empty string</span>
+<span class="token string">&quot;&quot;</span> <span class="token comment">// empty string</span>
+<span class="token string">&apos;Hello&apos;</span>
+<span class="token string">&apos;I am learning JavaScript&apos;</span>
+<span class="token string">&apos;It\&apos;s been a great journey so far!&apos;</span>
+<span class="token string">&quot;Double quotes work as well&quot;</span>
+</code></pre>
+<blockquote>
 <p>If you need single or double quotes <em>inside the string</em>, you need to &#x201C;escape&#x201D;
 them by putting a backslash in front of them. If you don&#x2019;t do this, the
 JavaScript engine will think the string ends here, because it encounters a
@@ -1038,8 +976,9 @@ quote.</p>
 </blockquote>
 <p>The most common operation on strings is to append one string to another. This is
 called <em>string concatenation</em>. It&#x2019;s achieved by the plus (<code>+</code>) operator:</p>
-<pre class="language-"><code>&quot;Hello&quot; + &quot;World&quot; // &quot;HelloWorld&quot;
-</code></pre><ul>
+<pre class="language-"><code class="lang-js"><span class="token string">&quot;Hello&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;World&quot;</span> <span class="token comment">// &quot;HelloWorld&quot;</span>
+</code></pre>
+<ul>
 <li><strong>TODO:</strong> Introduce string concatenation</li>
 <li><strong>TODO:</strong> What about basic string functions, like substr, replace etc?</li>
 </ul>
@@ -1141,7 +1080,7 @@ jsbin configuration, maybe?</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Coding 101","level":"3.1","depth":1,"next":{"title":"Compiling SCSS","level":"3.2","depth":1,"path":"html-css/compile-scss-instructions.md","ref":"html-css/compile-scss-instructions.md","articles":[]},"previous":{"title":"Career Development","level":"2.7","depth":1,"path":"others/career-development.md","ref":"others/career-development.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/coding-101.md","mtime":"2019-07-27T22:01:15.439Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-27T22:02:08.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Coding 101","level":"3.1","depth":1,"next":{"title":"Compiling SCSS","level":"3.2","depth":1,"path":"html-css/compile-scss-instructions.md","ref":"html-css/compile-scss-instructions.md","articles":[]},"previous":{"title":"Career Development","level":"2.7","depth":1,"path":"others/career-development.md","ref":"others/career-development.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/coding-101.md","mtime":"2019-07-28T00:39:55.353Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-28T00:40:56.623Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
