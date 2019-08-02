@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Week 18 - Data Integrity & Analytics · GitBook</title>
+        <title>Week 18 - More integration with NodeJS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -458,7 +458,7 @@
                 <a href="../week-16/lesson.html">
             
                     
-                    Week 16 - Basic SQL
+                    Week 16 - Introduction to SQL
             
                 </a>
             
@@ -471,7 +471,7 @@
                 <a href="../week-17/lesson.html">
             
                     
-                    Week 17 - SQL with Node
+                    Week 17 - More SQL and integration with NodeJS
             
                 </a>
             
@@ -484,7 +484,7 @@
                 <a href="lesson.html">
             
                     
-                    Week 18 - Data Integrity & Analytics
+                    Week 18 - More integration with NodeJS
             
                 </a>
             
@@ -827,7 +827,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Week 18 - Data Integrity & Analytics</a>
+        <a href="../.." >Week 18 - More integration with NodeJS</a>
     </h1>
 </div>
 
@@ -842,315 +842,213 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="lesson-3-data-integrity-and-analytics">LESSON 3: DATA INTEGRITY AND ANALYTICS</h1>
-<p><strong>Recap of last lesson</strong></p>
+                                <h1 id="database-3-more-integration-with-nodejs">Database 3: More integration with NodeJS</h1>
+<p><strong>What will we learn today?</strong></p>
 <ul>
-<li>What is the difference between user story, use case and user acceptance test.</li>
-<li>How to run a database query that retrieves tabular data in node express to an endpoint.</li>
-<li>Inserting data from an endpoint using postman.</li>
-<li>Updating data from an endpoint using postman.</li>
-<li>Using &apos;IN&apos;</li>
-<li>Deleting data</li>
+<li>Revision from last week</li>
+<li><a href="#recap-integration-of-cyf_hotels-db-with-nodejs">Recap integration of cyf_hotels DB with NodeJS</a></li>
+<li><a href="#crud-operations-with-nodejs-and-postgresql">CRUD operations with NodeJS and PostgreSQL</a><ul>
+<li><a href="#creating-data">Creating data</a></li>
+<li><a href="#reading-data">Reading data</a></li>
+<li><a href="#updating-data">Updating data</a></li>
+<li><a href="#deleting-data">Deleting data</a></li>
 </ul>
-<p><strong>What we will learn today?</strong></p>
+</li>
+<li><a href="#homework">Homework</a></li>
+</ul>
+<h2 id="recap-integration-of-cyfhotels-db-with-nodejs">Recap integration of cyf_hotels DB with NodeJS</h2>
+<p>For this class, we will use the tables and data from <a href="../week-16/cyf_hotels_exercise5.sql"><code>cyf_hotels_exercise5.sql</code></a>. To start from a clean state for your <code>cyf_hotels</code> database, run <code>psql -d cyf_hotels -f cyf_hotels_exercise5.sql</code>.</p>
+<p>During the last class, we created a new NodeJS project called <code>cyf-hotels-api</code> with a single API endpoint <code>/hotels</code> to get the list of all hotels. In this class, we will add other endpoints with more functionalities to interact with the <code>cyf_hotels</code> database.</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;express&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> Pool <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;pg&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pool</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    user<span class="token punctuation">:</span> <span class="token string">&apos;postgres&apos;</span><span class="token punctuation">,</span>
+    host<span class="token punctuation">:</span> <span class="token string">&apos;localhost&apos;</span><span class="token punctuation">,</span>
+    database<span class="token punctuation">:</span> <span class="token string">&apos;cyf_hotels&apos;</span><span class="token punctuation">,</span>
+    password<span class="token punctuation">:</span> <span class="token string">&apos;&apos;</span><span class="token punctuation">,</span>
+    port<span class="token punctuation">:</span> <span class="token number">5432</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/hotels&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&apos;SELECT * FROM hotels&apos;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>rows<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Server is listening on port 3000. Ready to accept requests!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="crud-operations-with-nodejs-and-postgresql">CRUD operations with NodeJS and PostgreSQL</h2>
+<p><em>&quot;The acronym CRUD refers to all of the major functions that are implemented in relational database applications. Each letter in the acronym can map to a standard Structured Query Language (SQL) statement and Hypertext Transfer Protocol (HTTP) method [...].&quot;</em> - <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank">Wikipedia</a></p>
+<!-- ![table-diagram](crud.png) -->
+<p align="center">
+  <img src="crud.png" display="block" width="50%">
+</p>
+
+<h3 id="creating-data">Creating data</h3>
+<p>In the following, we will add a new API endpoint to create a new hotel in the table <code>hotels</code> of the <code>cyf_hotels</code> database. As a reminder, here is an example of a SQL insert statement to add a new hotel:</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> hotels <span class="token punctuation">(</span>name<span class="token punctuation">,</span> rooms<span class="token punctuation">,</span> postcode<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">&apos;New Hotel&apos;</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">&apos;ABC001&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>As we create a new record in the database, we will add a new POST endpoint in the <code>cyf-hotels-api</code> project from last class. Moreover, we need to be able to pass some parameters to this API endpoint such as the hotel name, the number of rooms and the postcode, so we can use this API to create different hotel. These parameters can be sent in the body of the request. To access the parameters in the body of the request with Express.JS, we need to add the module <code>body-parser</code> to the <code>cyf-hotels-api</code> project:</p>
+<pre class="language-"><code>npm install --save body-parser
+</code></pre><p>Then include it in the <code>server.js</code>:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> bodyParser <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;body-parser&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>bodyParser<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>We can finally add our new endpoint to create a new hotel:</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&quot;/hotels&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> newHotelName <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> newHotelRooms <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>rooms<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> newHotelPostcode <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>postcode<span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> query <span class="token operator">=</span> <span class="token string">&quot;INSERT INTO hotels (name, rooms, postcode) VALUES ($1, $2, $3)&quot;</span><span class="token punctuation">;</span>
+
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> <span class="token punctuation">[</span>newHotelName<span class="token punctuation">,</span> newHotelRooms<span class="token punctuation">,</span> newHotelPostcode<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;Hotel created!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>What could go wrong with the code above? There is no validation of any user inputs which could result in errors, duplications or inconsistent data in the database! Here are few examples of things we can verify before creating the hotel in the database:</p>
+<ol>
+<li>Check that the number of rooms is a positive number</li>
+<li>Check that no hotel with the same name already exists in the database</li>
+<li>...</li>
+</ol>
+<p>Let&apos;s start by validating that the number of rooms is a positive number and if it doesn&apos;t, return an error.</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>newHotelRooms<span class="token punctuation">)</span> <span class="token operator">||</span> newHotelRooms <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;The number of rooms should be a positive integer.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Then we can validate the new hotel doesn&apos;t already exist in the database, thus preventing duplicate data.</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&quot;/hotels&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> newHotelName <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> newHotelRooms <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>rooms<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> newHotelPostcode <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>postcode<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>newHotelRooms<span class="token punctuation">)</span> <span class="token operator">||</span> newHotelRooms <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;The number of rooms should be a positive integer.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&quot;SELECT * FROM hotels WHERE name=$1&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>newHotelName<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>rows<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&apos;An hotel with the same name already exists!&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> query <span class="token operator">=</span> <span class="token string">&quot;INSERT INTO hotels (name, rooms, postcode) VALUES ($1, $2, $3)&quot;</span><span class="token punctuation">;</span>
+                pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> <span class="token punctuation">[</span>newHotelName<span class="token punctuation">,</span> newHotelRooms<span class="token punctuation">,</span> newHotelPostcode<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;Hotel created!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-1">Exercise 1</h4>
 <ul>
-<li>Joins</li>
-<li>SQL Injection</li>
-<li>LIMIT</li>
-<li>DISTINCT</li>
-<li>SUM / AVG / COUNT</li>
-<li>GROUP BY</li>
-<li>HAVING</li>
+<li>Follow the above steps to create a new POST endpoint <code>/hotels</code> to create a new hotel. Make sure to add validation for the number of rooms and the hotel name. Test your new API endpoint with Postman and check that the new hotel has been correctly created in your database.</li>
+<li>Add a new POST API endpoint to create a new customer in the <code>customers</code> table.</li>
+<li>Add validation to check that there is no other customer with the same name in the customers table before creating a new customer.</li>
 </ul>
-<h3 id="lesson-1-join-me-and-together-we-can-rule-the-galaxy-as-father-and-son">LESSON 1: JOIN ME, AND TOGETHER WE CAN RULE THE GALAXY AS FATHER AND SON!</h3>
-<p>So far, we&apos;ve put data in tables and kept references to each of them using IDs, but
-we&apos;ve not yet learned how to link them automatically.</p>
-<p>We don&apos;t know how to get the <em>name</em> of a customer from a reservation - only their ID.</p>
-<p>Now let&apos;s say we want to get the <em>names</em> of customers who have a reservation <em>today</em>.</p>
-<p>From what we know now, we <em>could</em> do it like this:</p>
+<h3 id="reading-data">Reading data</h3>
+<p>We already have one GET endpoint to load all the hotels in the database. However, we can improve this endpoint and add a couple of extra functionalities. First, we may want to order the list of hotels by name:</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/hotels&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&quot;SELECT * FROM hotels ORDER BY name&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>rows<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Another functionality which could be useful is to filter the hotel with a keyword to be able to search for a specific hotel name:</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/hotels&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> hotelNameQuery <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> query <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">SELECT * FROM hotels ORDER BY name</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hotelNameQuery<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        query <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">SELECT * FROM hotels WHERE name LIKE &apos;%</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hotelNameQuery<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">%&apos; ORDER BY name</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>rows<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>In some case, you would want to load only a specific hotel by id. Let&apos;s define a new GET endpoint to load one specific hotel:</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/hotels/:hotelId&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> hotelId <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>hotelId<span class="token punctuation">;</span>
+
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&quot;SELECT * FROM hotels WHERE id=$1&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>hotelId<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>rows<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="exercise-2">Exercise 2</h4>
 <ul>
-<li><code>SELECT customer_id FROM reservations WHERE check_in_date = &apos;2018/08/19&apos;;</code></li>
-<li>write down the list of customer IDs on paper (e.g. 3, 5, 7)</li>
-<li><code>SELECT * FROM customers WHERE id IN (3, 5, 7);</code></li>
+<li>Add the GET endpoints <code>/hotels</code> and <code>/hotels/:hotelId</code> mentioned above and try to use these endpoints with Postman.</li>
+<li>Add a new GET endpoint <code>/customers</code> to load all customers ordered by name.</li>
+<li>Add a new GET endpoint <code>/customers/:customerId</code> to load one customer by ID.</li>
+<li>Add a new GET endpoint <code>/customers/:customerId/bookings</code> to load all the bookings of a specific customer. Returns the following information: check in date, number of nights, hotel name, hotel postcode.</li>
 </ul>
-<p>However, we want the computer to figure out that we want IDs 3, 5 and 7 by itself.</p>
-<p>This is what a database &quot;JOIN&quot; is. In real life, if you work with databases, you will be using this thing <em>all</em> of the time - relationships between data are vitally important.</p>
-<p>Now, we have data that spans two tables - we have reservations with a &quot;customer_id&quot; column that refers to the ID column in the &quot;customers&quot; table.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
-<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span><span class="token punctuation">;</span>
+<h3 id="updating-data">Updating data</h3>
+<p>We can now implement an endpoint to update a customer record in the database. For this, we will use a PUT endpoint.</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;/customers/:customerId&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> customerId <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>customerId<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> newEmail <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>email<span class="token punctuation">;</span>
+
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&quot;UPDATE customers SET email=$1 WHERE id=$2&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>newEmail<span class="token punctuation">,</span> customerId<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Customer </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>customerId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> updated!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Note that:</p>
+<p>What can go wrong in the code above? Again, there is no validation! We could set an empty email or even a string which is not following the format of an email. <strong>Remember, validating data is very important to make sure you don&apos;t end up with inconsistent data in your database!</strong></p>
+<h4 id="exercise-3">Exercise 3</h4>
 <ul>
-<li>Because we are selecting columns from two tables and need to distinguish them, we use &quot;table.column&quot; syntax.</li>
-<li>We explicitly link reservations.customer_id and customers.id <em>even if they have a foreign key relationship</em>.</li>
-<li>reservations.customer_id and customers.id don&apos;t actually <em>have</em> to have a foreign key relationship, but they should.</li>
+<li>Add the PUT endpoint <code>/customers/:customerId</code> and verify you can update a customer email using Postman.</li>
+<li>Add validation for the email before updating the customer record in the database. If the email is empty, return an error message.</li>
+<li>Add the possibility to also update the address, the city, the postcode and the country of a customer. Be aware that if you want to update the city only for example, the other fields should not be changed!</li>
 </ul>
-<p>Let&apos;s try the query.</p>
-<p>First, go to the <code>cyf-hotel-db</code> repo in your terminal and switch to the <code>class3</code> branch. Next, run <code>npm i</code> and <code>npm start</code> to start the server. Then, open a new terminal tab in the <code>cyf-hotel-db</code> directory and run <code>sqlite3 database/database.sqlite</code> to open SQLite.</p>
-<p>Now, copy and paste the above <code>SELECT</code> query into SQLite. You should get this:</p>
-<pre class="language-"><code>2018/08/19|Marie|Niki
-2018/08/19|Anna|Kolen
-</code></pre><h5 id="exercise-1a">EXERCISE 1.a</h5>
-<p>Get the list of all room IDs together with their room type names.</p>
-<h5 id="exercise-1b-optional-stretch-goal">EXERCISE 1.b: OPTIONAL STRETCH GOAL</h5>
-<p>Get the list of reservations (all columns) together with the the title, first name and surname customer who made it.</p>
-<h3 id="lesson-2-sql-injection">LESSON 2: SQL INJECTION</h3>
-<p>So, our hotel has a shady new guest. Let&apos;s say that we have a react frontend on top which uses the
-APIs we&apos;re building - users won&apos;t use the APIs directly but they can just fire up postman and use them
-if they want.</p>
-<p>This is very common - lots of websites have a single page application that uses an API underneath just like the one
-we&apos;re building.</p>
-<p>Now, this guest does a little poking around and he realizes that he can delete his reservation.</p>
-<pre class="language-"><code>DELETE http://localhost:8080/api/reservations/6
-</code></pre><p>Now, open a new terminal window and run &quot;sqlite3 databases/database.sqlite&quot;:</p>
-<pre class="language-"><code>sqlite&gt; SELECT * FROM reservations;
-</code></pre><p>The reservation with ID 6 should be deleted - as you coded it to work.</p>
-<p>This is fine, but not very interesting. However, let&apos;s experiment - try doing <em>this</em> with your reservation API:</p>
-<pre class="language-"><code>DELETE http://localhost:8080/api/reservations/6%20or%201%3D1
-</code></pre><p>And run this again:</p>
-<pre class="language-"><code>sqlite&gt; SELECT * FROM reservations;
-</code></pre><p>And voila, he&apos;s just emptied out the entire hotel. Nobody has a reservation any more!</p>
-<p><img src="hackerman.jpg" alt="Hackerman" title="Hackerman"></p>
-<h5 id="exercise-2a">EXERCISE 2.a</h5>
-<p>You have five minutes. Work in teams. Figure out what happened between you and <em>why</em>.</p>
-<p>Clue : You might want to use this <a href="https://meyerweb.com/eric/tools/dencoder/" target="_blank">https://meyerweb.com/eric/tools/dencoder/</a></p>
-<h3 id="lesson-3-order-by-something">LESSON 3: ORDER BY SOMETHING</h3>
-<p>QUESTION FOR CLASS : What the difference is between <em>random</em> and <em>arbitrary</em>?</p>
-<p>Up until now we&apos;ve not been returning results in a <em>random</em> order, but we have been returning
-them in an <em>arbitrary</em> order. The database has chosen what order to return records in. It&apos;s
-generally the order you put them in but there is <em>no</em> guarantee it will be in that order.</p>
-<p>Using &apos;order by&apos; we can get records back in a specified order:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
-<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname<span class="token punctuation">;</span>
+<h3 id="deleting-data">Deleting data</h3>
+<p>To delete a record from the database, we will use a DELETE endpoint:</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">&quot;/customers/:customerId&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> customerId <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>customerId<span class="token punctuation">;</span>
+
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&quot;DELETE FROM customers WHERE id=$1&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>customerId<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Customer </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>customerId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> deleted!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>This will give the output in a new order:</p>
-<pre class="language-"><code>2018/08/19|Anna|Kolen
-2018/08/19|Marie|Niki
-</code></pre><p>We have Mrs Clinton, Mr Trump and Mr Hackerman staying at the hotel. What order will the reservations be displayed in?</p>
-<p>If we want to get <em>explicitly</em> the three of them in ascending order:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
-<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">ASC</span><span class="token punctuation">;</span>
+<p>However, if you try to delete a customer which already has some bookings, the previous endpoint will fail. Do you know why? You cannot delete a customer whose ID is used as a foreign key in another table (in this case, in the <code>bookings</code> table). Let&apos;s delete all the customer bookings first:</p>
+<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">&quot;/customers/:customerId&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> customerId <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>customerId<span class="token punctuation">;</span>
+
+    pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&quot;DELETE FROM bookings WHERE customer_id=$1&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>customerId<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            pool<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">&quot;DELETE FROM customers WHERE id=$1&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>customerId<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Customer </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>customerId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> deleted!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Now, if we want them in descending order:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
-<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">DESC</span><span class="token punctuation">;</span>
-</code></pre>
-<pre class="language-"><code>Check In Date  First Name  Surname
-------------------------------------
-2018/08/19     Melania     Trump
-2018/08/19     Donald      Trump
-2018/08/19     Colm        Hackerman
-2018/08/19     Bill        Clinton
-2018/08/19     Hillary     Clinton
-</code></pre><p>This is just one way the results could come out. They could also come out (e.g. on a different computer, or done at a different time), for instance, like this:</p>
-<pre class="language-"><code>Check In Date  First Name  Surname
-------------------------------------
-2018/08/19     Donald      Trump
-2018/08/19     Melania     Trump
-2018/08/19     Colm        Hackerman
-2018/08/19     Hillary     Clinton
-2018/08/19     Bill        Clinton
-</code></pre><p>Note that Donald and Melania and Bill and Hillary are both reversed this time. This is because we said to sort by surname, which it does, but there are no guarantees about what order rows appear in where the surname is the same.</p>
-<p>So, if we want to make it more <em>deterministic</em> (opposite of arbitrary), we can make it sort by surname <em>first</em> and first name <em>second</em>:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> reservations<span class="token punctuation">.</span>check_in_date<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
-<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">=</span> <span class="token string">&apos;2018/08/19&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">DESC</span><span class="token punctuation">,</span> customers<span class="token punctuation">.</span>first_name <span class="token keyword">ASC</span><span class="token punctuation">;</span>
-</code></pre>
-<pre class="language-"><code>Check In Date  First Name  Surname
-------------------------------------
-2018/08/19     Donald      Trump
-2018/08/19     Melania     Trump
-2018/08/19     Colm        Hackerman
-2018/08/19     Bill        Clinton
-2018/08/19     Hillary     Clinton
-</code></pre><p>In this case, since we&apos;re ordering by first name ascending, Donald always comes before Melania (D comes before M in the alphabet) and Bill comes before Hillary (because B comes before H in the alphabet).</p>
-<h3 id="lesson-4-limit-your-queries">LESSON 4: LIMIT YOUR QUERIES</h3>
-<p>Now, the database you&apos;re working with right now is essentially just a toy. However,
-when you work with a real database you&apos;re often going to have a number of problems</p>
-<p>1) SELECT * FROM table is going to return thousands of rows. This take ages
-to load and display and if you just want to see a representative sample it&apos;s overkill.</p>
-<p>2) You want to return the top 10 of something.</p>
-<p>3) You want to show results 1-10 on page 1, results 2-20 on page 2, etc.</p>
-<p>SQL has a keyword called &quot;LIMIT&quot; which you can put at the end of a query to cut down
-on the number of returned rows:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> customers <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> surname <span class="token keyword">ASC</span> <span class="token keyword">LIMIT</span> <span class="token number">2</span><span class="token punctuation">;</span>
-</code></pre>
-<h5 id="exercise-4a">EXERCISE 4.a</h5>
-<p>Select two rooms only.</p>
-<h5 id="exercise-4b-optional-stretch-goal">Exercise 4.b: OPTIONAL STRETCH GOAL</h5>
-<p>Select the latest 5 reservations on the database.</p>
-<h5 id="exercise-4c-optional-stretch-goal">Exercise 4.c: OPTIONAL STRETCH GOAL</h5>
-<p>Select the reservations, primarily selecting the most recent ones, and secondarily selecting the longest ones.</p>
-<h3 id="lesson-5-distinct">LESSON 5: DISTINCT</h3>
-<p>Remember the JOIN query from above? We&apos;re going to do another similar one.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
-<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">&gt;</span> <span class="token string">&apos;2017/12/31&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">ASC</span><span class="token punctuation">;</span>
-</code></pre>
-<p>QUESTION FOR CLASS : What does this do?</p>
-<p>ANS : Get a list of all customers who have a reservation that begins this year</p>
-<p>Now, this is going to work with one exception. The list in my database
-is going to look a bit like this:</p>
-<pre class="language-"><code>First Name  Surname
----------------------
-Hillary     Clinton
-Colm        Hackerman
-Colm        Hackerman
-Colm        Hackerman
-Donald      Trump
-</code></pre><p>QUESTION FOR CLASS : Why?</p>
-<p>ANS : Because Mr Hackerman loves this hotel more than Hillary and Donald and has arranged to stay there a few times.</p>
-<p>Of course, we only want to know <em>IF</em> Hackerman has stayed there once, not that he&apos;s their most popular guest.</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> customers<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> customers<span class="token punctuation">.</span>surname
-<span class="token keyword">FROM</span> reservations <span class="token keyword">JOIN</span> customers <span class="token keyword">ON</span> reservations<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> customers<span class="token punctuation">.</span>id
-<span class="token keyword">WHERE</span> reservations<span class="token punctuation">.</span>check_in_date <span class="token operator">&gt;</span> <span class="token string">&apos;2017/12/31&apos;</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> customers<span class="token punctuation">.</span>surname <span class="token keyword">ASC</span><span class="token punctuation">;</span>
-</code></pre>
-<p>Will output:</p>
-<pre class="language-"><code>First Name  Surname
----------------------
-Hillary     Clinton
-Colm        Hackerman
-Donald      Trump
-</code></pre><p>Problem solved.</p>
-<h5 id="exercise-5a">EXERCISE 5.a</h5>
-<p>Get the list of check in dates in the summer 2017.</p>
-<h5 id="exercise-5b-optional-stretch-goal">EXERCISE 5.b: OPTIONAL STRETCH GOAL</h5>
-<p>Get the list of customers that made a reservation in the last year, including their details.</p>
-<h3 id="lesson-6-sum-average-and-count">LESSON 6: SUM, AVERAGE AND COUNT</h3>
-<p>Let us imagine that we want to know how many reservations we have on our database. Similarly to the previous lesson, we could get all the records and count them ourselves, but that sounds boring and unrealistic in real life cases, where databases can have several millions of entries. So, for that purpose we have aggregation functions:</p>
-<pre class="language-"><code>COUNT, SUM or AVG
-</code></pre><p>The usages of each are pretty obvious.
-So, this means that we can count, sum and calculate the average of a set of values.</p>
-<p>Let&apos;s check an example for <code>COUNT</code>:</p>
-<p><code>SELECT COUNT(*) FROM customers;</code></p>
-<p>This will return the number of customers on a database.</p>
-<p>We call these aggregation functions, and we use them to modify the results while aggregating the table results - we had a list of rows for customers, now we have the count of customers: we aggregated the rows by counting them.</p>
-<h5 id="exercise-6a">EXERCISE 6.a</h5>
-<p>COUNT the number of reservations for a given customer ID.</p>
-<h5 id="exercise-6b-optional-stretch-goal">EXERCISE 6.b: OPTIONAL STRETCH GOAL</h5>
-<p>Calculate the average paid amount across all invoices.</p>
-<h3 id="lesson-7-grouping">LESSON 7: GROUPING</h3>
-<p>Let us say that we need to get the list of different surnames from our list of customers, and how many times each surname shows up on our database.</p>
-<p>Here the idea is that we could group the columns by the surname and get a list of each different surname, and then we can apply an aggregation function to them.</p>
-<p>For this we can use <code>GROUP BY</code> as follows:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">&lt;</span>column_to_aggregate_1<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>column_to_aggregate_2<span class="token operator">&gt;</span> <span class="token keyword">FROM</span> <span class="token operator">&lt;</span><span class="token keyword">table</span><span class="token operator">&gt;</span> <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token operator">&lt;</span>column_to_aggregate_1<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>column_to_aggregate_2<span class="token operator">&gt;</span><span class="token punctuation">;</span>
-</code></pre>
-<p>For instance, if we have the following entries on the customers:</p>
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>title</th>
-<th>first_name</th>
-<th>surname</th>
-<th>email</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Doc.</td>
-<td>Tom</td>
-<td>Jones</td>
-<td>tom.jones@domain.com</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Mr.</td>
-<td>Jorge</td>
-<td>Silva</td>
-<td>jorge-silva@domain.com</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Mr.</td>
-<td>Jorge</td>
-<td>Silva</td>
-<td>jorge2-silva@domain.com</td>
-</tr>
-<tr>
-<td>16</td>
-<td>Doc.</td>
-<td>Pedro</td>
-<td>Silva</td>
-<td>pedro.silva@domain.com</td>
-</tr>
-<tr>
-<td>17</td>
-<td>Doc.</td>
-<td>Colm</td>
-<td>O&apos;Conner</td>
-<td>colm.oconner@domain.com</td>
-</tr>
-<tr>
-<td>18</td>
-<td>Doc.</td>
-<td>James</td>
-<td>Lennon</td>
-<td>john.lennon@domain.com</td>
-</tr>
-<tr>
-<td>19</td>
-<td>Sir.</td>
-<td>John</td>
-<td>O&apos;Conner</td>
-<td>John.oconner@domain.com</td>
-</tr>
-</tbody>
-</table>
-<p>If we group by surname we have 4 different surnames: <code>O&apos;Conner</code>, <code>Silva</code>, <code>Jones</code>, <code>Lennon</code>, but for <code>Silva</code> and <code>O&apos;Conner</code>, we have more than one entry, so we need to aggregate them. In this case, we want to count the occurrences so we can simply do:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> surname<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> customers <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> surname<span class="token punctuation">;</span>
-</code></pre>
-<p>This should give this output:</p>
-<pre class="language-"><code>Jones|1
-Silva|3
-O&apos;Conner|2
-Lennon|1
-</code></pre><h5 id="exercise-7a">EXERCISE 7.a</h5>
-<p>COUNT the occurrences of the DIFFERENT titles on the database.</p>
-<h5 id="exercise-7b-optional-stretch-goal">EXERCISE 7.b: OPTIONAL STRETCH GOAL</h5>
-<p>COUNT the occurrences of a combination of first-name and surname to get a list of customers with the same name.</p>
-<h3 id="lesson-8-having-your-table-and-eating-it">LESSON 8: HAVING YOUR TABLE AND EATING IT</h3>
-<p>Suppose that we want to filter the result of what we got on the previous example - count of each customer&apos;s surname - to select only the surnames for which there are 3 or more customers?</p>
-<p>To accomplish that we can use <code>HAVING</code> as follows:</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> surname<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> count <span class="token keyword">FROM</span> customers <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> surname <span class="token keyword">HAVING</span> count <span class="token operator">&gt;=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-</code></pre>
-<p>Note that <code>WHERE</code> would not work, because it enables us to filter data that will grouped, and we want to filter the result of that grouping. We want to filter by the count of customers.</p>
-<h5 id="exercise-8a">EXERCISE 8.a</h5>
-<p>Get the list of customers that have 5 or more reservations on our hotel.</p>
-<h1 id="homework">HOMEWORK</h1>
-<h5 id="homework-1">HOMEWORK 1</h5>
-<p><strong>User Story:</strong> As a staff member, I want to see reservations and their respective invoices</p>
-<p>Create an endpoint to get from <code>/reservations-and-invoices/</code> the list of reservations and respective invoices.</p>
-<h5 id="homework-2">HOMEWORK 2</h5>
-<p>Calculate the total amount paid on invoices for the summer of 2017.</p>
-<h5 id="homework-3">HOMEWORK 3</h5>
-<p><strong>User Story:</strong> As a staff member, I want to check the number reservations for each customer, including their own details, so that we check who are our best customers.</p>
-<p>Complete the endpoint to get from <code>/reservations-per-customer/</code> the number of reservations per customer, with details for the customer and the reservation.</p>
-<h5 id="homework-4">HOMEWORK 4</h5>
-<p>Get the number of reservations for each room ID and include the details for the room details.</p>
-<h5 id="homework-5">HOMEWORK 5</h5>
-<p>Adapt the previous query (8.c) to include the details for the type of room.</p>
-<h5 id="homework-6">HOMEWORK 6</h5>
-<p>Get the list of rooms with sea view that were reserved more than 5 times.</p>
-<h5 id="homework-7">HOMEWORK 7</h5>
-<p>Create an endpoint for each previous exercise that doesn&apos;t have an endpoint yet. You will have to think about what is the context of the query, what parameters you need to receive in the end-point and what makes sense to return as a result and in which format.</p>
-<h5 id="homework-8">HOMEWORK 8</h5>
-<p><strong>User Story</strong> As a staff member, I want to get the list of reservations within a time period, including the room and customer details.</p>
-<p>Create an endpoint to get from <code>/reservations/details-between/:from_day/:to_day</code> the list of reservations between a specified time period. this should include the customer and room details.</p>
-<h5 id="homework-9">HOMEWORK 9</h5>
-<p><strong>User Story</strong> As a staff member, I want to get the number of reservations per customer.</p>
-<p>Create an endpoint to get from <code>/reservations-per-customer/</code> the number of reservations each client has.</p>
-<h6 id="homework-10">HOMEWORK 10</h6>
-<p><strong>User Story</strong> As a staff member I want to analyse the rentability of each room, getting the total amount earned for each room, the average per reservations, and the number of reservations it has had in the past.</p>
-<p>Create an endpoint to get from <code>/stats-price-room/</code> the list of rooms, together with the amount the hotel has earned with each, the average value earned per stay, and the number of complete stays it has had in the past.</p>
-<h5 id="homework-11">HOMEWORK 11</h5>
-<p><strong>User Story</strong> As a client or staff member, I want to check the availability of a room within a given date range.</p>
-<p>Create an endpoint to get from <code>/rooms/available-in/:from_day/:to_day</code> the list of available rooms.</p>
+<h4 id="exercise-4">Exercise 4</h4>
+<ul>
+<li>Add the DELETE endpoint <code>/customers/:customerId</code> above and verify you can delete a customer along their bookings with Postman.</li>
+<li>Add a new DELETE endpoint <code>/hotels/:hotelId</code> to delete a specific hotel. <strong>A hotel can only be deleted if it doesn&apos;t appear in any of the customers&apos; bookings! Make sure you add the corresponding validation before you try to delete a hotel.</strong></li>
+</ul>
+<h2 id="homework">Homework</h2>
+<p>In the following homework, you will create new API endpoints in the NodeJS application <code>cyf-ecommerce-api</code> that you created for last week homework for the Database 2 class.</p>
+<ul>
+<li>If you don&apos;t have it already, add a new GET endpoint <code>/products</code> to load all the product names along with their supplier names.</li>
+<li>Update the previous GET endpoint <code>/products</code> to filter the list of products by name using a query parameter, for example <code>/products?name=Cup</code>. This endpoint should still work even if you don&apos;t use the <code>name</code> query parameter!</li>
+<li>Add a new GET endpoint <code>/customers/:customerId</code> to load a single customer by ID.</li>
+<li>Add a new POST endpoint <code>/customers</code> to create a new customer. </li>
+<li>Adda new POST endpoint <code>/products</code> to create a new product (with a product name, a price and a supplier id). Check that the price is a positive integer and that the supplier ID exists in the database, otherwise return an error.</li>
+<li>Add a new POST endpoint <code>/customers/:customerId/orders</code> to create a new order (including an order date, and an order reference) for a customer. Check that the customerId corresponds to an existing customer or return an error.</li>
+<li>Add a new PUT endpoint <code>/customers/:customerId</code> to update an existing customer (name, address, city and country).</li>
+<li>Add a new DELETE endpoint <code>/orders/:orderId</code> to delete an existing order along all the associated order items.</li>
+<li>Add a new DELETE endpoint <code>/customers/:customerId</code> to delete an existing customer only if this customer doesn&apos;t have orders.</li>
+<li>Add a new GET endpoint <code>/customers/:customerId/orders</code> to load all the orders along the  items in the orders of a specific customer. Especially, the following information should be returned: order references, order dates, product names, unit prices, suppliers and quantities.</li>
+</ul>
 
                                 
                                 </section>
@@ -1178,7 +1076,7 @@ Lennon|1
 
             
                 
-                <a href="../week-17/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 17 - SQL with Node">
+                <a href="../week-17/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 17 - More SQL and integration with NodeJS">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1194,7 +1092,7 @@ Lennon|1
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 18 - Data Integrity & Analytics","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]},{"title":"Week 22 - Routing (optional)","level":"1.9.4","depth":2,"path":"react/week-22/lesson.md","ref":"react/week-22/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - SQL with Node","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2019-07-28T00:39:55.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-28T00:40:56.623Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 18 - More integration with NodeJS","level":"1.8.3","depth":2,"next":{"title":"React","level":"1.9","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 19 - React 101","level":"1.9.1","depth":2,"path":"react/week-19/lesson.md","ref":"react/week-19/lesson.md","articles":[]},{"title":"Week 20 - Reacting to Changes","level":"1.9.2","depth":2,"path":"react/week-20/lesson.md","ref":"react/week-20/lesson.md","articles":[]},{"title":"Week 21 - Fetching Data","level":"1.9.3","depth":2,"path":"react/week-21/lesson.md","ref":"react/week-21/lesson.md","articles":[]},{"title":"Week 22 - Routing (optional)","level":"1.9.4","depth":2,"path":"react/week-22/lesson.md","ref":"react/week-22/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - More SQL and integration with NodeJS","level":"1.8.2","depth":2,"path":"node-db/week-17/lesson.md","ref":"node-db/week-17/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node-db/week-18/lesson.md","mtime":"2019-08-02T20:59:45.722Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-02T21:00:44.786Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
