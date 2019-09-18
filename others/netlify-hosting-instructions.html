@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Coding Standards and Best Practices · GitBook</title>
+        <title>Hosting React apps with Netlify · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="making-a-pull-request.html" />
+    <link rel="next" href="node-version-manager.html" />
     
+    
+    <link rel="prev" href="cors.html" />
     
 
     </head>
@@ -658,7 +660,7 @@
         
         
     
-        <li class="chapter active" data-level="3.1" data-path="coding-standards.html">
+        <li class="chapter " data-level="3.1" data-path="coding-standards.html">
             
                 <a href="coding-standards.html">
             
@@ -697,7 +699,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="netlify-hosting-instructions.html">
+        <li class="chapter active" data-level="3.4" data-path="netlify-hosting-instructions.html">
             
                 <a href="netlify-hosting-instructions.html">
             
@@ -838,7 +840,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Coding Standards and Best Practices</a>
+        <a href=".." >Hosting React apps with Netlify</a>
     </h1>
 </div>
 
@@ -853,96 +855,82 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="coding-standards-and-best-practices">Coding Standards and Best Practices</h1>
-<h2 id="general">General</h2>
+                                <h1 id="hosting-your-react-app-on-the-web-using-netlify">Hosting your React app on the web, using Netlify</h1>
+<p>Note: these instructions are for React apps that have been created with the command <code>create-react-app</code>.</p>
+<h2 id="getting-set-up">Getting set up</h2>
+<h3 id="install-the-netlify-cli-software-once">Install the netlify-cli software, <em>once</em>:</h3>
+<p>In a terminal, from <em>any</em> directory, run the following to install <code>netlify-cli</code> globally.</p>
+<pre class="language-"><code>npm install netlify-cli -g
+</code></pre><p>If this fails with errors, run it again with superuser privileges, using <code>sudo</code>:</p>
+<pre class="language-"><code>sudo npm install netlify-cli -g
+</code></pre><h3 id="create-a-netlify-account">Create a netlify account</h3>
+<p>Visit <a href="https://netlify.com/" target="_blank">https://netlify.com/</a> and create a free account.</p>
+<h2 id="build-your-react-app">&quot;Build&quot; your React app</h2>
+<p>First navigate with <code>cd</code> to the directory for your React app that you want to host. (Let&apos;s assume it&apos;s called cyf-hotel)</p>
+<pre class="language-"><code>cd cyf-hotel
+</code></pre><p>Now, <code>build</code> the app:</p>
+<pre class="language-"><code>npm run build
+</code></pre><p>This will create (or update) a <code>build</code> directory within your current directory. This contains a <em>prepared</em> version of your app, ready to be hosted. (There are many ways to host it.)</p>
+<h3 id="host-the-app-for-the-first-time-on-netlify">Host the app for the first time on netlify</h3>
+<pre class="language-"><code>netlify deploy --prod
+</code></pre><p>It will ask some questions.</p>
+<p>NOTE: You can <em>only</em> use the <em>keyboard</em> (UP/DOWN arrows, and ENTER) to input the answers to these questions.</p>
+<p>First it will try to use your browser to authenticate you. Depending on your computer, it may launch a new browser tab or it may fail to do so.</p>
+<p>If told to do so:</p>
 <ul>
-<li><p>Indentation should be consistent</p>
-<ul>
-<li>I.e. all files should use either tabs or spaces and the same width (e.g. 4
-characters)</li>
-<li>Do not mix tabs and spaces</li>
+<li>open the given URL in the browser to authenticate</li>
 </ul>
+<p>In all cases:</p>
+<ul>
+<li>Go to your browser, press &quot;Authenticate&quot; on the netlify tab that has just been opened.</li>
+<li><p>Go back to the terminal. It should display that auth was successful, and it should ask you more questions:</p>
 </li>
-<li><p>Use one casing style</p>
-<ul>
-<li>Usually:<ul>
-<li>camelCase for JavaScript</li>
-<li>hyphen-case or camelCase for CSS</li>
-</ul>
+<li><p>Choose: <code>Create &amp; Configure a new site</code></p>
 </li>
-<li>Do not mix casing styles e.g. let first_name = person.firstName;</li>
+<li>Choose a site name like: <code>cyf-ahmet-hotel</code></li>
+<li>When asked for <em>team</em>, <em>DON&apos;T</em> select <code>CYF</code> if it is an option. Choose <em>your own user name</em> as a team.</li>
+<li>When asked for deploy path, enter <code>build</code>.</li>
 </ul>
-</li>
-<li><p>Test coverage should be sufficient</p>
+<p><em>That&apos;s it, all done.</em></p>
 <ul>
-<li>This should meet or exceed the configured threshold; if this isn&apos;t possible,
-explain why</li>
+<li>Visit the live site URL that netlify reports at the end.</li>
+<li>Check your app is there and works!</li>
+<li>Test it on your phone!</li>
+<li>Share the url with someone in the class!</li>
 </ul>
-</li>
-<li>Comment code that might be difficult to understand...<ul>
-<li>...but also consider simplifying complex code if at all possible. If you
-find that you&apos;re writing a lot of comments, then it&apos;s a good indicator that
-your code is too verbose and potentially overengineered</li>
-</ul>
-</li>
-</ul>
-<h2 id="javascript">JavaScript</h2>
+<h2 id="what-if-i-want-to-make-changes-to-my-app">What if I want to make changes to my app?</h2>
+<p>After you make changes, you will want to <em>build</em> and <em>deploy</em> again, in order to host your updated app. Here is how:</p>
 <ul>
-<li><p>Variable and function names should be descriptive</p>
-<ul>
-<li>E.g. <code>const actors = getActorsFromFilm(film);</code> is easier to understand than
-<code>const temp2 = doStuff(temp);</code></li>
-</ul>
+<li>Make changes to your app</li>
+<li><p>Test the changes</p>
 </li>
-<li><p>Keep functions as short as possible</p>
-<ul>
-<li>If a function is longer than 15 lines, consider breaking it down into
-smaller functions</li>
-</ul>
-</li>
-<li><p>Use variables if a literal value is repeated more than once</p>
-<ul>
-<li>E.g. <code>console.log(&apos;Peter&apos;, &apos;Peter&apos;.length);</code> -&gt; <code>const name = &apos;Peter&apos;;
-console.log(name, name.length);</code></li>
-</ul>
+<li><p>If you&apos;re ready to update the hosted version:</p>
 </li>
 </ul>
-<h2 id="css">CSS</h2>
+<pre class="language-"><code>npm run build
+netlify deploy --prod
+</code></pre><h1 id="troubleshooting">Troubleshooting</h1>
+<h1 id="deleting-your-hosted-site">Deleting your hosted site</h1>
+<p>If you decide you don&apos;t want your site hosted:</p>
 <ul>
-<li><p>Styles should be based upon class selectors where possible e.g. <code>.some-class</code></p>
+<li>log in to <a href="https://netlify.com/" target="_blank">https://netlify.com/</a></li>
+<li>select your site from the list</li>
+<li>click on site settings</li>
+<li>scroll down and choose <em>delete this site</em></li>
+<li>follow the instructions to confirm</li>
+</ul>
+<h1 id="advanced-section-you-can-ignore-this">Advanced Section: You can ignore this!</h1>
+<p>To make updating your site easier, you can make some small adjustments (suggested by Jon R Sharpe):</p>
 <ul>
-<li>Facilitates reuse</li>
+<li>You can specify the deploy directory in the Netlify <code>deploy</code> command, by adding <code>--dir ./build</code>. This way, it won&apos;t ask you to type it in.
+Example:</li>
 </ul>
-</li>
-<li><p><strong>Don&apos;t</strong> use ID-based selectors e.g. <code>#some-id</code></p>
-</li>
-<li><p>Avoid styling HTML element selectors directly, unless it&apos;s to remove default
-browser styling</p>
-</li>
-<li><p>Avoid using style properties in JavaScript</p>
+<p><code>netlify deploy --prod --dir ./build</code></p>
 <ul>
-<li>E.g. <code>myElement.style.display = &apos;none&apos;;</code></li>
-<li>This results in styles that are difficult to reuse</li>
-<li>Use <code>Element.prototype.classList</code> instead e.g.
-<code>myElement.classList.add(&apos;hidden&apos;);</code></li>
+<li>You could make a custom command to do build and deploy together. Here&apos;s how:</li>
 </ul>
-</li>
-</ul>
-<h2 id="git">Git</h2>
-<ul>
-<li><p>Make small, frequent commits</p>
-<ul>
-<li>If you make a mistake, then it&apos;s easier to revert than if you only make
-large, occasional commits</li>
-</ul>
-</li>
-<li><p>Avoid committing commented-out code</p>
-<ul>
-<li>If the code exists in a previous commit, then use GitHub or <code>git diff</code> to
-view it</li>
-</ul>
-</li>
-</ul>
+<p>Edit <code>package.json</code> to add <code>&quot;deploy&quot;: &quot;npm run build &amp;&amp; netlify deploy --prod --dir ./build&quot;</code> to the <code>scripts</code> object.
+Then you can just run <code>npm run deploy</code> and the build and deploy step will both be done for you. Be careful when you edit that file, and copy and paste exactly from here!</p>
 
                                 
                                 </section>
@@ -970,8 +958,12 @@ view it</li>
 
             
                 
+                <a href="cors.html" class="navigation navigation-prev " aria-label="Previous page: CORS">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="making-a-pull-request.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Making a Pull Request">
+                
+                <a href="node-version-manager.html" class="navigation navigation-next " aria-label="Next page: Node Version Manager">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -982,7 +974,7 @@ view it</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Coding Standards and Best Practices","level":"3.1","depth":1,"next":{"title":"Making a Pull Request","level":"3.2","depth":1,"path":"others/making-a-pull-request.md","ref":"others/making-a-pull-request.md","articles":[]},"previous":{"title":"Java module","level":"2.7","depth":1,"url":"https://github.com/Thomas-Stewart/syllabus/tree/master/java","ref":"https://github.com/Thomas-Stewart/syllabus/tree/master/java","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/coding-standards.md","mtime":"2019-09-18T14:50:46.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T14:51:52.725Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Hosting React apps with Netlify","level":"3.4","depth":1,"next":{"title":"Node Version Manager","level":"3.5","depth":1,"path":"others/node-version-manager.md","ref":"others/node-version-manager.md","articles":[]},"previous":{"title":"CORS","level":"3.3","depth":1,"path":"others/cors.md","ref":"others/cors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/netlify-hosting-instructions.md","mtime":"2019-09-18T14:50:46.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T14:51:52.725Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
