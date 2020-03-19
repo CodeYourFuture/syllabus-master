@@ -886,7 +886,7 @@
 <h2 id="objects">Objects</h2>
 <p>Objects in the real world have properties that describe how they are unique. Your laptop, for example, has a brand (Lenovo/Apple etc.), a screen size (13/15 inch), RAM (8/16GB) etc.</p>
 <p>How would we describe the above laptop as a JavaScript object?</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
     brand<span class="token operator">:</span> <span class="token string">&quot;Lenovo&quot;</span><span class="token punctuation">,</span>
     screenSize<span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">,</span>
     isTouchscreen<span class="token operator">:</span> <span class="token boolean">true</span>
@@ -895,7 +895,7 @@
 <h3 id="exercise-1">Exercise (1)</h3>
 <p>Describe your own laptop as a JavaScript object. Try to think of as many properties as you can!</p>
 <p>Example:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
     brand<span class="token operator">:</span> <span class="token string">&quot;Lenovo&quot;</span><span class="token punctuation">,</span>
     screenSize<span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">,</span>
     isTouchscreen<span class="token operator">:</span> <span class="token boolean">true</span>
@@ -907,7 +907,7 @@ can describe with a JavaScript object</p>
 <h3 id="exercise-2">Exercise (2)</h3>
 <p>Think of 5 different real world &quot;things&quot; that you can describe with a JavaScript object</p>
 <p>Example:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> jumper <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> jumper <span class="token operator">=</span> <span class="token punctuation">{</span>
     color<span class="token operator">:</span> <span class="token string">&quot;blue&quot;</span><span class="token punctuation">,</span>
     isCotton<span class="token operator">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -917,17 +917,17 @@ can describe with a JavaScript object</p>
 The objects below have some syntax issues - try and fix them all!
 */</span>
 
-<span class="token keyword">var</span> kitten <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> kitten <span class="token operator">=</span> <span class="token punctuation">{</span>
     fur colour<span class="token operator">:</span> <span class="token string">&quot;orange&quot;</span><span class="token punctuation">,</span>
     age <span class="token string">&quot;23&quot;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> laptop <span class="token operator">=</span> 
+<span class="token keyword">let</span> laptop <span class="token operator">=</span> 
     brand<span class="token operator">:</span> <span class="token string">&quot;Lenovo&quot;</span>
     ram <span class="token string">&quot;5GB&quot;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">var</span> phone <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> phone <span class="token operator">=</span> <span class="token punctuation">{</span>
     operating system <span class="token string">&quot;iOS&quot;</span><span class="token punctuation">,</span>
     hasStylus<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     megapixels <span class="token number">12</span>
@@ -955,7 +955,7 @@ declared above in Part 1, 2 or 3, reading everything that happens out loud.</p>
 <h2 id="objects-get-and-set">Objects Get and Set</h2>
 <h3 id="getting-the-value-of-an-objects-property">Getting the value of an object&apos;s property</h3>
 <p>Let&apos;s take one of the objects we looked at earlier..</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
     brand<span class="token operator">:</span> <span class="token string">&quot;Lenovo&quot;</span><span class="token punctuation">,</span>
     screenSize<span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">,</span>
     isTouchscreen<span class="token operator">:</span> <span class="token boolean">true</span>
@@ -976,7 +976,7 @@ declared above in Part 1, 2 or 3, reading everything that happens out loud.</p>
 Console.log the values of each property of &quot;kitten&quot;
 */</span>
 
-<span class="token keyword">var</span> kitten <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> kitten <span class="token operator">=</span> <span class="token punctuation">{</span>
     ageMonths<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
     isFemale<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     furColour<span class="token operator">:</span> <span class="token string">&quot;brown&quot;</span>
@@ -988,15 +988,15 @@ The following code contains syntax errors - try and fix them!
 Once you fix them, run the code, it should output the correct values!
 */</span>
 
-<span class="token keyword">var</span> phone <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> phone <span class="token operator">=</span> <span class="token punctuation">{</span>
     brand<span class="token operator">:</span>&apos;iPhone<span class="token punctuation">,</span>
     model <span class="token string">&apos;iPhone X&apos;</span>
     launchYear<span class="token operator">:</span> <span class="token number">2017</span><span class="token punctuation">,</span>
     is Unlocked<span class="token operator">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> phoneBrand <span class="token operator">=</span> phone<span class="token punctuation">.</span>bbrand<span class="token punctuation">;</span>
-<span class="token keyword">var</span> phoneLaunchYear <span class="token operator">=</span> phone<span class="token punctuation">[</span>launchYear<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> phoneBrand <span class="token operator">=</span> phone<span class="token punctuation">.</span>bbrand<span class="token punctuation">;</span>
+<span class="token keyword">let</span> phoneLaunchYear <span class="token operator">=</span> phone<span class="token punctuation">[</span>launchYear<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>phoneBrand<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>phoneLaunchYear<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1010,7 +1010,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="language-"><code class="lang-js">laptop<span class="token punctuation">.</span>brand <span class="token operator">=</span> <span class="token string">&quot;Apple&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p>It&apos;s strongly recommended you always use the same <strong>type</strong> when re-assigning an object&apos;s property (if it was a string before, keep it a string - and so on).</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> laptop <span class="token operator">=</span> <span class="token punctuation">{</span>
     brand<span class="token operator">:</span> <span class="token string">&quot;Lenovo&quot;</span><span class="token punctuation">,</span>
     screenSize<span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">,</span>
     isTouchscreen<span class="token operator">:</span> <span class="token boolean">true</span>
@@ -1039,7 +1039,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 Write code in the space provided so that the expected values output
 */</span>
 
-<span class="token keyword">var</span> dog <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> dog <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Billy&apos;</span><span class="token punctuation">,</span>
     wantsToPlay<span class="token operator">:</span> <span class="token boolean">false</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1057,9 +1057,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre>
 <h2 id="more-complex-objects">More Complex Objects</h2>
 <p> Object properties can even be assigned other objects, arrays or variables too. The example below shows an object with keys that have been assigned a variable, an array, and an object.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> kittenName <span class="token operator">=</span> <span class="token string">&quot;Feathers&quot;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> kittenName <span class="token operator">=</span> <span class="token string">&quot;Feathers&quot;</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> kitten <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> kitten <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> kittenName<span class="token punctuation">,</span>
     toyCollection<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&apos;blue ball&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;green ball&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;hoover box&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     favoriteLocation<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -1076,7 +1076,7 @@ Given the following house - follow the instructions below.
 Make sure you run the file after and it outputs the correct results.
 */</span>
 
-<span class="token keyword">var</span> house <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> house <span class="token operator">=</span> <span class="token punctuation">{</span>
     address<span class="token operator">:</span> <span class="token string">&quot;1 Kinning Park&quot;</span><span class="token punctuation">,</span>
     previousOwners<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;Claire M.&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;John A.&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     currentOwner<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -1111,7 +1111,7 @@ Given the same &quot;house&quot; object again
 Follow the instructions below and then run the file and make sure it outputs the correct results
 */</span>
 
-<span class="token keyword">var</span> house <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> house <span class="token operator">=</span> <span class="token punctuation">{</span>
     address<span class="token operator">:</span> <span class="token string">&quot;1 Kinning Park&quot;</span><span class="token punctuation">,</span>
     previousOwners<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;Claire M.&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;John A.&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     currentOwner<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -1120,7 +1120,7 @@ Follow the instructions below and then run the file and make sure it outputs the
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> newCurrentOwner <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> newCurrentOwner <span class="token operator">=</span> <span class="token punctuation">{</span>
     firstName<span class="token operator">:</span> <span class="token string">&quot;Georgina&quot;</span><span class="token punctuation">,</span>
     lastName<span class="token operator">:</span> <span class="token string">&quot;Hernandez&quot;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1154,7 +1154,7 @@ Write the code for the functions as per the description above them
 
 */</span>
 
-<span class="token keyword">var</span> kinningParkHouse <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> kinningParkHouse <span class="token operator">=</span> <span class="token punctuation">{</span>
     address<span class="token operator">:</span> <span class="token string">&quot;1 Kinning Park&quot;</span><span class="token punctuation">,</span>
     price<span class="token operator">:</span> <span class="token number">180000</span><span class="token punctuation">,</span>
     currentOwner<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -1164,7 +1164,7 @@ Write the code for the functions as per the description above them
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> parkAvenueHouse <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> parkAvenueHouse <span class="token operator">=</span> <span class="token punctuation">{</span>
     address<span class="token operator">:</span> <span class="token string">&quot;50 Park Avenue&quot;</span><span class="token punctuation">,</span>
     price<span class="token operator">:</span> <span class="token number">195000</span><span class="token punctuation">,</span>
     currentOwner<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -1204,7 +1204,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre>
 <h2 id="object-methods">Object Methods</h2>
 <p>Besides having specific properties, objects in the real world can also do things. For example, a computer can display something on the screen, a person can say their names etc... In Javascript, we do this using &apos;methods&apos;. A method is a function attached to a particular object. You have already used some predefined methods before, for example <em>toUpperCase()</em> on a string or <em>filter()</em> on an array.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Usain Bolt&apos;</span><span class="token punctuation">,</span>
     goldMedals<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
     <span class="token function-variable function">sayHi</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1216,7 +1216,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="language-"><code class="lang-js">athlete<span class="token punctuation">.</span><span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns &quot;Hi everybody!&quot;</span>
 </code></pre>
 <p>An object method can also rely on the other properties of the object to do more complex calculation. To reference the current object in the body of the method, we will use the keyword <em>this</em>. Let&apos;s take an example.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Usain Bolt&apos;</span><span class="token punctuation">,</span>
     goldMedals<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
     <span class="token function-variable function">sayName</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1227,7 +1227,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 athlete<span class="token punctuation">.</span><span class="token function">sayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns &quot;My name is Usain Bolt&quot;</span>
 </code></pre>
 <p>Knowing this, you can have methods which modify existing properties of your object.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Usain Bolt&apos;</span><span class="token punctuation">,</span>
     goldMedals<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
     <span class="token function-variable function">winNewMedal</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1239,7 +1239,7 @@ athlete<span class="token punctuation">.</span><span class="token function">winN
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>athelete<span class="token punctuation">.</span>goldMedals<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// prints &quot;26&quot;</span>
 </code></pre>
 <p>As methods are just functions attached to objects, they can also take parameters.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> athlete <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Usain Bolt&apos;</span><span class="token punctuation">,</span>
     goldMedals<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
     silverMedals<span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
@@ -1265,7 +1265,7 @@ A person named Alice is defined below.
 
 */</span>
 
-<span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Alice&quot;</span><span class="token punctuation">,</span>
     age<span class="token operator">:</span> <span class="token number">25</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1288,7 +1288,7 @@ The following code contains syntax errors - try and fix them!
 Once you fix them, run this file, it should output the correct values!
 */</span>
 
-<span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Alice&quot;</span><span class="token punctuation">,</span>
     age<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
     currentAddress<span class="token operator">:</span> <span class="token string">&quot;Glasgow&quot;</span><span class="token punctuation">,</span>
@@ -1307,7 +1307,7 @@ The following code contains syntax errors - try and fix them!
 Once you fix them, run this file, it should output the correct values!
 */</span>
 
-<span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Alice&quot;</span><span class="token punctuation">,</span>
     age<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
     currentAddress<span class="token operator">:</span> <span class="token string">&quot;Glasgow&quot;</span><span class="token punctuation">,</span>
@@ -1338,7 +1338,7 @@ Alice has a list of good friends.
 Define a method &quot;makeFriend&quot; to add a new friend to her list.
 */</span>
 
-<span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Alice&quot;</span><span class="token punctuation">,</span>
     friends<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;John&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Nina&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1362,7 +1362,7 @@ getCoffee takes a coffee type in parameter and dispends the selected coffee
 only if the inserted amount is greater or equal than the price of the coffee!
 */</span>
 
-<span class="token keyword">var</span> coffeeMachine <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> coffeeMachine <span class="token operator">=</span> <span class="token punctuation">{</span>
     brand<span class="token operator">:</span> <span class="token string">&quot;Super Coffee&quot;</span><span class="token punctuation">,</span>
     prices<span class="token operator">:</span> <span class="token punctuation">{</span>
         cappuccino<span class="token operator">:</span> <span class="token number">2.40</span><span class="token punctuation">,</span>
@@ -1397,22 +1397,22 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre>
 <h2 id="arrays-of-objects">Arrays of objects</h2>
 <p>In the past weeks, you&apos;ve learned about using arrays of numbers, arrays of string etc... In the following, we will learn how to use arrays of objects.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> kitten1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> kitten1 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Fluffy&apos;</span><span class="token punctuation">,</span>
     weeksOld<span class="token operator">:</span> <span class="token number">2</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> kitten2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> kitten2 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Megatron&apos;</span><span class="token punctuation">,</span>
     weeksOld<span class="token operator">:</span> <span class="token number">1</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> kitten3 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> kitten3 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&apos;Billy&apos;</span><span class="token punctuation">,</span>
     weeksOld<span class="token operator">:</span> <span class="token number">5</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> kittens <span class="token operator">=</span> <span class="token punctuation">[</span>kitten1<span class="token punctuation">,</span> kitten2<span class="token punctuation">,</span> kitten3<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> kittens <span class="token operator">=</span> <span class="token punctuation">[</span>kitten1<span class="token punctuation">,</span> kitten2<span class="token punctuation">,</span> kitten3<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>You can also use all the functions for arrays that you learned before: find, some, every, filter, map, forEach... As an example, we want to filter all the kittens who are less than 3 weeks old:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">isYoungerThan3Weeks</span><span class="token punctuation">(</span><span class="token parameter">kitten</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1435,17 +1435,17 @@ kittens<span class="token punctuation">.</span><span class="token function">map<
 3) Filter the persons to return an array with the person younger than 28 years old (hint: use filter).
 */</span>
 
-<span class="token keyword">var</span> person1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> person1 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Alice&quot;</span><span class="token punctuation">,</span>
     age<span class="token operator">:</span> <span class="token number">25</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> person2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> person2 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Bob&quot;</span><span class="token punctuation">,</span>
     age<span class="token operator">:</span> <span class="token number">30</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> person3 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> person3 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;John&quot;</span><span class="token punctuation">,</span>
     age<span class="token operator">:</span> <span class="token number">20</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1456,11 +1456,11 @@ WRITE YOUR CODE BELOW
 */</span>
 
 
-<span class="token keyword">var</span> persons <span class="token operator">=</span> <span class="token comment">// Complete here</span>
+<span class="token keyword">let</span> persons <span class="token operator">=</span> <span class="token comment">// Complete here</span>
 
-<span class="token keyword">var</span> personNames <span class="token operator">=</span> <span class="token comment">// Complete here</span>
+<span class="token keyword">let</span> personNames <span class="token operator">=</span> <span class="token comment">// Complete here</span>
 
-<span class="token keyword">var</span> personsYoungerThan28YearsOld <span class="token operator">=</span> <span class="token comment">// Complete here</span>
+<span class="token keyword">let</span> personsYoungerThan28YearsOld <span class="token operator">=</span> <span class="token comment">// Complete here</span>
 
 
 <span class="token comment">/*
@@ -1487,31 +1487,31 @@ Each destination has a name, a distance from Glasgow, and a list of transportati
 */</span>
 
 
-<span class="token keyword">var</span> destination1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> destination1 <span class="token operator">=</span> <span class="token punctuation">{</span>
     destinationName<span class="token operator">:</span> <span class="token string">&quot;Edinburgh&quot;</span><span class="token punctuation">,</span>
     distanceKms<span class="token operator">:</span> <span class="token number">80</span><span class="token punctuation">,</span>
     transportations<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;car&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;bus&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;train&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> destination2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> destination2 <span class="token operator">=</span> <span class="token punctuation">{</span>
     destinationName<span class="token operator">:</span> <span class="token string">&quot;London&quot;</span><span class="token punctuation">,</span>
     distanceKms<span class="token operator">:</span> <span class="token number">650</span><span class="token punctuation">,</span>
     transportations<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;car&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;bus&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;train&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> destination3 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> destination3 <span class="token operator">=</span> <span class="token punctuation">{</span>
     destinationName<span class="token operator">:</span> <span class="token string">&quot;Paris&quot;</span><span class="token punctuation">,</span>
     distanceKms<span class="token operator">:</span> <span class="token number">900</span><span class="token punctuation">,</span>
     transportations<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;train&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;plane&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> destination4 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> destination4 <span class="token operator">=</span> <span class="token punctuation">{</span>
     destinationName<span class="token operator">:</span> <span class="token string">&quot;Dublin&quot;</span><span class="token punctuation">,</span>
     distanceKms<span class="token operator">:</span> <span class="token number">350</span><span class="token punctuation">,</span>
     transportations<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;plane&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;ferry&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> travelDestinations <span class="token operator">=</span> <span class="token punctuation">[</span>destination1<span class="token punctuation">,</span> destination2<span class="token punctuation">,</span> destination3<span class="token punctuation">,</span> destination4<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> travelDestinations <span class="token operator">=</span> <span class="token punctuation">[</span>destination1<span class="token punctuation">,</span> destination2<span class="token punctuation">,</span> destination3<span class="token punctuation">,</span> destination4<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 <span class="token comment">/* 
 DO NOT EDIT ANYTHING ABOVE THIS LINE
@@ -1519,11 +1519,11 @@ WRITE YOUR CODE BELOW
 */</span>
 
 
-<span class="token keyword">var</span> destinationNamesWithin500Kms <span class="token operator">=</span> <span class="token comment">// Complete here</span>
+<span class="token keyword">let</span> destinationNamesWithin500Kms <span class="token operator">=</span> <span class="token comment">// Complete here</span>
 
-<span class="token keyword">var</span> destinationNameReachableByFerry <span class="token operator">=</span> <span class="token comment">// Complete here</span>
+<span class="token keyword">let</span> destinationNameReachableByFerry <span class="token operator">=</span> <span class="token comment">// Complete here</span>
 
-<span class="token keyword">var</span> destinationNamesMoreThan300KmsAwayByTrain <span class="token operator">=</span> <span class="token comment">// Complete here (PRINT THE RESULT IN THE CONSOLE USING FOREACH)</span>
+<span class="token keyword">let</span> destinationNamesMoreThan300KmsAwayByTrain <span class="token operator">=</span> <span class="token comment">// Complete here (PRINT THE RESULT IN THE CONSOLE USING FOREACH)</span>
 
 
 <span class="token comment">/*
@@ -1551,7 +1551,7 @@ all the restaurant names serving this dish.
 and returns the number of restaurants in this area.
 */</span>
 
-<span class="token keyword">var</span> restaurant1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> restaurant1 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Paesano&quot;</span><span class="token punctuation">,</span>
     totalSeats<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
     numberOfCustomers<span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
@@ -1562,7 +1562,7 @@ and returns the number of restaurants in this area.
     menu<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;pizza&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;calzone&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;salad&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> restaurant2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> restaurant2 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Ubiquitous Chip&quot;</span><span class="token punctuation">,</span>
     totalSeats<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
     numberOfCustomers<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
@@ -1573,7 +1573,7 @@ and returns the number of restaurants in this area.
     menu<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;salad&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;chocolate cake&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;roast lamb&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> restaurant3 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> restaurant3 <span class="token operator">=</span> <span class="token punctuation">{</span>
     name<span class="token operator">:</span> <span class="token string">&quot;Monkeyz&quot;</span><span class="token punctuation">,</span>
     totalSeats<span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
     numberOfCustomers<span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
@@ -1584,7 +1584,7 @@ and returns the number of restaurants in this area.
     menu<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;stew&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;chocolate cake&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;panini&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> restaurants <span class="token operator">=</span> <span class="token punctuation">[</span>restaurant1<span class="token punctuation">,</span> restaurant2<span class="token punctuation">,</span> restaurant3<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> restaurants <span class="token operator">=</span> <span class="token punctuation">[</span>restaurant1<span class="token punctuation">,</span> restaurant2<span class="token punctuation">,</span> restaurant3<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 <span class="token comment">/* 
 DO NOT EDIT ANYTHING ABOVE THIS LINE
@@ -1592,7 +1592,7 @@ WRITE YOUR CODE BELOW
 */</span>
 
 
-<span class="token keyword">var</span> restaurantFinderApplication <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> restaurantFinderApplication <span class="token operator">=</span> <span class="token punctuation">{</span>
     applicationName<span class="token operator">:</span> <span class="token string">&quot;Restaurant Finder&quot;</span><span class="token punctuation">,</span>
     applicationVersion<span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
     restaurants<span class="token operator">:</span> restaurants<span class="token punctuation">,</span>
@@ -1612,13 +1612,13 @@ WRITE YOUR CODE BELOW
 DO NOT EDIT ANYTHING BELOW THIS LINE
 */</span>
 
-<span class="token keyword">var</span> restaurantsAvailableFor5People <span class="token operator">=</span> restaurantFinderApplication<span class="token punctuation">.</span><span class="token function">findAvailableRestaurants</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> restaurantsAvailableFor5People <span class="token operator">=</span> restaurantFinderApplication<span class="token punctuation">.</span><span class="token function">findAvailableRestaurants</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Find available restaurants for 5 people: Expected result: Ubiquitous Chip,Monkeyz, actual result: &quot;</span> <span class="token operator">+</span> restaurantsAvailableFor5People<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> restaurantsServingSalad <span class="token operator">=</span> restaurantFinderApplication<span class="token punctuation">.</span><span class="token function">findRestaurantServingDish</span><span class="token punctuation">(</span><span class="token string">&quot;salad&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> restaurantsServingSalad <span class="token operator">=</span> restaurantFinderApplication<span class="token punctuation">.</span><span class="token function">findRestaurantServingDish</span><span class="token punctuation">(</span><span class="token string">&quot;salad&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Find restaurants serving salad: Expected result: Paesano,Ubiquitous Chip, actual result: &quot;</span> <span class="token operator">+</span> restaurantsServingSalad<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> numberOfRestaurantsInCityCentre <span class="token operator">=</span> restaurantFinderApplication<span class="token punctuation">.</span><span class="token function">countNumberOfRestaurantsInArea</span><span class="token punctuation">(</span><span class="token string">&quot;center&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> numberOfRestaurantsInCityCentre <span class="token operator">=</span> restaurantFinderApplication<span class="token punctuation">.</span><span class="token function">countNumberOfRestaurantsInArea</span><span class="token punctuation">(</span><span class="token string">&quot;center&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Number of restaurants in city centre: Expected result: 2, actual result: &quot;</span> <span class="token operator">+</span> numberOfRestaurantsInCityCentre<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="objectkeys">Object.keys()</h2>
@@ -1627,7 +1627,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>These are what we call built-in methods, and they&apos;re part of the JavaScript language. Someone else created these methods, and we can use them in our code.</p>
 <p>Like arrays, objects have built-in methods that can help us. In this lesson, we will learn about <code>Object.keys()</code>. This method goes into our object, and returns the object property names as an array.</p>
 <p>Here is an example output for using <code>.keys()</code>:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> footballClubs <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> footballClubs <span class="token operator">=</span> <span class="token punctuation">{</span>
   chelsea_fc<span class="token operator">:</span> <span class="token string">&apos;England&apos;</span><span class="token punctuation">,</span>
   fc_barcelona<span class="token operator">:</span> <span class="token string">&apos;Spain&apos;</span><span class="token punctuation">,</span>
   ac_milan<span class="token operator">:</span> <span class="token string">&apos;Italy&apos;</span>
@@ -1643,14 +1643,14 @@ Return the keys of the following object
 
 */</span>
 
-<span class="token keyword">var</span> capitalCities <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> capitalCities <span class="token operator">=</span> <span class="token punctuation">{</span>
   scotland<span class="token operator">:</span> <span class="token string">&apos;Edinburgh&apos;</span><span class="token punctuation">,</span>
   kenya<span class="token operator">:</span> <span class="token string">&apos;Nairobi&apos;</span><span class="token punctuation">,</span>
   australia<span class="token operator">:</span> <span class="token string">&apos;Canberra&apos;</span><span class="token punctuation">,</span>
   canada<span class="token operator">:</span> <span class="token string">&apos;Ottawa&apos;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> highScores <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> highScores <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token number">55</span><span class="token operator">:</span> <span class="token string">&apos;Alistair&apos;</span><span class="token punctuation">,</span>
   <span class="token number">100</span><span class="token operator">:</span> <span class="token string">&apos;David&apos;</span><span class="token punctuation">,</span>
   <span class="token number">89</span><span class="token operator">:</span> <span class="token string">&apos;Hannah&apos;</span><span class="token punctuation">,</span>
@@ -1659,8 +1659,8 @@ Return the keys of the following object
 
 <span class="token comment">// ONLY EDIT BELOW HERE</span>
 
-<span class="token keyword">var</span> capitalCitiesKeys <span class="token operator">=</span> <span class="token punctuation">;</span>
-<span class="token keyword">var</span> highScoresKeys<span class="token punctuation">;</span>
+<span class="token keyword">let</span> capitalCitiesKeys <span class="token operator">=</span> <span class="token punctuation">;</span>
+<span class="token keyword">let</span> highScoresKeys<span class="token punctuation">;</span>
 
 <span class="token comment">// ONLY EDIT ABOVE HERE</span>
 
@@ -1679,7 +1679,7 @@ You&apos;re going to have to used what we learned at the start of this lesson, a
 
 */</span>
 
-<span class="token keyword">var</span> mentorsAges <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> mentorsAges <span class="token operator">=</span> <span class="token punctuation">{</span>
   james<span class="token operator">:</span> <span class="token number">29</span><span class="token punctuation">,</span>
   <span class="token constant">JOSH</span><span class="token operator">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
   <span class="token constant">JAMIE</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
@@ -1688,9 +1688,9 @@ You&apos;re going to have to used what we learned at the start of this lesson, a
 
 <span class="token comment">// ONLY EDIT BELOW THIS LINE</span>
 
-<span class="token keyword">var</span> mentorsNames <span class="token operator">=</span> <span class="token punctuation">;</span>
+<span class="token keyword">let</span> mentorsNames <span class="token operator">=</span> <span class="token punctuation">;</span>
 
-<span class="token keyword">var</span> mentorsNamedUppercased <span class="token operator">=</span> <span class="token punctuation">;</span>
+<span class="token keyword">let</span> mentorsNamedUppercased <span class="token operator">=</span> <span class="token punctuation">;</span>
 
 <span class="token comment">// ONLY EDIT ABOVE THIS LINE</span>
 
@@ -1708,7 +1708,7 @@ Use the provided console.log statements below and follow the instructions above 
 
 */</span>
 
-<span class="token keyword">var</span> storeBranches <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> storeBranches <span class="token operator">=</span> <span class="token punctuation">{</span>
 
   glasgow<span class="token operator">:</span> <span class="token punctuation">{</span>
     manager<span class="token operator">:</span> <span class="token string">&apos;Andrew&apos;</span><span class="token punctuation">,</span>
@@ -1794,7 +1794,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 7 - Objects","level":"1.5.1","depth":2,"next":{"title":"Week 8 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},"previous":{"title":"JavaScript II","level":"1.5","depth":1,"path":"js-core-2/index.md","ref":"js-core-2/index.md","articles":[{"title":"Week 7 - Objects","level":"1.5.1","depth":2,"path":"js-core-2/week-1/lesson.md","ref":"js-core-2/week-1/lesson.md","articles":[]},{"title":"Week 8 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},{"title":"Week 9 - More JS in the Browser","level":"1.5.3","depth":2,"path":"js-core-2/week-3/lesson.md","ref":"js-core-2/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-1/lesson.md","mtime":"2020-03-17T20:03:41.423Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T20:04:33.543Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 7 - Objects","level":"1.5.1","depth":2,"next":{"title":"Week 8 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},"previous":{"title":"JavaScript II","level":"1.5","depth":1,"path":"js-core-2/index.md","ref":"js-core-2/index.md","articles":[{"title":"Week 7 - Objects","level":"1.5.1","depth":2,"path":"js-core-2/week-1/lesson.md","ref":"js-core-2/week-1/lesson.md","articles":[]},{"title":"Week 8 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},{"title":"Week 9 - More JS in the Browser","level":"1.5.3","depth":2,"path":"js-core-2/week-3/lesson.md","ref":"js-core-2/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-1/lesson.md","mtime":"2020-03-19T19:46:38.575Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T19:47:25.087Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
