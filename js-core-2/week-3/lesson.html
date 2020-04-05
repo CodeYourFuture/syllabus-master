@@ -771,19 +771,21 @@ other person is speaking. You are always waiting for your turn to respond</li>
 something else, until the other person responds.</li>
 </ul>
 <h3 id="a-javascript-example">A Javascript example</h3>
-<pre class="language-"><code class="lang-js">  <span class="token comment">//synchronous</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;First action&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Second action&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Third action&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token comment">//synchronous</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;First action&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Second action&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Third action&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<pre class="language-"><code class="lang-js">  <span class="token comment">//asynchronous</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;First action&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Second action&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Third action&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token comment">//asynchronous</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;First action&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Second action&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Third action&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="the-callstack">The Callstack</h3>
 <p>How does JavaScript &apos;know&apos; what order its code should be run in?</p>
-<p>JavaScript is a single-threaded language, which means that normally it can handle one task at a time or a piece of code at a time. It orders what it needs to do using something called the <code>call stack</code>. </p>
+<p>JavaScript is a single-threaded language, which means that normally it can handle one task at a time or a piece of code at a time. It orders what it needs to do using something called the <code>call stack</code>.</p>
 <p>The call stack is a data structure that works by the &quot;Last in, First out&quot; principle (LIFO) to store and run functions. Whenever you call a function, it gets pushed onto the stack, and when the function returns, it is popped off of the call stack.</p>
 <p>This is why when you get an error in Javascript, you may see multiple lines with line numbers in the error, like:</p>
 <pre class="language-"><code>$ node my.js
@@ -833,32 +835,31 @@ This allows you to run some other code while you&apos;re waiting for something t
 <span class="token function">setTimeout</span><span class="token punctuation">(</span>myCallbackFunction<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Inline function</span>
-<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Now let&apos;s use a timeout and a callback function together:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">mainFunction</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Starting!&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Continuing!&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Starting!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Continuing!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">function</span> <span class="token function">myCallbackFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;Finished!&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Finished!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token function">mainFunction</span><span class="token punctuation">(</span>myCallbackFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="exercise-1">Exercise (1)</h4>
-<p>&gt;</p>
 <blockquote>
 <ul>
 <li>Using setTimeout, change the background colour of the page after 5 seconds (5000 milliseconds).</li>
 <li>Update your code to make the colour change <em>every</em> 5 seconds to something different. Hint: try searching for <code>setInterval</code>.</li>
 </ul>
 <p><img src="http://g.recordit.co/g2EqBccNzh.gif" alt=""></p>
-<p>Complete the exercises in this <a href="https://codepen.io/textbook/pen/LrxgMN?editors=1010" target="_blank">CodePen</a></p>
+<p>Complete the exercises in this <a href="https://codepen.io/makanti/pen/abOreLg?editors=1011" target="_blank">CodePen</a></p>
 </blockquote>
 <h2 id="how-does-the-web-work">How does the web work?</h2>
 <h3 id="clientserver-architecture">Client/Server architecture</h3>
@@ -866,7 +867,7 @@ This allows you to run some other code while you&apos;re waiting for something t
 <p>A <strong>Client</strong> is the typical web user&apos;s internet-connected devices and apps. This can be a web browser, a Slack app, your phone, etc.</p>
 <p>A <strong>Server</strong> is a computer or program that manages access to resources such as webpages, sites, or apps.</p>
 <p>There are database servers, mail servers, game servers, etc. The vast majority of these servers are accessed over the internet. They can take the form of industrial server farms that provide a service to millions of users (used by Facebook, Google, etc.), to personal servers for storing your files.</p>
-<p>The <strong>server</strong> communicates with <strong>clients</strong>. </p>
+<p>The <strong>server</strong> communicates with <strong>clients</strong>.</p>
 <p>Client&#x2013;server systems use the <strong>request&#x2013;response</strong> model: a client sends a request to the server, which performs some action and sends a response back to the client, typically with a result or acknowledgement.</p>
 <p><img src="request-response-architecture.png" alt=""></p>
 <h3 id="http-requests">HTTP Requests</h3>
@@ -946,7 +947,7 @@ This allows you to run some other code while you&apos;re waiting for something t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 9 - More JS in the Browser","level":"1.5.3","depth":2,"next":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Unit Tests and TDD","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 12 - Recap","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"previous":{"title":"Week 8 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-3/lesson.md","mtime":"2020-04-05T09:15:26.979Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-05T09:16:12.274Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 9 - More JS in the Browser","level":"1.5.3","depth":2,"next":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 10 - Unit Tests and TDD","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 11 - More TDD, ES6","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 12 - Recap","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"previous":{"title":"Week 8 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-3/lesson.md","mtime":"2020-04-05T12:55:41.989Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-05T12:56:26.912Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
