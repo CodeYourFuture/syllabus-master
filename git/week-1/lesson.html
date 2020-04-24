@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Week 18 - Advanced Node · GitBook</title>
+        <title>Github Desktop module · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../db/" />
+    <link rel="next" href="../../others/coding-standards.html" />
     
     
-    <link rel="prev" href="../week-2/lesson.html" />
+    <link rel="prev" href="../../others/java.html" />
     
 
     </head>
@@ -439,9 +439,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="../">
+        <li class="chapter " data-level="1.8" data-path="../../node/">
             
-                <a href="../">
+                <a href="../../node/">
             
                     
                     Node
@@ -453,9 +453,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="../week-1/lesson.html">
+        <li class="chapter " data-level="1.8.1" data-path="../../node/week-1/lesson.html">
             
-                <a href="../week-1/lesson.html">
+                <a href="../../node/week-1/lesson.html">
             
                     
                     Week 16 - Node and Express 101
@@ -466,9 +466,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.2" data-path="../week-2/lesson.html">
+        <li class="chapter " data-level="1.8.2" data-path="../../node/week-2/lesson.html">
             
-                <a href="../week-2/lesson.html">
+                <a href="../../node/week-2/lesson.html">
             
                     
                     Week 17 - Middleware, Templating and APIs
@@ -479,9 +479,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.3" data-path="lesson.html">
+        <li class="chapter " data-level="1.8.3" data-path="../../node/week-3/lesson.html">
             
-                <a href="lesson.html">
+                <a href="../../node/week-3/lesson.html">
             
                     
                     Week 18 - Advanced Node
@@ -601,9 +601,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="../week-1/workshop.html">
+        <li class="chapter " data-level="2.4" data-path="../../node/week-1/workshop.html">
             
-                <a href="../week-1/workshop.html">
+                <a href="../../node/week-1/workshop.html">
             
                     
                     Express Workshop
@@ -614,9 +614,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="workshop.html">
+        <li class="chapter " data-level="2.5" data-path="../../node/week-3/workshop.html">
             
-                <a href="workshop.html">
+                <a href="../../node/week-3/workshop.html">
             
                     
                     Hotel Workshop
@@ -666,9 +666,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.9" data-path="../../git/week-1/lesson.html">
+        <li class="chapter active" data-level="2.9" data-path="lesson.html">
             
-                <a href="../../git/week-1/lesson.html">
+                <a href="lesson.html">
             
                     
                     Github Desktop module
@@ -729,7 +729,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Week 18 - Advanced Node</a>
+        <a href="../.." >Github Desktop module</a>
     </h1>
 </div>
 
@@ -744,125 +744,101 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="https://img.shields.io/badge/status-draft-darkred.svg" alt=""></p>
-<h1 id="node-3">Node 3</h1>
-<p><strong> What we will learn today?</strong></p>
+                                <h1 id="github-and-github-desktop---week-1">Github and Github Desktop - Week 1</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
 <ul>
-<li><a href="#node-recap">Node Recap</a></li>
-<li><a href="#best-practices">Best Practices</a></li>
-<li><a href="#node-process-managers">Node Process Managers</a></li>
-<li><a href="#rest">REST</a></li>
-<li><a href="#security">Security</a></li>
-<li><a href="#authentication">Authentication</a></li>
-<li><a href="#hotel-workshop">Hotel Workshop</a></li>
+<li>You will be able to create a repository on Github</li>
+<li>You will be able to clone a repository using Github Desktop</li>
+<li>You will be able to make changes to a repository using Github Desktop</li>
+<li>You can define what the differences between Git and Github are</li>
+<li>You can use git to submit all your homeworks to Github</li>
 </ul>
 <hr>
-<h2 id="node-recap">Node Recap</h2>
-<p>Javascript has evolved from the browser to be used in the backend. It does not need a framework as we saw in <a href="../week-13/lesson.md">week-13</a>, however a framework like Express allows us to develop faster.</p>
-<h3 id="documentation">Documentation</h3>
-<p>When you are working with frameworks it is always helpful to use their documentation.</p>
+<h2 id="what-is-the-problem">What is the problem?</h2>
+<p>When programmers work together it can be hard to stay in sync. This can be demonstrated by:</p>
 <ul>
-<li><a href="https://expressjs.com" target="_blank">Express Documentation</a></li>
-<li><a href="https://nodejs.org/api/http.html" target="_blank">Node.js Documentation</a></li>
+<li>Have one person write three words on a piece of paper</li>
+<li>Give the paper to the teacher and the teacher makes a copy of it</li>
+<li>Somebody else can request the paper from the teacher</li>
+<li>Change a word on the paper and give it back to the teacher.</li>
 </ul>
-<h3 id="middleware">Middleware</h3>
-<p>Middleware allow us to process requests to add functionalities that are not built in to Express, for example logging, authentication, etc.</p>
-<blockquote>
+<p>The teacher is the single source of truth for the project. This is fine so long as both people don&apos;t make a change at the same time.</p>
 <ul>
-<li>Express Documentation: <a href="https://expressjs.com/en/guide/using-middleware.html" target="_blank">Using Middleware</a></li>
-<li>Video: <a href="https://www.youtube.com/watch?v=vKlybue_yMQ" target="_blank">body-parser</a> which makes it easier to work with POST requests and forms.</li>
+<li>Now both students change a word on their piece of paper</li>
+<li>They then try to give both pieces of paper to the teacher<ul>
+<li>But the teacher doesn&apos;t know what to do! Which one is correct?</li>
 </ul>
-</blockquote>
-<h3 id="routing">Routing</h3>
-<p>Routing refers to how an application&#x2019;s endpoints (URIs) respond to the client requests. These are configured differently for each framework, and can range from basic configuration to very extensive for more complex use cases.</p>
-<p>Simple example</p>
-<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;hello world&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>More complicated example using <code>Passport.js</code> middleware for authentication</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">ensureAuthenticated</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">else</span> res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">&quot;/login&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/account&quot;</span><span class="token punctuation">,</span> ensureAuthenticated<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;welcome user!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<blockquote>
-<ul>
-<li>Express Documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Routing</a></li>
+</li>
 </ul>
-</blockquote>
-<h2 id="best-practices">Best Practices</h2>
-<p>Express have their own recommended <a href="https://expressjs.com/en/advanced/best-practice-performance.html" target="_blank">best practices page</a></p>
-<h2 id="node-process-managers">Node Process Managers</h2>
-<p>These process managers monitor for any changes in your node.js application and automatically restart the server, perfect for development and production.</p>
-<blockquote>
-<p>Popular PMs include:</p>
-<ul>
-<li><a href="http://nodemon.io/" target="_blank">nodemon</a></li>
-<li><a href="https://expressjs.com/en/advanced/pm.html#pm2" target="_blank">pm2</a></li>
-</ul>
-</blockquote>
-<h2 id="rest">REST</h2>
-<p>REST is a convention of how to design your API, whether it is for your own frontend, or other frontends and clients.</p>
-<blockquote>
-<ul>
-<li>Read: Resource naming in <a href="http://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank">REST</a> convention</li>
-</ul>
-</blockquote>
-<h2 id="security">Security</h2>
-<p>When you take your website to production there is a whole range of things to consider.</p>
-<p><img src="../assets/http-vs-https.png" alt="HTTP vs HTTPS"></p>
-<p>Node has built in support for HTTPS, and once you have your own certificates you can use this feature. However sometimes when you deploy to <code>cloud</code> Platform Platform as a Service (PaaS) providers such as Heroku, they provide SSL and configure it for you automatically.</p>
-<blockquote>
-<ul>
-<li>Read: <a href="https://nodejs.org/api/https.html" target="_blank">Node: HTTPS</a></li>
-<li>Read/Watch: <a href="https://www.globalsign.com/en/ssl-information-center/what-is-an-ssl-certificate/" target="_blank">What is an SSL Certificate?</a></li>
-<li>Read: <a href="https://devcenter.heroku.com/articles/ssl" target="_blank">Heroku SSL</a></li>
-</ul>
-</blockquote>
-<h2 id="authentication">Authentication</h2>
-<p>Sometimes you need to add user functionality for your website. To do this you can make use of external libraries like <a href="www.passportjs.org">passport</a> to add authentication to your website.</p>
-<blockquote>
-<p>For more information read:</p>
-<ul>
-<li><a href="https://tools.ietf.org/html/rfc6750" target="_blank">OAuth 2.0 Authorization Framework: Bearer Token Usage</a></li>
-<li><a href="https://github.com/jaredhanson/passport-http-bearer" target="_blank">Bearer Strategy</a></li>
-</ul>
-</blockquote>
-<h2 id="hotel-workshop">Hotel Workshop</h2>
-<p>Get in to groups of 3/4 and checkout the <a href="workshop.html">workshop brief</a>.</p>
-<blockquote>
-<p><strong>Exercise</strong>: Please fork and clone <a href="https://github.com/CodeYourFuture/cyf-hotel" target="_blank">CYF-Hotel</a> repository and follow the exercises in the <code>README.MD</code>.</p>
-</blockquote>
-<h1 id="homework">Homework</h1>
+<p>This is why Git was invented!</p>
+<h2 id="what-is-github">What is Github?</h2>
+<p><strong>Confirm that everyone has a Github account and that they&apos;ve been added to the relevant Github Teams</strong></p>
 <ol>
-<li>Finish the <a href="https://github.com/CodeYourFuture/cyf-hotel" target="_blank">hotel workshop</a> with your team, assigning trello tickets in your team trello page</li>
+<li>Give an overview of Github including<ul>
+<li>A Project Overview</li>
+<li>Issues</li>
+<li>Creating a repository</li>
+<li>Changing a file in a repository</li>
+</ul>
+</li>
+<li>All students should now<ul>
+<li>Create a repository called &quot;Code Your Future&quot;. This should include the ReadMe.md.</li>
+<li>Edit the ReadMe.md inside Github to include their name.</li>
+</ul>
+</li>
 </ol>
-<h2 id="prepare-for-the-next-class">Prepare for the next class</h2>
+<h2 id="what-is-github-desktop">What is Github Desktop?</h2>
+<p>Github desktop is a way to edit files on your computer instead of editing them online.</p>
+<p>Give a demonstration of</p>
 <ol>
-<li>Read: <a href="https://en.wikipedia.org/wiki/Persistence_(computer_science)" target="_blank">Persistence (computer science)</a></li>
-<li>Watch: <a href="https://www.youtube.com/watch?v=FR4QIeZaPeM" target="_blank">What is Database &amp; SQL?</a></li>
-<li>Learn some basic SQL with <a href="https://www.khanacademy.org/computing/computer-programming/sql" target="_blank">khanacademy</a> or <a href="https://www.codecademy.com/learn/learn-sql" target="_blank">codecademy</a> and ask any questions in the channel</li>
+<li>Cloning a repository</li>
+<li>Making a change to a file in the repository</li>
+<li>Committing the changes to our local repository</li>
+<li>Pushing our changes to Github</li>
 </ol>
-<h1 id="escalation-policy">Escalation policy</h1>
-<p>When you get stuck during the homework you should follow the following:</p>
+<p>The students should now repeat these steps on their projects</p>
+<h2 id="what-about-working-in-teams">What about working in Teams?</h2>
+<p>Github also makes it really easy to work in teams.</p>
+<p>One way that we could work in a team is by writing a story together.</p>
+<p>In your teams you should.</p>
 <ol>
-<li>First, search for answers on Google and Stack Overflow.
-If you have an error message, copy and paste it into Google.</li>
-<li>When you are stuck for longer than 20 minutes - no longer! -
-write a question to your fellow students in your class channel on slack.
-Take a while to think carefully about the question.
-This is an important skill.
-Here is a great <a href="https://stackoverflow.com/help/how-to-ask" target="_blank">guide to writing good questions</a></li>
-<li>If you cannot get an answer from your fellow students,
-post your question in your class public channel,
-<code>@</code> the mentor for the class that covered the topic
-and we will reply as soon as we can.</li>
+<li>Elect a Project Leader</li>
+<li>The Project leader should create a repository on Github and then share the link to the team</li>
+<li>All of the rest of the team should clone the repository</li>
+<li>Each team member should take it in turns changing one work in the ReadMe.md file in the project.</li>
+<li>Write a story! Keep on adding works until you&apos;ve got a story.</li>
 </ol>
+<p>Be careful! Don&apos;t all add words at the same time!</p>
+<h2 id="branching">Branching</h2>
+<p>Sometimes it can be useful to work on something for a long time before showing it to everyone. This is why we use branching.</p>
+<p>The teacher should</p>
+<ol>
+<li>Show how you can create a branch in Github Desktop</li>
+<li>Show how moving between Master and the Branch keeps two versions of the file</li>
+</ol>
+<p>Branching is particularly helpful for using in Pull Requests</p>
+<ol>
+<li>The teacher should show how to make a Pull Request in Github</li>
+<li>The teacher should show how to comment on a PR in Github</li>
+<li>The teacher should show how to merge a pull request in Github</li>
+</ol>
+<p>Now the students should try this themselves in their teams.</p>
+<ol>
+<li>The group leader should make a Branch, make a Commit and Create a Pull Request</li>
+<li>The other students should comment on the Pull Request</li>
+<li>The group leader should then merge the Pull Request</li>
+</ol>
+<p>Now each member of the team should try this!</p>
+<h2 id="optional-what-is-git">(Optional) What is Git?</h2>
+<p>This is advanced!</p>
+<p>The Github Desktop tool is actually built on top of something called Git. Git lives entirely in the command line.</p>
+<p>The teacher should show</p>
+<ul>
+<li>How to clone a repository</li>
+<li>How to make a commit</li>
+<li>How to how to push to the repository</li>
+</ul>
+<p>This is only to show students how it&apos;s done! We&apos;ll be doing more of this in the future.</p>
 
                                 
                                 </section>
@@ -890,12 +866,12 @@ and we will reply as soon as we can.</li>
 
             
                 
-                <a href="../week-2/lesson.html" class="navigation navigation-prev " aria-label="Previous page: Week 17 - Middleware, Templating and APIs">
+                <a href="../../others/java.html" class="navigation navigation-prev " aria-label="Previous page: Java module">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../../db/" class="navigation navigation-next " aria-label="Next page: Databases">
+                <a href="../../others/coding-standards.html" class="navigation navigation-next " aria-label="Next page: Coding Standards and Best Practices">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -906,7 +882,7 @@ and we will reply as soon as we can.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 18 - Advanced Node","level":"1.8.3","depth":2,"next":{"title":"Databases","level":"1.9","depth":1,"path":"db/index.md","ref":"db/index.md","articles":[{"title":"Week 19 - Introduction to SQL","level":"1.9.1","depth":2,"path":"db/week-1/lesson.md","ref":"db/week-1/lesson.md","articles":[]},{"title":"Week 20 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},{"title":"Week 21 - More integration with NodeJS","level":"1.9.3","depth":2,"path":"db/week-3/lesson.md","ref":"db/week-3/lesson.md","articles":[]}]},"previous":{"title":"Week 17 - Middleware, Templating and APIs","level":"1.8.2","depth":2,"path":"node/week-2/lesson.md","ref":"node/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node/week-3/lesson.md","mtime":"2020-04-24T16:04:24.807Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T16:05:11.768Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Github Desktop module","level":"2.9","depth":1,"next":{"title":"Coding Standards and Best Practices","level":"3.1","depth":1,"path":"others/coding-standards.md","ref":"others/coding-standards.md","articles":[]},"previous":{"title":"Java module","level":"2.8","depth":1,"path":"others/java.md","ref":"others/java.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"git/week-1/lesson.md","mtime":"2020-04-24T16:04:24.735Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T16:05:11.768Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
