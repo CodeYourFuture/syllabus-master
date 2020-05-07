@@ -1261,19 +1261,12 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <li>Add a new DELETE endpoint <code>/hotels/:hotelId</code> to delete a specific hotel. <strong>A hotel can only be deleted if it doesn&apos;t appear in any of the customers&apos; bookings! Make sure you add the corresponding validation before you try to delete a hotel.</strong></li>
 </ul>
 <h2 id="homework">Homework</h2>
-<p>In the following homework, you will create new API endpoints in the NodeJS application <code>cyf-ecommerce-api</code> that you created for last week homework for the Database 2 class.</p>
-<ul>
-<li>If you don&apos;t have it already, add a new GET endpoint <code>/products</code> to load all the product names along with their supplier names.</li>
-<li>Update the previous GET endpoint <code>/products</code> to filter the list of products by name using a query parameter, for example <code>/products?name=Cup</code>. This endpoint should still work even if you don&apos;t use the <code>name</code> query parameter!</li>
-<li>Add a new GET endpoint <code>/customers/:customerId</code> to load a single customer by ID.</li>
-<li>Add a new POST endpoint <code>/customers</code> to create a new customer.</li>
-<li>Adda new POST endpoint <code>/products</code> to create a new product (with a product name, a price and a supplier id). Check that the price is a positive integer and that the supplier ID exists in the database, otherwise return an error.</li>
-<li>Add a new POST endpoint <code>/customers/:customerId/orders</code> to create a new order (including an order date, and an order reference) for a customer. Check that the customerId corresponds to an existing customer or return an error.</li>
-<li>Add a new PUT endpoint <code>/customers/:customerId</code> to update an existing customer (name, address, city and country).</li>
-<li>Add a new DELETE endpoint <code>/orders/:orderId</code> to delete an existing order along all the associated order items.</li>
-<li>Add a new DELETE endpoint <code>/customers/:customerId</code> to delete an existing customer only if this customer doesn&apos;t have orders.</li>
-<li>Add a new GET endpoint <code>/customers/:customerId/orders</code> to load all the orders along the items in the orders of a specific customer. Especially, the following information should be returned: order references, order dates, product names, unit prices, suppliers and quantities.</li>
-</ul>
+<p>All of the homework can be found in <a href="https://github.com/CodeYourFuture/Databases-Homework" target="_blank">this repository</a>.</p>
+<h3 id="submission">Submission</h3>
+<p>Create a new branch from <code>Master</code> to start working on this weeks homework. It should be called <code>[YOUR_NAME]/Week3</code>.</p>
+<p>When you have completed the homework create a pull request back to the <code>CodeYourFuture/Databases-Homework</code> repository so your teach can feedback on it.</p>
+<h3 id="tasks">Tasks</h3>
+<p>You should complete all of the tasks in <strong>Week 3</strong> of the <a href="https://github.com/CodeYourFuture/Databases-Homework" target="_blank">Database Homework repository</a>.</p>
 
                                 
                                 </section>
@@ -1317,7 +1310,7 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"next":{"title":"Coding 101","level":"2.1","depth":1,"path":"others/coding-101.md","ref":"others/coding-101.md","articles":[]},"previous":{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/week-3/lesson.md","mtime":"2020-05-07T15:19:42.638Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-07T15:20:28.108Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"next":{"title":"Coding 101","level":"2.1","depth":1,"path":"others/coding-101.md","ref":"others/coding-101.md","articles":[]},"previous":{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/week-3/lesson.md","mtime":"2020-05-07T16:32:32.435Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-07T16:33:18.317Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
