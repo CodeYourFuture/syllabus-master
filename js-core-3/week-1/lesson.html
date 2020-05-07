@@ -954,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.19" data-path="../../db/week-1/mentors.md">
+        <li class="chapter " data-level="4.1.19" data-path="../../db/week-1/mentors.html">
             
-                <span>
+                <a href="../../db/week-1/mentors.html">
             
                     
                     Databases - Week 1
@@ -1063,14 +1063,14 @@
 <p>Fork and Clone the <a href="https://github.com/CodeYourFuture/js-exercises-tdd" target="_blank">js-exercises-tdd repo</a></p>
 </blockquote>
 <h2 id="tracing-code">Tracing Code</h2>
-<p>What is Code? Computer code is a <strong>set of rules or instructions</strong>. It is made up of words and numbers and when you put them in the <strong>right order</strong> it will tell your computer what you want it to do. </p>
+<p>What is Code? Computer code is a <strong>set of rules or instructions</strong>. It is made up of words and numbers and when you put them in the <strong>right order</strong> it will tell your computer what you want it to do.</p>
 <p>Let&apos;s trace these code samples together:</p>
 <ul>
-<li><p><a href="https://github.com/CodeYourFuture/js-exercises-tdd/blob/master/II.write-tests/01-greet-people/greet-people.js" target="_blank">Sample 1</a> </p>
+<li><p><a href="https://github.com/CodeYourFuture/js-exercises-tdd/blob/master/II.write-tests/01-greet-people/greet-people.js" target="_blank">Sample 1</a></p>
 </li>
-<li><p><a href="https://github.com/CodeYourFuture/js-exercises-tdd/blob/master/II.write-tests/02-remove-vowels/remove-vowels.js" target="_blank">Sample 2</a> </p>
+<li><p><a href="https://github.com/CodeYourFuture/js-exercises-tdd/blob/master/II.write-tests/02-remove-vowels/remove-vowels.js" target="_blank">Sample 2</a></p>
 </li>
-<li><p><a href="https://github.com/CodeYourFuture/js-exercises-tdd/blob/master/II.write-tests/03-remove-vowels-from-array/remove-vowels-in-array.js" target="_blank">Sample 3</a> </p>
+<li><p><a href="https://github.com/CodeYourFuture/js-exercises-tdd/blob/master/II.write-tests/03-remove-vowels-from-array/remove-vowels-in-array.js" target="_blank">Sample 3</a></p>
 </li>
 </ul>
 <h2 id="testing-our-code">Testing our code</h2>
@@ -1093,24 +1093,24 @@
 <pre class="language-"><code class="lang-js"><span class="token keyword">var</span> result<span class="token punctuation">;</span>
 
 <span class="token keyword">function</span> <span class="token function">getMentorInfo</span><span class="token punctuation">(</span><span class="token parameter">mentors<span class="token punctuation">,</span> name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> greeting <span class="token operator">=</span> <span class="token string">&apos;Hello &apos;</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> greeting <span class="token operator">=</span> <span class="token string">&quot;Hello &quot;</span><span class="token punctuation">;</span>
 
-    result <span class="token operator">=</span> mentors<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">person</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> person<span class="token punctuation">.</span>name <span class="token operator">===</span> name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  result <span class="token operator">=</span> mentors<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">person</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> person<span class="token punctuation">.</span>name <span class="token operator">===</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">var</span> mentorTitle <span class="token operator">=</span> <span class="token string">&apos;Junior Developer&apos;</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> mentorTitle <span class="token operator">=</span> <span class="token string">&quot;Junior Developer&quot;</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>yearsOfExp <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        mentorTitle <span class="token operator">=</span> <span class="token string">&apos;Senior Developer&apos;</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>yearsOfExp <span class="token operator">&gt;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        mentorTitle <span class="token operator">=</span> <span class="token string">&apos;Very Senior Developer&apos;</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>yearsOfExp <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mentorTitle <span class="token operator">=</span> <span class="token string">&quot;Senior Developer&quot;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>yearsOfExp <span class="token operator">&gt;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mentorTitle <span class="token operator">=</span> <span class="token string">&quot;Very Senior Developer&quot;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-    result<span class="token punctuation">.</span>jobTitle <span class="token operator">=</span> mentorTitle<span class="token punctuation">;</span>
-    result<span class="token punctuation">.</span>fullName <span class="token operator">=</span> result<span class="token punctuation">.</span>title <span class="token operator">+</span> <span class="token string">&apos; &apos;</span> <span class="token operator">+</span> result<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+  result<span class="token punctuation">.</span>jobTitle <span class="token operator">=</span> mentorTitle<span class="token punctuation">;</span>
+  result<span class="token punctuation">.</span>fullName <span class="token operator">=</span> result<span class="token punctuation">.</span>title <span class="token operator">+</span> <span class="token string">&quot; &quot;</span> <span class="token operator">+</span> result<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
 
-    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">/*
@@ -1170,7 +1170,7 @@ complains when they do not match. Such a function is prepared in
 <p>Now we can use this <code>equals()</code> function to test our own code by comparing a
 function result to an expected value.</p>
 <p>Remember that one function can be used as an argument when a second function is called. In this instance, the function we are testing would represent our first function, and our <code>equals()</code> function would represent the second, like so...</p>
-<pre class="language-"><code class="lang-js"><span class="token function">equals</span><span class="token punctuation">(</span><span class="token function">myNewFunction</span><span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> etc<span class="token punctuation">)</span><span class="token punctuation">,</span> expectedOutput<span class="token punctuation">)</span>
+<pre class="language-"><code class="lang-js"><span class="token function">equals</span><span class="token punctuation">(</span><span class="token function">myNewFunction</span><span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> etc<span class="token punctuation">)</span><span class="token punctuation">,</span> expectedOutput<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>As you can see in this example, instead of using a number as the first argument to the <code>equals()</code> function, we have used a function instead; the one we wish to test.</p>
 <blockquote>
@@ -1197,7 +1197,7 @@ execute the test, run the following command in your terminal:</p>
 <p>This command runs the test in <code>sum.test.js</code>, which tests the <code>sum()</code> function.
 You can see the test output and the fact that the test passed.</p>
 <p>Tests cases in Jest have the following structure:</p>
-<pre class="language-"><code class="lang-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">&quot;test description&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">&quot;test description&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// Test instructions</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -1405,7 +1405,7 @@ modules and how do their differ from CommonJS?</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 1 - Unit Tests and TDD","level":"1.6.1","depth":2,"next":{"title":"Week 2 - More TDD, ES6","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 1 - Unit Tests and TDD","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 2 - More TDD, ES6","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 3 - Recap","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-1/lesson.md","mtime":"2020-05-07T14:58:56.815Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-07T14:59:41.564Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 1 - Unit Tests and TDD","level":"1.6.1","depth":2,"next":{"title":"Week 2 - More TDD, ES6","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 1 - Unit Tests and TDD","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 2 - More TDD, ES6","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 3 - Recap","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-1/lesson.md","mtime":"2020-05-07T15:16:56.980Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-07T15:17:41.447Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

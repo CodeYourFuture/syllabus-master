@@ -954,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.19" data-path="mentors.md">
+        <li class="chapter " data-level="4.1.19" data-path="mentors.html">
             
-                <span>
+                <a href="mentors.html">
             
                     
                     Databases - Week 1
@@ -1044,16 +1044,18 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="database-1-introduction-to-sql">Database 1: Introduction to SQL</h1>
-<p><strong>What will we learn today?</strong></p>
+<hr>
+<p><strong>Teaching this lesson?</strong></p>
+<p>Read the Mentors Notes <a href="mentors.html">here</a></p>
+<hr>
+<h2 id="what-will-we-learn-today">What will we learn today?</h2>
 <ul>
-<li><p><a href="#introduction-to-databases">Introduction to databases</a></p>
-<ul>
+<li><a href="#introduction-to-databases">Introduction to databases</a><ul>
 <li>Why do we need them?</li>
 <li>Different types of database</li>
 </ul>
 </li>
-<li><p><a href="#introduction-to-postgresql">Introduction to PostgreSQL</a></p>
-<ul>
+<li><a href="#introduction-to-postgresql">Introduction to PostgreSQL</a><ul>
 <li>What is SQL?</li>
 <li>What is a RDBMS?</li>
 <li>What characterises a relational database?</li>
@@ -1061,8 +1063,7 @@
 <li>Check your PostgreSQL installation</li>
 </ul>
 </li>
-<li><p><a href="#communicating-with-the-database-using-sql">Communicating with the database using SQL</a></p>
-<ul>
+<li><a href="#communicating-with-the-database-using-sql">Communicating with the database using SQL</a><ul>
 <li>Creating a new database</li>
 <li>Creating a table</li>
 <li>Inserting data</li>
@@ -1070,9 +1071,9 @@
 <li>Retrieving data with conditions</li>
 </ul>
 </li>
-<li><p><a href="#homework">Homework</a></p>
-</li>
+<li><a href="#homework">Homework</a></li>
 </ul>
+<hr>
 <h2 id="introduction-to-databases">Introduction to databases</h2>
 <p>A database is a structured set of data held in a computer. It provides ways to store, retrieve and organize information.</p>
 <h3 id="why-do-we-need-them">Why do we need them?</h3>
@@ -1114,7 +1115,6 @@
   <img src="combined-diagram.png" display="block" width="60%">
 </p>
 
-
 <h3 id="database-modeling-exercise">Database modeling exercise</h3>
 <p><strong>Scenario:</strong> You&apos;ve been hired to create a database for a new company which wants to revolutionize the hotel booking market. The first task you&apos;ve been given is to model how the company would store its data in a database. Here are your requirements:</p>
 <ul>
@@ -1131,20 +1131,21 @@
 <p>All commands in the following need to be entered in a psql command prompt. However, sometimes it&apos;s easier to write the code in a file and then load the file with psql. For example, if you write your SQL code in a file called <code>test.sql</code>, you can then execute it with <code>psql -d DATABASE_NAME -f test.sql</code>.</p>
 <h3 id="creating-a-new-database">Creating a new database</h3>
 <p>In a terminal, create a new database named <code>cyf_hotels</code> with the following command:</p>
-<pre class="language-"><code>createdb cyf_hotels
-</code></pre><p>Then connect to your database with:</p>
+<pre class="language-"><code class="lang-sql">createdb cyf_hotels
+</code></pre>
+<p>Then connect to your database with:</p>
 <pre class="language-"><code class="lang-sql">psql cyf_hotels
 </code></pre>
 <h3 id="creating-a-table">Creating a table</h3>
 <p>Data are stored in tables. Let&apos;s first create a <code>customers</code> table to hold the details of customers.</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> customers <span class="token punctuation">(</span>
-    id        <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
-    name      <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-    email     <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-    address   <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    city      <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    postcode  <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    country   <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+  id        <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+  name      <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  email     <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  address   <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  city      <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  postcode  <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  country   <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Few things to mention from the SQL statement above:</p>
@@ -1164,11 +1165,11 @@
 </ul>
 <p>Now that we have a table to store <code>customers</code> and a table to store <code>hotels</code>, we can create a table to hold the bookings of customers for an hotel with the checkin date and the number of nights they intend to stay:</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> bookings <span class="token punctuation">(</span>
-    id               <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
-    customer_id      <span class="token keyword">INT</span> <span class="token keyword">REFERENCES</span> customers<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    hotel_id         <span class="token keyword">INT</span> <span class="token keyword">REFERENCES</span> hotels<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    checkin_date     <span class="token keyword">DATE</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-    nights           <span class="token keyword">INT</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+  id               <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+  customer_id      <span class="token keyword">INT</span> <span class="token keyword">REFERENCES</span> customers<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  hotel_id         <span class="token keyword">INT</span> <span class="token keyword">REFERENCES</span> hotels<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  checkin_date     <span class="token keyword">DATE</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  nights           <span class="token keyword">INT</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>In the above, <code>customer_id</code> and <code>hotel_id</code> are called <strong>foreign keys</strong> as they reference an id from a different table. This set a very strong constraint as you will not be able to create a booking for a customer id which does not exist in the customers table!</p>
@@ -1309,7 +1310,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"next":{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},"previous":{"title":"Databases","level":"1.9","depth":1,"path":"db/index.md","ref":"db/index.md","articles":[{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"path":"db/week-1/lesson.md","ref":"db/week-1/lesson.md","articles":[]},{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"path":"db/week-3/lesson.md","ref":"db/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/week-1/lesson.md","mtime":"2020-05-07T14:58:56.791Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-07T14:59:41.564Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"next":{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},"previous":{"title":"Databases","level":"1.9","depth":1,"path":"db/index.md","ref":"db/index.md","articles":[{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"path":"db/week-1/lesson.md","ref":"db/week-1/lesson.md","articles":[]},{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"path":"db/week-3/lesson.md","ref":"db/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/week-1/lesson.md","mtime":"2020-05-07T15:16:56.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-07T15:17:41.447Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
