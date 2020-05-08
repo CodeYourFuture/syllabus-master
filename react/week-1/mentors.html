@@ -1115,7 +1115,26 @@
 <li>Just React.createElement calls with syntax sugar</li>
 </ul>
 </li>
-<li>CRA exercise - can take time as everyone is downloading from npm at the same time</li>
+<li>Installing Create-React-App<ul>
+<li>This should be set as homework ahead of the lesson<ul>
+<li>Saves time waiting for everyone to install</li>
+<li>Also saves CPU cycles on slower computers, which may affect video calls</li>
+</ul>
+</li>
+<li>CRA can consume a lot of resources (especially on older laptops) so emphasize stopping/starting</li>
+<li>This is the first time that students will have encountered a file watcher/daemon background process<ul>
+<li>So take some time to demonstrate how to start and stop the app</li>
+<li>Recommend that students with slower computers stop the app when they are not using it</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Installing <code>stop-runaway-react-effects</code><ul>
+<li>A package to prevent accidental infinite <code>useEffect</code> loops</li>
+<li>It <strong>must</strong> be imported before the <code>react</code> import so that <code>useEffect</code> can be monkey-patched</li>
+<li><a href="https://github.com/kentcdodds/stop-runaway-react-effects" target="_blank">Package docs</a></li>
+</ul>
+</li>
 <li>React components section<ul>
 <li>Originally this was written with class components first<ul>
 <li>However, students went home and googled and saw alternative syntaxes</li>
@@ -1221,7 +1240,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React - Week 1","level":"6.1.13","depth":2,"next":{"title":"React - Week 2","level":"6.1.14","depth":2,"path":"react/week-2/mentors.md","ref":"react/week-2/mentors.md","articles":[]},"previous":{"title":"JavaScript III - Week 3","level":"6.1.12","depth":2,"path":"js-core-3/week-3/mentors.md","ref":"js-core-3/week-3/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-1/mentors.md","mtime":"2020-05-08T12:12:11.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-08T12:13:00.082Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React - Week 1","level":"6.1.13","depth":2,"next":{"title":"React - Week 2","level":"6.1.14","depth":2,"path":"react/week-2/mentors.md","ref":"react/week-2/mentors.md","articles":[]},"previous":{"title":"JavaScript III - Week 3","level":"6.1.12","depth":2,"path":"js-core-3/week-3/mentors.md","ref":"js-core-3/week-3/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-1/mentors.md","mtime":"2020-05-08T12:42:59.325Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-08T12:43:44.849Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
