@@ -1327,6 +1327,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <h2 id="loops">Loops</h2>
 <p>When we&apos;re writing programs, we often find that we want to repeat a bit of code over and over, or repeat it but change something about it each time. To save ourselves from writing all that code, we can use a <strong>loop</strong>. JavaScript has two kinds of loops, a <code>while</code> loop and a <code>for</code> loop.</p>
+<h3 id="while-loop">while loop</h3>
 <p>A <code>while</code> loop is a way to repeat code until some condition is evaluated to <code>false</code>. For example:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1334,7 +1335,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
   i<span class="token operator">++</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<p>Notice the line <strong>i++</strong> - this is the same as saying <strong>i = i + 1</strong> It does exactly the same thing but it is just more convenient to write.</p>
 <p>It&apos;s important that the condition inside the parenthesis becomes false at some point - otherwise, we&apos;ll have what&apos;s known as an infinite loop!</p>
+<h3 id="exercise-10-minutes">Exercise (10 minutes)</h3>
+<p>Write a function that:</p>
+<ul>
+<li>Takes one number <code>n</code> as a parameter</li>
+<li>Adds all numbers from <code>0</code> to <code>n</code>. For example, if the input is <code>3</code>, the output should be <code>0 + 1 + 2 + 3</code></li>
+<li>You should use a while loop</li>
+</ul>
+<h3 id="for-loop">for loop</h3>
 <p>The <code>for</code> loop is similar to a while loop, but with a more specialized syntax. Programmers invented the for loop when they realized they were always doing the same three things: creating loop counter variables (like <code>i</code> above), incrementing them by some amount, and checking that they&apos;re less than a value.</p>
 <p>The <code>for</code> loop syntax has special places for each of those three things. Here&apos;s the same loop as the first while loop above, as a for loop:</p>
 <p><img src="https://user-images.githubusercontent.com/31692/75388870-9213a880-58dd-11ea-90e6-4e67eabf390b.png" alt="For loop"></p>
@@ -1342,27 +1352,27 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token function">someFunction</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="exercise-15-minutes">Exercise (15 minutes)</h3>
-<p>Write two functions that:</p>
+<h3 id="exercise-10-minutes">Exercise (10 minutes)</h3>
+<p>Write a function, similar to the last exercise, that:</p>
 <ul>
-<li>Take one number <code>n</code> as a parameter</li>
-<li>Add all numbers from <code>0</code> to <code>n</code>. For example, if the input is <code>3</code>, the output should be <code>0 + 1 + 2 + 3</code></li>
-<li>The first version of the function should use <code>while</code> and the second one <code>for</code>.</li>
+<li>Takes one number <code>n</code> as a parameter</li>
+<li>Adds all numbers from <code>0</code> to <code>n</code>. For example, if the input is <code>3</code>, the output should be <code>0 + 1 + 2 + 3</code></li>
+<li>You should use an for loop</li>
 </ul>
 <h2 id="arrays">Arrays</h2>
 <p>If you ever find yourself writing code like this...</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> mentor1 <span class="token operator">=</span> <span class="token string">&quot;Daniel&quot;</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> mentor2 <span class="token operator">=</span> <span class="token string">&quot;Irina&quot;</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> mentor3 <span class="token operator">=</span> <span class="token string">&quot;Rares&quot;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> mentor1 <span class="token operator">=</span> <span class="token string">&quot;Daniel&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> mentor2 <span class="token operator">=</span> <span class="token string">&quot;Irina&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> mentor3 <span class="token operator">=</span> <span class="token string">&quot;Rares&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p>...then it&apos;s probably time to use an <strong>array</strong>!</p>
-<p>Arrays are data structures that hold a list of values.</p>
+<p>Arrays are data structures that hold a list of values. We call these values the <strong>elements</strong> of the array.</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">let</span> mentors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Daniel&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Irina&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Rares&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Arrays can hold any type of value (although almost always you only have one data type per array).</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> testScores <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> grades <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;F&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;D&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;A&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> greetings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Hello, how are you?&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hi! Nice to meet you!&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> testScores <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> grades <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;F&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;D&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;A&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> greetings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Hello, how are you?&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hi! Nice to meet you!&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>You can access elements in an array using the <strong>index</strong> of an element with <strong>bracket notation</strong></p>
 <p><strong>&#x1F514; Remember:</strong> All arrays start at position 0! To access the first element in an array, you need to access index <code>0</code>, the second element at <code>1</code>, the fifth at <code>4</code> and so forth. This is called zero-based indexed arrays. There are some <a href="http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html" target="_blank">very intense reasons for this</a>, but most people just accept it and move on.</p>
@@ -1372,7 +1382,7 @@ students<span class="token punctuation">[</span><span class="token number">0</sp
 students<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// &quot;Nahidul&quot;</span>
 </code></pre>
 <p>You can also <em>assign</em> new values to parts of an array:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> students <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Ahmed&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Maria&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Atanas&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Nahidul&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> students <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Ahmed&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Maria&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Atanas&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Nahidul&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 students<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;Bianca&quot;</span><span class="token punctuation">;</span>
 
@@ -1380,25 +1390,19 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre>
 <h3 id="exercise-5-mins">Exercise (5 mins)</h3>
 <p>In the node REPL, enter the following array:</p>
-<pre class="language-"><code class="lang-sh"><span class="token operator">&gt;</span> <span class="token builtin class-name">let</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;banana&apos;</span>, <span class="token string">&apos;apple&apos;</span>, <span class="token string">&apos;strawberry&apos;</span>, <span class="token string">&apos;kiwi&apos;</span>, <span class="token string">&apos;fig&apos;</span>, <span class="token string">&apos;orange&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sh"><span class="token operator">&gt;</span> const fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;banana&apos;</span>, <span class="token string">&apos;apple&apos;</span>, <span class="token string">&apos;strawberry&apos;</span>, <span class="token string">&apos;kiwi&apos;</span>, <span class="token string">&apos;fig&apos;</span>, <span class="token string">&apos;orange&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <ol>
-<li><p>Which index do you need to return:</p>
+<li><p>Now, using the correct indexes, get the following values from the array:</p>
 </li>
 <li><p>strawberry</p>
 </li>
 <li>kiwi</li>
 <li>orange</li>
-<li><p>banana</p>
-</li>
-<li><p>Replace &apos;apple&apos; with &apos;raspberry&apos; and &apos;fig&apos; with &apos;pineapple&apos;</p>
-</li>
+<li>banana</li>
 </ol>
-<h3 id="exercise-10-mins">Exercise (10 mins)</h3>
 <ol>
-<li>Write a function to remove the duplicate elements of a given array and return the new length of the array.
-Sample array: [20, 20, 30, 40, 50, 50, 50]</li>
-<li>After removing the duplicate elements the function should return 4 as the new length of the array.</li>
+<li>Replace &apos;apple&apos; with &apos;raspberry&apos; and &apos;fig&apos; with &apos;pineapple&apos;</li>
 </ol>
 <h3 id="exercise-5-mins">Exercise (5 mins)</h3>
 <p>Complete this function so that, if the second index in the array contains the name &quot;Amy&quot;, it returns <code>&quot;Second index matched!&quot;</code></p>
@@ -1409,12 +1413,51 @@ Sample array: [20, 20, 30, 40, 50, 50, 50]</li>
   <span class="token keyword">return</span> <span class="token string">&quot;Second index not matched&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="exercise-20-mins">Exercise (20 mins)</h3>
+<h3 id="using-for-loops-with-arrays">Using for loops with arrays</h3>
+<p>We can use the power of loops to run some code for each element in our array.</p>
+<p>When we do this say we <strong>iterate</strong> over an array.</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> daysOfWeek <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Monday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Tuesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Wednesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Thursday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Friday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Saturday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Sunday&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> daysOfWeek<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">const</span> dayMessage <span class="token operator">=</span> <span class="token string">&quot;day is: &quot;</span> <span class="token operator">+</span> daysOfWeek<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> indexMessage <span class="token operator">=</span> <span class="token string">&quot;index is: &quot;</span> <span class="token operator">+</span> i<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>indexMessage<span class="token punctuation">,</span> dayMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="exercise-10-mins">Exercise (10 mins)</h3>
+<p>Write a function which takes your <strong>students</strong> array as an input. In the function, use a for loop to <strong>iterate</strong> over the array and print the name of each student to the console.</p>
+<h3 id="exercise---extra-credit-20-mins">Exercise - extra credit (20 mins)</h3>
 <p>In pairs, write a function which squares all numbers in an array and returns the array of squared numbers.</p>
 <p>Write a second function which takes an input of arrays and only returns an array of even numbers.</p>
 <p>How can you combine the two functions to return an array of even and squared numbers?</p>
 <h2 id="extra-exercises">Extra exercises</h2>
 <h3 id="playing-computer-i">Playing computer I</h3>
+<ol>
+<li>Working in pairs or groups, you have to predict the output of this program without executing it.</li>
+<li>What is printed to the console?</li>
+<li>Have you learned anything new during this exercise?</li>
+</ol>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> daysOfWeek <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Monday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Tuesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Wednesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Thursday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Friday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Saturday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Sunday&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">workingDay</span><span class="token punctuation">(</span><span class="token parameter">day</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> day <span class="token operator">+</span> <span class="token string">&quot; is a working day&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">weekendDay</span><span class="token punctuation">(</span><span class="token parameter">day</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> day <span class="token operator">+</span> <span class="token string">&quot; is at the weekend!&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> daysOfWeek<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> d <span class="token operator">=</span> <span class="token function">workingDay</span><span class="token punctuation">(</span>daysOfWeek<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> e <span class="token operator">=</span> <span class="token function">weekendDay</span><span class="token punctuation">(</span>daysOfWeek<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="playing-computer-ii">Playing computer II</h3>
 <ol>
 <li>Working in pairs or groups, you have to predict the output of this program without executing it.</li>
 <li>What is printed to the console?</li>
@@ -1441,7 +1484,7 @@ Sample array: [20, 20, 30, 40, 50, 50, 50]</li>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="playing-computer-ii">Playing computer II</h3>
+<h3 id="playing-computer-iii">Playing computer III</h3>
 <ol>
 <li>Again, working in pairs or groups, you have to predict the output of this program without executing it.</li>
 <li>What is printed to the console?</li>
@@ -1482,6 +1525,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>Assert: to determine whether something is <code>true</code> or not <code>true</code>, more precisely <code>false</code></li>
 <li>Duplicate: exact copies of something (e.g. two or more files, numbers, directory can be exactly the same)</li>
 <li>Index: numbers that let you know an item&apos;s position inside an array</li>
+<li>Element: another name for an item in an array</li>
+<li>Iterate: to repeat some code multiple times, as we do when we use a loop</li>
 <li>REPL: (Read-Eval-Print-Loop) an interactive way to execute code you write inside the console</li>
 <li>Zero-based Index: an <code>array</code> starting at <code>0</code> and not at <code>1</code></li>
 </ul>
@@ -1533,7 +1578,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - Conditionals and Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 3 - More Arrays","level":"1.4.3","depth":2,"path":"js-core-1/week-3/lesson.md","ref":"js-core-1/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core-1/week-1/lesson.md","ref":"js-core-1/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-1/week-2/lesson.md","mtime":"2020-05-08T21:26:28.086Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-08T21:27:15.512Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - Conditionals and Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 3 - More Arrays","level":"1.4.3","depth":2,"path":"js-core-1/week-3/lesson.md","ref":"js-core-1/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core-1/week-1/lesson.md","ref":"js-core-1/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-1/week-2/lesson.md","mtime":"2020-05-09T10:33:12.525Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T10:33:56.792Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
