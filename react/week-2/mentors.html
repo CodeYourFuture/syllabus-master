@@ -1108,28 +1108,23 @@
 <li>Be able to catch an unsuccessful API call, store the error in state and render an error message</li>
 </ul>
 <h2 id="notes-for-mentors">Notes for mentors</h2>
+<h3 id="handling-events">Handling Events</h3>
 <ul>
-<li>Class components section<ul>
-<li>Students often get tripped on converting between functional &amp; class components</li>
-<li>Common problem - <code>render(props)</code> instead of using <code>this.props</code></li>
+<li>Function references vs function calls is a very common source of confusion<ul>
+<li>It is worth recapping again to ensure that students really do understand it</li>
 </ul>
 </li>
-<li>Uses the <code>foo = () =&gt; {}</code> method style<ul>
-<li>For non-React-provided methods (e.g. lifecycle methods)</li>
-<li>Avoids issues with <code>this</code>. Which is a huge pain to explain/understand, so we avoid it</li>
-<li>This syntax isn&apos;t part of the spec yet, but CRA has babel plugin for it</li>
-<li>Ensure that you cover the exception (lifecycle methods)</li>
+<li>Passing event handler function references<ul>
+<li>The concept trips up a lot of students - will try to immediately call the function when passing to an event handler (e.g. <code>onClick={this.foo()})</code></li>
 </ul>
 </li>
 <li>Passing functions as props<ul>
-<li>This isn&apos;t really React specific, except that it&apos;s a common technique in React</li>
-<li>The key is that functions in JS are first-class and can be passed around as values</li>
-<li>This enables the &quot;props down, calls up&quot; pattern</li>
-<li>The concept trips up a lot of students - will try to immediately call the function when passing to an event handler (e.g. <code>onClick={this.foo()})</code></li>
-<li>The console log example is to demonstrate the difference between a function <em>reference</em> and function <em>call</em></li>
+<li>This concept isn&apos;t really that much different from the section above, but passing across components does often confuse students</li>
 </ul>
 </li>
-<li>State section<ul>
+</ul>
+<h3 id="state">State</h3>
+<ul>
 <li>This section takes a bit of a risk - it deliberately shows the wrong way trying to do state, then refactors to fix it</li>
 <li>Before fixing the problem, something to emphasise is the moment when we start using the virtual DOM for the first time<ul>
 <li>When we trigger a manual re-render to <code>ReactDOM.render()</code></li>
@@ -1143,8 +1138,6 @@
 </li>
 <li>Demonstrate the app with multiple counters<ul>
 <li>Shows that each components remembers their own state separate to other components</li>
-</ul>
-</li>
 </ul>
 </li>
 <li>When to use props or state?<ul>
@@ -1161,9 +1154,9 @@
 <h3 id="interactive-example-index">Interactive Example Index</h3>
 <ul>
 <li><a href="https://codesandbox.io/s/7zvk9n1950" target="_blank">Recap</a></li>
-<li><a href="https://codesandbox.io/s/1zmoz1817j" target="_blank">Class Components</a></li>
-<li><a href="https://codesandbox.io/s/13omkro30j" target="_blank">Class Method in React</a></li>
-<li><a href="https://codesandbox.io/s/zqlnmo16y3" target="_blank">Passing Functions as Props</a></li>
+<li><a href="https://jsbin.com/xudukezaje/edit?js,console" target="_blank">Function reference vs function call recap</a></li>
+<li><a href="https://codesandbox.io/s/event-handlers-cc3h7?file=/src/ClickLogger.js" target="_blank">Event Handlers</a></li>
+<li><a href="https://codesandbox.io/s/passing-functions-as-props-zqlnmo16y3?file=/src/ClickLoggerApp.js" target="_blank">Passing Functions as Props</a></li>
 <li><a href="https://codesandbox.io/s/voqzrx5ny" target="_blank">Counter rendering with ReactDOM (not working)</a></li>
 <li><a href="https://codesandbox.io/s/llow115pll" target="_blank">Counter rendering with ReactDOM</a></li>
 <li><a href="https://codesandbox.io/s/pjlro5rop7" target="_blank">Counter (starting refactor)</a></li>
@@ -1221,7 +1214,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React - Week 2","level":"6.1.14","depth":2,"next":{"title":"React - Week 3","level":"6.1.15","depth":2,"path":"react/week-3/mentors.md","ref":"react/week-3/mentors.md","articles":[]},"previous":{"title":"React - Week 1","level":"6.1.13","depth":2,"path":"react/week-1/mentors.md","ref":"react/week-1/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/mentors.md","mtime":"2020-05-10T09:36:46.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-10T09:37:31.138Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React - Week 2","level":"6.1.14","depth":2,"next":{"title":"React - Week 3","level":"6.1.15","depth":2,"path":"react/week-3/mentors.md","ref":"react/week-3/mentors.md","articles":[]},"previous":{"title":"React - Week 1","level":"6.1.13","depth":2,"path":"react/week-1/mentors.md","ref":"react/week-1/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/mentors.md","mtime":"2020-05-10T10:24:43.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-10T10:25:27.752Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
