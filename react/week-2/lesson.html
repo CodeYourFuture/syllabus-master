@@ -1094,6 +1094,10 @@
 <li><a href="#setting-multiple-states">Setting multiple states</a></li>
 </ul>
 </li>
+<li><a href="#fetching-data-in-react">Fetching data in React</a><ul>
+<li><a href="#the-useeffect-hook">The <code>useEffect</code> hook</a></li>
+</ul>
+</li>
 <li><a href="#further-reading">Further Reading</a></li>
 </ul>
 </li>
@@ -1189,7 +1193,7 @@ Open the <code>pokedex</code> React application that you created last week</p>
 <p>Notice how we use a slightly different syntax for the <code>sayHello</code> method than the <code>render</code> method? There is a reason for this, but it is quite complicated and mostly irrelevant. The rule of thumb is to always use this syntax:</p>
 <pre class="language-"><code class="lang-js"><span class="token function-variable function">methodName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token comment">// ...</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>Except</strong> for the <code>render</code> method (and a handful of others which we&apos;ll talk about later).</p>
 <blockquote>
@@ -1267,7 +1271,7 @@ Open the <code>pokedex</code> React application</p>
 </code></pre>
 <p>Note that this example is simplified compared to your <code>pokedex</code> application. To keep the code clean, some parts are split into separate files. In the <code>pokedex</code> application, you&apos;ll find the <code>ReactDOM.render</code> call in <code>index.js</code>.</p>
 <p>This example isn&apos;t very useful yet as it doesn&apos;t do anything when clicking the button. Now let&apos;s listen for clicks on the button and increment the counter (<a href="https://codesandbox.io/s/llow115pll" target="_blank">interactive version</a>):</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
   <span class="token comment">// ...</span>
@@ -1276,7 +1280,7 @@ Open the <code>pokedex</code> React application</p>
   <span class="token comment">// ...</span>
 <span class="token punctuation">}</span>
 
-<span class="token function">renderCounter</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
+<span class="token function">renderCounter</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;click-me&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&apos;click&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   count <span class="token operator">=</span> count <span class="token operator">+</span> <span class="token number">1</span>
@@ -1287,9 +1291,9 @@ document<span class="token punctuation">.</span><span class="token function">get
 <h2 id="state">State</h2>
 <p>Let&apos;s take another look at the the counter example. What if you wanted to create multiple counters on the same page? How would you add another counter?</p>
 <p>You could add some more <code>count</code> global variables:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count1 <span class="token operator">=</span> <span class="token number">0</span>
-<span class="token keyword">let</span> count2 <span class="token operator">=</span> <span class="token number">0</span>
-<span class="token keyword">let</span> count3 <span class="token operator">=</span> <span class="token number">0</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> count2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> count3 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 </code></pre>
 <p>What might be the problem here?</p>
 <ul>
@@ -1494,6 +1498,42 @@ Open the <code>pokedex</code> React application and open the <code>CaughtPokemon
 <span class="token punctuation">}</span>
 </code></pre>
 <p>Notice that as before the initial state to a value inside <code>useState</code> in this case we have <code>0</code> and <code>Oranges</code>, with value <code>0</code> has the same behaviour as the counter example before. With value <code>Oranges</code>, it can turned into the value <code>Apple</code>. Stick to using the same data type, as it is best practice.</p>
+<h2 id="fetching-data-in-react">Fetching data in React</h2>
+<p>Often when you create a React app, you will want to get data from an API, and display it inside your components.
+How do we do this in React? Where does the API call go, and when should we trigger it?</p>
+<p><strong>Where:</strong> Usually in a parent component, at the top of the component tree (see the note about &apos;container&apos; components above). You can then flow the data down into your child components as props.
+<strong>When:</strong> When the component is first loaded into the DOM. We call this &apos;mounting&apos;.
+<strong>How:</strong> With a handy new hook called <code>useEffect</code>.</p>
+<h3 id="the-useeffect-hook">The <code>useEffect</code> hook</h3>
+<p>Just like <code>useState</code>, the <code>useEffect</code> hook is a special function that all function components can import and use as needed. This is the syntax to follow to fetch data when the component is first mounted:</p>
+<pre class="language-"><code class="lang-js"><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Make your API call here</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Don&apos;t forget the empty array here!</span>
+</code></pre>
+<p>And here is a more complete example:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span> <span class="token comment">// remember to import the hook(s) you need!</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">MartianPhotoFetcher</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>marsPhotos<span class="token punctuation">,</span> setMarsPhotos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&amp;api_key=DEMO_KEY</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token function">setMarsPhotos</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      <span class="token comment">// TODO: update this example</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> MartianPhotoFetcher<span class="token punctuation">;</span>
+</code></pre>
+<p>In the code above, we&apos;re saying to React &#x201C;When this component is mounted, call the NASA photos API, and when you receive a response, save it inside of the &apos;marsPhotos&apos; state&#x201D;.</p>
+<p>This is a very common pattern which will come in very useful!</p>
 <h2 id="further-reading">Further Reading</h2>
 <p>What happens if you forget to pass a prop to a component? Or if you pass the wrong type of data to a component? Sometimes React will just render an empty element but sometimes it could throw an error! This is why <code>propTypes</code> are useful. <a href="https://reactjs.org/docs/typechecking-with-proptypes.html" target="_blank">This page on the React documentation</a> describes how to use <code>propTypes</code> in more detail.</p>
 <blockquote>
@@ -1558,7 +1598,7 @@ Complete the FreeCodeCamp <a href="https://learn.freecodecamp.org/front-end-libr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-09T18:20:44.457Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T18:21:27.447Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-10T09:30:45.203Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-10T09:31:34.659Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
