@@ -1534,6 +1534,54 @@ How do we do this in React? Where does the API call go, and when should we trigg
 </code></pre>
 <p>In the code above, we&apos;re saying to React &#x201C;When this component is mounted, call the NASA photos API, and when you receive a response, save it inside of the &apos;marsPhotos&apos; state&#x201D;.</p>
 <p>This is a very common pattern which will come in very useful!</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Exercise</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1. Open the <code>pokedex</code> React application again and open the <code>src/BestPokemon.js</code> file.</td>
+</tr>
+<tr>
+<td style="text-align:left">2. Create a new component called <code>BestPokemonFetcher</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left">3. Change the <code>export default</code> to export <code>BestPokemonFetcher</code> instead of <code>BestPokemon</code>. We <strong>don&apos;t</strong> need to make any changes to the <code>BestPokemon</code> component.</td>
+</tr>
+<tr>
+<td style="text-align:left">4. In the new <code>BestPokemonFetcher</code> component, create a new state variable called <code>pokemon</code> and initialise it to <code>null</code>. <details><summary>Click here if you are stuck.</summary>Look at the State section to see how to create state variables.</details></td>
+</tr>
+<tr>
+<td style="text-align:left">5. If there is no <code>pokemon</code> state (hint: <code>if (!pokemon) {}</code>), then return <code>null</code> so that the component renders nothing.</td>
+</tr>
+<tr>
+<td style="text-align:left">6. If there is some <code>pokemon</code> state (<code>else {}</code>), then render the <code>BestPokemon</code> component and pass the <code>pokemon</code> state variable as the <code>pokemon</code> prop (hint: <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BestPokemon</span> <span class="token attr-name">pokemon</span><span class="token attr-value"><span class="token punctuation">=</span>{pokemon}</span> <span class="token punctuation">/&gt;</span></span></code>).</td>
+</tr>
+<tr>
+<td style="text-align:left">7. Now add a <code>useEffect</code> to the <code>BestPokemonFetcher</code> component. Make sure you remember to add the empty array after the callback function. <details><summary>Click here if you are stuck.</summary>Look at the examples above to see how to add <code>useEffect</code>.</details></td>
+</tr>
+<tr>
+<td style="text-align:left">8. Inside the <code>useEffect</code> callback, call the <code>fetch</code> function with this URL: <code>https://pokeapi.co/api/v2/pokemon/1/</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left">9. Add a <code>.then</code> handler into the <code>fetch</code> function (remember this needs to come immediately after the <code>fetch</code> call) which converts the response from JSON (hint: <code>.then(res =&gt; res.json())</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left">10. Add a second <code>.then</code> handler after the one we just added, where the callback function will receive an argument called <code>data</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left">11. Within the second <code>.then</code> callback function, log out the data that we just received (hint: <code>console.log(data)</code>). Inspect the data in the dev tools console. Can you see any interesting values? (Hint: think about what the <code>BestPokemon</code> component expects as a prop)</td>
+</tr>
+<tr>
+<td style="text-align:left">12. Still within the second <code>.then</code> callback function, update the <code>pokemon</code> state variable. <details><summary>Click here is you are stuck.</summary>:ppl at the State section again to see how to set state variables to new values.</details></td>
+</tr>
+<tr>
+<td style="text-align:left">13. What happens in your browser? Do you understand why? If not, discuss it with another student. If you are both stuck, ask a Teaching Assistant.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="further-reading">Further Reading</h2>
 <p>What happens if you forget to pass a prop to a component? Or if you pass the wrong type of data to a component? Sometimes React will just render an empty element but sometimes it could throw an error! This is why <code>propTypes</code> are useful. <a href="https://reactjs.org/docs/typechecking-with-proptypes.html" target="_blank">This page on the React documentation</a> describes how to use <code>propTypes</code> in more detail.</p>
 <blockquote>
@@ -1598,7 +1646,7 @@ Complete the FreeCodeCamp <a href="https://learn.freecodecamp.org/front-end-libr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-10T09:30:45.203Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-10T09:31:34.659Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-10T09:36:46.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-10T09:37:31.138Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
