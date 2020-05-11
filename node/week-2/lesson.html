@@ -1452,43 +1452,10 @@ well, your app should be up and running.</p>
 <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up" target="_blank">Getting Started on Heroku with Node.js</a></li>
 </ol>
 <h1 id="homework">Homework</h1>
-<ul>
-<li>Deploy to Heroku if you haven&apos;t yet</li>
-<li>Add a route <code>posts/:postid</code> that displays a specific post - Read about route
-parameters on
-<a href="https://expressjs.com/en/guide/routing.html#route-parameters" target="_blank">Express documentation</a><ul>
-<li>When the user clicks on a route in the home page, navigate them to your
-route.</li>
-<li>Amend your JSON structure to have a <strong>postId</strong> that you can use it to
-identify which post we want to display.</li>
-</ul>
-</li>
-<li>Implement the Admin page.<ul>
-<li>Write a posts endpoint that you can hit and that should save to the JSON
-file (use the helper functions we added under <strong>helpers/savePost</strong>)</li>
-<li>Make an AJAX call from the <strong>front end</strong> (the admin page) to your new
-endpoint.</li>
-<li>You might need to use <code>formidable</code> or <code>body-parser</code> middleware to get the
-data on the server.</li>
-</ul>
-</li>
-<li>Consume a posts API built by another colleague (and deployed to Heroku) to
-display their latest blog posts. You can display the posts on any page that
-you see suitable (or add a new page).</li>
-<li>Secure the Admin page so that it&apos;s only visible if a certain query parameter
-is provided<ul>
-<li>Can you go a bit further with adding proper security? Research the internet
-for solutions in <strong>Express.js</strong></li>
-</ul>
-</li>
-</ul>
-<h1 id="resources">Resources</h1>
-<ul>
-<li>Read: <a href="http://callbackhell.com/" target="_blank">Callback hell</a></li>
-<li>Review: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">MDN - Using fetch</a></li>
-<li>Read: <a href="https://stackoverflow.com/a/671132" target="_blank">StackOverFlow answers to What is REST</a></li>
-<li>Read: <a href="http://web.archive.org/web/20130116005443/http://tomayko.com/writings/rest-to-my-wife" target="_blank">How I explained REST to my wife</a></li>
-</ul>
+<p>All of the homework for this week can be found in the Node Homework repository <a href="https://github.com/CodeYourFuture/NodeJS-Homework" target="_blank">here</a> under the Week 2 folder</p>
+<h2 id="submission">Submission</h2>
+<p>You should fork the <a href="https://github.com/CodeYourFuture/NodeJS-Homework" target="_blank">NodeJS-Homework</a> repository, complete all of your work in those folders.</p>
+<p>Make sure you create a branch named <code>[YOUR_NAME]/Week2</code> to separate your work for each week.</p>
 <h1 id="escalation-policy">Escalation policy</h1>
 <p>When you get stuck during the homework you should follow the following:</p>
 <ol>
@@ -1547,7 +1514,7 @@ and we will reply as soon as we can.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - Middleware, Templating and APIs","level":"1.8.2","depth":2,"next":{"title":"Week 3 - Advanced Node","level":"1.8.3","depth":2,"path":"node/week-3/lesson.md","ref":"node/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Node and Express 101","level":"1.8.1","depth":2,"path":"node/week-1/lesson.md","ref":"node/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node/week-2/lesson.md","mtime":"2020-05-11T11:58:57.672Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-11T11:59:42.128Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - Middleware, Templating and APIs","level":"1.8.2","depth":2,"next":{"title":"Week 3 - Advanced Node","level":"1.8.3","depth":2,"path":"node/week-3/lesson.md","ref":"node/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Node and Express 101","level":"1.8.1","depth":2,"path":"node/week-1/lesson.md","ref":"node/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node/week-2/lesson.md","mtime":"2020-05-11T12:00:39.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-11T12:01:24.554Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
