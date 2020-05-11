@@ -1088,16 +1088,18 @@
 <li><a href="#extra-exercises">Extra exercises</a></li>
 </ul>
 <h2 id="learning-objectives">Learning Objectives</h2>
-<p>By the end of this class, you should be able to answer these questions:</p>
+<p>By the end of this class, you should be able to:</p>
 <ul>
 <li>What are expressions and statements (and what&apos;s the difference)?</li>
-<li>What are conditionals?</li>
-<li>What are <code>for</code> and <code>while</code> loops (and what&apos;s the difference)?</li>
-<li>How do you use expressions with conditionals?</li>
-<li>What are comparator operators and how do you use them?</li>
-<li>What are logical operators and how do you use them?</li>
-<li>What functionality does the <code>assert</code> module provide?</li>
-<li>What are arrays and how can you interact with them?</li>
+<li>Define what expressions and statements are and describe the difference</li>
+<li>Define what was a conditional is</li>
+<li>Define what <code>for</code> and <code>while</code> loops are and define the difference</li>
+<li>Write an if statement using a conditional</li>
+<li>Define comparator operators and list the different types</li>
+<li>Use comparator operators in an <code>if</code> statement</li>
+<li>Define what a logical operator is and give examples</li>
+<li>Write functionality that uses the <code>assert</code> module</li>
+<li>Describe what an array is and write code that interacts with them</li>
 </ul>
 <hr>
 <h2 id="expressions">Expressions</h2>
@@ -1425,12 +1427,20 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h3 id="using-for-loops-with-arrays">Using for loops with arrays</h3>
 <p>We can use the power of loops to run some code for each element in our array.</p>
 <p>When we do this say we <strong>iterate</strong> over an array.</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> daysOfWeek <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Monday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Tuesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Wednesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Thursday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Friday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Saturday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Sunday&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> daysOfWeek <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">&quot;Monday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Tuesday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Wednesday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Thursday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Friday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Saturday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Sunday&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> daysOfWeek<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">const</span> dayMessage <span class="token operator">=</span> <span class="token string">&quot;day is: &quot;</span> <span class="token operator">+</span> daysOfWeek<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> indexMessage <span class="token operator">=</span> <span class="token string">&quot;index is: &quot;</span> <span class="token operator">+</span> i<span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>indexMessage<span class="token punctuation">,</span> dayMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> daysOfWeek<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> dayMessage <span class="token operator">=</span> <span class="token string">&quot;day is: &quot;</span> <span class="token operator">+</span> daysOfWeek<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> indexMessage <span class="token operator">=</span> <span class="token string">&quot;index is: &quot;</span> <span class="token operator">+</span> i<span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>indexMessage<span class="token punctuation">,</span> dayMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="exercise-10-mins">Exercise (10 mins)</h3>
@@ -1446,7 +1456,15 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>What is printed to the console?</li>
 <li>Have you learned anything new during this exercise?</li>
 </ol>
-<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> daysOfWeek <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Monday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Tuesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Wednesday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Thursday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Friday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Saturday&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Sunday&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> daysOfWeek <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">&quot;Monday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Tuesday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Wednesday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Thursday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Friday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Saturday&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;Sunday&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 <span class="token keyword">function</span> <span class="token function">workingDay</span><span class="token punctuation">(</span><span class="token parameter">day</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> day <span class="token operator">+</span> <span class="token string">&quot; is a working day&quot;</span><span class="token punctuation">;</span>
@@ -1587,7 +1605,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - Conditionals and Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 3 - More Arrays","level":"1.4.3","depth":2,"path":"js-core-1/week-3/lesson.md","ref":"js-core-1/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core-1/week-1/lesson.md","ref":"js-core-1/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-1/week-2/lesson.md","mtime":"2020-05-11T12:57:21.327Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-11T12:58:13.587Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - Conditionals and Arrays","level":"1.4.2","depth":2,"next":{"title":"Week 3 - More Arrays","level":"1.4.3","depth":2,"path":"js-core-1/week-3/lesson.md","ref":"js-core-1/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Hello JavaScript","level":"1.4.1","depth":2,"path":"js-core-1/week-1/lesson.md","ref":"js-core-1/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-1/week-2/lesson.md","mtime":"2020-05-11T13:08:22.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-11T13:09:08.945Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
