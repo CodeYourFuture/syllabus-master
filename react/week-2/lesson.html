@@ -1279,43 +1279,23 @@ buttonElement<span class="token punctuation">.</span><span class="token function
 </tr>
 </tbody>
 </table>
-<h2 id="reacting-to-changes">Reacting to Changes</h2>
-<p>Now let&apos;s write a more interesting app that responds to some user input. We&apos;ll see how React will take care of updating the DOM for you.</p>
-<p>A counter is a common React example, showing the number of times a button has been clicked. First lets render a button and a counter which set to 0 clicks (<a href="https://codesandbox.io/s/voqzrx5ny" target="_blank">interactive example</a>):</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token function-variable function">Counter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
-    Count<span class="token operator">:</span> <span class="token punctuation">{</span>props<span class="token punctuation">.</span>count<span class="token punctuation">}</span>
-    <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">&quot;click-me&quot;</span><span class="token operator">&gt;</span>Click me<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">renderCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>Counter count<span class="token operator">=</span><span class="token punctuation">{</span>count<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;root&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">renderCounter</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="re-rendering-components">Re-Rendering Components</h2>
+<p>So far we&apos;ve seen that when the page loads, React calls our function components. The JSX elements that are returned from the component functions are turned into the DOM for you by React.</p>
+<p>To be able to react to changes, we need to <em>re-render</em> our function components to get different JSX elements. React can then update the DOM based on the new JSX elements.</p>
+<p>Let&apos;s look at how a component is re-rendered (<a href="https://codesandbox.io/s/force-component-re-rendering-llow115pll?file=/src/Counter.js" target="_blank">interactive version</a>):</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> <span class="token function-variable function">Counter</span> <span class="token operator">=</span> <span class="token parameter">props</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Rendering. props.count is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>props<span class="token punctuation">.</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      Count<span class="token operator">:</span> <span class="token punctuation">{</span>props<span class="token punctuation">.</span>count<span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">&quot;click-me&quot;</span><span class="token operator">&gt;</span>Click me<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Note that this example is simplified compared to your <code>pokedex</code> application. To keep the code clean, some parts are split into separate files. In the <code>pokedex</code> application, you&apos;ll find the <code>ReactDOM.render</code> call in <code>index.js</code>.</p>
-<p>This example isn&apos;t very useful yet as it doesn&apos;t do anything when clicking the button. Now let&apos;s listen for clicks on the button and increment the counter (<a href="https://codesandbox.io/s/llow115pll" target="_blank">interactive version</a>):</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">renderCounter</span><span class="token punctuation">(</span><span class="token parameter">count</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">renderCounter</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;click-me&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&apos;click&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  count <span class="token operator">=</span> count <span class="token operator">+</span> <span class="token number">1</span>
-  <span class="token function">renderCounter</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
-<p>As you can see, the DOM automatically updates when you render. This is an incredibly powerful feature of React. Even better, React will figure out exactly the right bits of the DOM that need to be changed. This makes it extremely efficient and fast. This is concept is called the <a href="https://reactjs.org/docs/faq-internals.html" target="_blank">&quot;virtual DOM&quot;</a>.</p>
+<p>If you look in the console, you&apos;ll see that the component is rendered once when the page loads. <code>props.count</code> starts at 0, so React inserts &quot;Count: 0&quot; into the DOM.</p>
+<p>But when you click the button, the function component is called again (or <em>re-rendered</em>) and this time <code>props.count</code> is <strong>1</strong>. React now <strong>updates</strong> the DOM to make sure it shows the correct number. Every time we click the button, the function component is called and React updates the DOM for us. We don&apos;t need to worry about changing the DOM ourselves!</p>
+<p>This is what makes React so powerful. Even better, React will figure out exactly the right bits of the DOM that need to be changed, a concept called the <a href="https://reactjs.org/docs/faq-internals.html" target="_blank">&quot;virtual DOM&quot;</a>. This makes it extremely efficient and fast.</p>
 <h2 id="state">State</h2>
 <p>Let&apos;s take another look at the the counter example. What if you wanted to create multiple counters on the same page? How would you add another counter?</p>
 <p>You could add some more <code>count</code> global variables:</p>
@@ -1674,7 +1654,7 @@ Complete the FreeCodeCamp <a href="https://learn.freecodecamp.org/front-end-libr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-12T14:53:18.999Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-12T14:54:03.563Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-12T15:14:39.675Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-12T15:15:24.692Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
