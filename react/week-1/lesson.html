@@ -1086,6 +1086,40 @@
 <li><a href="#making-an-argument-for-props">Making an Argument for Props</a></li>
 <li><a href="#what-are-props">What Are Props?</a></li>
 </ul>
+<hr>
+<h2 id="learning-objectives---react-week-1">Learning Objectives - React Week 1</h2>
+<h3 id="creating-an-app">Creating an app</h3>
+<ul>
+<li>Create a React application with create-react-app</li>
+</ul>
+<h3 id="writing-components">Writing components</h3>
+<ul>
+<li>Create a React function component</li>
+<li>Nest components within other components</li>
+<li>Use interpolation (<code>{}</code>) to insert JavaScript expressions into JSX<ul>
+<li>And be able to distinguish between them when reading</li>
+</ul>
+</li>
+<li>Render a list using the <code>.map</code> method</li>
+<li>Render components conditionally<ul>
+<li>Using ternary operator and logical AND (<code>&amp;&amp;</code>)</li>
+</ul>
+</li>
+<li>Can add styles to elements using <code>className</code> (instead of <code>class</code> attribute)</li>
+</ul>
+<h3 id="passing-props">Passing props</h3>
+<ul>
+<li>Pass values to components as React props<ul>
+<li>Receive props in a function component</li>
+<li>Pass functions as props and call them in child components</li>
+</ul>
+</li>
+</ul>
+<h3 id="deployment">Deployment</h3>
+<ul>
+<li>Build and deploy a React application (to Netlify/Now/Heroku/etc)</li>
+</ul>
+<hr>
 <h2 id="what-is-react">What is React?</h2>
 <p>React is a JavaScript library created by Facebook. It is used for making complex, interactive user interfaces. It has become very popular in the last 5 years.</p>
 <p>Why has it become so popular?</p>
@@ -1513,7 +1547,7 @@ Complete the FreeCodeCamp <a href="https://learn.freecodecamp.org/front-end-libr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"next":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"path":"react/week-2/lesson.md","ref":"react/week-2/lesson.md","articles":[]},"previous":{"title":"React","level":"1.7","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"path":"react/week-2/lesson.md","ref":"react/week-2/lesson.md","articles":[]},{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},{"title":"Routing (optional)","level":"1.7.4","depth":2,"path":"react/week-4/lesson.md","ref":"react/week-4/lesson.md","articles":[]},{"title":"Class components (optional)","level":"1.7.5","depth":2,"path":"react/classes-optional/lesson.md","ref":"react/classes-optional/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-1/lesson.md","mtime":"2020-05-11T15:04:59.796Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-11T15:05:47.095Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"next":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"path":"react/week-2/lesson.md","ref":"react/week-2/lesson.md","articles":[]},"previous":{"title":"React","level":"1.7","depth":1,"path":"react/index.md","ref":"react/index.md","articles":[{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"path":"react/week-2/lesson.md","ref":"react/week-2/lesson.md","articles":[]},{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},{"title":"Routing (optional)","level":"1.7.4","depth":2,"path":"react/week-4/lesson.md","ref":"react/week-4/lesson.md","articles":[]},{"title":"Class components (optional)","level":"1.7.5","depth":2,"path":"react/classes-optional/lesson.md","ref":"react/classes-optional/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-1/lesson.md","mtime":"2020-05-12T14:53:18.999Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-12T14:54:03.563Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
