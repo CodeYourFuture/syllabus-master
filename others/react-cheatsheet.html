@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Coding 101 · GitBook</title>
+        <title>React Cheatsheet · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="react-cheatsheet.html" />
+    <link rel="next" href="java.html" />
     
     
-    <link rel="prev" href="../html-css/compile-scss-instructions.html" />
+    <link rel="prev" href="coding-101.html" />
     
 
     </head>
@@ -660,7 +660,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="coding-101.html">
+        <li class="chapter " data-level="3.2" data-path="coding-101.html">
             
                 <a href="coding-101.html">
             
@@ -673,7 +673,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="react-cheatsheet.html">
+        <li class="chapter active" data-level="3.3" data-path="react-cheatsheet.html">
             
                 <a href="react-cheatsheet.html">
             
@@ -1068,7 +1068,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Coding 101</a>
+        <a href=".." >React Cheatsheet</a>
     </h1>
 </div>
 
@@ -1083,201 +1083,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="coding-101">Coding 101</h1>
-<p><img src="https://camo.githubusercontent.com/997591db1749880b8b23c96b8f788e69af09c04d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d64726166742d6461726b7265642e737667" alt="Status: Draft"></p>
-<p><strong>What we will learn today?</strong></p>
-<ul>
-<li>What is a computer program?</li>
-<li>Getting started with JavaScript</li>
-</ul>
-<h2 id="what-is-a-computer-program">What is a computer program</h2>
-<blockquote>
-<p>Intro to programming logic &#x2013; Making a sandwich (Source:
-<a href="http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf" target="_blank">http://static.zerorobotics.mit.edu/docs/team-activities/ProgrammingPeanutButterAndJelly.pdf</a>)</p>
-</blockquote>
-<ol>
-<li>Ask the students what they think a program is at its most basic level<ul>
-<li>Guide, if necessary, towards the idea that its instructions or an action
-etc.</li>
-</ul>
-</li>
-<li>Focus on the idea of instructions:<ul>
-<li>Explain that like with a physical activity - tools and steps are required
-to carry out instructions</li>
-<li>Introduce the group activity of programming the activity of making a
-sandwich</li>
-</ul>
-</li>
-<li>Ask the students what items we will need to make a sandwich:<ul>
-<li>As they shout them out list them on the screen for the whole class to see</li>
-<li>Introduce the concept of objects and classes. Tie into the idea of how in a
-program these would be the &apos;tools&apos; required for an activity and how for our
-sandwich making task the items we have listed previously are our classes</li>
-</ul>
-</li>
-<li>Now that we have all of the tools we need to make a sandwich ask the students
-to shout out what they think the first step or instruction is:<ul>
-<li>Write the instruction out on the screen and ask the students which object
-would be needed to carry out that instruction</li>
-<li>Copy the instruction and place it under the object that the students have
-decided is responsible for it and introduce the idea of methods</li>
-<li>Continue asking the students for instructions and listing them under the
-objects that would be responsible for them (in the case where two objects
-are required to carry out an instruction try and break it down further with
-the students until only one object is responsible for any one instruction &#x2013;
-could be a good way to introduce the idea of how specific you need to be in
-programming and the concepts that are detailed in the source example of
-this exercise)</li>
-</ul>
-</li>
-<li>Once the students are satisfied with the instructions take the best formed
-class and ask the students to come up with a one word summary for each
-instruction that is has. Explain the benefits of well named methods in
-programming and (maybe?) touch on naming conventions.</li>
-</ol>
-<h2 id="getting-started-with-javascript">Getting started with JavaScript</h2>
-<p>We will spend most of this lesson in Codepen. To get started, go to
-<a href="https://codepen.io/pen" target="_blank">https://codepen.io/pen</a> to create a new Pen. On the bottom left,
-click the &quot;Console&quot; button to open the console.</p>
-<p><img src="assets/codepen-console.png" alt="Codepen console"></p>
-<p>You can place your cursor right behind the <code>&gt;</code> sign. Type a simple expression,
-such as <code>2 + 2</code> and hit enter. You will see expression, as well as its result,
-in the window above.</p>
-<p><img src="assets/repl.gif" alt="Entering expressions in the Codepen console"></p>
-<p>You will be able to follow most of this session along just entering expressions
-in the console like this.</p>
-<h2 id="variables-and-assignments">Variables and assignments</h2>
-<p>For an expression or a value to be of any use to us, we need to store it in a
-variable.</p>
-<p>Variables have a name (<em>identifier</em>) that we can use to refer to a value. You
-can assign a value to a variable with the following statement:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-<span class="token operator">^</span>   <span class="token operator">^</span> <span class="token operator">^</span> <span class="token operator">^</span>
-<span class="token operator">|</span>   <span class="token operator">|</span> <span class="token operator">|</span> value
-<span class="token operator">|</span>   <span class="token operator">|</span> assignment operator
-<span class="token operator">|</span>   identifier
-declaration statement
-</code></pre>
-<p>Let&apos;s break this statement down:</p>
-<ul>
-<li><code>var</code>: With the <code>var</code> statement we tell the JavaScript engine that <code>x</code> is now
-a variable</li>
-<li><code>x</code>: The variable name/identifier. It can be short or long, but must not
-contain spaces and must not start with a number.</li>
-<li><code>=</code>: The equal sign is the assigmnent operator</li>
-<li><code>3</code>: The value that we assign to the variable. This can be any number, string
-or boolean, or any more complex data type that we will introduce later. You
-can also use an existing variable here.</li>
-<li><code>;</code>: THe semicolon is not strictly needed, but is generally used to terminate
-a statement.</li>
-</ul>
-<p>Now you can use the identifier instead of the actual value in an expression:</p>
-<p><code>x + x</code>, <code>x * x</code>, <code>console.log(x)</code></p>
-<h2 id="simple-data-types--expressions">Simple data types &amp; Expressions</h2>
-<h3 id="numbers">Numbers</h3>
-<p>Let&apos;s start with something seemingly simple - numbers. Here are some:</p>
-<pre class="language-"><code class="lang-js"><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token number">15</span><span class="token punctuation">;</span>
-<span class="token number">3195803798</span><span class="token punctuation">;</span>
-<span class="token number">1.4</span><span class="token punctuation">;</span>
-<span class="token number">0.0000005</span><span class="token punctuation">;</span>
-<span class="token number">0</span> <span class="token operator">-</span> <span class="token number">23</span><span class="token punctuation">;</span>
-</code></pre>
-<p>You will see that there are whole numbers (no decimal point) and real numbers
-(decimal point), which in JavaScript are so-called &#x201C;floating point&#x201D; numbers.
-Numbers can be positive or negative and they support all the basic math
-operators that you would expect:</p>
-<pre class="language-"><code class="lang-js"><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
-<span class="token number">2</span> <span class="token operator">-</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// -3</span>
-<span class="token number">2</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 6</span>
-<span class="token number">10</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
-<span class="token number">3</span> <span class="token operator">*</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// -6</span>
-</code></pre>
-<p>Operators have the same precedence as in algebra: <code>*</code> and <code>/</code> have higher
-precedence than <code>+</code> and <code>-</code>.</p>
-<ul>
-<li><strong>TODO:</strong> Do math exercise</li>
-<li><strong>TODO:</strong> What about Infinity, Math.PI, IEEE floating point bullshit, NaN</li>
-</ul>
-<h3 id="strings">Strings</h3>
-<p>Strings represent any sort of text. They are delimited by single quotes (<code>&apos;</code>) or
-double quotes (<code>&#x201D;</code>) and can be of any length.</p>
-<pre class="language-"><code class="lang-js"><span class="token string">&apos;&apos;</span> <span class="token comment">// empty string</span>
-<span class="token string">&quot;&quot;</span> <span class="token comment">// empty string</span>
-<span class="token string">&apos;Hello&apos;</span>
-<span class="token string">&apos;I am learning JavaScript&apos;</span>
-<span class="token string">&apos;It\&apos;s been a great journey so far!&apos;</span>
-<span class="token string">&quot;Double quotes work as well&quot;</span>
-</code></pre>
-<blockquote>
-<p>If you need single or double quotes <em>inside the string</em>, you need to &#x201C;escape&#x201D;
-them by putting a backslash in front of them. If you don&apos;t do this, the
-JavaScript engine will think the string ends here, because it encounters a
-quote.</p>
-</blockquote>
-<p>The most common operation on strings is to append one string to another. This is
-called <em>string concatenation</em>. It&apos;s achieved by the plus (<code>+</code>) operator:</p>
-<pre class="language-"><code class="lang-js"><span class="token string">&quot;Hello&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;World&quot;</span> <span class="token comment">// &quot;HelloWorld&quot;</span>
-</code></pre>
-<ul>
-<li><strong>TODO:</strong> Introduce string concatenation</li>
-<li><strong>TODO:</strong> What about basic string functions, like substr, replace etc?</li>
-</ul>
-<h3 id="booleans">Booleans</h3>
-<p><a href="https://en.wikipedia.org/wiki/Boolean_data_type" target="_blank">Booleans</a> are a data type that
-can only have two values: <code>true</code> and <code>false</code>.</p>
-<p>Like numbers, they can be combined using operators, but there are different
-operators for booleans (analoguous to
-<a href="https://en.wikipedia.org/wiki/Boolean_algebra" target="_blank">Boolean algebra</a>). The most
-important ones are:</p>
-<ul>
-<li><code>!</code> (NOT), which negates a value:</li>
-</ul>
-<pre class="language-"><code class="lang-js"><span class="token operator">!</span><span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token operator">!</span><span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-</code></pre>
-<ul>
-<li><code>&amp;&amp;</code> (AND), which is only true if both operands are true:</li>
-</ul>
-<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-</code></pre>
-<ul>
-<li><code>||</code> (OR), which is true if at least one of the operands is true:</li>
-</ul>
-<pre class="language-"><code class="lang-js"><span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-<span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-</code></pre>
-<p><strong>TODO:</strong> When to introduce truthiness and falsiness? Probably in <code>comparisons</code>?</p>
-<hr>
-<blockquote>
-<p><strong>Exercise</strong>: Put simple mathematical expressions into the console: <code>2 * 2</code>,
-<code>2 + 2</code>, <code>5 * 7 - 13</code> &gt; <strong>Exercise</strong>: Calculate the area of a circle (<code>r * r *
-pi</code>). Do a quick Google search on how to use PI in JavaScript.</p>
-<p>See what happens when you &quot;add&quot; two strings together</p>
-<p>Research the JS Math library. sqrt, floor, ceil, round</p>
-<p>Write an expression that outputs the percentage of students who are female.
-Make it so it outputs it as <code>58%</code>, and make sure you use the actual numbers of
-women and the total number of students. Solution: <code>console.log(Math.round(7 /
-17 * 100) + &quot;%&quot;);</code></p>
-</blockquote>
-<h3 id="from-repl-to-consolelog">From REPL to console.log</h3>
-<ul>
-<li>Single expressions are not very useful, you want to write applications</li>
-<li>More than one statement? Move it to the <code>JS</code> box in Codepen</li>
-<li>Now you don&apos;t get any immediate feedback</li>
-<li>Use <code>console.log</code> to print to the console: <code>console.log(3 + 3);</code></li>
-<li>Write statements below each other</li>
-</ul>
-<blockquote>
-<p><strong>THOUGHT:</strong> Codepen does not have a &quot;run&quot; button, so it&apos;s quite intransparent
-when it actually re-runs a program. Maybe a different tool is better? A simple
-jsbin configuration, maybe?</p>
-</blockquote>
+                                <h1 id="react-cheatseat">React Cheatseat</h1>
+<p>This is a temporarily link to the <a href="https://docs.google.com/document/d/1Y2vCGZ6BZu4yix6EaU--67DfRrTbc6n_dwjbJ7n6kz4/edit?usp=sharing" target="_blank">React Cheatsheet on Google Docs</a>.</p>
+<p>This will be added as an inline document in this syllabus once the content has been finalised.</p>
 
                                 
                                 </section>
@@ -1305,12 +1113,12 @@ jsbin configuration, maybe?</p>
 
             
                 
-                <a href="../html-css/compile-scss-instructions.html" class="navigation navigation-prev " aria-label="Previous page: Compiling SCSS">
+                <a href="coding-101.html" class="navigation navigation-prev " aria-label="Previous page: Coding 101">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="react-cheatsheet.html" class="navigation navigation-next " aria-label="Next page: React Cheatsheet">
+                <a href="java.html" class="navigation navigation-next " aria-label="Next page: Java Module">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1321,7 +1129,7 @@ jsbin configuration, maybe?</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Coding 101","level":"3.2","depth":1,"next":{"title":"React Cheatsheet","level":"3.3","depth":1,"path":"others/react-cheatsheet.md","ref":"others/react-cheatsheet.md","articles":[]},"previous":{"title":"Compiling SCSS","level":"3.1","depth":1,"path":"html-css/compile-scss-instructions.md","ref":"html-css/compile-scss-instructions.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/coding-101.md","mtime":"2020-05-16T21:33:41.721Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-16T21:34:25.577Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React Cheatsheet","level":"3.3","depth":1,"next":{"title":"Java Module","level":"4.1","depth":1,"path":"others/java.md","ref":"others/java.md","articles":[]},"previous":{"title":"Coding 101","level":"3.2","depth":1,"path":"others/coding-101.md","ref":"others/coding-101.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/react-cheatsheet.md","mtime":"2020-05-16T21:33:41.721Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-16T21:34:25.577Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
