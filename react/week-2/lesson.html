@@ -1146,27 +1146,29 @@
 </ul>
 <hr>
 <h2 id="recap">Recap</h2>
-<p>Last week we looked at how to write a <code>HelloMentor</code> React component (<a href="https://codesandbox.io/s/7zvk9n1950" target="_blank">interactive example</a>):</p>
+<p>Last week we looked at how to write a <code>HelloMentor</code> React component (<a href="https://codesandbox.io/s/react-2-recap-7zvk9n1950?file=/src/HelloMentor.js" target="_blank">interactive example</a>):</p>
 <pre class="language-"><code class="lang-js"><span class="token comment">// Greeting.js</span>
-<span class="token keyword">const</span> <span class="token function-variable function">Greeting</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>Hello<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">Greeting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>Hello<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token comment">// Mentor.js</span>
-<span class="token keyword">const</span> <span class="token function-variable function">Mentor</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">Mentor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token comment">// index.js</span>
 <span class="token keyword">import</span> Greeting <span class="token keyword">from</span> <span class="token string">&apos;./Greeting&apos;</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> Mentor <span class="token keyword">from</span> <span class="token string">&apos;./Mentor&apos;</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">HelloMentor</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span>Greeting <span class="token operator">/</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span>Mentor name<span class="token operator">=</span><span class="token string">&quot;Ali&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">HelloMentor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Greeting <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Mentor name<span class="token operator">=</span><span class="token string">&quot;Ali&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="handling-events">Handling events</h2>
 <p>So far we have only looked at React apps that are &quot;static&quot;: they don&apos;t respond to user input. This week we will look at making our apps <em>dynamic</em>.</p>
@@ -1236,7 +1238,7 @@ buttonElement<span class="token punctuation">.</span><span class="token function
 <h3 id="passing-functions-as-props">Passing Functions as Props</h3>
 <p>Sometimes we need to pass a function to another component as a prop, so that it can handle the event.</p>
 <p>A common example for this is a Button component. This component adds some styling to a normal <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span></code>, but still needs to be able to pass an event handler function to <code>onClick</code>. Let&apos;s look at an example (<a href="https://codesandbox.io/s/passing-functions-as-props-zqlnmo16y3?file=/src/ClickLoggerApp.js" target="_blank">interactive example</a>):</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> <span class="token function-variable function">ClickLoggerApp</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">ClickLoggerApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">function</span> <span class="token function">logWhenClicked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Button was clicked&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -1247,13 +1249,15 @@ buttonElement<span class="token punctuation">.</span><span class="token function
       <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>Then look <span class="token keyword">in</span> the console<span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">FancyButton</span> <span class="token operator">=</span> <span class="token parameter">props</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">&quot;my-fancy-classname&quot;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>handleClick<span class="token punctuation">}</span><span class="token operator">&gt;</span>
-    Click Me<span class="token operator">!</span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">FancyButton</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">&quot;my-fancy-classname&quot;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>handleClick<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      Click Me<span class="token operator">!</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Notice how this is very similar to the example above where we created the handler and used it in the same component? The only difference here is that we are passing the function reference through a prop. We could even pass it through multiple components as props.</p>
 <table>
@@ -1287,19 +1291,15 @@ buttonElement<span class="token punctuation">.</span><span class="token function
 <p>So far we&apos;ve seen that when the page loads, React calls our function components. The JSX elements that are returned from the component functions are turned into the DOM for you by React.</p>
 <p>To be able to react to changes, we need to <em>re-render</em> our function components to get different JSX elements. React can then update the DOM based on the new JSX elements.</p>
 <p>Let&apos;s look at how a component is re-rendered (<a href="https://codesandbox.io/s/force-component-re-rendering-llow115pll?file=/src/Counter.js" target="_blank">interactive version</a>):</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> <span class="token function-variable function">Counter</span> <span class="token operator">=</span> <span class="token parameter">props</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Rendering. props.count is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>props<span class="token punctuation">.</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
-      Count<span class="token operator">:</span> <span class="token punctuation">{</span>props<span class="token punctuation">.</span>count<span class="token punctuation">}</span>
-      <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">&quot;click-me&quot;</span><span class="token operator">&gt;</span>Click me<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Rendering. props.count is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>props<span class="token punctuation">.</span>likeCount<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">&quot;like-button&quot;</span><span class="token operator">&gt;</span>Likes<span class="token operator">:</span> <span class="token punctuation">{</span>props<span class="token punctuation">.</span>likeCount<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>If you look in the console, you&apos;ll see that the component is rendered once when the page loads. <code>props.count</code> starts at 0, so React inserts &quot;Count: 0&quot; into the DOM.</p>
-<p>But when you click the button, the function component is called again (or <em>re-rendered</em>) and this time <code>props.count</code> is <strong>1</strong>. React now <strong>updates</strong> the DOM to make sure it shows the correct number. Every time we click the button, the function component is called and React updates the DOM for us. We don&apos;t need to worry about changing the DOM ourselves!</p>
-<p>This is what makes React so powerful. Even better, React will figure out exactly the right bits of the DOM that need to be changed, a concept called the <a href="https://reactjs.org/docs/faq-internals.html" target="_blank">&quot;virtual DOM&quot;</a>. This makes it extremely efficient and fast.</p>
+<p>If you look in the console, you&apos;ll see that the component is rendered once when the page loads. <code>props.likeCount</code> starts at 0, so React inserts &quot;Count: 0&quot; into the DOM.</p>
+<p>But when you click the button, the function component is called again (or <em>re-rendered</em>). Don&apos;t worry about <strong>how</strong> this happens right now. This time <code>props.likeCount</code> is <strong>1</strong>. React now <strong>updates</strong> the DOM to make sure it shows the correct number. Every time we click the button, the function component is called and React updates the DOM for us.</p>
+<p>We don&apos;t need to worry about changing the DOM ourselves! This is what makes React so powerful. Even better, React will figure out exactly the right bits of the DOM that need to be changed, a concept called the <a href="https://reactjs.org/docs/faq-internals.html" target="_blank">&quot;virtual DOM&quot;</a>. This makes it extremely efficient and fast.</p>
 <h2 id="state">State</h2>
 <p>Let&apos;s take another look at the the counter example. What if you wanted to create multiple counters on the same page? How would you add another counter?</p>
 <p>You could add some more <code>count</code> global variables:</p>
@@ -1516,16 +1516,16 @@ How do we do this in React? Where does the API call go, and when should we trigg
 <p><strong>Where:</strong> Usually in a parent component, at the top of the component tree (see the note about &apos;container&apos; components above). You can then flow the data down into your child components as props.
 <strong>When:</strong> When the component is first loaded into the DOM. We call this &apos;mounting&apos;.
 <strong>How:</strong> With a handy new hook called <code>useEffect</code>.</p>
-<h3 id="the-useeffect-hook">The <code>useEffect</code> hook</h3>
+<h3 id="the-useeffect-hook">The <code>useEffect</code> Hook</h3>
 <p>Just like <code>useState</code>, the <code>useEffect</code> hook is a special function that all function components can import and use as needed. This is the syntax to follow to fetch data when the component is first mounted:</p>
 <pre class="language-"><code class="lang-js"><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token comment">// Make your API call here</span>
+  <span class="token comment">// Make your fetch API call here</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Don&apos;t forget the empty array here!</span>
 </code></pre>
 <p>And here is a more complete example:</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span> <span class="token comment">// remember to import the hook(s) you need!</span>
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span> <span class="token comment">// remember to import the Hook(s) you need!</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">MartianPhotoFetcher</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">MartianPhotoFetcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>marsPhotos<span class="token punctuation">,</span> setMarsPhotos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -1533,7 +1533,7 @@ How do we do this in React? Where does the API call go, and when should we trigg
       <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token function">setMarsPhotos</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
@@ -1658,7 +1658,7 @@ Complete the FreeCodeCamp <a href="https://learn.freecodecamp.org/front-end-libr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-22T12:48:32.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-22T12:49:18.609Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - Reacting to Changes","level":"1.7.2","depth":2,"next":{"title":"Week 3 - Fetching Data","level":"1.7.3","depth":2,"path":"react/week-3/lesson.md","ref":"react/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - React 101","level":"1.7.1","depth":2,"path":"react/week-1/lesson.md","ref":"react/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/week-2/lesson.md","mtime":"2020-05-24T15:51:48.428Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-24T15:52:32.836Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
