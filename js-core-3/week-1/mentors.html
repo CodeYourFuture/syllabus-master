@@ -1084,6 +1084,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="mentor-notes">Mentor Notes</h1>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://docs.google.com/forms/d/e/1FAIpQLScYHmS7LOfI4ML3z2axEpZd2Zgvbe-9FBB5rsWoqqMcw2u6SA/viewform" target="_blank">Quiz - JS3 Week 1 - 27/05/2020</a><ul>
+<li>Created by London Volunteers and Louise Chow</li>
+</ul>
+</li>
+</ul>
 <h2 id="lesson-aims">Lesson Aims</h2>
 <p>The aim of this lesson is to teach the students the key skills they need to be able to debug their work.</p>
 <p>Each section of the lesson has a <code>Vocabulary</code> section where you should elicit answers from the class there appropriate.</p>
@@ -1111,7 +1118,82 @@
 <p>Please take some time to fully explore the project and what the students are trying to achieve over three weeks.</p>
 <p>The most important message to send is that the students should move at their own pace and <strong>only continue to the next level when they understand the current one</strong>.</p>
 <p>You should walk the students through the setup guide and use the rest of the lesson to make a start on the project in groups.</p>
-<h1 id="to-be-improved">To Be Improved</h1>
+<h3 id="quiz">Quiz</h3>
+<p>You should reserve 10-15 minutes at the end of the lesson to run through the following summative assessment with the students. Have the students answer all the questions in the quiz and submit their answers before leaving for the day.</p>
+<h4 id="solutions">Solutions</h4>
+<ol>
+<li>Possible answers:</li>
+</ol>
+<pre class="language-"><code>- To prevent bugs being released into production and having negative consequences on users - such as with Therac-25.
+- Because finding bugs is harder the more complex the code gets. It is better to test little and often.
+</code></pre><p>2.</p>
+<pre class="language-"><code>A - False: A bug is when the program is not behaving as expected. This can be due to logic problems rather than compile or runtime errors.
+B - False: Rubber ducking is a common method to debug problems and can involve talking through the problem with another person.
+C - True: When your program is not working as expected, start by asking yourself the questions in the debugging framework.
+D - True: Breakpoints are used to pause the execution of code.
+</code></pre><p>3.</p>
+<pre class="language-"><code>To `Step through the code` means to go line-by-line through the code and check what the state of the program is by looking at the values of variables or expressions on that line.
+We use this method when debugging, so that we can pinpoint on which line our program begins to behave unexpectedly.
+</code></pre><p>4.</p>
+<pre class="language-"><code>A - True (Some at least, though not all)
+B - True
+C - False
+D - True
+</code></pre><p>5.</p>
+<pre class="language-"><code>1. Add the word `debugger` into the line of code where you want to pause.
+2. Click on the line you want to pause on in the debugger tool
+</code></pre><p>6.</p>
+<pre class="language-"><code>Line 4
+
+This would be the accompanying code:
+function foo2() {
+    return 1;
+}
+console.log(foo);
+</code></pre><p>7.</p>
+<pre class="language-"><code>1. What did I expect to happen?
+2. Is it actually broken?
+3. What happened instead?
+4. What have I tried so far?
+</code></pre><p>8.</p>
+<pre class="language-"><code>Line 9
+
+Correct code:
+
+var testArray = [&quot;Test&quot;];
+
+function testFunction(testArray) {
+    for (var i = 0; i &lt; testArray.length; i++) {
+        console.log(testArray[i]);
+    }
+}
+
+testFunction(testArray);
+</code></pre><p>9.</p>
+<pre class="language-"><code>If you input a negative amount then your balance with credit. E.g. 100 - (-10) = 110
+
+Solution:
+let accountBalance = 100;
+
+ function withdrawl(amount) {
+
+   if (amount &lt;= 0) {
+     console.log(&quot;Please enter a number greater than zero.&quot;);
+   } else{
+     accountBalance = accountBalance - amount;
+   }
+   console.log(&quot;You have &quot; + accountBalance + &quot; in your bank account.&quot;);
+ }
+
+ // Change the input value below
+ input = -10;
+
+ withdrawl(input);
+</code></pre><p>10.</p>
+<pre class="language-"><code>A syntactical error is an error that is caused when your code does not follow the rules of the language.
+
+Examples are `Unexpected token`, `Illegal character`, `Missing parenthesis`
+</code></pre><h1 id="to-be-improved">To Be Improved</h1>
 <h2 id="from-london-class-6">From London Class 6</h2>
 <ul>
 <li>Could we make exercises that are even harder to enable them to use the tools more</li>
@@ -1165,7 +1247,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript III - Week 1","level":"6.1.10","depth":2,"next":{"title":"JavaScript III - Week 2","level":"6.1.11","depth":2,"path":"js-core-3/week-2/mentors.md","ref":"js-core-3/week-2/mentors.md","articles":[]},"previous":{"title":"JavaScript II - Week 3","level":"6.1.9","depth":2,"path":"js-core-2/week-3/mentors.md","ref":"js-core-2/week-3/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-1/mentors.md","mtime":"2020-05-27T13:19:24.180Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-27T13:20:09.568Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript III - Week 1","level":"6.1.10","depth":2,"next":{"title":"JavaScript III - Week 2","level":"6.1.11","depth":2,"path":"js-core-3/week-2/mentors.md","ref":"js-core-3/week-2/mentors.md","articles":[]},"previous":{"title":"JavaScript II - Week 3","level":"6.1.9","depth":2,"path":"js-core-2/week-3/mentors.md","ref":"js-core-2/week-3/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-1/mentors.md","mtime":"2020-05-27T14:33:01.077Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-27T14:33:49.292Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
