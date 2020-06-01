@@ -1108,6 +1108,16 @@
 <li><a href="#homework">Homework</a></li>
 </ul>
 <hr>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Add and remove columns in a pre-existing table using PostgreSQL using <code>ALTER</code></li>
+<li>Rename tables and columns in a pre-existing table using PostgreSQL using <code>DELETE</code></li>
+<li>Update rows in a pre-existing table using PostgreSQL using <code>UPDATE</code></li>
+<li>Combine tables together using PostgreSQL using <code>INNER JOIN</code></li>
+<li>Connect a PostgreSQL database to a NodeJS application</li>
+<li>Retrieve data from a PostgreSQL database in a NodeJS application</li>
+</ul>
+<hr>
 <h2 id="more-sql">More SQL</h2>
 <p>For the following, use the file <a href="../week-1/cyf_hotels_exercise5.sql"><code>cyf_hotels_exercise5.sql</code></a> from the previous class to reinitialise your database with <code>psql -d cyf_hotels -f cyf_hotels_exercise5.sql</code>.</p>
 <h3 id="changing-the-definition-of-a-table">Changing the definition of a table</h3>
@@ -1128,7 +1138,7 @@
 <ul>
 <li>Add a column <code>date_of_birth</code> of type <code>DATE</code> in the <code>customers</code> table.</li>
 <li>Rename the column <code>date_of_birth</code> to <code>birthdate</code> in the <code>customers</code> table.</li>
-<li>Delete the column <code>birthdate</code> from the <code>customers</code> table.</li>
+<li>Delete the column <code>birthdate</code> from the <code>customers</code> table</li>
 </ul>
 <h3 id="dropping-a-table">Dropping a table</h3>
 <p>To delete the table <code>customers</code>:</p>
@@ -1317,7 +1327,7 @@ app.get(&quot;/hotels&quot;, function(req, res) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"next":{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"path":"db/week-3/lesson.md","ref":"db/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"path":"db/week-1/lesson.md","ref":"db/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/week-2/lesson.md","mtime":"2020-05-31T08:31:17.636Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-31T08:32:06.238Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"next":{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"path":"db/week-3/lesson.md","ref":"db/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"path":"db/week-1/lesson.md","ref":"db/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"db/week-2/lesson.md","mtime":"2020-06-01T09:23:47.167Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T09:24:32.518Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
