@@ -1206,6 +1206,15 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Third action&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<h3 id="exercise-1">Exercise (1)</h3>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> greekGods <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;Aphrodite&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Ares&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Artemis&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Athena&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Poseidon&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Zeus&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// before running the code in your browser, discuss the expected order of each loop</span>
+
+<span class="token comment">// synchronous - loop through the array of greek gods and print the index numbers and values to the console, e.g. &apos;1. Ares&apos;</span>
+
+<span class="token comment">// asynchronous - same as before but the index and the value of the god at position 2 in array should be printed after 2 seconds. Use: setTimeout()</span>
+</code></pre>
 <h3 id="the-callstack">The Callstack</h3>
 <p>How does JavaScript &apos;know&apos; what order its code should be run in?</p>
 <p>JavaScript is a single-threaded language, which means that normally it can handle one task at a time or a piece of code at a time. It orders what it needs to do using something called the <code>call stack</code>.</p>
@@ -1275,7 +1284,7 @@ This allows you to run some other code while you&apos;re waiting for something t
 <span class="token punctuation">}</span>
 <span class="token function">mainFunction</span><span class="token punctuation">(</span>myCallbackFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h4 id="exercise-1">Exercise (1)</h4>
+<h4 id="exercise-2">Exercise (2)</h4>
 <blockquote>
 <ul>
 <li>Using setTimeout, change the background colour of the page after 5 seconds (5000 milliseconds).</li>
@@ -1284,7 +1293,7 @@ This allows you to run some other code while you&apos;re waiting for something t
 <p><img src="http://g.recordit.co/g2EqBccNzh.gif" alt=""></p>
 <p>Complete the exercises in this <a href="https://codepen.io/makanti/pen/abOreLg?editors=1011" target="_blank">CodePen</a></p>
 </blockquote>
-<h4 id="exercise-2">Exercise (2)</h4>
+<h4 id="exercise-3">Exercise (3)</h4>
 <blockquote>
 <p>Complete the exercises in this <a href="https://codepen.io/textbook/pen/MWwMgmW?editors" target="_blank">CodePen</a></p>
 <ul>
@@ -1331,7 +1340,7 @@ This allows you to run some other code while you&apos;re waiting for something t
 <p>The network tab is a useful tool that helps us understand how content is loaded on a website.</p>
 <p>You can view it by <code>Right Click</code> &gt; <code>Inspect</code> &gt; <code>Network</code>.</p>
 <p>Take some time to look at the network tab when we open <a href="https://syllabus.codeyourfuture.io/js-core-2/week-3/lesson.html" target="_blank">this lesson</a>/</p>
-<p>The important parts of the the Network Tab is the</p>
+<p>The important parts of the the Network Tab are:</p>
 <ul>
 <li><a href="https://developers.google.com/web/tools/chrome-devtools/network#load" target="_blank">Network Log</a></li>
 <li>Timeline View</li>
@@ -1360,7 +1369,7 @@ This allows you to run some other code while you&apos;re waiting for something t
 </ul>
 <p><strong>Extra</strong></p>
 <p>Go to your favorite website and take a look at the Network tab. Can you work out what each (or any) of the requests are doing?</p>
-<p>Warning! There will be <strong>alot</strong> of requests made on complicated websites.</p>
+<p>Warning! There will be <strong>a lot</strong> of requests made on complicated websites.</p>
 </blockquote>
 <h4 id="exercise---post-requests">Exercise - POST Requests</h4>
 <blockquote>
@@ -1376,7 +1385,7 @@ This allows you to run some other code while you&apos;re waiting for something t
 </ol>
 <p><strong>Extra</strong></p>
 <ol>
-<li>Did the <code>POST</code> requst succeed?</li>
+<li>Did the <code>POST</code> request succeed?</li>
 <li>Using the Details Panel, can you work out why?</li>
 </ol>
 </blockquote>
@@ -1429,7 +1438,7 @@ This allows you to run some other code while you&apos;re waiting for something t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 3 - Asynchronous and The Web","level":"1.5.3","depth":2,"next":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 3 - Scope and ES6","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"previous":{"title":"Week 2 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-3/lesson.md","mtime":"2020-06-04T16:20:09.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-04T16:20:56.388Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 3 - Asynchronous and The Web","level":"1.5.3","depth":2,"next":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 3 - Scope and ES6","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"previous":{"title":"Week 2 - JS in the Browser","level":"1.5.2","depth":2,"path":"js-core-2/week-2/lesson.md","ref":"js-core-2/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-2/week-3/lesson.md","mtime":"2020-06-04T17:11:45.368Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-04T17:12:33.493Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
