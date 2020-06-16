@@ -1413,73 +1413,18 @@ These are the errors:
 <h3 id="exercise-2">Exercise 2</h3>
 <p>In your groups we want you to go through this program and find all of the bugs that are happening in this code.</p>
 <p>You can find the project <a href="https://github.com/CodeYourFuture/syllabus/tree/london/js-core-3/week-1/debugging-code" target="_blank">here</a></p>
-<h2 id="2-project-work">2. Project Work</h2>
-<h3 id="explanation">Explanation</h3>
+<h2 id="quiz-10---15-minutes">Quiz (10 - 15 minutes)</h2>
+<p>You can complete this quiz on Google Forms <a href="https://docs.google.com/forms/d/e/1FAIpQLScYHmS7LOfI4ML3z2axEpZd2Zgvbe-9FBB5rsWoqqMcw2u6SA/viewform" target="_blank">here</a></p>
+<h1 id="2-project-work">2. Project Work</h1>
+<p>The project work should take between 60 and 90 minutes to give an overview and get everyone setup.</p>
+<h2 id="explanation">Explanation</h2>
 <p>Over the next three weeks we&apos;re going to be building a website that will consolidate all of your knowledge so far in the course.</p>
 <p>You can find the project <a href="https://github.com/CodeYourFuture/syllabus/tree/london/js-core-3/tv-show-dom-project" target="_blank">here</a></p>
-<h3 id="getting-setup">Getting Setup</h3>
+<h2 id="getting-setup">Getting Setup</h2>
 <p>In your groups you should get the project setup using the exact instructions found <a href="https://github.com/CodeYourFuture/syllabus/tree/london/js-core-3/tv-show-dom-project/getting-started.md" target="_blank">here</a>. Make sure you use your Teaching Assistants to help you!</p>
 <h1 id="homework">Homework</h1>
 <ol>
 <li><a href="https://github.com/CodeYourFuture/js-exercises" target="_blank">The repo</a> contains few challenges - solve all the pending exercises in <code>week-7</code>.</li>
-</ol>
-<h2 id="quiz-10---15-minutes">Quiz (10 - 15 minutes)</h2>
-<p>You can complete this quiz on Google Forms <a href="https://docs.google.com/forms/d/e/1FAIpQLScYHmS7LOfI4ML3z2axEpZd2Zgvbe-9FBB5rsWoqqMcw2u6SA/viewform" target="_blank">here</a></p>
-<ol>
-<li>Give one reason why it is important to find bugs as soon as possible when developing code.</li>
-<li>Select which of the following statements about the debugging are<strong>TRUE</strong>.</li>
-</ol>
-<pre class="language-"><code>    A) If there are no errors in the console, then there are no bugs.
-    B) Debugging only involves the person who wrote the code.
-    C) You use the debugging framework when your code is not behaving as expected.
-    D) Debuggers allow you to pause the execution of code.
-</code></pre><ol>
-<li>What does the phrase to <code>Step through the code</code> mean? Why do we <code>step through code</code> as part of debugging?</li>
-<li>Which of the following types of errors can a linting tool help to detect?</li>
-</ol>
-<pre class="language-"><code>    A) Logic errors
-    B) Reference errors
-    C) User errors
-    D) Syntax errors
-</code></pre><ol>
-<li>What are the two ways you can set a breakpoint in the Chrome debugger?</li>
-<li>You see the following error thrown the in console. Which line is the error coming from?</li>
-</ol>
-<pre class="language-"><code>    Uncaught ReferenceError: foo is not defined
-        at <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>anonymous</span><span class="token punctuation">&gt;</span></span>:4:17
-</code></pre><ol>
-<li>What are the four questions you ask yourself as part of the debugging framework?</li>
-<li>Use <code>console.log</code> to debug the following program. Which line has the error on it? How would you fix it?</li>
-</ol>
-<pre class="language-"><code>    1   var testArray = [&quot;Test&quot;];
-    2
-    3   function testFunction(testArray) {
-    4       for (var i = 0; i &lt; testArray.length; i++) {
-    5           console.log(testArray[i]);
-    6       }
-    7   }
-    8
-    9   testFunction();
-</code></pre><ol>
-<li>You have the following ATM code that withdraws money from a user account. You have gotten reports that people using <code>withdraw</code> to add money to their account!<ul>
-<li>How are they doing this?</li>
-<li>What would you change in this code to prevent them from doing this?</li>
-</ul>
-</li>
-</ol>
-<pre class="language-"><code>    1    let accountBalance = 100;
-    2
-    3    function withdraw(amount) {
-    4        accountBalance = accountBalance - amount;
-    5        console.log(&quot;You have &quot; + accountBalance + &quot; in your bank account&quot;);
-    6    }
-    7
-    8    // Users can change the value of the input variable.
-    9    input = 10;
-    10
-    11   withdraw(input);
-</code></pre><ol>
-<li>What is a syntactical error? Give an example of a syntactical error that you&apos;ve seen in Javascript.</li>
 </ol>
 
                                 
@@ -1524,7 +1469,7 @@ These are the errors:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"next":{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 3 - Scope and ES6","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-1/lesson.md","mtime":"2020-06-11T09:02:32.860Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-11T09:03:19.866Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"next":{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},"previous":{"title":"JavaScript III","level":"1.6","depth":1,"path":"js-core-3/index.md","ref":"js-core-3/index.md","articles":[{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"path":"js-core-3/week-2/lesson.md","ref":"js-core-3/week-2/lesson.md","articles":[]},{"title":"Week 3 - Scope and ES6","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-1/lesson.md","mtime":"2020-06-16T15:20:29.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-16T15:21:14.536Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
