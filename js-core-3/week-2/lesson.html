@@ -1249,14 +1249,14 @@
 </ol>
 <h2 id="2-how-the-web-works---quick-recap">2. How the web works - quick recap</h2>
 <p>In this session we will look at how computer talk to each other using the web.</p>
-<p>At the core of the web is the URL, which stands for Uniform Resource Locator. We use the term resource to mean anything that a server might return such as webpage, CSS, JavaScript, image, data etc. A good way to think of a URL is as an address. It allows us to refer to webpages, images, data etc that is stored on servers elsewhere.</p>
+<p>At the core of the web is the URL, which stands for Uniform Resource Locator. We use the term resource to mean anything that a server might return such as webpage, CSS, JavaScript, image, data etc. A good way to think of a URL is as an address. It allows us to refer to webpages, images, data etc. that is stored on servers elsewhere.</p>
 <h3 id="methods">Methods</h3>
 <p>The main methods used to send requests on the web are <code>GET</code> and <code>POST</code>. However, later in the course when we look at building APIs using Node we will also look at other methods such as <code>PUT</code>, <code>PATCH</code> and <code>DELETE</code>.</p>
 <p>A <code>GET</code> method is a way of asking a server for a webpage, resource or a piece of data. For example, when we type a URL into a browser and submit it. The browser will send a <code>GET</code> request.</p>
 <p>A <code>POST</code> method is used to send data to a server.</p>
 <p>The main difference between <code>GET</code> and <code>POST</code> is that a <code>POST</code> method has a body, that is it can contain some data that we are sending. Whereas a <code>GET</code> does not have a body since we use it to request data.</p>
 <h3 id="headers">Headers</h3>
-<p>Each request and response sent has meta data, information about the data, at the beginning called a <code>header</code>. The <code>header</code> contains information such as a</p>
+<p>Each HTTP request and response sent has metadata, information about the data, at the beginning called a <code>header</code>. The <code>header</code> contains information such as a:</p>
 <ul>
 <li>status code indicating whether a request was successful</li>
 <li>content type which indicates what the request or response contains</li>
@@ -1319,7 +1319,7 @@
 <p>An API is a special type of program what acts as a <strong>gatekeeper</strong> to all of this information. Having an API means that I can control which information is shared about my users and who it is shared with. Perfect!</p>
 <h4 id="types-of-apis">Types of APIs:</h4>
 <ul>
-<li>Private: for employees only under a company network for internal use.</li>
+<li>Internal: for other development teams within an organisation to consume (e.g. microservices).</li>
 <li>Semi-private: for clients who paid for the API.</li>
 <li>Public: for everyone on the web (but may or may not need an account to use).</li>
 </ul>
@@ -1329,7 +1329,7 @@
 <p>The data from this endpoint will be used by many apps that you use every day - Google Maps and Citymapper to name two.</p>
 <p>This endpoint will get location of all of the Bikepoints in London.</p>
 <p><a href="https://api.tfl.gov.uk/BikePoint" target="_blank">https://api.tfl.gov.uk/BikePoint</a></p>
-<p>That&apos;s a lot of Bikes! It would be better if we could search for a location. Luckily this API let&apos;s us search for places.</p>
+<p>That&apos;s a lot of bikes! It would be better if we could search for a location. Luckily this API let&apos;s us search for places.</p>
 <p><a href="https://api.tfl.gov.uk/BikePoint/Search?query=Clerkenwell" target="_blank">https://api.tfl.gov.uk/BikePoint/Search?query=Clerkenwell</a></p>
 <p>This API also has lots of other endpoints that we can use to get other data. For example, lets find the Air Quality of London.</p>
 <p><a href="https://api.tfl.gov.uk/AirQuality" target="_blank">https://api.tfl.gov.uk/AirQuality</a></p>
@@ -1349,7 +1349,7 @@ Hint: Use your browser to access the endpoints
 <pre class="language-"><code>Which of the following statements below about APIs is false?
 
 A) Public APIs can be accessed by anyone on the Internet.
-B) You must use Javascript to access an API.
+B) You must use JavaScript to access an API.
 C) APIs can control access to data or features of an application.
 D) You can change data via an API.
 </code></pre><p><strong>Question:</strong></p>
@@ -1360,7 +1360,7 @@ http://www.google.com/**myapi**/
 </code></pre><h2 id="4-how-to-use-fetch-to-do-network-requests">4. How to use <code>fetch</code> to do network requests</h2>
 <h3 id="explanation">Explanation</h3>
 <ul>
-<li>Fetch is a function to request from other places on the web</li>
+<li>Fetch is a function to request resources from other places on the web (using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank">HTTP</a> protocol)</li>
 <li>Fetch is defined in the browser which means it can be used without using an external library (<code>window.fetch</code>)</li>
 <li>Fetch is available in nearly all browser but it&apos;s good to check which ones it won&apos;t work in<ul>
 <li>We can use this website to help us - <a href="https://caniuse.com/#feat=fetch" target="_blank">caniuse.com</a>)</li>
@@ -1572,6 +1572,25 @@ Fetch is a web API that allows you to **\_** from **\_**.
 <ol>
 <li><a href="https://github.com/CodeYourFuture/js-exercises" target="_blank">The repo</a> contains few challenges - solve all the pending exercises in <code>week-8</code>.</li>
 </ol>
+<h2 id="quiz-10---15-minutes">Quiz (10 - 15 minutes)</h2>
+<ol>
+<li>What does API stand for?</li>
+<li>Give an example of a semi-private API and a public API</li>
+<li>What is the difference between a GET and a POST request?</li>
+<li>How might you add a new <code>h1</code> tag containing a string obtained from an API onto your webpage?
+Assume that the <code>content</code> variable defines the obtained string, and the <code>container</code> variable holds the DOM node that is to be inserted into.</li>
+<li>What is the difference between <code>window.onload</code> and <code>document.onload</code>?</li>
+<li>What does <code>fetch</code> return when called?</li>
+<li>When are the functions in the <code>then</code> and <code>catch</code> methods of a promise executed?</li>
+<li>What are two useful bits of information the header of an HTTP response contain?</li>
+<li>What do the following error codes mean?<ol>
+<li>200</li>
+<li>201</li>
+<li>404</li>
+</ol>
+</li>
+<li>What should you do if you receive a 429 status code from an API during development? How might you resolve this?</li>
+</ol>
 
                                 
                                 </section>
@@ -1615,7 +1634,7 @@ Fetch is a web API that allows you to **\_** from **\_**.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"next":{"title":"Week 3 - Scope and ES6","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-2/lesson.md","mtime":"2020-06-25T18:51:00.264Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-25T18:51:56.939Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - APIs and Fetch","level":"1.6.2","depth":2,"next":{"title":"Week 3 - Scope and ES6","level":"1.6.3","depth":2,"path":"js-core-3/week-3/lesson.md","ref":"js-core-3/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Debugging","level":"1.6.1","depth":2,"path":"js-core-3/week-1/lesson.md","ref":"js-core-3/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-2/lesson.md","mtime":"2020-06-25T22:40:39.353Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-25T22:41:23.995Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

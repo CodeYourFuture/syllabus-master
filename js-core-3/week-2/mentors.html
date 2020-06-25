@@ -1243,6 +1243,30 @@
 <h4 id="exercise-1">Exercise 1</h4>
 <p>A completed example of this exercise can be found <a href="https://codeyourfuture.github.io/syllabus-london/js-core-3/week-2/js-core-3/week-1/completed_country_website" target="_blank">here</a></p>
 <h2 id="to-be-improved">To Be Improved</h2>
+<h2 id="quiz-answers">Quiz Answers</h2>
+<ol>
+<li>Application Programming Interface</li>
+<li>Semi-private examples: Facebook, Twitter, Fitbit. Public examples: TFL, anything not requiring <code>auth</code> here: <a href="https://github.com/public-apis/public-apis" target="_blank">https://github.com/public-apis/public-apis</a></li>
+<li><code>GET</code> request typically reads data from the API server, whereas <code>POST</code> request typically creates or modifies data</li>
+<li>Something like:</li>
+</ol>
+<pre class="language-"><code>const h1Element = document.createElement(&apos;h1&apos;);
+h1Element.innerText = content;
+container.appendChild(h1Element);
+</code></pre><p>N.B: innerHTML can be accepted but should be discouraged due to security considerations (i.e. sanitisation of API payload required first)</p>
+<ol>
+<li><code>document.onload</code> fires whenever the DOM tree is ready, whereas <code>window.onload</code> is fired whenever the entire page loads, including external content (images, CSS, scripts etc.)</li>
+<li>A Promise</li>
+<li>The <code>then</code> function is executed whenever the asynchronous request completes successfully; the <code>catch</code> function is executed if an error arises during the request</li>
+<li>The HTTP status code, and the <code>content-type</code></li>
+<li><ol>
+<li>Ok</li>
+<li>Created
+3: Resource not found</li>
+</ol>
+</li>
+<li>429 means that you have sent too many request to the server. The header may include a <code>Retry-After</code> field, indicating how long to wait before it will service that request.</li>
+</ol>
 
                                 
                                 </section>
@@ -1286,7 +1310,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript III - Week 2","level":"6.1.11","depth":2,"next":{"title":"JavaScript III - Week 3","level":"6.1.12","depth":2,"path":"js-core-3/week-3/mentors.md","ref":"js-core-3/week-3/mentors.md","articles":[]},"previous":{"title":"JavaScript III - Week 1","level":"6.1.10","depth":2,"path":"js-core-3/week-1/mentors.md","ref":"js-core-3/week-1/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-2/mentors.md","mtime":"2020-06-25T18:51:00.264Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-25T18:51:56.939Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript III - Week 2","level":"6.1.11","depth":2,"next":{"title":"JavaScript III - Week 3","level":"6.1.12","depth":2,"path":"js-core-3/week-3/mentors.md","ref":"js-core-3/week-3/mentors.md","articles":[]},"previous":{"title":"JavaScript III - Week 1","level":"6.1.10","depth":2,"path":"js-core-3/week-1/mentors.md","ref":"js-core-3/week-1/mentors.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js-core-3/week-2/mentors.md","mtime":"2020-06-25T22:40:39.353Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-25T22:41:23.995Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
