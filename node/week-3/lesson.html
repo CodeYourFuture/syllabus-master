@@ -1218,103 +1218,84 @@
 <p><strong>Teaching this lesson?</strong></p>
 <p>Read the Mentors Notes <a href="mentors.html">here</a></p>
 <hr>
-<h2 id="contents">Contents</h2>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson students should be able to:</p>
 <ul>
-<li><a href="#node-recap">Node Recap</a></li>
-<li><a href="#best-practices">Best Practices</a></li>
-<li><a href="#node-process-managers">Node Process Managers</a></li>
-<li><a href="#rest">REST</a></li>
-<li><a href="#security">Security</a></li>
-<li><a href="#authentication">Authentication</a></li>
-<li><a href="#hotel-workshop">Hotel Workshop</a></li>
+<li>Process an PUT request using Express and Node to update data in memory</li>
+<li>Upload their node app to the internet so it can be accessed anywhere using Heroku</li>
 </ul>
 <hr>
-<h2 id="node-recap">Node Recap</h2>
-<p>Javascript has evolved from the browser to be used in the backend. It does not need a framework as we saw in <a href="../week-13/lesson.md">week-13</a>, however a framework like Express allows us to develop faster.</p>
-<h3 id="documentation">Documentation</h3>
-<p>When you are working with frameworks it is always helpful to use their documentation.</p>
+<h2 id="crud-review">CRUD Review</h2>
+<h2 id="exercises">Exercises</h2>
+<p>So what will we build? we will build a <strong>CRUD</strong> API. CRUD stands for Create, Retrieve, Update, Delete. If you think about it, this is what most applications do:</p>
 <ul>
-<li><a href="https://expressjs.com" target="_blank">Express Documentation</a></li>
-<li><a href="https://nodejs.org/api/http.html" target="_blank">Node.js Documentation</a></li>
+<li>Create some &quot;resources&quot;</li>
+<li>Retrieve them (GET them)</li>
+<li>Update them</li>
+<li>Delete them</li>
 </ul>
-<h3 id="middleware">Middleware</h3>
-<p>Middleware allow us to process requests to add functionalities that are not built in to Express, for example logging, authentication, etc.</p>
 <blockquote>
-<ul>
-<li>Express Documentation: <a href="https://expressjs.com/en/guide/using-middleware.html" target="_blank">Using Middleware</a></li>
-<li>Video: <a href="https://www.youtube.com/watch?v=vKlybue_yMQ" target="_blank">body-parser</a> which makes it easier to work with POST requests and forms.</li>
-</ul>
+<p>Which of these have we learnt so far?</p>
 </blockquote>
-<h3 id="routing">Routing</h3>
-<p>Routing refers to how an application&#x2019;s endpoints (URIs) respond to the client requests. These are configured differently for each framework, and can range from basic configuration to very extensive for more complex use cases.</p>
-<p>Simple example</p>
-<pre class="language-"><code class="lang-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;hello world&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="1-using-update-exercise">(1) Using Update exercise</h2>
+<p>This is an Teacher led exercise which can be used to show how we might retrieve an element by ID using a GET request.</p>
+<h3 id="objective">Objective</h3>
+<p>Change a quote API server to allow updating a quote according to the given ID.</p>
+<p>The route should use the HTTP method PUT and should use the URL:</p>
+<blockquote>
+<p>/quotes</p>
+</blockquote>
+<p>You should use the starting project: <a href="https://glitch.com/~cyf-quotes-id-start" target="_blank">cyf-quotes-id-start</a>. This is because this project has quotes with IDs.</p>
+<p>When you remix the starting project, immediately rename it as your own.</p>
+<h2 id="updating-data">Updating Data</h2>
+<p><strong>Complete in-class (1) Using Update exercise at this point</strong></p>
+<p>Lets look back at our original objectives.</p>
+<blockquote>
+<p><code>PUT /albums/:albumId</code> should update the album (that matches the passed albumId)</p>
+</blockquote>
+<p>This means that <code>PUT /albums/2</code> should update an album with the id <code>2</code> and return <code>200</code> with JSON <code>{ success: true }</code> to the user.</p>
+<p>The code will look like this</p>
+<pre class="language-"><code class="lang-js"><span class="token comment">// notice .put</span>
+app<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;/albums/:albumID&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;PUT /albums route&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>More complicated example using <code>Passport.js</code> middleware for authentication</p>
-<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">ensureAuthenticated</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">else</span> res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">&quot;/login&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/account&quot;</span><span class="token punctuation">,</span> ensureAuthenticated<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;welcome user!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<blockquote>
+<p>Remember, you have got to <strong>update</strong> the album, not add it to the list</p>
+<h2 id="heroku">Heroku</h2>
+<p>We use can use Heroku to host our APIs online (similar in the way you might have used Netlify in the past).</p>
+<p>This can be a little tricky however the documentation is good.</p>
+<p><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" target="_blank">https://devcenter.heroku.com/articles/getting-started-with-nodejs</a></p>
+<p>Work in pairs and with Teaching Assistants to get your homework from the previous two weeks working online.</p>
+<p>You should complete all of the following sections:</p>
 <ul>
-<li>Express Documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Routing</a></li>
+<li>Introduction</li>
+<li>Set up</li>
+<li>Deploy the app</li>
+<li>View logs</li>
+<li>Define a Procfile</li>
+<li>Run the app locally</li>
 </ul>
-</blockquote>
-<h2 id="best-practices">Best Practices</h2>
-<p>Express have their own recommended <a href="https://expressjs.com/en/advanced/best-practice-performance.html" target="_blank">best practices page</a></p>
-<h2 id="node-process-managers">Node Process Managers</h2>
-<p>These process managers monitor for any changes in your node.js application and automatically restart the server, perfect for development and production.</p>
-<blockquote>
-<p>Popular PMs include:</p>
-<ul>
-<li><a href="http://nodemon.io/" target="_blank">nodemon</a></li>
-<li><a href="https://expressjs.com/en/advanced/pm.html#pm2" target="_blank">pm2</a></li>
+<p>Now when you use</p>
+<pre class="language-"><code>git push heroku master
+</code></pre><p>After making a <code>commit</code> your updated website with my made available online.</p>
+<h2 id="city-guide-and-paired-programming">City Guide and Paired Programming</h2>
+<p>In this exercises you should split into groups of two people.</p>
+<p>You can find the <a href="https://github.com/CodeYourFuture/cyf-node-challenges/tree/master/challenge-london-mini-guide" target="_blank">challenge</a> here.</p>
+<h3 id="rules">Rules</h3>
+<ol>
+<li>One of you will be leading on building the React (Server) application</li>
+<li>One of you will be leading on building the Node.js (Client) Application</li>
+<li>It is <strong>very important</strong> that you do not move onto the next level of the challenge until <strong>both</strong> of you have completed the level.<ul>
+<li>e.g. Both of you have to finish Level 100 before continuing onto Level 200.</li>
+<li>If one of you gets stuck - help each other!</li>
 </ul>
-</blockquote>
-<h2 id="rest">REST</h2>
-<p>REST is a convention of how to design your API, whether it is for your own frontend, or other frontends and clients.</p>
-<blockquote>
-<ul>
-<li>Read: Resource naming in <a href="http://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank">REST</a> convention</li>
-</ul>
-</blockquote>
-<h2 id="security">Security</h2>
-<p>When you take your website to production there is a whole range of things to consider.</p>
-<p><img src="../assets/http-vs-https.png" alt="HTTP vs HTTPS"></p>
-<p>Node has built in support for HTTPS, and once you have your own certificates you can use this feature. However sometimes when you deploy to <code>cloud</code> Platform Platform as a Service (PaaS) providers such as Heroku, they provide SSL and configure it for you automatically.</p>
-<blockquote>
-<ul>
-<li>Read: <a href="https://nodejs.org/api/https.html" target="_blank">Node: HTTPS</a></li>
-<li>Read/Watch: <a href="https://www.globalsign.com/en/ssl-information-center/what-is-an-ssl-certificate/" target="_blank">What is an SSL Certificate?</a></li>
-<li>Read: <a href="https://devcenter.heroku.com/articles/ssl" target="_blank">Heroku SSL</a></li>
-</ul>
-</blockquote>
-<h2 id="authentication">Authentication</h2>
-<p>Sometimes you need to add user functionality for your website. To do this you can make use of external libraries like <a href="www.passportjs.org">passport</a> to add authentication to your website.</p>
-<blockquote>
-<p>For more information read:</p>
-<ul>
-<li><a href="https://tools.ietf.org/html/rfc6750" target="_blank">OAuth 2.0 Authorization Framework: Bearer Token Usage</a></li>
-<li><a href="https://github.com/jaredhanson/passport-http-bearer" target="_blank">Bearer Strategy</a></li>
-</ul>
-</blockquote>
-<h2 id="hotel-workshop">Hotel Workshop</h2>
-<p>Get in to groups of 3/4 and checkout the <a href="workshop.html">workshop brief</a>.</p>
-<blockquote>
-<p><strong>Exercise</strong>: Please fork and clone <a href="https://github.com/CodeYourFuture/cyf-hotel" target="_blank">CYF-Hotel</a> repository and follow the exercises in the <code>README.MD</code>.</p>
-</blockquote>
+</li>
+</ol>
 <h1 id="homework">Homework</h1>
 <p>All of the homework for this week can be found in the Node Homework repository <a href="https://github.com/CodeYourFuture/NodeJS-Homework" target="_blank">here</a> under the Week 3 folder</p>
 <h2 id="submission">Submission</h2>
-<p>You should fork the <a href="https://github.com/CodeYourFuture/NodeJS-Homework" target="_blank">NodeJS-Homework</a> repository, complete all of your work in those folders.</p>
-<p>Make sure you create a branch named <code>[YOUR_NAME]/Week3</code> to separate your work for each week.</p>
+<p>You should complete the tasks in <a href="https://github.com/CodeYourFuture/NodeJS-Homework" target="_blank">NodeJS-Homework</a> repository.</p>
+<p>Make sure you create a branch named <code>[YOUR_NAME]/Week3</code> for work that you want to submit.</p>
 <h1 id="escalation-policy">Escalation policy</h1>
 <p>When you get stuck during the homework you should follow the following:</p>
 <ol>
@@ -1373,7 +1354,7 @@ and we will reply as soon as we can.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 3 - Advanced Node","level":"1.8.3","depth":2,"next":{"title":"SQL Databases","level":"1.9","depth":1,"path":"db/index.md","ref":"db/index.md","articles":[{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"path":"db/week-1/lesson.md","ref":"db/week-1/lesson.md","articles":[]},{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"path":"db/week-3/lesson.md","ref":"db/week-3/lesson.md","articles":[]}]},"previous":{"title":"Week 2 - Middleware, Templating and APIs","level":"1.8.2","depth":2,"path":"node/week-2/lesson.md","ref":"node/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node/week-3/lesson.md","mtime":"2020-07-04T09:58:35.888Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T09:59:23.773Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 3 - Advanced Node","level":"1.8.3","depth":2,"next":{"title":"SQL Databases","level":"1.9","depth":1,"path":"db/index.md","ref":"db/index.md","articles":[{"title":"Week 1 - Introduction to SQL","level":"1.9.1","depth":2,"path":"db/week-1/lesson.md","ref":"db/week-1/lesson.md","articles":[]},{"title":"Week 2 - More SQL and integration with NodeJS","level":"1.9.2","depth":2,"path":"db/week-2/lesson.md","ref":"db/week-2/lesson.md","articles":[]},{"title":"Week 3 - More integration with NodeJS","level":"1.9.3","depth":2,"path":"db/week-3/lesson.md","ref":"db/week-3/lesson.md","articles":[]}]},"previous":{"title":"Week 2 - Middleware, Templating and APIs","level":"1.8.2","depth":2,"path":"node/week-2/lesson.md","ref":"node/week-2/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"node/week-3/lesson.md","mtime":"2020-07-08T13:01:28.180Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-08T13:02:19.634Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
