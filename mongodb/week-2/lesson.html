@@ -1259,32 +1259,7 @@
 <h2 id="making-a-local-express-server">Making a local Express server</h2>
 <p>In the last lesson, we made an Express server on Glitch. In this lesson, however, we will make one on our own computer -- in other words, we will make a &quot;local&quot; server.</p>
 <p>Running a local server is the way most professional developers work, so it is important for you to learn.</p>
-<p>Here, we will start by opening a terminal shell:</p>
-<ul>
-<li>On Mac, open the Terminal app in the <code>Applications/Utilities</code> directory.</li>
-<li>On Ubuntu, press <code>ctrl+alt+t</code>.</li>
-<li>On Windows, you can try the <a href="https://devblogs.microsoft.com/commandline/bash-on-ubuntu-on-windows-download-now-3/" target="_blank">Windows Subsystem for Linux</a>. If this does not work, you can try Git BASH, which you can get by downloading <a href="https://gitforwindows.org/" target="_blank">Git for Windows</a>.</li>
-</ul>
-<p>In the shell, let&apos;s make a new directory for our Express server project. You can</p>
-<ul>
-<li>list directories by entering <code>ls</code> in the shell,</li>
-<li>change directories with <code>cd</code> (for example, <code>cd Desktop</code> to go to a <code>Desktop</code> directory), and</li>
-<li>make a new directory with <code>mkdir</code> (for example, <code>mkdir cyf-db-lesson-2</code> to make an <code>cyf-db-lesson-2</code> directory).</li>
-</ul>
-<p>Now, let&apos;s check if you already have Node and Node Pacakage Manager (NPM) installed. These will let you run a JavaScript server and add packages like Express to your project. To check for Node and NPM, run this in the terminal shell:</p>
-<pre class="language-"><code class="lang-js">npm <span class="token operator">--</span>version
-</code></pre>
-<p>If you see a version number (for example, <code>6.9.0</code>), you should be ready. Otherwise, try downloading Node from <a href="https://nodejs.org/en/" target="_blank">here</a> and installing it. It should also install NPM automatically.</p>
-<p>Once <code>npm --version</code> works, you can add Express. Inside of your new project directory, run this in the shell:</p>
-<pre class="language-"><code class="lang-js">npm install express
-</code></pre>
-<p>If it works, you should see a bunch of technical stuff appear on the screen. You can ignore most of it for now. However, at the bottom, you should see something like this:</p>
-<pre class="language-"><code class="lang-js"><span class="token operator">+</span> express@<span class="token number">4.17</span><span class="token number">.1</span>
-added <span class="token number">50</span> packages <span class="token keyword">from</span> <span class="token number">37</span> contributors and audited <span class="token number">126</span> packages <span class="token keyword">in</span> <span class="token number">2.263</span>s
-found <span class="token number">0</span> vulnerabilities
-</code></pre>
-<p>This basically means that NPM successfully added Express to your project directory.</p>
-<p>Doing this also added two things to our directory: <code>node_modules</code> and <code>package-lock.json</code>. <code>node_modules</code> is a directory that has (1) the Express package and (2) any other NPM packages that it needs. <code>package-lock.json</code> is a file that has the versions of these NPM packages. You can usually just ignore <code>node_modules</code> and <code>package-lock.json</code>.</p>
+<p>Follow <a href="https://expressjs.com/en/starter/installing.html" target="_blank">these instructions for making a node app and installing Express.js</a>. When prompted, set the &quot;entry point&quot; to be <code>server.js</code>. If you miss the chance, you can edit <code>package.json</code> to fix this.</p>
 <p>Now that we have Express ready, let&apos;s start writing our JavaScript. Open your favourite code editor (for example, Visual Studio Code) and create a new file with this:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;express&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1387,7 +1362,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 <p>When you have entered a few actors, click the Insert button to add the document. Now, you can see it inside of your collection.</p>
 <p>That is how you can add a document easily with MongoDB Atlas.</p>
 <h4 id="exercise-1">Exercise 1</h4>
-<p>Try adding two new films to your database. Give each of them a title, year, and a few actors.</p>
+<p>Try adding two new films to your database, using the Atlas web interface. Give each of them a title, year, and a few actors.</p>
 <h3 id="creating-a-document-with-the-mongodb-node-driver">Creating a document with the MongoDB Node Driver</h3>
 <p>When you build an app, you might also want to add documents from your server. This is how you can add a single document:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> doc <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -1459,12 +1434,15 @@ collection<span class="token punctuation">.</span><span class="token function">f
 </code></pre>
 <p>This will update the first document that matches <code>searchObject</code> with the fields in <code>updateObject</code> using some <code>options</code>.</p>
 <p>There are several options you can use. The one that we will use in this lesson is <code>returnOriginal</code>. If your options include <code>returnOriginal: false</code>, then you can get the updated document (not the original one) from <code>result</code>.</p>
-<p>However, <code>result</code> here is different than the one for <code>insertOne</code>. To see what this is, let&apos;s go to the <a href="http://mongodb.github.io/node-mongodb-native/3.2/api/" target="_blank">API Reference</a> tab we opened earlier.</p>
+<p>However, <code>result</code> here is different than the one for <code>insertOne</code>. Let&apos;s investigate.</p>
+<h4 id="updating-a-document---investigating-findoneandupdates-result-in-the-documentation">Updating a document - investigating findOneAndUpdate&apos;s <code>result</code> in the documentation</h4>
+<p>To see what this is, let&apos;s go to the <a href="https://mongodb.github.io/node-mongodb-native/3.5/api/" target="_blank">API Reference</a> tab we opened earlier.</p>
 <p>On this page, on the left side bar, we can see many objects we can use from the <code>mongodb</code> package. We want to find information about the <code>findOneAndUpdate</code> function, which is on a <code>Collection</code>, so let&apos;s click the &quot;Collection&quot; link. This opens many properties that a <code>Collection</code> has, including its methods (functions). Find and click the link for <code>findOneAndUpdate</code>.</p>
-<p>Here, we can see description of the function and its arguments. For example, you can see a list of options we can use. We can also see a column with the arguments types. We want to see what we can do with the <code>result</code> argument of the callback function, so click the type for <code>callback</code>: &quot;<a href="http://mongodb.github.io/node-mongodb-native/3.2/api/Collection.html#~findAndModifyCallback" target="_blank">Collection~findAndModifyCallback</a>&quot;.</p>
-<p>Now, we can see the description of what our callback function and its arguments should be. Click on the type of <code>result</code> so we can find out more about it: &quot;<a href="http://mongodb.github.io/node-mongodb-native/3.2/api/Collection.html#~findAndModifyWriteOpResult" target="_blank">Collection~findAndModifyWriteOpResult</a>&quot;.</p>
+<p>Here, we can see description of the function and its arguments. For example, you can see a list of options we can use. We can also see a column with the arguments types. We want to see what we can do with the <code>result</code> argument of the callback function, so click the type for <code>callback</code>: &quot;<a href="https://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#~findAndModifyCallback" target="_blank">Collection~findAndModifyCallback</a>&quot;.</p>
+<p>Now, we can see the description of what our callback function and its arguments should be. Click on the type of <code>result</code> so we can find out more about it: &quot;<a href="https://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#~findAndModifyWriteOpResult" target="_blank">Collection~findAndModifyWriteOpResult</a>&quot;.</p>
 <p>Finally, we can see the properties of <code>result</code>. Notice the first property, <code>value</code>, which will be our updated document. We can use this to return the updated document to the user.</p>
 <p>Note: at the time of writing this lesson, the docs have some problems. For example, the description of the <code>value</code> property says that it is from the <code>findAndModify</code> command, but it is really from the <code>findAndUpdateOne</code> command for us. Mistakes like these are not uncommon in documentation. (If you are stuck on something, and docs do not help, a good place to ask for help is <a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>.)</p>
+<h4 id="updating-a-document---back-to-the-code">Updating a document - back to the code...</h4>
 <p>Now, we know how to use <code>result</code>. For example, we can do this:</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> searchObject <span class="token operator">=</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">&quot;Princess Mononoke&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
@@ -1641,7 +1619,7 @@ collection<span class="token punctuation">.</span><span class="token function">d
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - More MongoDB","level":"1.10.2","depth":2,"next":{"title":"Week 3 - Advanced MongoDB","level":"1.10.3","depth":2,"path":"mongodb/week-3/lesson.md","ref":"mongodb/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Introduction to MongoDB","level":"1.10.1","depth":2,"path":"mongodb/week-1/lesson.md","ref":"mongodb/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mongodb/week-2/lesson.md","mtime":"2020-07-17T02:32:13.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-17T02:33:02.288Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - More MongoDB","level":"1.10.2","depth":2,"next":{"title":"Week 3 - Advanced MongoDB","level":"1.10.3","depth":2,"path":"mongodb/week-3/lesson.md","ref":"mongodb/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Introduction to MongoDB","level":"1.10.1","depth":2,"path":"mongodb/week-1/lesson.md","ref":"mongodb/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mongodb/week-2/lesson.md","mtime":"2020-07-17T03:57:18.259Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-17T03:58:02.456Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
