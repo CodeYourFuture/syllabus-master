@@ -1386,7 +1386,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 <p>Now, let&apos;s try adding a new data type: Array. Select Array from the drop-down list, and give it the name <code>actors</code>. You should see the index <code>0</code> appear below it. Here, you can enter the name of an actor in the film. When you press Enter, you can add even more.</p>
 <p>When you have entered a few actors, click the Insert button to add the document. Now, you can see it inside of your collection.</p>
 <p>That is how you can add a document easily with MongoDB Atlas.</p>
-<h4 id="excercise">Excercise</h4>
+<h4 id="exercise-1">Exercise 1</h4>
 <p>Try adding two new films to your database. Give each of them a title, year, and a few actors.</p>
 <h3 id="creating-a-document-with-the-mongodb-node-driver">Creating a document with the MongoDB Node Driver</h3>
 <p>When you build an app, you might also want to add documents from your server. This is how you can add a single document:</p>
@@ -1423,7 +1423,7 @@ collection<span class="token punctuation">.</span><span class="token function">i
 </code></pre>
 <p>Here, when the user sends a <code>POST</code> request to <code>/films</code>, the server creates a new film document with the title &quot;Princess Mononoke&quot; and responds with the inserted document, including the new <code>_id</code> field.</p>
 <p>To try it, restart your server first: go to your terminal shell, press <code>ctrl+c</code> to stop the server, press the <code>up</code> key to go to your previous command, and then press <code>enter</code>. Now, try sending a <code>POST</code> request to <code>localhost:3000/films</code> with Postman, and then check your collection on Atlas.</p>
-<h4 id="exercise">Exercise</h4>
+<h4 id="exercise-2">Exercise 2</h4>
 <p>Update the new endpoint to take query parameters <code>title</code>, <code>year</code>, and <code>actors</code> and create and return a new film with those fields and values. Make sure that only those fields are added. If a query parameter is missing, return a <code>400</code> error. Make sure that the year is a number in the database (not a string). Let the actors be separated by commas.</p>
 <p>For example, sending a <code>POST</code> request to <code>/films?title=Ex Machina&amp;year=2014&amp;actors=Domhnall Gleeson,Oscar Isaac,Alicia Vikander</code> should create a new film document in the database like this:</p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
@@ -1515,7 +1515,7 @@ collection<span class="token punctuation">.</span><span class="token function">f
 </code></pre>
 <p>Now, when we make a <code>PUT</code> request to <code>/films</code>, the server changes the year of Princess Mononoke to 2000, and it returns the film.</p>
 <p>To try it, restart your server again (in the terminal: <code>ctrl+c</code>, <code>up</code>, <code>enter</code>) and make a <code>PUT</code> request to <code>localhost:3000/films</code> in Postman.</p>
-<h4 id="exercise">Exercise</h4>
+<h4 id="exercise-3">Exercise 3</h4>
 <p>Change the new endpoint to <code>/films/:id</code>, and make it take a JSON object body and replace the document that has that <code>id</code>.</p>
 <p>If the <code>id</code> is not a valid <code>ObjectId</code> string, return a <code>400</code> status code.</p>
 <p>Allow only the properties <code>_id</code>, <code>title</code>, <code>year</code>, and <code>actors</code>. Do not allow objects with missing properties. Only allow the correct data type for each property. Do not allow the <code>_id</code> to be changed. If the JSON body is not allowed, return a <code>422</code> status code.</p>
@@ -1592,7 +1592,7 @@ collection<span class="token punctuation">.</span><span class="token function">d
 </code></pre>
 <p>When a user sends a <code>DELETE</code> request to <code>/films/Princess Mononoke</code>, for example, it should either (1) delete the first film called &quot;Princess Mononoke&quot; if it exists and return <code>204</code> (2) just return <code>404</code> if it does not exist.</p>
 <p>To try it, restart your server, find a film title in your database, and send a <code>DELETE</code> request to <code>/films/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>put</span> <span class="token attr-name">the</span> <span class="token attr-name">film</span> <span class="token attr-name">title</span> <span class="token attr-name">here</span><span class="token punctuation">&gt;</span></span></code> in Postman.</p>
-<h4 id="exercise">Exercise</h4>
+<h4 id="exercise-4">Exercise 4</h4>
 <p>Change the new endpoint to <code>/films/:id</code>. Make it delete only the object with the given <code>id</code>.</p>
 <h1 id="homework">Homework</h1>
 <p>You can find the homework for this week here:</p>
@@ -1641,7 +1641,7 @@ collection<span class="token punctuation">.</span><span class="token function">d
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Week 2 - More MongoDB","level":"1.10.2","depth":2,"next":{"title":"Week 3 - Advanced MongoDB","level":"1.10.3","depth":2,"path":"mongodb/week-3/lesson.md","ref":"mongodb/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Introduction to MongoDB","level":"1.10.1","depth":2,"path":"mongodb/week-1/lesson.md","ref":"mongodb/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mongodb/week-2/lesson.md","mtime":"2020-07-13T21:11:26.501Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-13T21:12:12.849Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Week 2 - More MongoDB","level":"1.10.2","depth":2,"next":{"title":"Week 3 - Advanced MongoDB","level":"1.10.3","depth":2,"path":"mongodb/week-3/lesson.md","ref":"mongodb/week-3/lesson.md","articles":[]},"previous":{"title":"Week 1 - Introduction to MongoDB","level":"1.10.1","depth":2,"path":"mongodb/week-1/lesson.md","ref":"mongodb/week-1/lesson.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"mongodb/week-2/lesson.md","mtime":"2020-07-17T02:32:13.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-17T02:33:02.288Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
